@@ -2,6 +2,14 @@ import type { Metadata } from 'next';
 
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
+import HomeChoose from './components/HomeChoose';
+import HomeFreePremium from './components/HomeFreePremium';
+import HomeFv from './components/HomeFv';
+import HomeIntroduction from './components/HomeIntroduction';
+import HomeSimple from './components/HomeSimple';
+import HomeSlider from './components/HomeSlider';
+import HomeValue from './components/HomeValue';
+
 export const metadata: Metadata = {
   title: SITE_NAME,
   openGraph: {
@@ -17,7 +25,17 @@ export const metadata: Metadata = {
 };
 
 const IndexPage = () => {
-  return <div className="">home</div>;
+  return (
+    <main className="relative">
+      <HomeFv />
+      <HomeIntroduction />
+      <HomeValue />
+      <HomeChoose />
+      <HomeFreePremium />
+      <HomeSimple />
+      <HomeSlider />
+    </main>
+  );
 };
 
 export default IndexPage;

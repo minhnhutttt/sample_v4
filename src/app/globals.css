@@ -1,5 +1,12 @@
 @import 'tailwindcss';
 
+#header {
+  transform: translateY(-100%);
+}
+body.loaded-fv #header {
+  transform: translateY(0);
+  opacity: 1;
+}
 @layer base {
   button {
     cursor: pointer;
@@ -8,4 +15,37 @@
 @layer components {
 }
 @layer utilities {
+}
+
+@keyframes anim {
+  0% {
+  }
+  20% {
+    z-index: 11;
+    \transform: skewX(5deg) translateX(-100%);
+  }
+  40% {
+    transform: skewX(0deg) translateX(0);
+    width: 110%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  }
+  60% {
+    transform: skewX(3deg) translateX(0);
+    width: 110%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  }
+  80% {
+    transform: skewX(1deg) translateX(-100%);
+    width: 60%;
+    z-index: 11;
+    box-shadow: 10px 10px 5px #eaeaea;
+  }
+  100% {
+    transform: skewX(-5deg) translateX(-50px);
+    width: 0;
+    z-index: 1;
+    box-shadow: none;
+  }
 }

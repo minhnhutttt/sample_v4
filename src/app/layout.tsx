@@ -64,7 +64,7 @@ const RootLayout = ({
 
   return (
     <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
+      <body className={`${noto.className} bg-[#2D2D2D] text-white antialiased`}>
         <Providers>
           <Header />
           {children}
