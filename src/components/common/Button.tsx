@@ -20,7 +20,7 @@ const Button = () => {
           strokeLinejoin="round"
         />
       </svg>
-      <span className="flex flex-col">
+      <span className="flex flex-col text-left">
         <span className="text-[16px] font-bold md:text-[20px]">
           アプリをダウンロード
         </span>

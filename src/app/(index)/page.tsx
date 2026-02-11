@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import HomeChoose from './components/HomeChoose';
+import HomeFaq from './components/HomeFaq';
 import HomeFreePremium from './components/HomeFreePremium';
 import HomeFv from './components/HomeFv';
 import HomeIntroduction from './components/HomeIntroduction';
@@ -34,6 +35,7 @@ const IndexPage = () => {
       <HomeFreePremium />
       <HomeSimple />
       <HomeSlider />
+      <HomeFaq />
     </main>
   );
 };

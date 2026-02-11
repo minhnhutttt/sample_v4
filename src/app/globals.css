@@ -17,6 +17,11 @@ body.loaded-fv #header {
 @layer utilities {
 }
 
+.drag-slider .splide .splide__pagination,
+.splide-slider .splide .splide__pagination {
+  bottom: -40px;
+}
+
 @keyframes anim {
   0% {
   }

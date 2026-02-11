@@ -2,9 +2,11 @@ import Article from '@/components/common/Article';
 
 const HomeSimple = () => {
   return (
-    <div className="my-10 px-2 text-center md:my-[170px]">
+    <div className="my-16 px-2 text-center md:my-[170px]">
       <h3 className="text-[35px] font-black md:text-[70px]">
-        始めるのは、驚くほどシンプルです。
+        始めるのは、
+        <br className="md:hidden" />
+        驚くほどシンプルです。
       </h3>
       <p className="mb-8 text-[16px] font-bold md:mb-[150px] md:text-[25px]">
         必要なのは、たった3つだけ。
