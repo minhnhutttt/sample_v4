@@ -4,7 +4,7 @@ const Button = () => {
   return (
     <Link
       href="/"
-      className="mx-auto flex h-16 w-[240px] items-center justify-center gap-[15px] rounded-[20px] bg-[#F78629] md:h-[95px] md:w-[362px]"
+      className="mx-auto flex h-16 w-[240px] items-center justify-center gap-[15px] rounded-[20px] bg-[#F78629] duration-300 hover:scale-110 md:h-[95px] md:w-[362px]"
     >
       <svg
         className="w-4 md:w-12"

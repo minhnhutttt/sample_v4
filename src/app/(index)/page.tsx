@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import SurprisinglySimple from '@/components/common/SurprisinglySimple';
+import Information from '@/components/infomation';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import HomeChoose from './components/HomeChoose';
@@ -7,7 +9,6 @@ import HomeFaq from './components/HomeFaq';
 import HomeFreePremium from './components/HomeFreePremium';
 import HomeFv from './components/HomeFv';
 import HomeIntroduction from './components/HomeIntroduction';
-import HomeSimple from './components/HomeSimple';
 import HomeSlider from './components/HomeSlider';
 import HomeValue from './components/HomeValue';
 
@@ -33,9 +34,10 @@ const IndexPage = () => {
       <HomeValue />
       <HomeChoose />
       <HomeFreePremium />
-      <HomeSimple />
+      <SurprisinglySimple />
       <HomeSlider />
       <HomeFaq />
+      <Information />
     </main>
   );
 };

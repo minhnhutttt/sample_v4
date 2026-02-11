@@ -28,3 +28,42 @@ export const TWITTER = {
   description: DEFAULT_DESCRIPTION,
   images: OG_IMAGES,
 };
+
+export const NavLinks = [
+  {
+    text: 'ブランドについて',
+    href: '/',
+  },
+  {
+    text: 'サービス利用規約',
+    href: '/',
+  },
+  {
+    text: 'プライバシーポリシー',
+    href: '/',
+  },
+  {
+    text: '特定商取引法表記・法的情報',
+    href: '/',
+  },
+  {
+    text: 'アプリのダウンロード',
+    href: '/',
+  },
+  {
+    text: '他サービスとの比較',
+    href: '/',
+  },
+  {
+    text: 'プレミアムチャンネルについて',
+    href: '/',
+  },
+  {
+    text: 'お知らせ・記事一覧',
+    href: '/',
+  },
+  {
+    text: 'サポート・お問い合わせ',
+    href: '/',
+  },
+];

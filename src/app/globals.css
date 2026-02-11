@@ -1,10 +1,6 @@
 @import 'tailwindcss';
 
-#header {
-  transform: translateY(-100%);
-}
 body.loaded-fv #header {
-  transform: translateY(0);
   opacity: 1;
 }
 @layer base {

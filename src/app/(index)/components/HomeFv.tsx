@@ -29,7 +29,7 @@ const HomeFv = () => {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=3000',
+          end: '+=4000',
           scrub: true,
           pin: true,
           onLeave: () => {
@@ -68,7 +68,7 @@ const HomeFv = () => {
           ease: 'none',
         })
         .to(animaRef.current, {
-          skewX: 1,
+          skewX: 5,
           xPercent: -100,
           width: '60%',
           duration: 0.2,
@@ -111,7 +111,7 @@ const HomeFv = () => {
             alt=""
             width={331}
             height={225}
-            className="w-22 md:w-75.75"
+            className="w-40 md:w-75.75"
           />
         </div>
       </div>

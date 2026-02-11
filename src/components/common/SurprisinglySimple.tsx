@@ -1,6 +1,6 @@
 import Article from '@/components/common/Article';
 
-const HomeSimple = () => {
+const SurprisinglySimple = () => {
   return (
     <div className="my-16 px-2 text-center md:my-[170px]">
       <h3 className="text-[35px] font-black md:text-[70px]">
@@ -53,4 +53,4 @@ const HomeSimple = () => {
   );
 };
 
-export default HomeSimple;
+export default SurprisinglySimple;

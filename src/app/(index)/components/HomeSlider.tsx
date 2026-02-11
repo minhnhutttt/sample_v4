@@ -29,7 +29,7 @@ const HomeSlider = () => {
         こんな方たちです。
       </h3>
 
-      <div className="drag-slider min-h-screen overflow-hidden">
+      <div className="drag-slider">
         <Splide
           ref={splideRef}
           options={{
