@@ -3,7 +3,7 @@ import Link from 'next/link';
 const Button = () => {
   return (
     <Link
-      href="/"
+      href="/download"
       className="mx-auto flex h-16 w-[240px] items-center justify-center gap-[15px] rounded-[20px] bg-[#F78629] duration-300 hover:scale-110 md:h-[95px] md:w-[362px]"
     >
       <svg

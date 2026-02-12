@@ -7,10 +7,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 
 import Button from '@/components/common/Button';
+import useScrollAnimations from '@/hooks/useScrollAnimations';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HomeValue = () => {
+  const ref = useScrollAnimations();
+
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -20,12 +23,10 @@ const HomeValue = () => {
     if (!containerRef.current || !logoRef.current || !textRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Split text thành từng char
       const split = new SplitText(textRef.current, {
         type: 'chars',
       });
 
-      // Set opacity mặc định cho từng char
       gsap.set(split.chars, { opacity: 0.2 });
 
       const tl = gsap.timeline({
@@ -35,9 +36,7 @@ const HomeValue = () => {
           end: '+=3000',
           scrub: true,
           pin: true,
-          onLeave: () => {
-            document.body.classList.add('loaded-fv');
-          },
+          refreshPriority: 0,
         },
       });
 
@@ -45,12 +44,12 @@ const HomeValue = () => {
 
       tl.from(logoRef.current, {
         filter: 'blur(20px)',
-        duration: 0.2,
-        ease: 'none',
+        duration: 1,
+        ease: 'power1.out',
       })
         .to(logoRef.current, {
           left: 0,
-          duration: 0.2,
+          duration: 1,
           ease: 'none',
         })
         .to(wrapperRef.current, {
@@ -68,11 +67,13 @@ const HomeValue = () => {
         });
     }, containerRef);
 
+    ScrollTrigger.refresh();
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <div className="px-5">
+    <div ref={ref} className="px-5">
       <div ref={containerRef} className="relative">
         <div className="@container relative mx-auto flex min-h-screen w-full max-w-[1440px] items-center justify-center pt-28 max-md:flex-col md:pt-33.5">
           <div ref={logoRef} className="md:absolute">
@@ -130,12 +131,12 @@ const HomeValue = () => {
         </div>
       </div>
       <div className="my-[65px] md:my-[170px]">
-        <p className="text-center text-[18px] font-semibold md:text-[30px]">
+        <p className="fade-up text-center text-[18px] font-semibold md:text-[30px]">
           KIVOは価値ある情報を、
           <br className="md:hidden" />
           大切に、そして正しく届けるための場所です。
         </p>
-        <div className="mt-[35px] md:mt-[90px]">
+        <div className="fade-up mt-[35px] md:mt-[90px]">
           <Button />
         </div>
       </div>

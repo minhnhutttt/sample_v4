@@ -1,13 +1,7 @@
 'use client';
 
-import Image from 'next/image';
-
-import ScrollSlider from '@/components/scrollSlider';
-
-interface SlideData {
-  title: string;
-  text: string;
-}
+import ScrollSlider, { SlideData } from '@/components/scrollSlider';
+import useScrollAnimations from '@/hooks/useScrollAnimations';
 
 interface SliderSectionProps {
   heading: string;
@@ -15,46 +9,25 @@ interface SliderSectionProps {
   slides: SlideData[];
 }
 
-const SlideItem = ({ title, text }: SlideData) => (
-  <div className="h-full bg-black">
-    <div className="mx-auto flex h-full w-full max-w-5xl items-center gap-9 px-6 max-md:flex-col max-md:justify-center md:gap-20">
-      <div>
-        <Image
-          src="/assets/images/phone.png"
-          alt="phone"
-          width={324}
-          height={668}
-          className="max-lg:w-[200px] max-md:w-[110px]"
-        />
-      </div>
-
-      <div className="space-y-5 text-left text-white">
-        <p className="text-[24px] font-black md:text-[30px]">{title}</p>
-        <p className="text-[16px]">{text}</p>
-      </div>
-    </div>
-  </div>
-);
-
 const SliderSection = ({ heading, subHeading, slides }: SliderSectionProps) => {
-  const renderedSlides = slides.map((slide, index) => (
-    <SlideItem key={index} {...slide} />
-  ));
-
   return (
     <section className="text-center">
-      <h3 className="text-[35px] font-black md:text-[70px]">{heading}</h3>
+      <h3 className="fade-up text-[35px] font-black md:text-[70px]">
+        {heading}
+      </h3>
 
-      <p className="mb-8 text-[16px] font-bold md:mb-[150px] md:text-[25px]">
+      <p className="fade-up mb-8 text-[16px] font-bold md:mb-[150px] md:text-[25px]">
         {subHeading}
       </p>
 
-      <ScrollSlider slides={renderedSlides} duration={300} />
+      <ScrollSlider slides={slides} duration={300} />
     </section>
   );
 };
 
 const HomeChoose = () => {
+  const ref = useScrollAnimations();
+
   const section1: SlideData[] = [
     {
       title: '必要な人に、きちんと届く',
@@ -86,7 +59,7 @@ const HomeChoose = () => {
   ];
 
   return (
-    <div>
+    <div ref={ref}>
       <SliderSection
         heading="KIVOを選ぶ理由"
         subHeading="あなたの発信はこう変わります。"
@@ -100,7 +73,7 @@ const HomeChoose = () => {
         subHeading="スクリーンショットも、共有も前提としていません。"
         slides={section2}
       />
-      <div className="mt-10 text-center text-[16px] font-bold md:mt-25 md:text-[30px]">
+      <div className="fade-up mt-10 text-center text-[16px] font-bold md:mt-25 md:text-[30px]">
         価値を守ることこそ、発信を続けるための前提です。
       </div>
     </div>

@@ -8,8 +8,11 @@ import Image from 'next/image';
 
 import Article from '@/components/common/Article';
 import Button from '@/components/common/Button';
+import useScrollAnimations from '@/hooks/useScrollAnimations';
 
 const HomeSlider = () => {
+  const ref = useScrollAnimations();
+
   const [isAnimating, setIsAnimating] = useState(false);
   const splideRef = useRef(null);
 
@@ -22,8 +25,8 @@ const HomeSlider = () => {
   };
 
   return (
-    <div className="my-16 px-2 text-center md:my-[170px]">
-      <h3 className="mb-8 text-[35px] font-black md:text-[70px]">
+    <div ref={ref} className="my-16 px-2 text-center md:my-[170px]">
+      <h3 className="fade-up mb-8 text-[35px] font-black md:text-[70px]">
         KIVOを選んでいるのは、
         <br className="md:hidden" />
         こんな方たちです。
@@ -71,18 +74,18 @@ const HomeSlider = () => {
       </div>
 
       <div className="my-[65px] md:my-[170px]">
-        <p className="text-center text-[18px] font-semibold md:text-[30px]">
+        <p className="fade-uptext-center text-[18px] font-semibold md:text-[30px]">
           KIVOは価値ある情報を、
           <br className="md:hidden" />
           大切に、そして正しく届けるための場所です。
         </p>
-        <div className="mt-[35px] md:mt-[90px]">
+        <div className="fade-up mt-[35px] md:mt-[90px]">
           <Button />
         </div>
       </div>
 
       <div className="splide-slider mx-auto w-full max-w-[1440px] px-2">
-        <h3 className="text-[24px] font-black md:text-[50px]">
+        <h3 className="fade-up text-[24px] font-black md:text-[50px]">
           あ、余談ですが、
           <br className="md:hidden" />
           こんな方にも…
@@ -110,7 +113,7 @@ const HomeSlider = () => {
           </Splide>
         </div>
       </div>
-      <p className="text-center text-[18px] font-bold md:text-[30px]">
+      <p className="fade-uptext-center text-[18px] font-bold md:text-[30px]">
         いつでも安心です。
       </p>
     </div>
