@@ -397,7 +397,7 @@ const SupportPage = () => {
   ];
   return (
     <div>
-      <div className="pt-28 pr-3 pl-9 md:px-5 md:pt-[240px]">
+      <div className="px-5 pt-28 md:pt-[240px]">
         <div className="relative mx-auto flex w-full max-w-100 items-center justify-center text-white md:max-w-[1280px] md:gap-10 lg:gap-[86px]">
           <div className="relative z-10 text-center">
             <div className="w-full">

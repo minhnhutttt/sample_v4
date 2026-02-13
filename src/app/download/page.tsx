@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const DownloadPage = () => {
   return (
     <div>
-      <div className="pt-28 pr-3 pl-9 md:px-5 md:pt-33.5">
+      <div className="px-5 pt-28 md:pt-33.5">
         <div className="relative mx-auto flex w-full max-w-100 items-center text-white md:max-w-[1280px] md:gap-10 lg:gap-[86px]">
           <div className="max-md:absolute max-md:bottom-0 max-md:w-[43%] max-md:max-w-[145px]">
             <Image
