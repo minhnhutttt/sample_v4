@@ -60,7 +60,7 @@ export const NavLinks = [
   },
   {
     text: 'お知らせ・記事一覧',
-    href: '/',
+    href: '/post',
   },
   {
     text: 'サポート・お問い合わせ',
