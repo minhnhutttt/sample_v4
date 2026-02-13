@@ -60,7 +60,7 @@ const PremiumPage = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto my-16 w-full max-w-[1440px] px-5 md:my-[170px]">
+      <div className="mx-auto my-24 w-full max-w-[1440px] px-5 md:my-[170px]">
         <h3 className="text-center text-[35px] font-black md:text-[70px]">
           チャンネルの違い
         </h3>
@@ -116,7 +116,7 @@ const PremiumPage = () => {
           </div>
         </div>
       </div>
-      <div className="relative my-16 px-5 md:my-[170px]">
+      <div className="relative my-24 px-5 md:my-[170px]">
         <div className="relative mx-auto flex w-full max-w-[1312px] items-center justify-center gap-10 max-md:flex-col xl:gap-20">
           <div>
             <h3 className="flex h-[95px] items-center text-center text-[24px] font-black before:h-[95px] before:w-[40px] before:bg-[url(/assets/images/frame.svg)] before:bg-cover after:h-[95px] after:w-[40px] after:rotate-180 after:bg-[url(/assets/images/frame.svg)] after:bg-cover md:h-[133px] md:text-[40px] md:before:h-[133px] md:before:w-[56px] md:after:h-[133px] md:after:w-[56px]">
@@ -154,7 +154,7 @@ const PremiumPage = () => {
         </div>
       </div>
       <div>
-        <div className="my-16 px-2 text-center md:my-[170px]">
+        <div className="my-24 px-2 text-center md:my-[170px]">
           <h3 className="text-[35px] font-black md:text-[70px]">
             Premiumで守られること
           </h3>
@@ -163,8 +163,9 @@ const PremiumPage = () => {
           </p>
           <div className="mx-auto grid w-full max-w-[1440px] gap-2 md:grid-cols-3">
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/premium-01.png"
               title="勝手に広がらない"
               text={
                 <>
@@ -175,8 +176,9 @@ const PremiumPage = () => {
               }
             />
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/premium-02.png"
               title="切り取られない"
               text={
                 <>
@@ -187,8 +189,9 @@ const PremiumPage = () => {
               }
             />
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/premium-03.png"
               title="価値として扱われる"
               text={
                 <>
@@ -200,7 +203,7 @@ const PremiumPage = () => {
             />
           </div>
         </div>
-        <div className="my-16 px-2 text-center md:my-[170px]">
+        <div className="my-24 px-2 text-center md:my-[170px]">
           <h3 className="text-[35px] font-black md:text-[70px]">
             Premium Channelをはじめよう
           </h3>
@@ -209,8 +212,9 @@ const PremiumPage = () => {
           </p>
           <div className="mx-auto grid w-full max-w-[1440px] gap-2 md:grid-cols-3">
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/image-02-01.png"
               title="1.アプリをダウンロード"
               text={
                 <>
@@ -221,8 +225,9 @@ const PremiumPage = () => {
               }
             />
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/image-02-02.png"
               title="2.Subscription Planにアップグレード"
               text={
                 <>
@@ -233,8 +238,9 @@ const PremiumPage = () => {
               }
             />
             <Article
+              link="#"
               sm
-              image="/assets/images/dummy.png"
+              image="/assets/images/image-02-03.png"
               title="3.Premium Channelを作成"
               text={
                 <>
@@ -246,7 +252,7 @@ const PremiumPage = () => {
             />
           </div>
         </div>
-        <div className="my-16 px-2 text-center md:my-[170px]">
+        <div className="my-24 px-2 text-center md:my-[170px]">
           <h3 className="text-[35px] font-black md:text-[70px]">
             Premium Channelについて
           </h3>
@@ -256,7 +262,7 @@ const PremiumPage = () => {
           <div className="mx-auto flex w-full max-w-[1200px] items-center max-md:flex-col">
             <div className="-mr-5">
               <Image
-                src="/assets/images/phone2.png"
+                src="/assets/images/phone3.png"
                 alt=""
                 width={775}
                 height={806}
@@ -280,7 +286,7 @@ const PremiumPage = () => {
               </p>
             </div>
           </div>
-          <div className="my-16 md:my-[170px]">
+          <div className="my-24 md:my-[170px]">
             <p className="text-center text-[18px] font-semibold md:text-[30px]">
               価値を守ることこそ、
               <br />

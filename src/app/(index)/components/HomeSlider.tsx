@@ -25,7 +25,7 @@ const HomeSlider = () => {
   };
 
   return (
-    <div ref={ref} className="my-16 px-2 text-center md:my-[170px]">
+    <div ref={ref} className="my-124 px-2 text-center md:my-[170px]">
       <h3 className="fade-up mb-8 text-[35px] font-black md:text-[70px]">
         KIVOを選んでいるのは、
         <br className="md:hidden" />
@@ -56,9 +56,10 @@ const HomeSlider = () => {
                   className={`transition-transform duration-1000 ease-out ${isAnimating ? 'scale-[0.98]' : 'scale-100'} `}
                 >
                   <Article
+                    link="#"
                     md
                     isAnimating={isAnimating}
-                    image="/assets/images/dummy.png"
+                    image={`/assets/images/slider-0${item}.jpg`}
                     title="専門性を、軽く扱われたくない人"
                     text={
                       <>

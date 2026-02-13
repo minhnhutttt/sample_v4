@@ -5,14 +5,14 @@ import Button from './common/Button';
 const Information = () => {
   return (
     <div className="my-20 px-2 md:my-[170px]">
-      <div className="mx-auto flex w-full max-w-[1440px] items-center max-md:flex-col">
-        <div className="md:-mr-30">
+      <div className="mx-auto flex w-full max-w-[1440px] items-center justify-center max-md:flex-col max-md:gap-8">
+        <div className="">
           <Image
             src="/assets/images/phone2.png"
             alt=""
-            width={775}
-            height={806}
-            className="max-lg:-ml-10 max-md:w-[330px]"
+            width={482}
+            height={736}
+            className="max-lg:-ml-10 max-md:w-[260px]"
           />
         </div>
         <div className="space-y-10 md:space-y-[86px]">

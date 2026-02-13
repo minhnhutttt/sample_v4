@@ -7,7 +7,7 @@ const SurprisinglySimple = () => {
   const ref = useScrollAnimations();
 
   return (
-    <div ref={ref} className="my-16 px-2 text-center md:my-[170px]">
+    <div ref={ref} className="my-24 px-2 text-center md:my-[170px]">
       <h3 className="fade-up text-[35px] font-black md:text-[70px]">
         始めるのは、
         <br className="md:hidden" />
@@ -18,8 +18,9 @@ const SurprisinglySimple = () => {
       </p>
       <div className="mx-auto grid w-full max-w-[1440px] gap-2 md:grid-cols-3">
         <Article
+          link="#"
           sm
-          image="/assets/images/dummy.png"
+          image="/assets/images/image-02-01.png"
           title="1.アプリをダウンロード"
           text={
             <>
@@ -30,8 +31,9 @@ const SurprisinglySimple = () => {
           }
         />
         <Article
+          link="#"
           sm
-          image="/assets/images/dummy.png"
+          image="/assets/images/image-02-02.png"
           title="2.Channelを作成する"
           text={
             <>
@@ -42,8 +44,9 @@ const SurprisinglySimple = () => {
           }
         />
         <Article
+          link="#"
           sm
-          image="/assets/images/dummy.png"
+          image="/assets/images/image-02-03.png"
           title="3.コンテンツを投稿する"
           text={
             <>

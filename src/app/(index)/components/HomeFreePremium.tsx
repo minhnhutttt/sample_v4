@@ -7,7 +7,7 @@ const HomeFreePremium = () => {
   const ref = useScrollAnimations();
 
   return (
-    <div ref={ref} className="my-16 px-2 text-center md:my-[170px]">
+    <div ref={ref} className="my-24 px-2 text-center md:my-[170px]">
       <h3 className="fade-up text-[35px] font-black md:text-[70px]">
         FreeとPremium <br />
         2つのチャンネル
@@ -17,7 +17,8 @@ const HomeFreePremium = () => {
       </p>
       <div className="mx-auto grid w-full max-w-[1440px] gap-2 md:grid-cols-2">
         <Article
-          image="/assets/images/dummy.png"
+          link="#"
+          image="/assets/images/image-01-01.png"
           title="Free Channel"
           text={
             <>
@@ -28,7 +29,8 @@ const HomeFreePremium = () => {
           }
         />
         <Article
-          image="/assets/images/dummy.png"
+          link="#"
+          image="/assets/images/image-01-02.png"
           title="Premium Channel"
           text={
             <>

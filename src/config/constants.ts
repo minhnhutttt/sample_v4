@@ -48,15 +48,15 @@ export const NavLinks = [
   },
   {
     text: 'アプリのダウンロード',
-    href: '/',
+    href: '/download',
   },
   {
     text: '他サービスとの比較',
-    href: '/',
+    href: '/comparison',
   },
   {
     text: 'プレミアムチャンネルについて',
-    href: '/',
+    href: '/premium',
   },
   {
     text: 'お知らせ・記事一覧',
@@ -64,6 +64,6 @@ export const NavLinks = [
   },
   {
     text: 'サポート・お問い合わせ',
-    href: '/',
+    href: '/support',
   },
 ];

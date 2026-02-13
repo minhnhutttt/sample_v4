@@ -40,11 +40,10 @@ const ScrollSlider = ({
       gsap.set(slidesEl[0], { xPercent: 0, opacity: 1 });
 
       slidesEl.forEach((slide) => {
-        const image = slide!.querySelector('.slide-image');
         const title = slide!.querySelector('.slide-title');
         const text = slide!.querySelector('.slide-text');
 
-        gsap.set([image, title, text], {
+        gsap.set([title, text], {
           opacity: 0,
           y: 50,
         });
@@ -52,13 +51,10 @@ const ScrollSlider = ({
 
       // Slide đầu hiển thị sẵn
       const firstSlide = slidesEl[0]!;
-      gsap.set(
-        firstSlide.querySelectorAll('.slide-image, .slide-title, .slide-text'),
-        {
-          opacity: 1,
-          y: 0,
-        },
-      );
+      gsap.set(firstSlide.querySelectorAll('.slide-title, .slide-text'), {
+        opacity: 1,
+        y: 0,
+      });
 
       // ------------------------
       // TIMELINE
@@ -78,7 +74,7 @@ const ScrollSlider = ({
 
         const prevSlide = slidesEl[index - 1]!;
 
-        const image = slide!.querySelector('.slide-image');
+        // const image = slide!.querySelector('.slide-image');
         const title = slide!.querySelector('.slide-title');
         const text = slide!.querySelector('.slide-text');
 
@@ -87,7 +83,7 @@ const ScrollSlider = ({
           prevSlide,
           {
             scale: 0.85,
-            opacity: 0.4,
+            opacity: 0,
             duration: 1,
           },
           index,
@@ -106,7 +102,7 @@ const ScrollSlider = ({
 
         // Animate nội dung bên trong (stagger mượt)
         tl.to(
-          [image, title, text],
+          [title, text],
           {
             opacity: 1,
             y: 0,
@@ -124,40 +120,41 @@ const ScrollSlider = ({
   return (
     <div
       ref={containerRef}
-      className={`relative h-screen overflow-hidden ${className}`}
+      className={`relative h-screen overflow-hidden bg-black ${className}`}
     >
-      {slides.map((slide, i) => (
-        <div
-          key={i}
-          ref={(el) => {
-            slidesRef.current[i] = el;
-          }}
-          className="absolute inset-0 h-full w-full"
-        >
-          <div className="h-full bg-black">
-            <div className="mx-auto flex h-full w-full max-w-5xl items-center gap-9 px-6 max-md:flex-col max-md:justify-center md:gap-20">
-              {/* IMAGE */}
+      <div className="mx-auto flex h-full w-full max-w-5xl items-center gap-9 px-6 max-md:flex-col max-md:justify-center md:gap-20">
+        {/* IMAGE */}
+        <div>
+          <Image
+            src="/assets/images/phone.png"
+            alt="phone"
+            width={324}
+            height={668}
+            className="slide-image max-lg:w-[200px] max-md:w-[110px]"
+          />
+        </div>
+        <div className="relative max-md:w-full md:flex-1">
+          {slides.map((slide, i) => (
+            <div
+              key={i}
+              ref={(el) => {
+                slidesRef.current[i] = el;
+              }}
+              className="absolute max-md:w-full"
+            >
               <div>
-                <Image
-                  src="/assets/images/phone.png"
-                  alt="phone"
-                  width={324}
-                  height={668}
-                  className="slide-image max-lg:w-[200px] max-md:w-[110px]"
-                />
-              </div>
-
-              {/* TEXT CONTENT */}
-              <div className="space-y-5 text-left text-white">
-                <p className="slide-title text-[24px] font-black md:text-[30px]">
-                  {slide.title}
-                </p>
-                <p className="slide-text text-[16px]">{slide.text}</p>
+                {/* TEXT CONTENT */}
+                <div className="space-y-5 text-left text-white">
+                  <p className="slide-title text-[24px] font-black md:text-[30px]">
+                    {slide.title}
+                  </p>
+                  <p className="slide-text text-[16px]">{slide.text}</p>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };
