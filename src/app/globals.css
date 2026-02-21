@@ -1,11 +1,79 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-bebas-neue: 'Bebas Neue', sans-serif;
+}
 @layer base {
   button {
     cursor: pointer;
   }
 }
 @layer components {
+  .fv-slider .slide-clip {
+    clip-path: inset(0 50% 0 50%);
+    transition: clip-path 0.4s ease;
+  }
+
+  .fv-slider .splide__slide.is-active .slide-clip {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .fv-slider.is-closing .splide__slide.is-active .slide-clip {
+    clip-path: inset(0 50% 0 50%);
+  }
+  .fv-slider .splide__pagination {
+    bottom: -44px !important;
+  }
+  .fv-slider .splide__pagination__page {
+    width: 150px !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+    background-color: #fff !important;
+  }
+  .fv-slider .splide__pagination__page.is-active {
+    transform: scale(1) !important;
+    background-color: #000 !important;
+  }
 }
 @layer utilities {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  @keyframes clipNext {
+    0% {
+      clip-path: inset(0 0 0 0);
+    }
+    50% {
+      clip-path: inset(0 100% 0 0);
+    }
+    51% {
+      clip-path: inset(0 0 0 100%);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes clipPrev {
+    0% {
+      clip-path: inset(0 0 0 0);
+    }
+    50% {
+      clip-path: inset(0 0 0 100%);
+    }
+    51% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
 }

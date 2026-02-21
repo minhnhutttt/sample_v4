@@ -1,8 +1,5 @@
-import type { CSSProperties } from 'react';
-
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
-import { Toaster } from 'sonner';
+import { Bebas_Neue, Noto_Sans_JP } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
 import Footer from '@/components/footer';
@@ -22,6 +19,12 @@ import { Providers } from './providers';
 const noto = Noto_Sans_JP({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
+});
+
+const bebas_neue = Bebas_Neue({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-bebas-neue',
 });
 
 export const metadata: Metadata = {
@@ -55,38 +58,14 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const toastStyle: CSSProperties = {
-    background: '#111827',
-    color: '#ffffff',
-    border: '1px solid #374151',
-    borderRadius: '12px',
-  };
-
   return (
     <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
+      <body className={`${noto.className} ${bebas_neue.variable} antialiased`}>
         <Providers>
           <Header />
           {children}
           <Footer />
         </Providers>
-        <Toaster
-          position="top-center"
-          theme="dark"
-          expand
-          toastOptions={{
-            style: toastStyle,
-            classNames: {
-              title: 'font-bold text-[14px]',
-              description: 'text-[14px] text-gray-400',
-              actionButton:
-                'text-[12px] bg-blue-600 text-white px-2 py-1 rounded',
-              cancelButton:
-                'text-[12px] bg-gray-500 text-white px-2 py-1 rounded',
-              closeButton: 'text-[12px] text-gray-400 hover:text-white',
-            },
-          }}
-        />
       </body>
     </html>
   );

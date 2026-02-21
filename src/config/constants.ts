@@ -28,3 +28,22 @@ export const TWITTER = {
   description: DEFAULT_DESCRIPTION,
   images: OG_IMAGES,
 };
+
+export const NavLinks = [
+  {
+    text: 'ニュース',
+    href: '/',
+  },
+  {
+    text: 'チーム',
+    href: '/',
+  },
+  {
+    text: 'ゲーム',
+    href: '/',
+  },
+  {
+    text: 'パートナー',
+    href: '/',
+  },
+];
