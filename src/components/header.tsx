@@ -38,7 +38,7 @@ const Header = () => {
   const clonedImages = [...images, ...images, ...images];
 
   return (
-    <header>
+    <>
       <div className="bg-white">
         <div className="relative w-full overflow-hidden py-2.5 md:py-5">
           <div className="animate-marquee flex whitespace-nowrap">
@@ -50,7 +50,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="relative flex h-16 items-center justify-center bg-[#1C1C1C] px-5 md:h-20.5 md:justify-between">
+      <header className="header sticky top-0 left-0 z-20 flex h-16 items-center justify-center bg-[#1C1C1C] px-5 md:h-20.5 md:justify-between">
         <Link href="/">
           <Image
             src="/assets/images/logo.png"
@@ -120,8 +120,8 @@ const Header = () => {
             </Link>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 };
 
