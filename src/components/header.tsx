@@ -53,7 +53,7 @@ const Header = () => {
       <div className="relative flex h-16 items-center justify-center bg-[#1C1C1C] px-5 md:h-20.5 md:justify-between">
         <Link href="/">
           <Image
-            src="/assets/images/logo.svg"
+            src="/assets/images/logo.png"
             alt="logo"
             width={92}
             height={64}
