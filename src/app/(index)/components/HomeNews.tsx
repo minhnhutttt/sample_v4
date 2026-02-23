@@ -1,92 +1,63 @@
+import dayjs from 'dayjs';
+import 'dayjs/locale/ja';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { getMatches } from '@/app/libs/getMatches';
+import { getNewsList } from '@/app/libs/getNews';
 import Title from '@/components/common/Title';
 
-const HomeNews = () => {
+const HomeNews = async () => {
+  const news = await getNewsList();
+  const latestNews = news.slice(0, 5);
+
+  const matches = await getMatches();
+  console.log(matches);
   return (
     <div className="mt-20 mb-[120px] px-5 md:mt-36 md:mb-[169px]">
       <div className="mx-auto grid w-full max-w-282.5 gap-[62px] lg:grid-cols-2">
         <div className="md:px-4">
           <Title title="NEWS" sub="ニュース" />
           <ul className="mt-2 space-y-[15px]">
-            <li>
-              <Link
-                href="/"
-                className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
-              >
-                <span className="text-[14px] md:text-[18px]">2026.01.15</span>
-                <span className="flex h-5.5 items-center bg-[#CE2A2D] px-2 text-[13px] whitespace-nowrap text-white md:px-5 md:text-[15px]">
-                  試合結果
-                </span>
-                <span className="line-clamp-1 text-[14px] md:text-[18px]">
-                  予選①　vs B-LAB MIYAZAKI
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
-              >
-                <span className="text-[14px] md:text-[18px]">2026.01.15</span>
-                <span className="flex h-5.5 items-center bg-[#CE2A2D] px-2 text-[13px] whitespace-nowrap text-white md:px-5 md:text-[15px]">
-                  試合結果
-                </span>
-                <span className="line-clamp-1 text-[14px] md:text-[18px]">
-                  予選①　vs B-LAB MIYAZAKI
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
-              >
-                <span className="text-[14px] md:text-[18px]">2026.01.15</span>
-                <span className="flex h-5.5 items-center bg-[#CE2A2D] px-2 text-[13px] whitespace-nowrap text-white md:px-5 md:text-[15px]">
-                  試合結果
-                </span>
-                <span className="line-clamp-1 text-[14px] md:text-[18px]">
-                  予選①　vs B-LAB MIYAZAKI
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/"
-                className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
-              >
-                <span className="text-[14px] md:text-[18px]">2026.01.15</span>
-                <span className="flex h-5.5 items-center bg-[#CE2A2D] px-2 text-[13px] whitespace-nowrap text-white md:px-5 md:text-[15px]">
-                  試合結果
-                </span>
-                <span className="line-clamp-1 text-[14px] md:text-[18px]">
-                  予選①　vs B-LAB MIYAZAKI
-                </span>
-              </Link>
-            </li>
+            {latestNews.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={`/news/${item.id}`}
+                  className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
+                >
+                  <span className="text-[14px] md:text-[18px]">
+                    {dayjs(item.date).format('YYYY.MM.DD')}
+                  </span>
+                  <span className="flex h-5.5 items-center bg-[#CE2A2D] px-2 text-[13px] whitespace-nowrap text-white md:px-5 md:text-[15px]">
+                    試合結果
+                  </span>
+                  <span className="line-clamp-1 text-[14px] md:text-[18px]">
+                    予選①　vs B-LAB MIYAZAKI
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="md:px-4">
           <Title title="GAME" sub="ゲーム" />
           <div className="mt-2 border border-black p-3">
             <p className="bg-[#E8E8E8] p-2 text-center text-[14px] md:text-[16px]">
-              3x3 united 2025-26 WEST 第５節{' '}
+              {matches.place}
             </p>
             <div className="mt-[14px]">
               <div className="flex items-center justify-center gap-5">
                 <div>
                   <div>
                     <span className="text-[40px] font-semibold md:text-[62px]">
-                      2/28
+                      {dayjs(matches.match_date).format('MM/DD')}
                     </span>
                     <span className="text-[24px] font-bold md:text-[32px]">
-                      （土）
+                      （{dayjs(matches.match_date).locale('ja').format('ddd')}）
                     </span>
                   </div>
                   <p className="text-[28px] text-[#FF0000] md:text-[36px]">
-                    13:00
+                    {dayjs(matches.match_date).format('HH:mm')}
                   </p>
                 </div>
                 <span className="text-[20px] font-medium md:text-[24px]">
@@ -94,14 +65,14 @@ const HomeNews = () => {
                 </span>
                 <div className="">
                   <Image
-                    src="/assets/images/logo-club.png"
+                    src={matches.opponent_logo.url}
                     alt=""
                     width={75}
                     height={75}
                     className=""
                   />
                   <p className="text-center text-[14px] font-bold md:text-[16px]">
-                    ラストワン
+                    {matches.opponent_name}
                   </p>
                 </div>
               </div>
