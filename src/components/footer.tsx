@@ -18,7 +18,6 @@ const Footer = () => {
               <li key={i}>
                 <Link
                   href={item.href}
-                  onClick={close}
                   className="block w-24 duration-200 hover:underline"
                 >
                   {item.text}
