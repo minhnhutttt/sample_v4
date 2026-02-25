@@ -2,14 +2,13 @@ export type News = {
   id: string;
   title: string;
   category: {
-    id: string;
     name: string;
   };
   date: string;
-  thumbnail?: {
+  thumbnail: {
     url: string;
   };
-  newsimage?: {
+  newsimage: {
     url: string;
   };
   headline: string;

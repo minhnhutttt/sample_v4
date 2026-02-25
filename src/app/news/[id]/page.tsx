@@ -1,76 +1,126 @@
+import dayjs from 'dayjs';
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import { getNewsDetail, getNewsList } from '@/app/libs/getNews';
+import { News } from '@/types/news';
+
+import { getAdjacentNews, getNewsDetail } from '../../libs/getNews';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-export async function generateStaticParams() {
-  const news = await getNewsList();
-  return news.map((item) => ({
-    id: item.id,
-  }));
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  try {
+    const news = await getNewsDetail(id);
+
+    return {
+      title: news.title,
+      description: news.headline,
+      openGraph: {
+        title: news.title,
+        description: news.headline,
+        images: [
+          {
+            url: news.thumbnail.url,
+          },
+        ],
+      },
+    };
+  } catch {
+    return {
+      title: 'News Detail',
+    };
+  }
 }
 
-export default async function NewsDetail({ params }: Props) {
+const NewsDetailPage = async ({ params }: Props) => {
   const { id } = await params;
-  const news = await getNewsDetail(id);
+
+  let news: News;
+
+  try {
+    news = await getNewsDetail(id);
+  } catch {
+    notFound();
+  }
+
+  const { prev, next } = await getAdjacentNews(news.publishedAt || news.date);
 
   return (
-    <article className="mx-auto max-w-4xl px-6 py-12">
-      {/* CATEGORY */}
-      <div className="mb-4">
-        <span className="bg-black px-3 py-1 text-xs tracking-wider text-white uppercase">
-          {news.category.name}
-        </span>
-      </div>
+    <div className="px-5 pt-20 pb-32 md:pt-22 md:pb-40">
+      <div className="mx-auto max-w-[800px]">
+        {/* Category */}
+        <div className="mb-4 text-sm text-gray-500">{news.category?.name}</div>
 
-      {/* TITLE */}
-      <h1 className="mb-4 text-4xl leading-tight font-bold md:text-5xl">
-        {news.title}
-      </h1>
+        {/* Title */}
+        <h1 className="mb-4 text-2xl font-bold md:text-3xl">{news.title}</h1>
 
-      {/* DATE */}
-      <p className="mb-8 text-sm text-gray-500">{news.date}</p>
+        {/* Date */}
+        <div className="mb-8 text-sm text-gray-400">
+          {dayjs(news.date).format('YYYY.MM.DD')}
+        </div>
 
-      {/* HERO IMAGE */}
-      {news.thumbnail && (
-        <div className="mb-10">
+        {/* Main Image */}
+        <div className="mb-8">
           <Image
-            src={news.thumbnail.url}
+            src={news.newsimage?.url || news.thumbnail.url}
             alt={news.title}
-            width={1200}
-            height={700}
+            width={800}
+            height={500}
             className="h-auto w-full object-cover"
           />
         </div>
-      )}
 
-      {/* HEADLINE */}
-      <p className="mb-4 text-xl font-semibold">{news.headline}</p>
+        {/* Headline */}
+        {news.headline && (
+          <h2 className="mb-4 text-xl font-semibold">{news.headline}</h2>
+        )}
 
-      {/* SUBHEAD */}
-      <p className="mb-8 text-lg text-gray-700">{news.subhead}</p>
+        {/* Subhead */}
+        {news.subhead && (
+          <h3 className="mb-4 text-lg font-medium text-gray-600">
+            {news.subhead}
+          </h3>
+        )}
 
-      {/* NEWS IMAGE */}
-      {news.newsimage && (
-        <div className="mb-8">
-          <Image
-            src={news.newsimage.url}
-            alt="news image"
-            width={1000}
-            height={600}
-            className="h-auto w-full"
-          />
-        </div>
-      )}
+        {/* Content */}
+        <div
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{
+            __html: news.newstext,
+          }}
+        />
+      </div>
+      {/* Navigation */}
+      <div className="mt-16 flex justify-between border-t pt-8">
+        {/* Previous */}
+        {prev ? (
+          <Link href={`/news/${prev.id}`} className="text-sm hover:underline">
+            ← {prev.title}
+          </Link>
+        ) : (
+          <div />
+        )}
 
-      {/* CONTENT */}
-      <div
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: news.newstext }}
-      />
-    </article>
+        {/* Next */}
+        {next ? (
+          <Link
+            href={`/news/${next.id}`}
+            className="text-right text-sm hover:underline"
+          >
+            {next.title} →
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
+    </div>
   );
-}
+};
+
+export default NewsDetailPage;

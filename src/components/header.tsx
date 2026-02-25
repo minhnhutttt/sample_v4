@@ -120,6 +120,15 @@ const Header = () => {
             </Link>
           </div>
         </div>
+        <span className="absolute top-[calc(100%+16px)] right-4 max-md:hidden">
+          <Image
+            src="/assets/images/united.png"
+            alt=""
+            width={66}
+            height={33}
+            className=""
+          />
+        </span>
       </header>
     </>
   );

@@ -15,7 +15,6 @@ const HomeFv = () => {
 
   useEffect(() => {
     if (splideLeft.current && splideCenter.current && splideRight.current) {
-      // lấy instance thật của splide
       const left = splideLeft.current.splide;
       const center = splideCenter.current.splide;
       const right = splideRight.current.splide;
@@ -52,15 +51,6 @@ const HomeFv = () => {
   return (
     <div className="relative bg-[url(/assets/images/fv-bg.png)] bg-cover">
       <div className="relative flex justify-center overflow-hidden py-3 md:pt-10 md:pb-16.5">
-        <span className="absolute top-4 right-4 max-md:hidden">
-          <Image
-            src="/assets/images/united.png"
-            alt=""
-            width={66}
-            height={33}
-            className=""
-          />
-        </span>
         {/* LEFT */}
         <div className="fv-slider absolute aspect-906/510 w-[63vw] origin-[right_center] translate-x-[calc(-100%-4.86111vw)] scale-[.667] opacity-70 max-md:hidden">
           <Splide options={options} hasTrack={false} ref={splideLeft}>
