@@ -23,7 +23,7 @@ const HomeServicesItem = ({
         <span className="font-dm text-[140px] leading-none text-white/15 md:text-[160px]">
           {number}
         </span>
-        <span className="absolute bottom-0 left-0 text-[16px] leading-[3.5] font-medium text-[#F5C42B] md:text-[20px]">
+        <span className="u-text-gradient absolute bottom-0 left-0 text-[16px] leading-[3.5] font-medium md:text-[20px]">
           {text}
         </span>
       </div>

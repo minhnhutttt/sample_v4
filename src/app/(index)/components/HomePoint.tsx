@@ -60,7 +60,7 @@ const HomePoint = () => {
       className="relative mt-[170px] px-5 pb-[160px] leading-[1.75] md:mt-[315px] md:pb-[260px]"
     >
       <div className="mx-auto w-full max-w-[500px] md:max-w-[1200px]">
-        <h4 className="text-[20px] leading-[1.75] font-medium text-[#F5C42B] md:text-[28px]">
+        <h4 className="u-text-gradient text-[20px] leading-[1.75] font-medium md:text-[28px]">
           選ばれる3つの理由
         </h4>
         <div className="space-y-15 md:space-y-30">

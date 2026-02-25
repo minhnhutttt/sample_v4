@@ -24,13 +24,13 @@ const Contact = () => {
         <div className="mt-12 flex justify-between gap-6 max-md:flex-col md:mt-20 md:gap-20">
           <Link
             href="tel:0897478601"
-            className="max-md:borer-x-0 flex h-32 items-center justify-center border border-l-0 border-white bg-white/10 text-[16px] duration-300 hover:opacity-75 md:h-[280px] md:flex-1 md:text-[18px]"
+            className="flex h-32 items-center justify-center border border-l-0 border-white bg-white/10 text-[16px] duration-300 hover:opacity-75 max-md:border-x-0 md:h-[280px] md:flex-1 md:text-[18px]"
           >
             0897-47-8601
           </Link>
           <Link
             href="/contact"
-            className="max-md:borer-x-0 flex h-32 items-center justify-center border border-r-0 border-white bg-white/10 text-[16px] duration-300 hover:opacity-75 md:h-[280px] md:flex-1 md:text-[18px]"
+            className="flex h-32 items-center justify-center border border-r-0 border-white bg-white/10 text-[16px] duration-300 hover:opacity-75 max-md:border-x-0 md:h-[280px] md:flex-1 md:text-[18px]"
           >
             フォームへ
           </Link>
