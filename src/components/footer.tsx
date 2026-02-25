@@ -12,7 +12,7 @@ const Footer = () => {
     <>
       <Contact />
       <footer className="bg-[#000C1B] px-5 pt-24 pb-10 md:pt-50 md:pb-15">
-        <div className="mx-auto mb-25 flex w-full max-w-[880px] items-center justify-center gap-16 max-md:flex-col-reverse md:mb-[180px] md:gap-10">
+        <div className="mx-auto mb-25 flex w-full max-w-[440px] items-center justify-center gap-16 max-md:flex-col-reverse md:mb-[180px] md:max-w-[880px] md:gap-10">
           <ul className="flex flex-1 flex-wrap gap-6 text-[16px] max-md:justify-center">
             {NavLinks.map((item, i) => (
               <li key={i}>

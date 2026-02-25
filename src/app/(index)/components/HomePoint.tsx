@@ -89,7 +89,7 @@ const HomePoint = () => {
             設備トラブルや急な工事依頼にも迅速に対応。地元密着だからこそ実現できるフットワークの軽さで、お客様の「困った」をすぐに解決します。
           </HomePointItem>
         </div>
-        <div className="mx-auto mt-30 w-full max-w-[880px] md:mt-50">
+        <div className="mx-auto mt-30 w-full max-w-[440px] md:mt-50 md:max-w-[880px]">
           <div className="">
             <Image
               src="/assets/images/point-main.png"
