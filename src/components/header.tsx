@@ -29,7 +29,7 @@ const Header = () => {
   }, [isOpen]);
 
   return (
-    <header className="header fixed top-0 right-0 left-0 z-90 flex h-16 w-full items-center justify-center bg-[linear-gradient(180deg,_rgba(3,_35,_78,_0.90)_0%,_rgba(3,_35,_78,_0.65)_49.52%,_rgba(3,_35,_78,_0.00)_100%)] pr-8 pl-10 transition-all duration-300 md:h-20.5 md:justify-between">
+    <header className="header fixed top-0 right-0 left-0 z-90 flex h-16 w-full items-center justify-center bg-[linear-gradient(180deg,_rgba(3,_35,_78,_0.90)_0%,_rgba(3,_35,_78,_0.65)_49.52%,_rgba(3,_35,_78,_0.00)_100%)] pr-8 pl-8 transition-all duration-300 md:h-20.5 md:justify-between md:pl-10">
       <Link href="/">
         <Image
           src="/assets/images/logo.svg"
