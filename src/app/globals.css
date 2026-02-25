@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-dm: 'DM Serif Text', serif;
+}
+
 @layer base {
   button {
     cursor: pointer;
