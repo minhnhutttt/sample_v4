@@ -1,8 +1,8 @@
-import { News } from '@/types/news';
+import { News, NewsList } from '@/types/news';
 
 import { client } from './client';
 
-export const getNewsList = async (category?: string, limit = 2, offset = 0) => {
+export const getNewsList = async (category?: string, limit = 9, offset = 0) => {
   const data = await client.get({
     endpoint: 'newsss',
     queries: {
@@ -15,7 +15,7 @@ export const getNewsList = async (category?: string, limit = 2, offset = 0) => {
     },
   });
 
-  return data;
+  return data as NewsList;
 };
 
 export const getNewsDetail = async (id: string) => {

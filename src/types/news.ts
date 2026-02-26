@@ -1,9 +1,7 @@
 export type News = {
   id: string;
   title: string;
-  category: {
-    name: string;
-  };
+  category: string;
   date: string;
   thumbnail: {
     url: string;
@@ -15,4 +13,8 @@ export type News = {
   subhead: string;
   newstext: string;
   publishedAt?: string;
+};
+export type NewsList = {
+  contents: News[];
+  totalCount: number;
 };

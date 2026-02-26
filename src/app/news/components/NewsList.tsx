@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { PER_PAGE } from '@/config/constants';
 import { News } from '@/types/news';
 
 type Props = {
@@ -16,7 +17,7 @@ type Props = {
 
 export default function NewsList({ initialNews, totalCount, category }: Props) {
   const [news, setNews] = useState(initialNews);
-  const [offset, setOffset] = useState(2);
+  const [offset, setOffset] = useState(PER_PAGE);
   const [loading, setLoading] = useState(false);
 
   const loadMore = async () => {
@@ -29,7 +30,7 @@ export default function NewsList({ initialNews, totalCount, category }: Props) {
     const data = await res.json();
 
     setNews((prev) => [...prev, ...data.contents]);
-    setOffset((prev) => prev + 2);
+    setOffset((prev) => prev + PER_PAGE);
     setLoading(false);
   };
 
@@ -37,16 +38,16 @@ export default function NewsList({ initialNews, totalCount, category }: Props) {
 
   return (
     <>
-      <ul className="mt-5 grid w-full max-w-[992px] grid-cols-3 gap-x-10 gap-y-32">
+      <ul className="mt-5 grid w-full max-w-[992px] grid-cols-2 gap-x-5 gap-y-12 md:gap-x-10 md:gap-y-32 lg:grid-cols-3">
         {news.map((item) => (
-          <li key={item.id} className="w-[304px] text-left">
+          <li key={item.id} className="text-left md:w-[304px]">
             <Link href={`/news/${item.id}`} className="flex flex-col">
               <Image
                 src={item.thumbnail.url}
                 alt=""
                 width={304}
                 height={220}
-                className="h-[220px] w-[304px] object-cover"
+                className="aspect-304/220 w-full object-cover md:h-[220px] md:w-[304px]"
               />
               <span className="py-2 text-[12px] md:text-[14px]">
                 {dayjs(item.date).format('YYYY.MM.DD')}
@@ -64,9 +65,9 @@ export default function NewsList({ initialNews, totalCount, category }: Props) {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="border px-6 py-2"
+            className={`flex size-13 items-center justify-center rounded-full bg-[#FF5E5E] text-[30px] text-white duration-200 md:size-[65px] md:text-[35px] ${loading ? 'rotate-90' : ''}`}
           >
-            {loading ? 'Loading...' : 'More'}
+            ＋
           </button>
         </div>
       )}

@@ -8,18 +8,16 @@ import { getNewsList } from '@/app/libs/getNews';
 import Title from '@/components/common/Title';
 
 const HomeNews = async () => {
-  const news = await getNewsList();
-  const latestNews = news.slice(0, 5);
-
+  const news = await getNewsList('', 5, 0);
   const matches = await getMatches();
-  console.log(matches);
+
   return (
     <div className="mt-20 mb-[120px] px-5 md:mt-36 md:mb-[169px]">
       <div className="mx-auto grid w-full max-w-282.5 gap-[62px] lg:grid-cols-2">
         <div className="md:px-4">
           <Title title="NEWS" sub="ニュース" />
           <ul className="mt-2 space-y-[15px]">
-            {latestNews.map((item) => (
+            {news.contents.map((item) => (
               <li key={item.id}>
                 <Link
                   href={`/news/${item.id}`}

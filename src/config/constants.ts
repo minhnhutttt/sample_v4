@@ -29,6 +29,8 @@ export const TWITTER = {
   images: OG_IMAGES,
 };
 
+export const PER_PAGE = 9;
+
 export const NavLinks = [
   {
     text: 'ニュース',
