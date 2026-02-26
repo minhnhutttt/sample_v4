@@ -129,11 +129,15 @@ const ContactForm = () => {
             お問い合わせ項目<span className="ml-2 text-[#F7CD4A]">※</span>
           </label>
           <div className="mt-1">
-            <input
-              type="text"
-              placeholder="選択してください@sample.com"
-              className="h-10 w-full border-b border-l border-white px-4 md:h-11"
-            />
+            <select
+              name=""
+              id=""
+              className="h-10 w-full border-b border-l border-white bg-[#03234E] px-4 md:h-11"
+            >
+              <option value="">選択してください</option>
+              <option value="">選択してください</option>
+              <option value="">選択してください</option>
+            </select>
           </div>
         </div>
         <div>
