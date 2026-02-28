@@ -34,7 +34,7 @@ export const PER_PAGE = 9;
 export const NavLinks = [
   {
     text: 'ニュース',
-    href: '/',
+    href: '/news',
   },
   {
     text: 'チーム',

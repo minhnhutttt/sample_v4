@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { NavLinks } from '@/config/constants';
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => {
@@ -28,74 +29,77 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  const images = useMemo(() => {
-    return Array.from({ length: 12 }, (_, i) => {
-      const number = String(i + 1).padStart(2, '0');
-      return `/assets/images/top-partner-${number}.webp`;
-    });
-  }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-  const clonedImages = [...images, ...images, ...images];
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <div className="bg-white">
-        <div className="relative w-full overflow-hidden py-2.5 md:py-5">
-          <div className="animate-marquee flex whitespace-nowrap">
-            {clonedImages.map((src, index) => (
-              <div key={index} className="shrink-0 px-1">
-                <img src={src} alt="partner" className="object-contain" />
-              </div>
-            ))}
-          </div>
+      <header
+        className={`header group h016 fixed top-0 left-0 z-30 flex w-full items-center px-5 md:h-20 ${isScrolled && 'active'}`}
+      >
+        <div className="pointer-events-none fixed top-0 left-0">
+          <Image
+            src="/assets/images/bg-header.svg"
+            alt="logo"
+            width={430}
+            height={345}
+            className=""
+          />
         </div>
-      </div>
-      <header className="header sticky top-0 left-0 z-20 flex h-16 items-center justify-center bg-[#1C1C1C] px-5 md:h-20.5 md:justify-between">
-        <Link href="/">
+        <Link href="/" className="relative top-6 left-4">
           <Image
             src="/assets/images/logo.png"
             alt="logo"
-            width={92}
-            height={64}
-            className="max-md:w-[65px]"
-          />
-        </Link>
-        <Link href="/" className="md:hidden">
-          <Image
-            src="/assets/images/logo2.svg"
-            alt="logo"
-            width={63}
-            height={63}
-            className="size-[45px]"
+            width={137}
+            height={96}
+            className=""
           />
         </Link>
         <button
           onClick={toggle}
-          className="absolute top-4 right-2 z-40 flex flex-col items-center justify-center gap-1.5 duration-300 hover:scale-110 md:top-7.5 md:right-9 md:hidden"
+          className="fixed top-6 right-5 z-40 flex flex-col items-center justify-center gap-1.5 duration-300 hover:scale-110 md:top-13 md:right-13 md:gap-1.5"
         >
           <span
-            className={`h-0.5 w-8 rounded-full bg-white duration-200 ${
+            className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
               isOpen && 'translate-y-1 rotate-45'
             }`}
           />
           <span
-            className={`h-0.5 w-8 rounded-full bg-white duration-200 ${
+            className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
+              isOpen && 'opacity-0'
+            }`}
+          />
+          <span
+            className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
               isOpen && '-translate-y-1 -rotate-45'
             }`}
           />
-          <span className="font-bebas-neue mt-1 text-[14px] tracking-[0.12em] text-white">
+          <span className="font-bebas-neue -mt-1 text-[14px] tracking-[0.12em] text-white group-[.active]:text-black md:text-[27px]">
             MENU
           </span>
         </button>
         <div
-          className={`flex items-center justify-center duration-200 max-md:fixed max-md:inset-0 max-md:bg-black ${
+          className={`fixed inset-0 flex items-center justify-center bg-black duration-200 ${
             isOpen
               ? 'pointer-events-auto opacity-100'
-              : 'max-md:pointer-events-none max-md:opacity-0'
+              : 'pointer-events-none opacity-0'
           }`}
         >
-          <div className="flex items-center gap-[25px] text-[16px] text-white max-md:flex-col">
-            <ul className="flex flex-wrap gap-[25px] max-md:flex-col">
+          <div className="flex flex-col items-center gap-[25px] text-[16px] text-white">
+            <ul className="flex flex-col flex-wrap gap-[25px]">
               {NavLinks.map((item, i) => (
                 <li key={i}>
                   <Link
@@ -120,7 +124,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <span className="absolute top-[calc(100%+16px)] right-4 max-md:hidden">
+        <span className="absolute top-[calc(100%+16px)] right-4 hidden">
           <Image
             src="/assets/images/united.png"
             alt=""
@@ -130,6 +134,9 @@ const Header = () => {
           />
         </span>
       </header>
+      {/* <div className={`fixed top-0 inset-x-0 pointer-events-none duration-300 z-10 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
+        <img src="/assets/images/header-gradient.png" className="w-full" alt="" />
+      </div> */}
     </>
   );
 };
