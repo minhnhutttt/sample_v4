@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header group h016 fixed top-0 left-0 z-30 flex w-full items-center px-5 md:h-20 ${isScrolled && 'active'}`}
+        className={`header group h016 fixed top-0 left-0 z-60 flex w-full items-center px-5 md:h-20 ${isScrolled && 'active'}`}
       >
         <div className="pointer-events-none fixed top-0 left-0">
           <Image

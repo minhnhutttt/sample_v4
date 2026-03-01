@@ -9,50 +9,6 @@
   }
 }
 @layer components {
-  .fv-slider .slide-clip {
-    clip-path: inset(0 50% 0 50%);
-    transition: clip-path 0.4s ease;
-  }
-
-  .fv-slider .splide__slide.is-active .slide-clip {
-    clip-path: inset(0 0 0 0);
-  }
-
-  .fv-slider.is-closing .splide__slide.is-active .slide-clip {
-    clip-path: inset(0 50% 0 50%);
-  }
-  .fv-slider .splide__pagination {
-    bottom: -44px !important;
-  }
-  .fv-slider .splide__pagination__page {
-    width: 150px !important;
-    border-radius: 0 !important;
-    opacity: 1 !important;
-    background-color: #fff !important;
-  }
-  .fv-slider .splide__pagination__page.is-active {
-    transform: scale(1) !important;
-    background-color: #000 !important;
-  }
-
-  .topics-slider .splide:not(.is-overflow) .splide__pagination {
-    display: flex !important;
-  }
-  .topics-slider .splide__pagination {
-    bottom: -80px !important;
-    justify-content: flex-end !important;
-  }
-  .topics-slider .splide__pagination__page {
-    width: 150px !important;
-    border-radius: 0 !important;
-    opacity: 1 !important;
-    background-color: #fff !important;
-    border: 1px solid #959595 !important;
-  }
-  .topics-slider .splide__pagination__page.is-active {
-    transform: scale(1) !important;
-    background-color: #000 !important;
-  }
 }
 @layer utilities {
   @keyframes marquee {
