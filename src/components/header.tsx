@@ -1,23 +1,105 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { NavLinks } from '@/config/constants';
+type LinkType = {
+  label: string;
+  href: string;
+};
+
+type MenuItemType = {
+  image: string;
+  alt: string;
+  links: LinkType[];
+};
+
+const LinkItem = ({
+  href,
+  children,
+  onClick,
+}: {
+  href: string;
+  children: ReactNode;
+  onClick: () => void;
+}) => (
+  <Link
+    href={href}
+    onClick={onClick}
+    className="group/link relative flex w-full items-center overflow-hidden pr-4 text-[16px] text-white min-[1400]:text-[20px] md:text-[18px]"
+  >
+    <span className="relative flex w-full translate-y-full items-center justify-between gap-3 duration-300 group-hover/item:translate-y-0 group-hover/link:!opacity-100 group-hover/links:opacity-50 max-md:group-[.open]/item:translate-y-0">
+      <span>{children}</span>
+      <Image
+        src="/assets/images/arrow.svg"
+        alt="logo"
+        width={25}
+        height={22}
+        className="duration-300 group-hover/link:translate-x-4 max-md:w-4"
+      />
+    </span>
+  </Link>
+);
+
+const NewsItem = ({
+  href,
+  image,
+  date,
+  children,
+  onClick,
+}: {
+  href: string;
+  image: string;
+  date: string;
+  children: ReactNode;
+  onClick: () => void;
+}) => (
+  <Link
+    href={href}
+    onClick={onClick}
+    className="group/news relative flex items-center gap-4 rounded-tl-3xl rounded-br-3xl border border-white p-4 text-[14px] text-white duration-300 hover:bg-[#e4032e] md:text-[16px]"
+  >
+    <figure>
+      <Image src={image} alt="logo" width={152} height={110} className="" />
+    </figure>
+    <span className="flex flex-col gap-4">
+      <span>{date}</span>
+      <span>{children}</span>
+    </span>
+    <Image
+      src="/assets/images/arrow-news.svg"
+      alt="logo"
+      width={23}
+      height={20}
+      className="absolute right-4 bottom-4 duration-300 group-hover/news:translate-x-2 max-md:w-4"
+    />
+  </Link>
+);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, []);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const close = useCallback(() => {
     setIsOpen(false);
+    setActiveIndex(null);
   }, []);
+
+  const toggle = useCallback(() => {
+    setIsOpen((prev) => {
+      if (prev) {
+        setActiveIndex(null);
+      }
+      return !prev;
+    });
+  }, []);
+
+  const handleButtonClick = (index: number) => {
+    setActiveIndex((prev) => (prev === index ? null : index));
+  };
 
   useEffect(() => {
     const body = document.body;
@@ -45,10 +127,50 @@ const Header = () => {
     };
   }, []);
 
+  const menuItems: MenuItemType[] = [
+    {
+      image: '/assets/images/news.svg',
+      alt: 'news',
+      links: [
+        { label: '試合', href: '/match' },
+        { label: 'チーム', href: '/team' },
+        { label: 'イベント', href: '/event' },
+      ],
+    },
+    {
+      image: '/assets/images/team.svg',
+      alt: 'team',
+      links: [
+        { label: 'レオブラックス選手', href: '/leo-blacks' },
+        { label: 'レオナイナーズ選手', href: '/leo-niners' },
+        { label: '沿革（history）', href: '/history' },
+      ],
+    },
+    {
+      image: '/assets/images/game.svg',
+      alt: 'game',
+      links: [
+        { label: '試合情報', href: '/' },
+        { label: '楽しみ方', href: '/' },
+        { label: '3X3について', href: '/' },
+      ],
+    },
+    {
+      image: '/assets/images/partner.svg',
+      alt: 'partner',
+      links: [
+        { label: 'パートナーをご検討の方', href: '/' },
+        { label: 'パートナー様のご紹介', href: '/' },
+      ],
+    },
+  ];
+
   return (
     <>
       <header
-        className={`header group h016 fixed top-0 left-0 z-60 flex w-full items-center px-5 md:h-20 ${isScrolled && 'active'}`}
+        className={`header group fixed top-0 left-0 z-60 flex h-16 w-full items-center px-5 md:h-20 ${
+          isScrolled && 'active'
+        }`}
       >
         <div className="pointer-events-none fixed top-0 left-0">
           <Image
@@ -56,18 +178,20 @@ const Header = () => {
             alt="logo"
             width={430}
             height={345}
-            className=""
+            className="max-md:w-[280px]"
           />
         </div>
-        <Link href="/" className="relative top-6 left-4">
+
+        <Link href="/" className="relative top-2 left-0 md:top-6 md:left-4">
           <Image
             src="/assets/images/logo.png"
             alt="logo"
             width={137}
             height={96}
-            className=""
+            className="max-md:w-[86px]"
           />
         </Link>
+
         <button
           onClick={toggle}
           className="fixed top-6 right-5 z-40 flex flex-col items-center justify-center gap-1.5 duration-300 hover:scale-110 md:top-13 md:right-13 md:gap-1.5"
@@ -84,13 +208,14 @@ const Header = () => {
           />
           <span
             className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
-              isOpen && '-translate-y-1 -rotate-45'
+              isOpen && '-translate-y-3.5 -rotate-45'
             }`}
           />
           <span className="font-bebas-neue -mt-1 text-[14px] tracking-[0.12em] text-white group-[.active]:text-black md:text-[27px]">
             MENU
           </span>
         </button>
+
         <div
           className={`fixed inset-0 flex items-center justify-center bg-black duration-200 ${
             isOpen
@@ -98,45 +223,130 @@ const Header = () => {
               : 'pointer-events-none opacity-0'
           }`}
         >
-          <div className="flex flex-col items-center gap-[25px] text-[16px] text-white">
-            <ul className="flex flex-col flex-wrap gap-[25px]">
-              {NavLinks.map((item, i) => (
-                <li key={i}>
-                  <Link
-                    href={item.href}
+          <div className="flex h-full w-full gap-10 overflow-auto px-5 py-10 max-xl:flex-col-reverse">
+            <div className="h-full xl:flex-1">
+              <div className="flex h-full items-end justify-start xl:py-[120px]">
+                <div className="space-y-5">
+                  <NewsItem
                     onClick={close}
-                    className="px-2 duration-200 hover:underline"
+                    href="#"
+                    date="2026.02.04"
+                    image="/assets/images/news.png"
                   >
-                    {item.text}
+                    『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
+                    Presented by 唐津市』！！
+                  </NewsItem>
+                  <NewsItem
+                    onClick={close}
+                    href="#"
+                    date="2026.02.04"
+                    image="/assets/images/news.png"
+                  >
+                    『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
+                    Presented by 唐津市』！！
+                  </NewsItem>
+                </div>
+              </div>
+            </div>
+            <div className="xl:flex-1">
+              <div className="group/menu space-y-5">
+                {menuItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`group/item flex gap-4 max-md:flex-col md:items-end md:gap-7 ${
+                      activeIndex === index ? 'open' : ''
+                    }`}
+                  >
+                    <button
+                      onClick={() => handleButtonClick(index)}
+                      className={`relative block overflow-hidden group-hover/item:!opacity-100 group-hover/menu:opacity-50`}
+                    >
+                      <span className="relative block duration-300 group-hover/item:-translate-y-full max-md:group-[.open]/item:-translate-y-full">
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          className="h-16 md:h-[144px]"
+                        />
+                      </span>
+                      <span className="absolute top-0 left-0 translate-y-full duration-300 group-hover/item:translate-y-0 max-md:group-[.open]/item:translate-y-0">
+                        <img
+                          src={item.image}
+                          alt={item.alt}
+                          className="h-16 md:h-[144px]"
+                        />
+                      </span>
+                    </button>
+
+                    <div className="group/links flex flex-col gap-2 overflow-hidden max-md:h-0 max-md:group-[.open]/item:h-auto">
+                      {item.links.map((link, i) => (
+                        <LinkItem key={i} href={link.href} onClick={close}>
+                          {link.label}
+                        </LinkItem>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <ul className="group/bottoms flex gap-6 py-10 text-white max-md:flex-col md:items-center md:gap-10 md:py-20 xl:py-[120px]">
+                <li>
+                  <Link
+                    href="#"
+                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                  >
+                    <span className="font-bebas-neue">ABOUT 3×3</span>
+                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                      <span>3X3について</span>
+                      <Image
+                        src="/assets/images/arrow.svg"
+                        alt="logo"
+                        width={25}
+                        height={22}
+                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                      />
+                    </span>
                   </Link>
                 </li>
-              ))}
-            </ul>
-            <Link href="/" className="flex items-center justify-center gap-3">
-              <Image
-                src="/assets/images/logo2.svg"
-                alt="logo"
-                width={63}
-                height={63}
-                className="size-10"
-              />
-              <span>女子チーム</span>
-            </Link>
+                <li>
+                  <Link
+                    href="#"
+                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                  >
+                    <span className="font-bebas-neue">CONTACT</span>
+                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                      <span>お問い合わせ</span>
+                      <Image
+                        src="/assets/images/arrow.svg"
+                        alt="logo"
+                        width={25}
+                        height={22}
+                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                      />
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                  >
+                    <span className="font-bebas-neue">FANCLUB</span>
+                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                      <span>ファンクラブ</span>
+                      <Image
+                        src="/assets/images/arrow.svg"
+                        alt="logo"
+                        width={25}
+                        height={22}
+                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                      />
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-        <span className="absolute top-[calc(100%+16px)] right-4 hidden">
-          <Image
-            src="/assets/images/united.png"
-            alt=""
-            width={66}
-            height={33}
-            className=""
-          />
-        </span>
       </header>
-      {/* <div className={`fixed top-0 inset-x-0 pointer-events-none duration-300 z-10 ${isScrolled ? 'opacity-100' : 'opacity-0'}`}>
-        <img src="/assets/images/header-gradient.png" className="w-full" alt="" />
-      </div> */}
     </>
   );
 };
