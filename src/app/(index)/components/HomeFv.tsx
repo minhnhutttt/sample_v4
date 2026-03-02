@@ -111,11 +111,13 @@ const HomeFv = () => {
       </div>
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-[20px]">
         <video
-          src="/assets/videos/mv.mp4"
+          src="/assets/videos/fv.mp4"
           loop
           controls
           muted
           autoPlay
+          preload="auto"
+          playsInline
           className="absolute inset-0 h-full min-h-screen w-full object-cover"
         ></video>
         <div className="relative flex w-full flex-col items-center gap-[50px] bg-[url(/assets/images/fv-gradient.png)] bg-size-[100%_100%] pt-30 md:pt-[184px]">
