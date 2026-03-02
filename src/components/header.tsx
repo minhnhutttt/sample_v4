@@ -4,6 +4,7 @@ import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 type LinkType = {
   label: string;
@@ -83,6 +84,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   const close = useCallback(() => {
     setIsOpen(false);
     setActiveIndex(null);
@@ -141,8 +145,8 @@ const Header = () => {
       image: '/assets/images/team.svg',
       alt: 'team',
       links: [
-        { label: 'レオブラックス選手', href: '/leo-blacks' },
-        { label: 'レオナイナーズ選手', href: '/leo-niners' },
+        { label: 'レオブラックス選手', href: '/team?s=レオブラックス' },
+        { label: 'レオナイナーズ選手', href: '/team?s=レオナイナーズ' },
         { label: '沿革（history）', href: '/history' },
       ],
     },
@@ -198,20 +202,22 @@ const Header = () => {
         >
           <span
             className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
-              isOpen && 'translate-y-1 rotate-45'
-            }`}
+              isOpen && 'translate-y-1 rotate-45 group-[.active]:bg-white'
+            } ${!isHome && !isOpen && 'bg-black!'}`}
           />
           <span
             className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
-              isOpen && 'opacity-0'
-            }`}
+              isOpen && 'opacity-0 group-[.active]:bg-white'
+            } ${!isHome && !isOpen && 'bg-black!'}`}
           />
           <span
             className={`h-0.5 w-8 rounded-full bg-white duration-200 group-[.active]:bg-black md:h-[3px] md:w-[55px] ${
-              isOpen && '-translate-y-3.5 -rotate-45'
-            }`}
+              isOpen && '-translate-y-3.5 -rotate-45 group-[.active]:bg-white'
+            } ${!isHome && !isOpen && 'bg-black!'}`}
           />
-          <span className="font-bebas-neue -mt-1 text-[14px] tracking-[0.12em] text-white group-[.active]:text-black md:text-[27px]">
+          <span
+            className={`font-bebas-neue -mt-1 text-[14px] tracking-[0.12em] text-white group-[.active]:text-black md:text-[27px] ${!isHome && !isOpen && 'text-black!'} ${isOpen && 'group-[.active]:text-white'}`}
+          >
             MENU
           </span>
         </button>
