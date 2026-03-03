@@ -69,7 +69,7 @@ const CompanyPage = () => {
                 <span>会社概要</span>
               </p>
             </div>
-            <div className="relative">
+            <div className="relative max-md:flex max-md:flex-col max-md:items-center">
               <div className="mt-10 space-y-7 text-[14px] leading-[1.75] md:mt-16 md:space-y-10 md:text-[16px]">
                 {[
                   { label: '会社名', text: '株式会社大矢工業' },
@@ -93,7 +93,7 @@ const CompanyPage = () => {
                 <Image
                   src="/assets/images/company-bg.png"
                   alt="会社概要"
-                  width={340}
+                  width={329}
                   height={340}
                   className=""
                 />

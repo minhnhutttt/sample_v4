@@ -89,7 +89,7 @@ const SerciveItems = () => {
   }, []);
   return (
     <>
-      <div className="sticky top-1/2 left-0 z-40 w-9 -translate-y-1/2 divide-y divide-white/50 pl-3 text-[13px] leading-[1.75] md:w-[132px] md:text-[14px]">
+      <div className="sticky top-1/2 left-3 z-40 w-9 -translate-y-1/2 divide-y divide-white/50 text-[13px] leading-[1.75] md:left-10 md:w-[132px] md:text-[14px]">
         {[
           { id: 'service-01', number: '01', label: '冷暖房設備工事' },
           { id: 'service-02', number: '02', label: 'ガス配管工事' },
@@ -101,7 +101,7 @@ const SerciveItems = () => {
           <li
             key={item.id}
             onClick={() => handleClick(item.id)}
-            className={`cursor-pointer py-4 transition-all ${
+            className={`cursor-pointer list-none py-4 transition-all ${
               active === item.id ? 'font-bold text-white' : 'text-white/50'
             }`}
           >

@@ -13,7 +13,7 @@ const HomeKv = () => {
         controls={false}
         className="absolute h-full w-full object-cover"
       ></video>
-      <div className="relative z-20 flex w-full max-w-[1200px] justify-between gap-10 pb-[25%] max-md:flex-col md:items-center md:gap-5 md:pb-[13%]">
+      <div className="relative z-20 flex w-full max-w-[1200px] justify-between gap-10 pb-[25%] max-md:flex-col md:items-center md:gap-5 md:pb-[7%]">
         <div>
           <h1 className="mb-5 text-[24px] leading-[1.6] font-medium md:mb-7 md:text-[40px]">
             地域と共に歩む。
