@@ -154,9 +154,9 @@ const Header = () => {
       image: '/assets/images/game.svg',
       alt: 'game',
       links: [
-        { label: '試合情報', href: '/' },
-        { label: '楽しみ方', href: '/' },
-        { label: '3X3について', href: '/' },
+        { label: '試合情報', href: '/game' },
+        { label: '楽しみ方', href: '/game' },
+        { label: '3X3について', href: '/game' },
       ],
     },
     {
