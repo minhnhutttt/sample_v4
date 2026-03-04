@@ -121,7 +121,7 @@ const BePartnerPage = () => {
                 <img src="/assets/images/leo-map.png" alt="" />
               </div>
             </div>
-            <div className="pt-20 md:pt-30">
+            <div id="section01" className="pt-20 md:pt-30">
               <h2 className="mt-12 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:border-l-[8px] md:text-[32px]">
                 代表メッセージ
               </h2>
@@ -175,7 +175,7 @@ const BePartnerPage = () => {
               </div>
             </div>
           </div>
-          <div className="pt-20 md:pt-30">
+          <div id="section02" className="pt-20 md:pt-30">
             <h2 className="mt-12 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:border-l-[8px] md:text-[32px]">
               パートナーシップメニュー
             </h2>
@@ -184,7 +184,7 @@ const BePartnerPage = () => {
               <br />
               レオブラックスがお役に立てるようメニューをご用意しております。
             </p>
-            <div id="section01" className="mx-auto mt-[50px] w-full md:pb-7.5">
+            <div className="mx-auto mt-[50px] w-full md:pb-7.5">
               <div className="mx-auto mt-10 grid w-full gap-y-10 max-md:max-w-[320px] md:mt-15 md:grid-cols-3 md:gap-x-6 md:gap-y-[106px] lg:gap-x-10">
                 <AboutItem
                   image="/assets/images/be-01.png"
@@ -226,7 +226,7 @@ const BePartnerPage = () => {
               </div>
             </div>
           </div>
-          <div className="pt-20 md:pt-30">
+          <div id="section03" className="pt-20 md:pt-30">
             <h2 className="mt-12 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:border-l-[8px] md:text-[32px]">
               実績
             </h2>
@@ -236,7 +236,7 @@ const BePartnerPage = () => {
               <br />
               地域に根差した活動と国際舞台での戦いを通じて、ビジネスパートナーとしても信頼される実績を積み重ねています。
             </p>
-            <div id="section01" className="mx-auto mt-[50px] w-full md:pb-7.5">
+            <div className="mx-auto mt-[50px] w-full md:pb-7.5">
               <div className="mx-auto mt-10 grid w-full gap-y-10 max-md:max-w-[320px] md:mt-15 md:grid-cols-3 md:gap-x-6 md:gap-y-[106px] lg:gap-x-10">
                 <AboutItem
                   image="/assets/images/be-07.png"
@@ -312,17 +312,14 @@ const BePartnerPage = () => {
               </div>
             </div>
           </div>
-          <div className="pt-20 md:pt-30">
+          <div id="section04" className="pt-20 md:pt-30">
             <h2 className="mt-12 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:border-l-[8px] md:text-[32px]">
               パートナー紹介
             </h2>
             <p className="pt-2 text-[14px] md:pt-3 md:text-[16px]">
               現在110社様のご支援をいただいています
             </p>
-            <div
-              id="section01"
-              className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5"
-            >
+            <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
               <div className="flex items-center gap-2.5 border-b border-[#C0C0C0] pb-2.5">
                 <figure>
                   <img
@@ -348,10 +345,7 @@ const BePartnerPage = () => {
                 })}
               </div>
             </div>
-            <div
-              id="section01"
-              className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5"
-            >
+            <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
               <div className="flex items-center gap-2.5 border-b border-[#C0C0C0] pb-2.5">
                 <figure>
                   <img
@@ -395,7 +389,7 @@ const BePartnerPage = () => {
           </div>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-[1320px] px-5">
+      <div id="section05" className="mx-auto w-full max-w-[1320px] px-5">
         <div className="rounded-xl bg-[#EBEBEB] px-5 py-20 md:py-25">
           <div className="mx-auto w-full max-w-[992px]">
             <h2 className="border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:border-l-[8px] md:text-[32px]">
@@ -503,7 +497,7 @@ const BePartnerPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-25 px-5 md:mt-40">
+      <div id="section06" className="mt-25 px-5 md:mt-40">
         <div className="mx-auto w-full max-w-[996px]">
           <h2 className="mt-12 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:border-l-[8px] md:text-[32px]">
             ふるさと納税
