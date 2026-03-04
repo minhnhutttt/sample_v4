@@ -71,8 +71,8 @@ const HomePartner = () => {
         </div>
         <div className="flex justify-center">
           <Link
-            href="/"
-            className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white md:h-[70px] md:w-[300px] md:text-[20px]"
+            href="/partners"
+            className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:w-[300px] md:text-[20px]"
           >
             パートナー企業一覧
             <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">

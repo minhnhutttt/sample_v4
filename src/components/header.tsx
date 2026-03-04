@@ -85,7 +85,7 @@ const Header = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathname === '/' || pathname === '/be-partner';
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -163,8 +163,8 @@ const Header = () => {
       image: '/assets/images/partner.svg',
       alt: 'partner',
       links: [
-        { label: 'パートナーをご検討の方', href: '/' },
-        { label: 'パートナー様のご紹介', href: '/' },
+        { label: 'パートナーをご検討の方', href: '/be-partner' },
+        { label: 'パートナー様のご紹介', href: '/partner' },
       ],
     },
   ];

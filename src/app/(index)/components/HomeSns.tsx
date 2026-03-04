@@ -74,7 +74,7 @@ const HomeSns = () => {
         <div className="mt-12 flex justify-center md:mt-[54px]">
           <Link
             href="/"
-            className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white md:h-[70px] md:w-[300px] md:text-[20px]"
+            className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:w-[300px] md:text-[20px]"
           >
             さらに読み込む
             <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">

@@ -59,7 +59,7 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="ja">
+    <html lang="ja" className="scroll-smooth">
       <body className={`${noto.className} ${bebas_neue.variable} antialiased`}>
         <Providers>
           <Header />

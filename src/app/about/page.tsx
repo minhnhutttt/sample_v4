@@ -60,38 +60,61 @@ const AboutPage = () => {
           </div>
           <div className="grid grid-cols-2 flex-wrap items-center gap-x-8 gap-y-5 p-5 max-md:px-0 md:gap-x-12 md:p-8 lg:grid-cols-4">
             {[
-              <>
-                3x3バスケットボー
-                <br />
-                ルって？
-              </>,
-              <>
-                推し選手を見つけて
-                <br />
-                応援しよう
-              </>,
-              <>
-                3x3は
-                <br />
-                「個人スポーツ」
-              </>,
-              <>
-                チームを応援する
-                <br />
-                楽しみ方
-              </>,
-            ].map((text, i) => (
-              <div
-                className="h-12 border-l-[4px] border-[#FF0000] pl-3 text-[15px] font-medium md:h-[62px] md:border-l-[8px] md:pl-5 md:text-[18px] xl:text-[20px]"
+              {
+                id: '#section01',
+                text: (
+                  <>
+                    3x3バスケットボー
+                    <br />
+                    ルって？
+                  </>
+                ),
+              },
+              {
+                id: '#section02',
+                text: (
+                  <>
+                    推し選手を見つけて
+                    <br />
+                    応援しよう
+                  </>
+                ),
+              },
+              {
+                id: '#section03',
+                text: (
+                  <>
+                    3x3は
+                    <br />
+                    「個人スポーツ」
+                  </>
+                ),
+              },
+              {
+                id: '#section04',
+                text: (
+                  <>
+                    チームを応援する
+                    <br />
+                    楽しみ方
+                  </>
+                ),
+              },
+            ].map((item, i) => (
+              <Link
+                href={item.id}
+                className="flex h-12 border-l-[4px] border-[#FF0000] pl-3 text-[15px] font-medium duration-200 hover:text-[#FF0000] md:h-[62px] md:border-l-[8px] md:pl-5 md:text-[18px] xl:text-[20px]"
                 key={i}
               >
-                {text}
-              </div>
+                {item.text}
+              </Link>
             ))}
           </div>
-          <div className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5">
+          <div
+            id="section01"
+            className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5"
+          >
             <p className="border-b border-[#C0C0C0] py-1 text-[18px] font-bold md:text-[22px]">
-              {' '}
               推し選手を見つけて応援しよう！
             </p>
             <div className="mx-auto mt-6 grid w-full max-md:max-w-[320px] md:mt-[35px] md:grid-cols-3 md:gap-6 lg:gap-10">
@@ -115,9 +138,11 @@ const AboutPage = () => {
               </AboutItem>
             </div>
           </div>
-          <div className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5">
+          <div
+            id="section02"
+            className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5"
+          >
             <p className="border-b border-[#C0C0C0] py-1 text-[18px] font-bold md:text-[22px]">
-              {' '}
               推し選手を見つけて応援しよう！
             </p>
             <div className="mx-auto mt-6 grid w-full max-md:max-w-[320px] md:mt-[35px] md:grid-cols-3 md:gap-6 lg:gap-10">
@@ -141,9 +166,11 @@ const AboutPage = () => {
               </AboutItem>
             </div>
           </div>
-          <div className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5">
+          <div
+            id="section03"
+            className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5"
+          >
             <p className="border-b border-[#C0C0C0] py-1 text-[18px] font-bold md:text-[22px]">
-              {' '}
               LEO BLACKS / LEO NINERSを応援しよう！
             </p>
             <p className="py-[15px] text-[14px] md:text-[16px]">
@@ -172,9 +199,11 @@ const AboutPage = () => {
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5">
+          <div
+            id="section04"
+            className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5"
+          >
             <p className="border-b border-[#C0C0C0] py-1 text-[18px] font-bold md:text-[22px]">
-              {' '}
               さらに詳しく知りたい方へ
             </p>
             <div className="flex justify-center gap-5 py-7.5 text-[14px] max-md:flex-wrap max-md:text-center md:gap-10 md:py-[45px] md:text-[16px]">
