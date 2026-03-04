@@ -184,7 +184,7 @@ const GamePage = () => {
         <div className="flex gap-7 max-md:flex-col md:gap-10">
           <div className="md:w-[560px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.45130363482!2d130.0098914410592!3d33.43754679906457!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541d7afe715a36d%3A0x69360168abfa1d82!2z44Kk44Kq44Oz5ZSQ5rSl44K344On44OD44OU44Oz44Kw44K744Oz44K_44O8!5e0!3m2!1sja!2s!4v1772610927416!5m2!1sja!2s"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230578.23512409747!2d129.80063353216772!3d33.4323784630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356a7863814716bb%3A0x5f6704468603619b!2z5ZSQ5rSl5biC5b255omA!5e1!3m2!1sja!2sjp!4v1772532427516!5m2!1sja!2sjp"
               width="100%"
               height="330"
               allowFullScreen

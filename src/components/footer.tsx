@@ -53,7 +53,7 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link href="https://www.facebook.com/basket.saiko" target="_blank">
+            <Link href="https://bit.ly/36ptJf9" target="_blank">
               <Image
                 src="/assets/images/ic-yt-white.svg"
                 alt=""

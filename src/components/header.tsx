@@ -296,7 +296,8 @@ const Header = () => {
               <ul className="group/bottoms flex gap-6 py-10 text-white max-md:flex-col md:items-center md:gap-10 md:py-20 xl:py-[120px]">
                 <li>
                   <Link
-                    href="#"
+                    href="/about"
+                    onClick={close}
                     className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
                   >
                     <span className="font-bebas-neue">ABOUT 3×3</span>
@@ -315,6 +316,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="#"
+                    onClick={close}
                     className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
                   >
                     <span className="font-bebas-neue">CONTACT</span>
@@ -333,6 +335,7 @@ const Header = () => {
                 <li>
                   <Link
                     href="#"
+                    onClick={close}
                     className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
                   >
                     <span className="font-bebas-neue">FANCLUB</span>
