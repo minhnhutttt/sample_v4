@@ -175,21 +175,21 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header group fixed top-0 left-0 z-60 flex h-16 w-full items-center px-5 md:h-20 ${
+        className={`header group fixed top-0 left-0 z-60 flex h-16 w-full items-center border-t-[10px] border-white px-5 md:h-20 md:border-t-[20px] ${
           isScrolled && 'active'
         }`}
       >
-        <div className="pointer-events-none fixed top-0 left-0">
+        <div className="pointer-events-none fixed top-[9px] left-0 md:top-5">
           <Image
             src="/assets/images/bg-header.svg"
             alt="logo"
             width={430}
-            height={345}
+            height={327}
             className="max-md:w-[280px]"
           />
         </div>
 
-        <Link href="/" className="relative top-2 left-0 md:top-6 md:left-4">
+        <Link href="/" className="relative top-0.5 left-0 md:top-3 md:left-4">
           <Image
             src="/assets/images/logo.png"
             alt="logo"
