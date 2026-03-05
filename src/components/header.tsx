@@ -139,6 +139,9 @@ const Header = () => {
         { label: '試合', href: '/match' },
         { label: 'チーム', href: '/team' },
         { label: 'イベント', href: '/event' },
+        { label: '試合', href: '/match' },
+        { label: 'チーム', href: '/team' },
+        { label: '全て', href: '/news' },
       ],
     },
     {
@@ -223,135 +226,151 @@ const Header = () => {
         </button>
 
         <div
-          className={`fixed inset-0 flex items-center justify-center bg-black duration-200 ${
+          className={`fixed inset-0 flex items-start justify-center bg-black duration-200 md:items-center ${
             isOpen
               ? 'pointer-events-auto opacity-100'
               : 'pointer-events-none opacity-0'
           }`}
         >
-          <div className="flex h-full w-full gap-10 overflow-auto px-5 py-10 max-xl:flex-col-reverse">
-            <div className="h-full xl:flex-1">
-              <div className="flex h-full items-end justify-start xl:py-[120px]">
-                <div className="space-y-5">
-                  <NewsItem
-                    onClick={close}
-                    href="#"
-                    date="2026.02.04"
-                    image="/assets/images/news.png"
-                  >
-                    『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
-                    Presented by 唐津市』！！
-                  </NewsItem>
-                  <NewsItem
-                    onClick={close}
-                    href="#"
-                    date="2026.02.04"
-                    image="/assets/images/news.png"
-                  >
-                    『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
-                    Presented by 唐津市』！！
-                  </NewsItem>
+          <div className="h-full w-full overflow-auto">
+            <div className="flex w-full gap-10 px-5 py-10 max-xl:flex-col-reverse">
+              <div className="max-md:h-full xl:flex-1">
+                <div className="flex h-full items-end justify-start xl:py-[120px]">
+                  <div className="space-y-5">
+                    <NewsItem
+                      onClick={close}
+                      href="#"
+                      date="2026.02.04"
+                      image="/assets/images/news.png"
+                    >
+                      『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
+                      Presented by 唐津市』！！
+                    </NewsItem>
+                    <NewsItem
+                      onClick={close}
+                      href="#"
+                      date="2026.02.04"
+                      image="/assets/images/news.png"
+                    >
+                      『3x3UNITED WEST AREA LEOBLACKS SAGA Round <br />
+                      Presented by 唐津市』！！
+                    </NewsItem>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="xl:flex-1">
-              <div className="group/menu space-y-5">
-                {menuItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`group/item flex gap-4 max-md:flex-col md:items-end md:gap-7 ${
-                      activeIndex === index ? 'open' : ''
-                    }`}
-                  >
-                    <button
-                      onClick={() => handleButtonClick(index)}
-                      className={`relative block overflow-hidden group-hover/item:!opacity-100 group-hover/menu:opacity-50`}
+              <div className="xl:flex-1">
+                <div className="group/menu space-y-5">
+                  {menuItems.map((item, index) => (
+                    <div
+                      key={index}
+                      className={`group/item flex gap-4 max-md:flex-col md:items-end md:gap-7 ${
+                        activeIndex === index ? 'open' : ''
+                      }`}
                     >
-                      <span className="relative block duration-300 group-hover/item:-translate-y-full max-md:group-[.open]/item:-translate-y-full">
-                        <img
-                          src={item.image}
-                          alt={item.alt}
-                          className="h-16 md:h-[144px]"
-                        />
-                      </span>
-                      <span className="absolute top-0 left-0 translate-y-full duration-300 group-hover/item:translate-y-0 max-md:group-[.open]/item:translate-y-0">
-                        <img
-                          src={item.image}
-                          alt={item.alt}
-                          className="h-16 md:h-[144px]"
-                        />
-                      </span>
-                    </button>
+                      <button
+                        onClick={() => handleButtonClick(index)}
+                        className={`relative block overflow-hidden group-hover/item:!opacity-100 group-hover/menu:opacity-50`}
+                      >
+                        <span className="relative block duration-300 group-hover/item:-translate-y-full max-md:group-[.open]/item:-translate-y-full">
+                          <img
+                            src={item.image}
+                            alt={item.alt}
+                            className="h-16 md:h-[144px]"
+                          />
+                        </span>
+                        <span className="absolute top-0 left-0 translate-y-full duration-300 group-hover/item:translate-y-0 max-md:group-[.open]/item:translate-y-0">
+                          <img
+                            src={item.image}
+                            alt={item.alt}
+                            className="h-16 md:h-[144px]"
+                          />
+                        </span>
+                      </button>
 
-                    <div className="group/links flex flex-col gap-2 overflow-hidden max-md:h-0 max-md:group-[.open]/item:h-auto">
-                      {item.links.map((link, i) => (
-                        <LinkItem key={i} href={link.href} onClick={close}>
-                          {link.label}
-                        </LinkItem>
-                      ))}
+                      <div
+                        className={`group/links grid origin-top gap-2 gap-x-10 overflow-hidden max-md:h-0 max-md:group-[.open]/item:h-auto md:gap-x-6 xl:gap-x-10 ${
+                          item.links.length > 3
+                            ? 'grid-rows-3'
+                            : 'grid-cols-1 grid-rows-1'
+                        }`}
+                        style={
+                          item.links.length > 3
+                            ? {
+                                gridAutoFlow: 'column',
+                                gridTemplateRows: 'repeat(3, auto)',
+                              }
+                            : undefined
+                        }
+                      >
+                        {item.links.map((link, i) => (
+                          <LinkItem key={i} href={link.href} onClick={close}>
+                            {link.label}
+                          </LinkItem>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <ul className="group/bottoms flex gap-6 py-10 text-white max-md:flex-col md:items-center md:gap-10 md:py-20 xl:py-[120px]">
+                  <li>
+                    <Link
+                      href="/about"
+                      onClick={close}
+                      className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                    >
+                      <span className="font-bebas-neue">ABOUT 3×3</span>
+                      <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                        <span>3X3について</span>
+                        <Image
+                          src="/assets/images/arrow.svg"
+                          alt="logo"
+                          width={25}
+                          height={22}
+                          className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      onClick={close}
+                      className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                    >
+                      <span className="font-bebas-neue">CONTACT</span>
+                      <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                        <span>お問い合わせ</span>
+                        <Image
+                          src="/assets/images/arrow.svg"
+                          alt="logo"
+                          width={25}
+                          height={22}
+                          className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      onClick={close}
+                      className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
+                    >
+                      <span className="font-bebas-neue">FANCLUB</span>
+                      <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
+                        <span>ファンクラブ</span>
+                        <Image
+                          src="/assets/images/arrow.svg"
+                          alt="logo"
+                          width={25}
+                          height={22}
+                          className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
+                        />
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
               </div>
-              <ul className="group/bottoms flex gap-6 py-10 text-white max-md:flex-col md:items-center md:gap-10 md:py-20 xl:py-[120px]">
-                <li>
-                  <Link
-                    href="/about"
-                    onClick={close}
-                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
-                  >
-                    <span className="font-bebas-neue">ABOUT 3×3</span>
-                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
-                      <span>3X3について</span>
-                      <Image
-                        src="/assets/images/arrow.svg"
-                        alt="logo"
-                        width={25}
-                        height={22}
-                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
-                      />
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    onClick={close}
-                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
-                  >
-                    <span className="font-bebas-neue">CONTACT</span>
-                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
-                      <span>お問い合わせ</span>
-                      <Image
-                        src="/assets/images/arrow.svg"
-                        alt="logo"
-                        width={25}
-                        height={22}
-                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
-                      />
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    onClick={close}
-                    className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
-                  >
-                    <span className="font-bebas-neue">FANCLUB</span>
-                    <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
-                      <span>ファンクラブ</span>
-                      <Image
-                        src="/assets/images/arrow.svg"
-                        alt="logo"
-                        width={25}
-                        height={22}
-                        className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
-                      />
-                    </span>
-                  </Link>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

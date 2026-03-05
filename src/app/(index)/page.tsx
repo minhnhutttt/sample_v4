@@ -6,6 +6,7 @@ import HomeFv from './components/HomeFv';
 import HomeNews from './components/HomeNews';
 import HomePartner from './components/HomePartner';
 import HomeSns from './components/HomeSns';
+import Topics from './components/Topics';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 const IndexPage = () => {
   return (
     <div>
-      <HomeFv />
+      <HomeFv topics={<Topics />} />
       <HomeNews />
       <HomeSns />
       <HomePartner />

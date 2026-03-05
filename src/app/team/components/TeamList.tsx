@@ -31,7 +31,7 @@ export default function TeamList({ initialTeam01, initialTeam02 }: Props) {
   };
   return (
     <div className="">
-      <div className="mx-auto grid w-full max-w-[562px] grid-cols-2 md:mt-25">
+      <div className="mx-auto mt-10 grid w-full max-w-[562px] grid-cols-2 md:mt-25">
         <button
           className="h-20 bg-[#E9F9FD] text-[16px] font-bold md:text-[20px]"
           onClick={() => changeTab('レオブラックス')}
