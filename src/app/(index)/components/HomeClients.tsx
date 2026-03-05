@@ -25,8 +25,8 @@ const HomeClients = () => {
             >
               Our
             </SplitTextReveal>
-            <div className="fade-up stack relative my-[5rem] md:my-0">
-              <div className="h3 bg-green-electric radius-global relative mt-[2rem] flex h-[4rem] items-center overflow-hidden font-bold md:h-[11.5rem]">
+            <div className="fade-up stack relative">
+              <div className="h3 bg-green-electric radius-global relative flex h-[4rem] items-center overflow-hidden font-bold max-md:my-[1rem] md:mt-[2rem] md:h-[11.5rem]">
                 <div className="js-title px-[1.2rem] text-[#242424] max-md:w-full max-md:text-center md:px-[5rem]">
                   Home
                 </div>
@@ -40,7 +40,8 @@ const HomeClients = () => {
             toggleActions="play none none reset"
             className="h1 js-line leading-none font-black text-[#242424] uppercase"
           >
-            Clients shine
+            Clients <br className="md:hidden" />
+            shine
           </SplitTextReveal>
         </div>
         <div className="pointer-cursor stack relative mt-[4rem] w-full items-start md:px-[7rem]">

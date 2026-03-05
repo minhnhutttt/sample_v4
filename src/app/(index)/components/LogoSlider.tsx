@@ -173,7 +173,7 @@ export default function LogoSlider() {
           return (
             <div
               key={slide.id}
-              className="flex flex-col gap-3 px-6 py-10 md:gap-4 md:px-[52px] md:py-[48px]"
+              className="flex flex-col gap-3 px-6 pt-7 pb-20 md:gap-4 md:px-[52px] md:py-[48px]"
               style={
                 isVisible
                   ? { position: 'relative' }
@@ -213,28 +213,54 @@ export default function LogoSlider() {
             </div>
           );
         })}
-
-        {/* Nav */}
-        <div className="flex items-center justify-between px-6 py-4 md:px-[52px] md:py-5">
-          <div className="flex items-center gap-4 md:gap-6">
-            <button
-              onClick={() =>
-                goTo((currentRef.current - 1 + SLIDES.length) % SLIDES.length)
-              }
-              className="flex h-9 w-9 items-center justify-center rounded border border-[#d4ccc5] text-[#333] transition-all duration-300 hover:border-[#333] hover:bg-[#333] hover:text-white md:h-10 md:w-10"
-              aria-label="Previous"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => goTo((currentRef.current + 1) % SLIDES.length)}
-              className="flex h-9 w-9 items-center justify-center rounded border border-[#d4ccc5] text-[#333] transition-all duration-300 hover:border-[#333] hover:bg-[#333] hover:text-white md:h-10 md:w-10"
-              aria-label="Next"
-            >
-              →
-            </button>
-          </div>
-        </div>
+        <button
+          onClick={() =>
+            goTo((currentRef.current - 1 + SLIDES.length) % SLIDES.length)
+          }
+          className="bg-pink radius-global pointer-events-auto absolute left-[calc(50%-5rem)] flex size-[3.5rem] items-center justify-center transition-colors duration-300 ease-out hover:bg-[#CCE561] max-md:bottom-0 md:top-1/2 md:left-[-2rem] md:size-[5rem] md:-translate-y-1/2"
+          aria-label="Previous"
+        >
+          <svg
+            className="h-[1.4rem] w-auto scale-x-[-1] rotate-180 md:h-[2rem]"
+            viewBox="0 0 21 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.9309 2L3.09961 10.1014L10.9309 17.6626"
+              className="stroke-[#242424]"
+              strokeWidth="4"
+            ></path>
+            <path
+              d="M21 9.83154H4.21862"
+              className="stroke-[#242424]"
+              strokeWidth="4"
+            ></path>
+          </svg>
+        </button>
+        <button
+          onClick={() => goTo((currentRef.current + 1) % SLIDES.length)}
+          className="bg-pink radius-global pointer-events-auto absolute right-[calc(50%-5rem)] flex size-[3.5rem] items-center justify-center transition-colors duration-300 ease-out hover:bg-[#CCE561] max-md:bottom-0 md:top-1/2 md:right-[-2rem] md:size-[5rem] md:-translate-y-1/2"
+          aria-label="Next"
+        >
+          <svg
+            className="h-[1.4rem] w-auto scale-x-[-1] md:h-[2rem]"
+            viewBox="0 0 21 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.9309 2L3.09961 10.1014L10.9309 17.6626"
+              className="stroke-[#242424]"
+              strokeWidth="4"
+            ></path>
+            <path
+              d="M21 9.83154H4.21862"
+              className="stroke-[#242424]"
+              strokeWidth="4"
+            ></path>
+          </svg>
+        </button>
       </div>
     </>
   );

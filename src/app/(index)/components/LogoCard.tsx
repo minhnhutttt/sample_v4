@@ -14,7 +14,7 @@ const LogoCard = forwardRef<HTMLDivElement, LogoCardProps>(
     return (
       <div
         ref={ref}
-        className={`logo-card relative flex h-[16rem] items-center justify-center overflow-hidden rounded-2xl border border-[#e0d8cf] bg-[#f8f3ed] px-3 py-4 font-bold text-black opacity-0 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:border-[#c8bdb4] hover:shadow-[0_10px_32px_rgba(0,0,0,0.07)] ${className}`}
+        className={`logo-card relative flex h-[10rem] items-center justify-center overflow-hidden rounded-2xl border border-[#e0d8cf] bg-[#f8f3ed] px-3 py-4 font-bold text-black opacity-0 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:border-[#c8bdb4] hover:shadow-[0_10px_32px_rgba(0,0,0,0.07)] md:h-[16rem] ${className}`}
       >
         {/* shimmer overlay */}
         <div

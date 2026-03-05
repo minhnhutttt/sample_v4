@@ -5,6 +5,7 @@ import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 import HomeClients from './components/HomeClients';
 import HomeKv from './components/HomeKv';
 import HomeServices from './components/HomeServices';
+import HomeSolutions from './components/HomeSolutions';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -26,6 +27,7 @@ const IndexPage = () => {
       <HomeKv />
       <HomeServices />
       <HomeClients />
+      <HomeSolutions />
     </div>
   );
 };
