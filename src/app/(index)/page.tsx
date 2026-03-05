@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
+import HomeClients from './components/HomeClients';
 import HomeKv from './components/HomeKv';
 import HomeServices from './components/HomeServices';
 
@@ -24,6 +25,7 @@ const IndexPage = () => {
     <div className="">
       <HomeKv />
       <HomeServices />
+      <HomeClients />
     </div>
   );
 };

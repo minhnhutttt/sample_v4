@@ -56,16 +56,9 @@ const SLOTS = [
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/**
- * Trả về tọa độ tuyệt đối trong document, có tính đến ScrollSmoother transform.
- * ScrollSmoother dùng CSS matrix3d() translate content thay vì scrollY thật,
- * nên phải dùng smoother.scrollTop() thay vì window.scrollY.
- */
 function absRect(el: HTMLElement): AbsRect {
   const r = el.getBoundingClientRect();
   const smoother = ScrollSmoother.get();
-  // Nếu smoother tồn tại, lấy scroll position thật từ smoother
-  // để bù trừ với transform đang được apply lên #smooth-content
   const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
   return {
     top: r.top + scrollY,

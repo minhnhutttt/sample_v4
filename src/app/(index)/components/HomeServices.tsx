@@ -56,15 +56,16 @@ const HomeServices = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const triggers = sectionRefs.current.map((el) => {
+    const triggers = sectionRefs.current.map((el, i) => {
       if (!el) return null;
+      const isLast = i === SERVICES.length - 1;
 
       return ScrollTrigger.create({
         trigger: el,
         start: 'top top',
         end: 'bottom top',
         pin: true,
-        pinSpacing: false,
+        pinSpacing: isLast,
       });
     });
 
