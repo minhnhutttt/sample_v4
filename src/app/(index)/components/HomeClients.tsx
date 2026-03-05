@@ -3,6 +3,8 @@
 import useScrollAnimations from '@/app/hooks/useScrollAnimations';
 import SplitTextReveal from '@/components/animations/Splittextreveal';
 
+import LogoSlider from './LogoSlider';
+
 const HomeClients = () => {
   const ref = useScrollAnimations();
   return (
@@ -40,6 +42,9 @@ const HomeClients = () => {
           >
             Clients shine
           </SplitTextReveal>
+        </div>
+        <div className="pointer-cursor stack relative mt-[4rem] w-full items-start md:px-[7rem]">
+          <LogoSlider />
         </div>
       </div>
     </div>
