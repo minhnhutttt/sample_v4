@@ -28,3 +28,30 @@ export const TWITTER = {
   description: DEFAULT_DESCRIPTION,
   images: OG_IMAGES,
 };
+
+export const NavLinks = [
+  {
+    text: 'Work',
+    href: '/',
+  },
+  {
+    text: 'Services',
+    href: '/',
+  },
+  {
+    text: 'Solutions',
+    href: '/',
+  },
+  {
+    text: 'Insights',
+    href: '/',
+  },
+  {
+    text: 'Techonology',
+    href: '/',
+  },
+  {
+    text: 'Company',
+    href: '/',
+  },
+];
