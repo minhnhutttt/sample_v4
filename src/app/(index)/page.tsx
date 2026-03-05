@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import HomeKv from './components/HomeKv';
+import HomeServices from './components/HomeServices';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -22,6 +23,7 @@ const IndexPage = () => {
   return (
     <div className="">
       <HomeKv />
+      <HomeServices />
     </div>
   );
 };

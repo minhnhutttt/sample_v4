@@ -8,7 +8,7 @@ const NotFoundPage = () => {
         <div className="mt-4">
           <Link
             href="/"
-            className="inline-block rounded-full bg-[#2A5297] px-6 py-2 text-white"
+            className="inline-block rounded-full bg-[#2A5297] px-6 py-2"
           >
             トップページへ
           </Link>

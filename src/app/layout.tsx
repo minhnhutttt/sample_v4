@@ -55,7 +55,7 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ja">
-      <body className={`${noto.className} bg-black antialiased`}>
+      <body className={`${noto.className} text-[#FAF2E8] antialiased`}>
         <Providers>
           <Header />
           <SmoothScroll />

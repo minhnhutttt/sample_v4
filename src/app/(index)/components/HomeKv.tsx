@@ -6,6 +6,9 @@ import { gsap } from 'gsap';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import useScrollAnimations from '@/app/hooks/useScrollAnimations';
+import SplitTextReveal from '@/components/animations/Splittextreveal';
+import Button from '@/components/button';
 import type { AbsRect } from '@/types/card-animation';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -77,6 +80,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function HomeKv() {
+  const ref = useScrollAnimations();
   const scrollSectionRef = useRef<HTMLElement>(null);
   const pillRef = useRef<HTMLSpanElement>(null);
   const stackRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -317,9 +321,6 @@ export default function HomeKv() {
     }
 
     function handleResize() {
-      // FIX: Re-snapshot sau khi smoother đã tính toán lại layout
-      // ScrollTrigger.refresh() sẽ trigger smoother refresh trước (vì priority cao hơn),
-      // sau đó trigger này (priority: -1) mới chạy onRefresh → snapshot đúng
       snapshot();
       ScrollTrigger.refresh();
     }
@@ -343,17 +344,24 @@ export default function HomeKv() {
   };
 
   return (
-    <div className="bg-green relative z-10 h-[500vh]">
+    <div ref={ref} className="bg-green relative z-10">
       {/* ════════════════════════ HERO ════════════════════════ */}
-      <section className="carousel-cards bg-green relative z-5 min-h-screen overflow-hidden pt-[10rem] pb-[3rem] text-white md:pt-[17rem] md:pb-[10rem]">
-        <div className="site-max relative flex flex-col gap-y-[3rem] pb-[10rem] md:flex-row md:pb-0">
+      <section className="carousel-cards bg-green relative z-5 overflow-hidden">
+        <div className="site-max relative flex min-h-screen flex-col items-center gap-y-[3rem] pt-[10rem] pb-[3rem] pb-[10rem] md:flex-row md:pt-[17rem] md:pb-0 md:pb-[10rem]">
           {/* Text */}
           <div className="relative flex flex-1 flex-col md:justify-between">
-            <h1 className="h1 br-allowed js-t-title font-black uppercase">
+            <SplitTextReveal
+              as="h1"
+              splitType="chars"
+              triggerStart="top 80%"
+              toggleActions="play none none reset"
+              className="h1 br-allowed js-t-title upp font-black"
+            >
               Genuine. <br />
               Impact.
-            </h1>
-            <div className="mt-[2rem] flex flex-col items-start md:mt-[20rem]">
+            </SplitTextReveal>
+
+            <div className="fade-up mt-[2rem] flex flex-col items-start md:mt-[20rem]">
               <p className="h4 js-t-fade-up md:max-w-[60rem]">
                 We are an industry-leading digital marketing agency partnering
                 with bold brands to drive impact across every stage of the
@@ -364,7 +372,7 @@ export default function HomeKv() {
           </div>
 
           {/* ── Card Stack ── */}
-          <div className="relative flex flex-1 justify-center">
+          <div className="fade-up relative flex flex-1 justify-center">
             <div className="relative aspect-482/858 w-[24rem] md:w-[40.5rem]">
               {[...CARD_DEFS].reverse().map((card) => (
                 <div
@@ -420,9 +428,9 @@ export default function HomeKv() {
       {/* ════════════════════════ SCROLL SECTION ════════════════════════ */}
       <section
         ref={scrollSectionRef}
-        className="select-work w-full bg-[#FAF2E8] pt-[9rem] pb-[9rem] md:pt-[15rem] md:pb-[15rem]"
+        className="select-work w-full bg-[#FAF2E8] pt-[9rem] pb-[9rem] text-black md:pt-[15rem] md:pb-[15rem]"
       >
-        <div className="site-max flex flex-col items-start">
+        <div className="site-max mx-auto! flex flex-col items-start max-md:max-w-[400px]!">
           <div className="js-flip-targets flex w-full flex-col items-center gap-y-[3.5rem]">
             <p className="h7 text-center">Selected Work</p>
 
@@ -473,10 +481,8 @@ export default function HomeKv() {
             ))}
           </div>
 
-          <div className="mt-10 text-center">
-            <button className="inline-flex cursor-pointer items-center gap-2 rounded-full border-none bg-[#b5e550] px-6 py-2.5 text-[0.78rem] font-bold tracking-[1px] text-[#1a1a1a] uppercase">
-              View all work →
-            </button>
+          <div className="mt-[4rem] text-center md:mt-[7.5rem]">
+            <Button href="/" text="View all work" />
           </div>
         </div>
       </section>

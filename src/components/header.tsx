@@ -180,10 +180,7 @@ const Header = () => {
             <div className="marq relative flex" data-v-6f2835a6="">
               <div className="marq-item relative pr-[7.5rem] md:pr-0">
                 <div className="site-max flex items-center justify-center">
-                  <a
-                    href="/insights/new-engen-acquires-grapevine-to-expand-creator-led-paid-social-capabilities/"
-                    className="flex justify-center"
-                  >
+                  <a href="" className="flex justify-center">
                     <span
                       className="site-max flex items-center justify-center"
                       data-v-6f2835a6=""
@@ -196,10 +193,7 @@ const Header = () => {
               </div>
               <div className="marq-item relative pr-[7.5rem] md:hidden md:pr-0">
                 <div className="site-max flex items-center justify-center">
-                  <a
-                    href="/insights/new-engen-acquires-grapevine-to-expand-creator-led-paid-social-capabilities/"
-                    className="flex justify-center"
-                  >
+                  <a href="" className="flex justify-center">
                     <span
                       className="site-max flex items-center justify-center"
                       data-v-6f2835a6=""
@@ -215,14 +209,14 @@ const Header = () => {
 
           {/* Main nav */}
           <div className="sh__inner site-max relative">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-[0.4rem] md:py-[1rem]">
               <Link
                 href="/"
-                className="py-[.6rem] pr-[.5rem] md:py-[0.8rem] md:pr-[1rem]"
+                className="bg-green rounded-lg px-[.5rem] py-[.6rem] md:px-[1rem] md:py-[0.8rem]"
               >
                 <img
                   src="/assets/images/logo.png"
-                  className="h-[4rem] md:h-[7rem]"
+                  className="h-[4rem] md:h-[5rem]"
                 />
               </Link>
 
@@ -231,10 +225,7 @@ const Header = () => {
                 <ul className="bg-green flex h-[5.5rem] items-center gap-x-[4rem] rounded-[0.5rem] px-[3.5rem] md:rounded-[1rem]">
                   {NavLinks.map((item, i) => (
                     <li key={i}>
-                      <Link
-                        href={item.href}
-                        className="h5-alt uline text-white"
-                      >
+                      <Link href={item.href} className="h5-alt uline">
                         {item.text}
                       </Link>
                     </li>
@@ -252,7 +243,7 @@ const Header = () => {
         {/* Burger button */}
         <button
           onClick={toggleMenu}
-          className="bg-pink radius-global s:hidden pointer-events-auto absolute top-[4.2rem] right-[1.2rem] z-150 flex size-[4rem] items-center justify-center md:hidden"
+          className="bg-pink radius-global s:hidden pointer-events-auto absolute top-[5rem] right-[1.2rem] z-150 flex size-[4rem] items-center justify-center md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative flex h-[2rem] w-[1.5rem] flex-col items-center justify-center gap-[.4rem]">
@@ -311,7 +302,7 @@ const Header = () => {
                 <Link
                   href={item.href}
                   onClick={closeMenu}
-                  className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem] text-white"
+                  className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
                   style={{
                     fontSize: 'clamp(2rem, 7vw, 3.5rem)',
                     fontWeight: 700,
@@ -321,7 +312,7 @@ const Header = () => {
                   <span className="transition-colors duration-200 group-hover:text-[#CCE561]">
                     {item.text}
                   </span>
-                  <span className="text-[1.5rem] text-white/20 transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
+                  <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                     →
                   </span>
                 </Link>
@@ -336,7 +327,7 @@ const Header = () => {
               <Link
                 href="/"
                 onClick={closeMenu}
-                className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem] text-white"
+                className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
                 style={{
                   fontSize: 'clamp(2rem, 7vw, 3.5rem)',
                   fontWeight: 700,
@@ -346,7 +337,7 @@ const Header = () => {
                 <span className="transition-colors duration-200 group-hover:text-[#CCE561]">
                   Let&apos;s talk
                 </span>
-                <span className="text-[1.5rem] text-white/20 transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
+                <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                   →
                 </span>
               </Link>
