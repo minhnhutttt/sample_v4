@@ -58,7 +58,6 @@ const HomeSolutions = () => {
     let ctx: gsap.Context | null = null;
 
     const initAnimation = () => {
-      // Kill context cũ trước khi tạo mới
       ctx?.revert();
       ctx = null;
 
@@ -85,9 +84,27 @@ const HomeSolutions = () => {
             },
           });
 
-          gsap.set(image, { y: 200, x: 40, rotation: 12 });
-          tl.to(image, { y: -150, x: 10, rotation: 2, ease: 'none' }, 0);
-          tl.to(content, { opacity: 0.4, y: -30, ease: 'none' }, 0);
+          gsap.set(image, {
+            y: gsap.utils.random(0, 200),
+            x: gsap.utils.random(0, 40),
+            rotation: gsap.utils.random(-4, 12),
+          });
+          tl.to(
+            image,
+            {
+              y: gsap.utils.random(-115, 0),
+              x: gsap.utils.random(0, 10),
+              opacity: 0.2,
+              rotation: gsap.utils.random(-2, 2),
+              ease: 'none',
+            },
+            0,
+          );
+          tl.to(
+            content,
+            { opacity: 0.2, y: gsap.utils.random(-30, 0), ease: 'none' },
+            0,
+          );
         });
       }, sectionRef);
     };

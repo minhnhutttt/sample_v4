@@ -3,7 +3,7 @@
 import useScrollAnimations from '@/app/hooks/useScrollAnimations';
 import SplitTextReveal from '@/components/animations/Splittextreveal';
 
-import LogoSlider from './LogoSlider';
+import LogoSlider from './HomeLogo/HomeLogoSlider';
 
 const HomeClients = () => {
   const ref = useScrollAnimations();

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { COL_STAGGER, ROW_STAGGER, SLIDES } from '@/app/data/slides';
 
-import LogoCard from './LogoCard';
+import LogoCard from './HomeLogoCard';
 
 // Animation durations — must match globals.css keyframes
 const OUT_DUR = 320;
