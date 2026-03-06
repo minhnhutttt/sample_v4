@@ -77,8 +77,66 @@
     transform: translateY(73px);
     width: 54px;
   }
+
+  .logos-ticker {
+    --speed: 65s;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .logos-ticker-fade {
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.01) 20%,
+      rgba(255, 255, 255, 0.01) 80%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+
+  .logos-ticker-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slide-to-left var(--speed) linear infinite;
+  }
+
+  .logos-ticker--right .logos-ticker-container {
+    animation-name: slide-to-right;
+  }
+
+  .logos-ticker-container > div {
+  }
 }
 @layer utilities {
+}
+
+@keyframes slide-to-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes slide-to-right {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes scrollDown {
@@ -126,32 +184,6 @@
     transform: rotateY(720deg) rotateX(720deg) rotateZ(360deg);
   }
 }
-/* @-webkit-keyframes bounceBall {
-  0% {
-    transform: translateY(-70px) scale(1, 1);
-  }
-  15% {
-    transform: translateY(-56px) scale(1, 1);
-  }
-  45% {
-    transform: translateY(70px) scale(1, 1);
-  }
-  50% {
-    transform: translateY(73.5px) scale(1, 0.92);
-  }
-  55% {
-    transform: translateY(70px) scale(1, 0.95);
-  }
-  85% {
-    transform: translateY(-56px) scale(1, 1);
-  }
-  95% {
-    transform: translateY(-70px) scale(1, 1);
-  }
-  100% {
-    transform: translateY(-70px) scale(1, 1);
-  }
-} */
 @keyframes bounceBall {
   0% {
     transform: translateY(-70px) scale(1, 1);

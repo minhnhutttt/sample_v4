@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Title from '@/components/common/Title';
 import { OG, TWITTER } from '@/config/constants';
 
+import { PartnerData } from '../data/partners';
+
 export const metadata: Metadata = {
   title: 'Partners',
   openGraph: {
@@ -21,6 +23,12 @@ export const metadata: Metadata = {
 };
 
 const PartnersPage = () => {
+  const partner01 = PartnerData.find((item) => item.id === '01');
+  const partner02 = PartnerData.find((item) => item.id === '02');
+  const partner03 = PartnerData.find((item) => item.id === '03');
+  const partner04 = PartnerData.find((item) => item.id === '04');
+  const partner05 = PartnerData.find((item) => item.id === '05');
+
   return (
     <div>
       <div className="px-5 pt-32 pb-32 md:pt-[250px] md:pb-40">
@@ -108,16 +116,13 @@ const PartnersPage = () => {
                 </span>
               </div>
               <div className="flex flex-wrap gap-[3%] gap-y-5 md:mt-6 md:gap-[35px]">
-                {Array.from({ length: 12 }, (_, i) => {
-                  const index = String(i + 1).padStart(2, '0');
-                  const imgSrc = `/assets/images/partners/p-01-${index}.png`;
-
-                  return (
-                    <div key={index} className="block max-md:max-w-[30%]">
-                      <img src={imgSrc} alt={`partner-${index}`} />
-                    </div>
-                  );
-                })}
+                {partner01?.partners.map((item, i) => (
+                  <div key={i} className="block max-md:max-w-[30%]">
+                    <a href={item.url} className="flex justify-center">
+                      <img src={item.logo} alt="" className="" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
@@ -134,16 +139,13 @@ const PartnersPage = () => {
                 </span>
               </div>
               <div className="flex flex-wrap gap-[3%] gap-y-5 md:mt-6 md:gap-[35px]">
-                {Array.from({ length: 4 }, (_, i) => {
-                  const index = String(i + 1).padStart(2, '0');
-                  const imgSrc = `/assets/images/partners/p-02-${index}.png`;
-
-                  return (
-                    <div key={index} className="block max-md:max-w-[30%]">
-                      <img src={imgSrc} alt={`partner-${index}`} />
-                    </div>
-                  );
-                })}
+                {partner02?.partners.map((item, i) => (
+                  <div key={i} className="block max-md:max-w-[30%]">
+                    <a href={item.url} className="flex justify-center">
+                      <img src={item.logo} alt="" className="" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
             <h2
@@ -157,16 +159,13 @@ const PartnersPage = () => {
             </p>
             <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
               <div className="flex flex-wrap gap-[3%] gap-y-5 md:mt-6 md:gap-[35px]">
-                {Array.from({ length: 97 }, (_, i) => {
-                  const index = String(i + 1).padStart(2, '0');
-                  const imgSrc = `/assets/images/partners/p-03-${index}.png`;
-
-                  return (
-                    <div key={index} className="block max-md:max-w-[30%]">
-                      <img src={imgSrc} alt={`partner-${index}`} />
-                    </div>
-                  );
-                })}
+                {partner03?.partners.map((item, i) => (
+                  <div key={i} className="block max-md:max-w-[30%]">
+                    <a href={item.url} className="flex justify-center">
+                      <img src={item.logo} alt="" className="" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
             <h2
@@ -180,16 +179,13 @@ const PartnersPage = () => {
             </p>
             <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
               <div className="flex flex-wrap gap-[3%] gap-y-5 md:mt-6 md:gap-[35px]">
-                {Array.from({ length: 2 }, (_, i) => {
-                  const index = String(i + 1).padStart(2, '0');
-                  const imgSrc = `/assets/images/partners/p-04-${index}.png`;
-
-                  return (
-                    <div key={index} className="block max-md:max-w-[30%]">
-                      <img src={imgSrc} alt={`partner-${index}`} />
-                    </div>
-                  );
-                })}
+                {partner04?.partners.map((item, i) => (
+                  <div key={i} className="block max-md:max-w-[30%]">
+                    <a href={item.url} className="flex justify-center">
+                      <img src={item.logo} alt="" className="" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
             <h2
@@ -203,16 +199,13 @@ const PartnersPage = () => {
             </p>
             <div className="mx-auto mt-[60px] w-full md:mt-[90px] md:pb-7.5">
               <div className="flex flex-wrap gap-[3%] gap-y-5 md:mt-6 md:gap-[35px]">
-                {Array.from({ length: 5 }, (_, i) => {
-                  const index = String(i + 1).padStart(2, '0');
-                  const imgSrc = `/assets/images/partners/p-05-${index}.png`;
-
-                  return (
-                    <div key={index} className="block max-md:max-w-[30%]">
-                      <img src={imgSrc} alt={`partner-${index}`} />
-                    </div>
-                  );
-                })}
+                {partner05?.partners.map((item, i) => (
+                  <div key={i} className="block max-md:max-w-[30%]">
+                    <a href={item.url} className="flex justify-center">
+                      <img src={item.logo} alt="" className="" />
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

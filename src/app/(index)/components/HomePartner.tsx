@@ -1,73 +1,52 @@
 'use client';
 
-import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
 import Link from 'next/link';
 
+import { PartnerData } from '@/app/data/partners';
 import Title from '@/components/common/Title';
 
+const chunkArray = <T,>(arr: T[], size: number): T[][] =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+    arr.slice(i * size, i * size + size),
+  );
+
+const TickerRow = ({
+  partners,
+  reverse = false,
+}: {
+  partners: { logo: string; url: string }[];
+  reverse?: boolean;
+}) => (
+  <div className={`logos-ticker ${reverse ? 'logos-ticker--right' : ''}`}>
+    <div className="logos-ticker-fade" aria-hidden="true" />
+    {[0, 1].map((i) => (
+      <div className="logos-ticker-container" key={i}>
+        {partners.map((partner, index) => (
+          <a
+            href={partner.url}
+            key={index}
+            className="mx-3 flex w-[110px] justify-center md:mx-5 md:w-[160px]"
+          >
+            <img src={partner.logo} alt={`Partner ${index + 1}`} className="" />
+          </a>
+        ))}
+      </div>
+    ))}
+  </div>
+);
+
 const HomePartner = () => {
+  const allPartners = PartnerData.flatMap((item) => item.partners);
+  const chunks = chunkArray(allPartners, Math.ceil(allPartners.length / 4));
+
   return (
     <div className="px-5 pt-20 pb-[160px] md:pt-27 md:pb-[280px]">
       <div className="mx-auto w-full max-w-[1200px]">
         <Title title="PARTNER" sub="パートナー" />
-        <div className="my-10 md:my-25">
-          <Splide
-            options={{
-              type: 'loop',
-              perPage: 1,
-              autoplay: true,
-              interval: 7000,
-              arrows: false,
-              pagination: false,
-            }}
-            hasTrack={false}
-          >
-            <SplideTrack>
-              <SplideSlide>
-                <div className="flex flex-wrap gap-[3%] gap-y-5 md:gap-[45px]">
-                  {Array.from({ length: 31 }, (_, i) => {
-                    const index = String(i + 1).padStart(2, '0');
-                    const imgSrc = `/assets/images/partner-01-${index}.png`;
-
-                    return (
-                      <div key={index} className="block max-md:max-w-[30%]">
-                        <img src={imgSrc} alt={`partner-${index}`} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="flex flex-wrap gap-[3%] gap-y-5 md:gap-[45px]">
-                  {Array.from({ length: 32 }, (_, i) => {
-                    const index = String(i + 1).padStart(2, '0');
-                    const imgSrc = `/assets/images/partner-02-${index}.png`;
-
-                    return (
-                      <div key={index} className="block max-md:max-w-[30%]">
-                        <img src={imgSrc} alt={`partner-${index}`} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </SplideSlide>
-              <SplideSlide>
-                <div className="flex flex-wrap gap-[3%] gap-y-5 md:gap-[45px]">
-                  {Array.from({ length: 27 }, (_, i) => {
-                    const index = String(i + 1).padStart(2, '0');
-                    const imgSrc = `/assets/images/partner-03-${index}.png`;
-
-                    return (
-                      <div key={index} className="block max-md:max-w-[30%]">
-                        <img src={imgSrc} alt={`partner-${index}`} />
-                      </div>
-                    );
-                  })}
-                </div>
-              </SplideSlide>
-            </SplideTrack>
-          </Splide>
+        <div className="my-10 space-y-12 md:my-25 md:space-y-20">
+          {chunks.map((chunk, i) => (
+            <TickerRow key={i} partners={chunk} reverse={i % 2 !== 0} />
+          ))}
         </div>
         <div className="flex justify-center">
           <Link
