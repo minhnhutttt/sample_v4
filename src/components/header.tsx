@@ -158,8 +158,8 @@ const Header = () => {
       alt: 'game',
       links: [
         { label: '試合情報', href: '/game' },
-        { label: '楽しみ方', href: '/game' },
-        { label: '3X3について', href: '/game' },
+        { label: '楽しみ方', href: '/game#guide' },
+        { label: '3X3について', href: '/about' },
       ],
     },
     {
@@ -167,7 +167,7 @@ const Header = () => {
       alt: 'partner',
       links: [
         { label: 'パートナーをご検討の方', href: '/be-partner' },
-        { label: 'パートナー様のご紹介', href: '/partner' },
+        { label: 'パートナー様のご紹介', href: '/partners' },
       ],
     },
   ];
@@ -333,7 +333,7 @@ const Header = () => {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/contact"
                       onClick={close}
                       className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
                     >

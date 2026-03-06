@@ -79,7 +79,10 @@ const Footer = () => {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-5 text-[14px] text-white max-md:flex-col-reverse">
         <p className="">Copyright  LEO BLACKS SAGA. All Rights Reserved.</p>
-        <Link href="/">プライバシーポリシー</Link>
+        <div className="flex gap-5">
+          <Link href="/privacy-policy">プライバシーポリシー</Link>
+          <Link href="/terms">利用規約</Link>
+        </div>
       </div>
     </footer>
   );

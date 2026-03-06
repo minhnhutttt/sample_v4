@@ -38,14 +38,14 @@ export const NavLinks = [
   },
   {
     text: 'チーム',
-    href: '/',
+    href: '/team',
   },
   {
     text: 'ゲーム',
-    href: '/',
+    href: '/game',
   },
   {
     text: 'パートナー',
-    href: '/',
+    href: '/partners',
   },
 ];

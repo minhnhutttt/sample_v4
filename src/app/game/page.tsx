@@ -107,7 +107,10 @@ const GamePage = () => {
         </div>
       </div>
 
-      <div className="mx-auto mt-22 w-full max-w-[1200px] rounded-[40px] border border-[#ABABAB] bg-[#F4FAFA] p-5 md:mt-[132px]">
+      <div
+        id="guide"
+        className="mx-auto mt-22 w-full max-w-[1200px] rounded-[40px] border border-[#ABABAB] bg-[#F4FAFA] p-5 md:mt-[132px]"
+      >
         <div className="pn-25 mx-auto w-full max-w-[1085px] pt-3 md:pb-[146px]">
           <div className="relative mx-auto flex h-[50px] w-[300px] bg-[url(/assets/images/bar.png)] bg-size-[100%_100%] px-8 max-md:items-center md:w-[632px]">
             <div className="max-md:w-[64px] md:-mt-1">
