@@ -85,7 +85,7 @@ const HomeSolutions = () => {
           });
 
           gsap.set(image, {
-            y: gsap.utils.random(0, 200),
+            y: gsap.utils.random(0, 400),
             x: gsap.utils.random(0, 40),
             rotation: gsap.utils.random(-4, 12),
           });

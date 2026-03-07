@@ -108,7 +108,7 @@ const HomeInsights = () => {
           as="h2"
           splitType="chars"
           triggerStart="top 80%"
-          toggleActions="play none none reset"
+          toggleActions="play none none none"
           className="h1 text-center font-black tracking-tighter text-[#242424]"
         >
           Insights by <br />

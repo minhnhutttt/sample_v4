@@ -347,7 +347,7 @@ export default function HomeKv() {
               as="h1"
               splitType="chars"
               triggerStart="top 80%"
-              toggleActions="play none none reset"
+              toggleActions="play none none none"
               className="h1 br-allowed js-t-title upp font-black"
             >
               Genuine. <br />

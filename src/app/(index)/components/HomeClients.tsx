@@ -20,7 +20,7 @@ const HomeClients = () => {
               as="h1"
               splitType="chars"
               triggerStart="top 80%"
-              toggleActions="play none none reset"
+              toggleActions="play none none none"
               className="h1 js-line leading-none font-black text-[#242424] uppercase"
             >
               Our
@@ -37,7 +37,7 @@ const HomeClients = () => {
             as="h1"
             splitType="chars"
             triggerStart="top 80%"
-            toggleActions="play none none reset"
+            toggleActions="play none none none"
             className="h1 js-line leading-none font-black text-[#242424] uppercase"
           >
             Clients <br className="md:hidden" />
