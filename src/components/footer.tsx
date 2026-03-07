@@ -1,5 +1,34 @@
 'use client';
 
+import Button from './button';
+
+const PartnerLogo = ({ num }: { num: number }) => (
+  <div className="relative flex max-w-[20rem] min-w-[20rem] items-center justify-center border-r border-white/10 md:max-w-[27.5rem] md:min-w-[27.5rem]">
+    <div className="media-contain relative flex h-[4rem] w-[14rem] items-center justify-center md:h-[5rem] md:w-[17rem]">
+      <img
+        src={`/assets/images/partner-${String(num).padStart(2, '0')}.png`}
+        alt={`Partner ${num}`}
+        className="opacity-100 transition-opacity duration-500 ease-out"
+        loading="lazy"
+      />
+    </div>
+  </div>
+);
+
+const MarqueeTrack = () => {
+  const logos = Array.from({ length: 6 }, (_, i) => i + 1);
+
+  return (
+    <div className="sf-logos__marquee relative flex h-[8rem] md:h-[10rem]">
+      {logos.map((num) => (
+        <PartnerLogo key={`first-${num}`} num={num} />
+      ))}
+      {logos.map((num) => (
+        <PartnerLogo key={`second-${num}`} num={num} />
+      ))}
+    </div>
+  );
+};
 const Footer = () => {
   return (
     <footer className="bg-green relative overflow-hidden">
@@ -77,6 +106,222 @@ const Footer = () => {
             ></path>
           </svg>
         </button>
+      </div>
+      <div className="site-max relative flex flex-col pt-[7.5rem] pb-[5rem] md:flex-row md:pt-[12rem] md:pb-[8rem]">
+        <div className="flex flex-col items-start gap-y-[2.5rem] md:max-w-[90rem] md:min-w-[90rem]">
+          <p className="h4 md:max-w-[70rem]">
+            We have relentless desire to challenge the status quo, and deep
+            digital expertise across hundreds of brands and verticals.
+          </p>
+          <Button href="#" text="Let's talk" />
+        </div>
+        <div className="mt-[4rem] flex flex-1 shrink-0 flex-col md:mt-0">
+          <div className="relative flex flex-col gap-y-[2.5rem] md:max-w-[70rem]">
+            <div className="text-[2em]">
+              Get the latest from New Engen—research-driven strategies,
+              data-backed trends, and thought leadership designed to fuel your
+              brand’s growth.
+            </div>
+            <form
+              action=""
+              className="relative flex gap-x-[1.2rem] md:gap-x-[1.6rem]"
+            >
+              <div className="relative flex w-full flex-1">
+                <input
+                  type="text"
+                  className="form-input radius-global"
+                  placeholder="Email*"
+                />
+              </div>
+              <Button href="/" text="Subscribe" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div className="site-max flex flex-col gap-y-[4rem] text-[1.35rem] md:flex-row">
+        <div className="flex md:max-w-[90rem] md:min-w-[90rem]">
+          <div className="relative flex w-full flex-1 flex-col gap-y-[1.2rem]">
+            <h4 className="h7 text-green-electric">Agency</h4>
+            <ul className="flex flex-col items-start gap-y-[.6rem]">
+              <li>
+                <a href="/work/" className="uline">
+                  Work
+                </a>
+              </li>
+              <li className="relative flex flex-col items-start">
+                <button
+                  type="button"
+                  className="uline rotate-icon-t js-dd-t flex items-center gap-x-[.8rem]"
+                >
+                  Services
+                  <svg
+                    className="rotate-icon relative h-[.8rem] w-auto"
+                    viewBox="0 0 12 9"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  ></svg>
+                </button>
+              </li>
+              <li className="relative flex flex-col items-start">
+                <button
+                  type="button"
+                  className="uline rotate-icon-t js-dd-t flex items-center gap-x-[.8rem]"
+                >
+                  Solutions
+                </button>
+              </li>
+              <li>
+                <a href="/insights/" className="uline">
+                  Insights
+                </a>
+              </li>
+              <li>
+                <a href="/technology/" className="uline">
+                  Technology
+                </a>
+              </li>
+              <li>
+                <a href="/company/" className="uline">
+                  Company
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="relative flex flex-1 flex-col gap-y-[1.2rem]">
+            <h4 className="h7 text-green-electric">Let`&apos;s social</h4>
+            <ul className="flex flex-col items-start gap-y-[.6rem]">
+              <li>
+                <a
+                  href="httpmd://www.linkedin.com/company/new-engen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="uline"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="httpmd://www.facebook.com/newengen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="uline"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href="httpmd://www.instagram.com/newengencreators/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="uline"
+                >
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-1 flex-col gap-y-[1.2rem]">
+          <h4 className="h7 text-green-electric">Get in touch</h4>
+          <ul className="grid grid-cols-1 gap-y-[2rem] md:grid-cols-2">
+            <li className="col-span-1">
+              <a
+                href="httpmd://maps.app.goo.gl/Fe31MSpa8TpQ4TAx7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col"
+              >
+                <div className="text-green-fern">Seattle HQ</div>
+                <address className="not-italic">
+                  837 N 34th St,
+                  <br />
+                  Seattle, WA 98103
+                </address>
+              </a>
+            </li>
+            <li className="col-span-1">
+              <a
+                href="httpmd://maps.app.goo.gl/Caf8NLCUvSzSebiB7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col"
+              >
+                <div className="text-green-fern">Northwest Arkansas Office</div>
+                <address className="not-italic">
+                  5115 W JB Hunt Drive
+                  <br />
+                  Suite 110 &amp; 210, <br />
+                  Rogers, AR 72758
+                </address>
+              </a>
+            </li>
+            <li className="col-span-1">
+              <a
+                href="httpmd://maps.app.goo.gl/GsUZKUwS9gLnztM9A"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col"
+              >
+                <div className="text-green-fern">
+                  Brooklyn Office &amp; Studio
+                </div>
+                <address className="not-italic">20 Jay St #432</address>
+              </a>
+            </li>
+            <li className="col-span-1">
+              <a
+                href="httpmd://maps.app.goo.gl/P3MurXuZfCStgjNJ6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col"
+              >
+                <div className="text-green-fern">Manhattan Beach Studio</div>
+                <address className="not-italic">
+                  324 21st St, <br />
+                  Manhattan Beach, <br />
+                  CA 90266
+                </address>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="mt-[4rem] mb-[4rem] text-[1.35rem] md:mt-[7rem] md:mb-[10rem]">
+        <ul className="site-max flex flex-col gap-y-[1rem] md:flex-row">
+          <li className="relative w-full md:max-w-[45rem] md:min-w-[45rem]">
+            <a
+              href="#"
+              className="iubenda-noiframe iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
+              title="Privacy Policy"
+            >
+              Privacy Policy
+            </a>
+          </li>
+          <li className="relative w-full md:max-w-[45rem] md:min-w-[45rem]">
+            <a
+              href="#"
+              className="iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
+              title="Cookie Policy"
+            >
+              Cookie Policy
+            </a>
+          </li>
+          <li className="flex-1 whitespace-nowrap">
+            <a
+              href="#"
+              className="iubenda-noiframe iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
+              title="Terms and Conditions"
+            >
+              Terms and Conditions
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div className="flex overflow-hidden border-t border-white/10">
+        <MarqueeTrack />
+        <MarqueeTrack />
       </div>
     </footer>
   );

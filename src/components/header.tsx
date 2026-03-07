@@ -212,7 +212,7 @@ const Header = () => {
             <div className="flex items-center justify-between py-[0.4rem] md:py-[1rem]">
               <Link
                 href="/"
-                className="bg-green rounded-lg px-[.5rem] py-[.6rem] md:px-[1rem] md:py-[0.8rem]"
+                className="bg-green rounded-2xl px-[.5rem] py-[.6rem] md:px-[1rem] md:py-[0.8rem]"
               >
                 <img
                   src="/assets/images/logo.png"

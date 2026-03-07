@@ -123,7 +123,7 @@ const HomeSolutions = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative z-2 w-full bg-[#242424] pt-[9rem] pb-[9rem] text-white md:pt-[17.5rem] md:pb-[20rem]"
+      className="relative z-2 w-full bg-[#242424] pt-[9rem] pb-[9rem] md:pt-[17.5rem] md:pb-[20rem]"
     >
       <div className="site-max">
         <div className="flex flex-col items-center gap-y-[2.5rem] text-center md:gap-y-[3.5rem]">
