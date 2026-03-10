@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 
 import { OG, TWITTER } from '@/config/constants';
 
-import AnimationLoader from './components/AnimationLoader';
-
 export const metadata: Metadata = {
   title: 'sample',
   openGraph: {
@@ -21,11 +19,7 @@ export const metadata: Metadata = {
 };
 
 const SamplePage = () => {
-  return (
-    <div>
-      <AnimationLoader />
-    </div>
-  );
+  return <div>SamplePage</div>;
 };
 
 export default SamplePage;

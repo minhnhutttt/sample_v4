@@ -902,7 +902,7 @@ function AnimationBackground({
 // FADE_OUT_MS: how long old content fades out before new content appears
 const FADE_OUT_MS = 500;
 
-export default function SliderWithAnimation() {
+export default function AnimationLoader() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlide, setVisibleSlide] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
@@ -923,7 +923,8 @@ export default function SliderWithAnimation() {
   const progressDoneRef = useRef(false);
   const progressDurationRef = useRef(STAGE_AUTOPLAY[0]);
 
-  const splideRef = useRef<Splide>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const splideRef = useRef<any>(null);
 
   // Smooth cursor follow + progress tick — single RAF loop
   useEffect(() => {

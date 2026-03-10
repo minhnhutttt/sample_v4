@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import AnimationLoader from '@/components/AnimationLoader';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 export const metadata: Metadata = {
@@ -17,7 +18,11 @@ export const metadata: Metadata = {
 };
 
 const IndexPage = () => {
-  return <div className="">home</div>;
+  return (
+    <div className="">
+      <AnimationLoader />
+    </div>
+  );
 };
 
 export default IndexPage;
