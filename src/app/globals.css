@@ -6,6 +6,334 @@
   }
 }
 @layer components {
+  .p-earthFigure {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: stretch;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  .p-earthFigure:before {
+    z-index: 1;
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, #fbfcfc 0%, #f0f3f4 100%);
+  }
+
+  .p-earthFigure__earth {
+    z-index: 2;
+    position: absolute;
+  }
+
+  .p-earthFigure__copy {
+    z-index: 3;
+    position: relative;
+    font-size: 4.375vw;
+    line-height: 5vw;
+    font-family: 'Manrope', sans-serif;
+    letter-spacing: 0;
+    font-weight: 200;
+    color: #ffffff;
+  }
+
+  @media (min-width: 120em) {
+    .p-earthFigure__copy {
+      font-size: 84px;
+      line-height: 96px;
+    }
+  }
+
+  @media (min-width: 60em) and (max-width: 79.99em) {
+    .p-earthFigure__copy {
+      font-size: 56px;
+      line-height: 64px;
+    }
+  }
+
+  @media (max-width: 59.99em) {
+    .p-earthFigure {
+      height: 300px;
+    }
+    .p-earthFigure__earth {
+      top: 50%;
+    }
+    .p-earthFigure__copy {
+      font-size: 8.4541062802vw;
+      line-height: 9.6618357488vw;
+      text-align: center;
+      text-shadow: 0px 0px 10px rgba(54, 66, 70, 0.1);
+    }
+  }
+
+  .p-earth {
+    position: relative;
+    width: 692px;
+    height: 692px;
+    perspective: 6920px;
+  }
+
+  .p-earth:before,
+  .p-earth:after,
+  .p-earth__center:before,
+  .p-earth__center:after {
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+
+  .p-earth:before {
+    z-index: 2;
+    background-image: url('/assets/images/after@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    -webkit-animation: earth_circle_loop_anim 10s linear infinite;
+    animation: earth_circle_loop_anim 10s linear infinite;
+  }
+
+  @-webkit-keyframes earth_circle_loop_anim {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+
+  @keyframes earth_circle_loop_anim {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+
+  .p-earth:after {
+    z-index: 1;
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    transform: rotate(0.0001deg) scale(0.982);
+  }
+
+  .p-earth__center {
+    z-index: 1;
+  }
+
+  .p-earth__center:before {
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .p-earth__center:after {
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .p-earth__center:before,
+  .p-earth__center:after {
+    display: none;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+  .p-earth__center:nth-child(1):before {
+    -webkit-animation-name: earth_before_loop_anim_1;
+    animation-name: earth_before_loop_anim_1;
+  }
+
+  @-webkit-keyframes earth_before_loop_anim_1 {
+    0% {
+      transform: scale(0.982) rotateY(0deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(360deg);
+    }
+  }
+
+  @keyframes earth_before_loop_anim_1 {
+    0% {
+      transform: scale(0.982) rotateY(0deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(360deg);
+    }
+  }
+
+  .p-earth__center:nth-child(1):after {
+    -webkit-animation-name: earth_after_loop_anim_1;
+    animation-name: earth_after_loop_anim_1;
+  }
+
+  @-webkit-keyframes earth_after_loop_anim_1 {
+    0% {
+      transform: scale(0.982) rotateY(90deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(450deg);
+    }
+  }
+
+  @keyframes earth_after_loop_anim_1 {
+    0% {
+      transform: scale(0.982) rotateY(90deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(450deg);
+    }
+  }
+
+  .p-earth__center:nth-child(2):before {
+    -webkit-animation-name: earth_before_loop_anim_2;
+    animation-name: earth_before_loop_anim_2;
+  }
+
+  @-webkit-keyframes earth_before_loop_anim_2 {
+    0% {
+      transform: scale(0.982) rotateY(45deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(405deg);
+    }
+  }
+
+  @keyframes earth_before_loop_anim_2 {
+    0% {
+      transform: scale(0.982) rotateY(45deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(405deg);
+    }
+  }
+
+  .p-earth__center:nth-child(2):after {
+    -webkit-animation-name: earth_after_loop_anim_2;
+    animation-name: earth_after_loop_anim_2;
+  }
+
+  @-webkit-keyframes earth_after_loop_anim_2 {
+    0% {
+      transform: scale(0.982) rotateY(135deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(495deg);
+    }
+  }
+
+  @keyframes earth_after_loop_anim_2 {
+    0% {
+      transform: scale(0.982) rotateY(135deg);
+    }
+    100% {
+      transform: scale(0.982) rotateY(495deg);
+    }
+  }
+
+  .p-earth.is-x2:after,
+  .p-earth.is-x4:after {
+    display: none;
+  }
+
+  .p-earth.is-x2 .p-earth__center:nth-child(1):before,
+  .p-earth.is-x2 .p-earth__center:nth-child(1):after {
+    display: block;
+  }
+
+  .p-earth.is-x4 .p-earth__center:before,
+  .p-earth.is-x4 .p-earth__center:after {
+    display: block;
+  }
+
+  .p-earth--large {
+    width: 64.0625vw;
+    max-width: 1230px;
+    height: 64.0625vw;
+    max-height: 1230px;
+    perspective: 1025 * 10;
+  }
+
+  @media (max-width: 79.99em) {
+    .p-earth--large {
+      width: 820px;
+    }
+  }
+
+  @media (max-width: 79.99em) {
+    .p-earth--large {
+      height: 820px;
+    }
+  }
+
+  .p-earth--large .p-earth:before {
+    background-image: url('/assets/images/after@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .p-earth--large .p-earth:after {
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .p-earth--large .p-earth__center:before {
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  .p-earth--large .p-earth__center:after {
+    background-image: url('/assets/images/before@2x.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
+
+  @media (max-width: 59.99em) {
+    .p-earth {
+      width: 346px;
+      height: 346px;
+      perspective: 3460px;
+    }
+    .p-earth--large {
+      perspective: 519 * 10;
+    }
+  }
+
+  @media (max-width: 59.99em) and (max-width: 59.99em) {
+    .p-earth--large {
+      width: 259.5px;
+    }
+  }
+
+  @media (max-width: 59.99em) and (max-width: 59.99em) {
+    .p-earth--large {
+      height: 259.5px;
+    }
+  }
 }
 @layer utilities {
 }
