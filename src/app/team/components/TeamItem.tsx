@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { TeamProps } from '@/types/team';
 
 const TeamItem = (item: TeamProps) => {
@@ -48,7 +50,14 @@ const TeamItem = (item: TeamProps) => {
           ))}
         </div>
         <div className="my-5 flex justify-end">
-          <img src="/assets/images/team.png" alt="" />
+          <Link
+            href={item.info}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-orbitron flex h-8 w-[90px] items-center justify-center bg-white pr-1 text-[28px] font-semibold text-black italic duration-200 [clip-path:polygon(12px_0%,_100%_0%,_calc(100%-12px)_100%,_0%_100%)] hover:bg-black hover:text-white"
+          >
+            3×3
+          </Link>
         </div>
       </div>
     </div>

@@ -89,7 +89,7 @@ const NewsDetailPage = async ({ params }: Props) => {
               </li>
               <li>
                 <Link
-                  href="https://www.facebook.com/basket.saiko"
+                  href="https://www.youtube.com/channel/UCRabHNK1ilyKXmmPQaKeY0w"
                   target="_blank"
                 >
                   <Image

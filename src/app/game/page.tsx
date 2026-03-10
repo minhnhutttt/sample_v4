@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 import Title from '@/components/common/Title';
 import Matches from '@/components/matches';
@@ -73,6 +74,21 @@ const GamePage = () => {
             試合予定
           </h1>
           <Matches />
+          <div className="mt-12 flex justify-center md:mt-[54px]">
+            <Link
+              href="/9oyk6m96irx6"
+              className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
+            >
+              レオブラックスの現在ランキング
+              <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">
+                <img
+                  src="/assets/images/btn-arrow.svg"
+                  className="max-md:w-4"
+                  alt=""
+                />
+              </span>
+            </Link>
+          </div>
           <div className="mt-25 w-full md:mt-[166px]">
             <h2 className="mt-12 mb-8 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:mb-12 md:border-l-[8px] md:text-[32px]">
               3x3 UNITED（スリー・バイ・スリー・ユナイテッド）とは？
@@ -102,6 +118,21 @@ const GamePage = () => {
                   ]}
                 />
               </div>
+            </div>
+            <div className="mt-12 flex justify-center md:mt-[54px]">
+              <Link
+                href="/about"
+                className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
+              >
+                3x3についてもっと知る
+                <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">
+                  <img
+                    src="/assets/images/btn-arrow.svg"
+                    className="max-md:w-4"
+                    alt=""
+                  />
+                </span>
+              </Link>
             </div>
           </div>
         </div>

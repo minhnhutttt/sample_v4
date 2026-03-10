@@ -45,20 +45,20 @@ const AboutItem = ({
 const BePartnerPage = () => {
   return (
     <div>
-      <div className="relative min-h-[400px] md:min-h-[600px]">
-        <div className="absolute inset-0 flex flex-col justify-between px-5 pt-32 pb-20 text-center md:pt-24 md:pb-20 xl:py-[5%]">
+      <div className="relative h-[650px] overflow-hidden bg-white p-2.5 pb-0! md:h-[864px] md:p-5">
+        <div className="absolute inset-0 flex flex-col justify-between px-5 pt-32 pb-10 text-center md:pt-[60px] md:pb-[90px]">
           <h1 className="text-[24px] font-extrabold text-white md:text-[40px] xl:text-[85px]">
             佐賀から世界へ。 <br />
             共に戦い、共に成長する。
           </h1>
-          <p className="text-[18px] font-extrabold text-white md:text-[24px]">
+          <p className="px-5 text-[18px] font-extrabold text-white md:text-[24px]">
             LEO BLACKS SAGAはパートナー様と世界に挑戦し続けます
           </p>
         </div>
         <img
           src="/assets/images/be-partner.png"
           alt=""
-          className="h-full min-h-[600px] w-full object-cover"
+          className="h-full w-full object-cover object-top"
         />
       </div>
 
@@ -249,30 +249,7 @@ const BePartnerPage = () => {
                 >
                   チームユニフォーム、公式サイト、SNS、試合会場などでロゴを露出。年間を通じて高いブランド認知度を獲得できます。
                 </AboutItem>
-                <AboutItem
-                  image="/assets/images/be-08.png"
-                  title={
-                    <>
-                      2021年
-                      <br />
-                      国内プロリーグより『3x3 TOWN AWARD』を受賞
-                    </>
-                  }
-                >
-                  地域に根差した3x3活動とホームタウンの盛り上げが評価され、国内リーグより表彰されました。
-                </AboutItem>
-                <AboutItem
-                  image="/assets/images/be-09.png"
-                  title={
-                    <>
-                      2021年
-                      <br />
-                      3x3世界NO.1強豪国・セルビア共和国の事前キャンプを唐津で受け入れ
-                    </>
-                  }
-                >
-                  東京オリンピック前、世界最強国セルビアの事前キャンプを唐津市で実施。地域の国際交流に貢献しました。
-                </AboutItem>
+
                 <AboutItem
                   image="/assets/images/be-10.png"
                   title={
@@ -296,6 +273,30 @@ const BePartnerPage = () => {
                   }
                 >
                   アジア圏での経験を積むため、タイの国際リーグへ参戦。世界レベルの戦いに挑戦し、チーム力を向上させています。
+                </AboutItem>
+                <AboutItem
+                  image="/assets/images/be-08.png"
+                  title={
+                    <>
+                      2021年
+                      <br />
+                      国内プロリーグより『3x3 TOWN AWARD』を受賞
+                    </>
+                  }
+                >
+                  地域に根差した3x3活動とホームタウンの盛り上げが評価され、国内リーグより表彰されました。
+                </AboutItem>
+                <AboutItem
+                  image="/assets/images/be-09.png"
+                  title={
+                    <>
+                      2021年
+                      <br />
+                      3x3世界NO.1強豪国・セルビア共和国の事前キャンプを唐津で受け入れ
+                    </>
+                  }
+                >
+                  東京オリンピック前、世界最強国セルビアの事前キャンプを唐津市で実施。地域の国際交流に貢献しました。
                 </AboutItem>
                 <AboutItem
                   image="/assets/images/be-12.png"

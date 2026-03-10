@@ -85,7 +85,8 @@ const Header = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const pathname = usePathname();
-  const isHome = pathname === '/' || pathname === '/be-partner';
+  const isHome =
+    pathname === '/' || pathname === '/be-partner' || pathname === '/about';
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -340,25 +341,6 @@ const Header = () => {
                       <span className="font-bebas-neue">CONTACT</span>
                       <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
                         <span>お問い合わせ</span>
-                        <Image
-                          src="/assets/images/arrow.svg"
-                          alt="logo"
-                          width={25}
-                          height={22}
-                          className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
-                        />
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#"
-                      onClick={close}
-                      className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
-                    >
-                      <span className="font-bebas-neue">FANCLUB</span>
-                      <span className="flex gap-4 text-[16px] font-medium md:text-[20px]">
-                        <span>ファンクラブ</span>
                         <Image
                           src="/assets/images/arrow.svg"
                           alt="logo"

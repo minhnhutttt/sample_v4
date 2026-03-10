@@ -16,7 +16,7 @@ export default function CuratorFeed() {
       </div>
 
       <Script
-        src="https://cdn.curator.io/published/39bc14f9-0359-4f44-9980-ef6864ff5647.js"
+        src="https://cdn.curator.io/published/b0e5ed62-6579-44aa-8f5b-e119fdd8d7b3.js"
         strategy="lazyOnload"
       />
     </div>

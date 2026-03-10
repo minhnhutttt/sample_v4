@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Bebas_Neue, Noto_Sans_JP } from 'next/font/google';
+import { Bebas_Neue, Noto_Sans_JP, Orbitron } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
 import Footer from '@/components/footer';
@@ -25,6 +25,11 @@ const bebas_neue = Bebas_Neue({
   weight: ['400'],
   subsets: ['latin'],
   variable: '--font-bebas-neue',
+});
+const orbitron = Orbitron({
+  weight: ['600'],
+  subsets: ['latin'],
+  variable: '--font-orbitron',
 });
 
 export const metadata: Metadata = {
@@ -60,7 +65,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ja" className="scroll-smooth">
-      <body className={`${noto.className} ${bebas_neue.variable} antialiased`}>
+      <body
+        className={`${noto.className} ${bebas_neue.variable} ${orbitron.variable} antialiased`}
+      >
         <Providers>
           <Header />
           {children}

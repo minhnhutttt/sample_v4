@@ -16,6 +16,7 @@ export type TeamProps = {
       club: string;
     },
   ];
+  info: string;
 };
 
 export type TeamList = {

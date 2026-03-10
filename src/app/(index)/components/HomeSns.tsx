@@ -26,7 +26,10 @@ const HomeSns = () => {
               </Link>
             </li>
             <li>
-              <Link href="https://bit.ly/36ptJf9" target="_blank">
+              <Link
+                href="https://www.youtube.com/channel/UCRabHNK1ilyKXmmPQaKeY0w"
+                target="_blank"
+              >
                 <Image
                   src="/assets/images/ic-yt.svg"
                   alt=""
