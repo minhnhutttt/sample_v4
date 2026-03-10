@@ -893,54 +893,9 @@ function AnimationBackground({
   return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />;
 }
 
-// ─── Progress Bar ─────────────────────────────────────────────────────────────
+// ─── Circular Progress (dùng trong cursor) ────────────────────────────────────
 
-function ProgressBar({
-  duration,
-  active,
-  onComplete,
-}: {
-  duration: number;
-  active: boolean;
-  onComplete: () => void;
-}) {
-  const barRef = useRef<HTMLDivElement>(null);
-  const startRef = useRef<number | null>(null);
-  const rafRef = useRef<number>(0);
-  const doneRef = useRef(false);
-
-  useEffect(() => {
-    if (!active) return;
-    startRef.current = null;
-    doneRef.current = false;
-    if (barRef.current) barRef.current.style.width = '0%';
-
-    function tick(now: number) {
-      if (!startRef.current) startRef.current = now;
-      const elapsed = now - startRef.current;
-      const pct = Math.min((elapsed / duration) * 100, 100);
-      if (barRef.current) barRef.current.style.width = pct + '%';
-      if (pct < 100) {
-        rafRef.current = requestAnimationFrame(tick);
-      } else if (!doneRef.current) {
-        doneRef.current = true;
-        onComplete();
-      }
-    }
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [active, duration, onComplete]);
-
-  return (
-    <div className="h-px overflow-hidden rounded-full bg-black/10">
-      <div
-        ref={barRef}
-        className="h-full rounded-full transition-none"
-        style={{ background: 'rgba(0,0,0,0.35)', width: '0%' }}
-      />
-    </div>
-  );
-}
+// Không cần component riêng — progress được tính trực tiếp trong cursor RAF
 
 // ─── Main Slider ───────────────────────────────────────────────────────────────
 
@@ -951,22 +906,30 @@ export default function SliderWithAnimation() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlide, setVisibleSlide] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
-  const [progressActive, setProgressActive] = useState(true);
 
   // Custom cursor state
   const [cursorPos, setCursorPos] = useState({ x: -200, y: -200 });
   const [cursorVisible, setCursorVisible] = useState(false);
   const [cursorClicking, setCursorClicking] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const cursorTargetRef = useRef({ x: -200, y: -200 });
   const cursorCurrentRef = useRef({ x: -200, y: -200 });
   const cursorRafRef = useRef<number>(0);
 
+  // Progress tracking refs
+  const progressActiveRef = useRef(true);
+  const progressStartRef = useRef<number | null>(null);
+  const progressDoneRef = useRef(false);
+  const progressDurationRef = useRef(STAGE_AUTOPLAY[0]);
+
   const splideRef = useRef<Splide>(null);
 
-  // Smooth cursor follow via lerp on RAF
+  // Smooth cursor follow + progress tick — single RAF loop
   useEffect(() => {
     const LERP = 0.1;
-    function tick() {
+    function tick(now: number) {
+      // cursor lerp
       const tx = cursorTargetRef.current.x;
       const ty = cursorTargetRef.current.y;
       const cx = cursorCurrentRef.current.x;
@@ -975,41 +938,82 @@ export default function SliderWithAnimation() {
       const ny = cy + (ty - cy) * LERP;
       cursorCurrentRef.current = { x: nx, y: ny };
       setCursorPos({ x: nx, y: ny });
+
+      // progress tick
+      if (progressActiveRef.current && !progressDoneRef.current) {
+        if (!progressStartRef.current) progressStartRef.current = now;
+        const pct = Math.min(
+          (now - progressStartRef.current) / progressDurationRef.current,
+          1,
+        );
+        setProgress(pct);
+        if (pct >= 1) {
+          progressDoneRef.current = true;
+          // signal completion via a custom event so goNext can be called
+          window.dispatchEvent(new Event('slider-progress-complete'));
+        }
+      }
+
       cursorRafRef.current = requestAnimationFrame(tick);
     }
     cursorRafRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(cursorRafRef.current);
   }, []);
 
+  const cooldownRef = useRef(false);
+
   const goNext = useCallback(() => {
-    if (transitioning) return;
+    if (transitioning || cooldownRef.current) return;
     const next = (currentSlide + 1) % SLIDES.length;
-    setProgressActive(false);
+
+    cooldownRef.current = true;
+    setIsDisabled(true);
+    setTimeout(() => {
+      cooldownRef.current = false;
+      setIsDisabled(false);
+    }, 2000);
+
+    // Reset progress
+    progressActiveRef.current = false;
+    progressStartRef.current = null;
+    progressDoneRef.current = false;
+    setProgress(0);
+
     setTransitioning(true);
     setTimeout(() => {
       setCurrentSlide(next);
       setVisibleSlide(next);
       splideRef.current?.go(next);
       setTransitioning(false);
-      setTimeout(() => setProgressActive(true), 60);
+      // restart progress after content swap
+      setTimeout(() => {
+        progressDurationRef.current = STAGE_AUTOPLAY[next];
+        progressStartRef.current = null;
+        progressDoneRef.current = false;
+        progressActiveRef.current = true;
+      }, 60);
     }, FADE_OUT_MS);
   }, [currentSlide, transitioning]);
 
-  const handleProgressComplete = useCallback(() => {
-    goNext();
+  // Listen for progress completion
+  useEffect(() => {
+    const handler = () => goNext();
+    window.addEventListener('slider-progress-complete', handler);
+    return () =>
+      window.removeEventListener('slider-progress-complete', handler);
   }, [goNext]);
 
   const slide = SLIDES[visibleSlide];
 
   return (
     <div
-      className="relative h-screen w-full overflow-hidden bg-[#e8ecef]"
+      className={`relative h-screen w-full overflow-hidden bg-[#e8ecef] ${isDisabled ? 'cursor-wait' : 'cursor-pointer'}`}
       onMouseMove={(e) => {
         cursorTargetRef.current = { x: e.clientX, y: e.clientY };
       }}
       onMouseEnter={() => setCursorVisible(true)}
       onMouseLeave={() => setCursorVisible(false)}
-      onMouseDown={() => setCursorClicking(true)}
+      onMouseDown={() => !isDisabled && setCursorClicking(true)}
       onMouseUp={() => setCursorClicking(false)}
       onClick={goNext}
     >
@@ -1038,49 +1042,92 @@ export default function SliderWithAnimation() {
       </div>
 
       {/* ── Custom cursor ─────────────────────────────────────────────── */}
-      <div
-        className="pointer-events-none fixed z-50"
-        style={{
-          left: cursorPos.x,
-          top: cursorPos.y,
-          transform: 'translate(-50%, -50%)',
-          opacity: cursorVisible ? 1 : 0,
-          transition: 'opacity 0.3s ease',
-        }}
-      >
-        <div
-          style={{
-            width: cursorClicking ? 76 : 88,
-            height: cursorClicking ? 76 : 88,
-            borderRadius: '50%',
-            border: '1px solid rgba(0,0,0,0.2)',
-            background: 'rgba(232,236,239,0.7)',
-            backdropFilter: 'blur(6px)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition:
-              'width 0.18s cubic-bezier(0.16,1,0.3,1), height 0.18s cubic-bezier(0.16,1,0.3,1)',
-          }}
-        >
-          <p
+      {(() => {
+        const SIZE = 96;
+        const R = 45;
+        const CIRC = 2 * Math.PI * R;
+        const offset = CIRC * (1 - progress);
+        return (
+          <div
+            className="pointer-events-none fixed z-50"
             style={{
-              fontSize: 9.5,
-              lineHeight: 1.5,
-              textAlign: 'center',
-              color: 'rgba(0,0,0,0.5)',
-              letterSpacing: '0.08em',
-              fontFamily: 'ui-monospace, monospace',
-              textTransform: 'uppercase',
-              userSelect: 'none',
+              width: SIZE,
+              height: SIZE,
+              left: cursorPos.x,
+              top: cursorPos.y,
+              transform: 'translate(-50%, -50%)',
+              opacity: cursorVisible ? (isDisabled ? 0.5 : 1) : 0,
+              transition: 'opacity 0.3s ease',
             }}
           >
-            Click to
-            <br />
-            next
-          </p>
-        </div>
-      </div>
+            {/* SVG progress ring — fills wrapper exactly */}
+            <svg
+              width={SIZE}
+              height={SIZE}
+              viewBox={`0 0 ${SIZE} ${SIZE}`}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                transform: 'rotate(-90deg)',
+              }}
+            >
+              <circle
+                cx={SIZE / 2}
+                cy={SIZE / 2}
+                r={R}
+                fill="none"
+                stroke="rgba(0,0,0,0.08)"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx={SIZE / 2}
+                cy={SIZE / 2}
+                r={R}
+                fill="none"
+                stroke="rgba(0,0,0,0.4)"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeDasharray={CIRC}
+                strokeDashoffset={offset}
+              />
+            </svg>
+
+            {/* Inner circle with text — centered inside wrapper */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 6,
+                borderRadius: '50%',
+                border: '1px solid rgba(0,0,0,0.1)',
+                background: 'rgba(232,236,239,0.75)',
+                backdropFilter: 'blur(6px)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                transform: cursorClicking ? 'scale(0.9)' : 'scale(1)',
+                transition: 'transform 0.15s cubic-bezier(0.16,1,0.3,1)',
+              }}
+            >
+              <p
+                style={{
+                  fontSize: 9.5,
+                  lineHeight: 1.5,
+                  textAlign: 'center',
+                  color: 'rgba(0,0,0,0.45)',
+                  letterSpacing: '0.08em',
+                  fontFamily: 'ui-monospace, monospace',
+                  textTransform: 'uppercase',
+                  userSelect: 'none',
+                }}
+              >
+                Click to
+                <br />
+                next
+              </p>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Slide content overlay */}
       <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-8 md:p-14">
@@ -1158,25 +1205,6 @@ export default function SliderWithAnimation() {
                 {slide.sub}
               </p>
             </div>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="flex items-end justify-between gap-8">
-          <div className="max-w-xs flex-1 space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-light tracking-widest text-black/25 uppercase">
-                Autoplay
-              </span>
-              <span className="text-xs font-light text-black/25">
-                {currentSlide + 1} / {SLIDES.length}
-              </span>
-            </div>
-            <ProgressBar
-              duration={STAGE_AUTOPLAY[currentSlide]}
-              active={progressActive}
-              onComplete={handleProgressComplete}
-            />
           </div>
         </div>
       </div>
