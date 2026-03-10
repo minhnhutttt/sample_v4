@@ -1,6 +1,9 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css/core';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -52,7 +55,6 @@ interface Line {
   floatVx: number;
   floatOffset: number;
   bumpOffset?: number;
-  // replacement line that flies in after this one gets bumped out
   replacement?: {
     width: number;
     color: string;
@@ -60,7 +62,7 @@ interface Line {
     shimmerSpeed: number;
     shimmerOffset: number;
     floatVx: number;
-    progress: number; // 0→1 fly-in progress
+    progress: number;
     floatOffset: number;
   };
 }
@@ -92,41 +94,35 @@ interface AnimState {
 // ─── Constants ────────────────────────────────────────────────────────────────
 
 const COLORS = [
-  '#1a6fd4',
+  '#22449A',
+  '#0D40C0',
   '#2d9be0',
   '#42c8e8',
   '#7bb8f0',
   '#b8a4f0',
   '#e8a4c8',
-  '#a4d4f0',
-  '#6ab4e8',
+  '#0D40C0',
+  '#22449A',
 ];
 const ARC_COUNT = 24;
 const CHOSEN_COUNT = 12;
 
 const PHASE_DURATIONS: Record<string, number> = {
-  // Stage 0
   ARCS_RADIATE: 10000,
-  // Stage 1
   ARCS_CONVERGE: 2200,
   RING_SPIN: 10000,
-  // Stage 2
   RING_OUT: 900,
   BLANK_1: 400,
   RECTS_IN: 4000,
   RECTS_IN_HOLD: 10000,
-  // Stage 3
   RECTS_OUT: 2000,
   BLANK_2: 400,
   LINES_IN: 1500,
   LINES_HOLD: 10000,
-  LINES_HOLD_WAIT: 10000,
-  // Exit
   LINES_OUT: 2500,
   BLANK_3: 400,
 };
 
-// Each stage: phases to play; last one is the hold
 const STAGE_PHASES: string[][] = [
   ['ARCS_RADIATE'],
   ['ARCS_CONVERGE', 'RING_SPIN'],
@@ -134,7 +130,6 @@ const STAGE_PHASES: string[][] = [
   ['RECTS_OUT', 'BLANK_2', 'LINES_IN', 'LINES_HOLD'],
 ];
 
-// Phases that loop until button press
 const HOLD_PHASES = new Set([
   'ARCS_RADIATE',
   'RING_SPIN',
@@ -142,26 +137,57 @@ const HOLD_PHASES = new Set([
   'LINES_HOLD',
 ]);
 
-// ─── Helpers ─────────────────────────────────────────────────────────────────
+// Autoplay interval per stage (ms) — how long before auto-advancing slide
+const STAGE_AUTOPLAY: number[] = [8000, 9000, 10000, 11000];
 
-function easeInOut(t: number): number {
+// ─── Slide content ────────────────────────────────────────────────────────────
+
+const SLIDES = [
+  {
+    eyebrow: '01 — ORIGIN',
+    title: 'From\nChaos',
+    sub: 'Every signal begins as noise.\nEvery pattern starts unseen.',
+    accent: '#42c8e8',
+  },
+  {
+    eyebrow: '02 — CONVERGENCE',
+    title: 'Into\nFocus',
+    sub: 'Scattered arcs find their orbit.\nOrder emerges from entropy.',
+    accent: '#7bb8f0',
+  },
+  {
+    eyebrow: '03 — STRUCTURE',
+    title: 'Taking\nShape',
+    sub: 'Form crystallises from motion.\nEvery block holds its purpose.',
+    accent: '#b8a4f0',
+  },
+  {
+    eyebrow: '04 — FLOW',
+    title: 'Always\nMoving',
+    sub: 'Lines in constant renewal.\nChange is the only constant.',
+    accent: '#e8a4c8',
+  },
+];
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function easeInOut(t: number) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
-function easeOut(t: number): number {
+function easeOut(t: number) {
   return 1 - Math.pow(1 - t, 3);
 }
-function easeIn(t: number): number {
+function easeIn(t: number) {
   return t * t * t;
 }
-function lerp(a: number, b: number, t: number): number {
+function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
 
 // ─── Data factories ───────────────────────────────────────────────────────────
 
-function buildRingSegments(chosenArcs: Arc[], ringRadius: number): void {
+function buildRingSegments(chosenArcs: Arc[], ringRadius: number) {
   const count = chosenArcs.length;
-  // No gaps — arcs fill the full circle, random sizes
   const rawArcs = Array.from({ length: count }, () => 0.5 + Math.random());
   const sumArcs = rawArcs.reduce((a, b) => a + b, 0);
   const arcLens = rawArcs.map((a) => (a / sumArcs) * Math.PI * 2);
@@ -245,9 +271,15 @@ function createLines(w: number, h: number): Line[] {
   });
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Canvas Animation Component ───────────────────────────────────────────────
 
-export default function AnimationLoader() {
+function AnimationBackground({
+  currentStage,
+  onStageReady,
+}: {
+  currentStage: number;
+  onStageReady?: () => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
   const stageRef = useRef<number>(0);
@@ -263,12 +295,23 @@ export default function AnimationLoader() {
     ringRotation: 0,
     ringRotSpeed: 0.008,
   });
+  const onStageReadyRef = useRef(onStageReady);
+  useEffect(() => {
+    onStageReadyRef.current = onStageReady;
+  }, [onStageReady]);
+
+  // When slider moves to a new stage, trigger advance
+  useEffect(() => {
+    if (currentStage !== stageRef.current) {
+      advanceRef.current = true;
+    }
+  }, [currentStage]);
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
 
-    function resize(): void {
+    function resize() {
       canvas.width = canvas.offsetWidth * window.devicePixelRatio;
       canvas.height = canvas.offsetHeight * window.devicePixelRatio;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
@@ -281,14 +324,16 @@ export default function AnimationLoader() {
     resize();
     window.addEventListener('resize', resize);
 
-    // Side-effects when entering a new phase
-    function onEnter(s: AnimState, w: number, h: number): void {
-      if (s.phase === 'RECTS_IN') {
-        s.rects = createRects(w, h);
+    function onEnter(s: AnimState, w: number, h: number) {
+      if (s.phase === 'RECTS_IN') s.rects = createRects(w, h);
+      if (s.phase === 'RECTS_OUT') {
+        s.rects.forEach((r) => {
+          r.shotStartX = undefined;
+        });
       }
       if (s.phase === 'LINES_HOLD') {
         const count = s.lines.length;
-        function pickUniq(n: number): number[] {
+        function pickUniq(n: number) {
           const idx: number[] = [];
           while (idx.length < n) {
             const r = Math.floor(Math.random() * count);
@@ -300,7 +345,6 @@ export default function AnimationLoader() {
           const total = idxs.length;
           return idxs.map((i, batchIdx) => {
             const line = s.lines[i];
-            // Evenly spaced + small jitter so they don't all arrive at exact same time
             const even = batchIdx / (total - 1);
             const jitter = (Math.random() - 0.5) * (0.9 / total);
             const arrivalDelay =
@@ -332,7 +376,6 @@ export default function AnimationLoader() {
       if (s.phase === 'ARCS_CONVERGE') {
         const cx = canvas.offsetWidth / 2,
           cy = canvas.offsetHeight / 2;
-        // Fit within 90% of both width and height
         s.convergeRadius = Math.min(cx * 0.9, cy * 0.9);
         s.arcs.forEach((arc) => {
           arc.snapRadius = arc.radius;
@@ -349,18 +392,17 @@ export default function AnimationLoader() {
       }
     }
 
-    function goTo(phase: string, now: number): void {
+    function goTo(phase: string, now: number) {
       const s = stateRef.current;
       s.phase = phase;
       s.phaseStart = now;
       onEnter(s, canvas.offsetWidth, canvas.offsetHeight);
     }
 
-    function nextPhase(now: number): void {
+    function nextPhase(now: number) {
       const s = stateRef.current;
       const cur = s.phase;
 
-      // Hold phase: advance immediately on button, or auto-advance when timer expires
       if (HOLD_PHASES.has(cur)) {
         advanceRef.current = false;
         const next = (stageRef.current + 1) % 4;
@@ -370,10 +412,9 @@ export default function AnimationLoader() {
         } else {
           goTo(STAGE_PHASES[next][0], now);
         }
+        onStageReadyRef.current?.();
         return;
       }
-
-      // Exit sequence
       if (cur === 'LINES_OUT') {
         goTo('BLANK_3', now);
         return;
@@ -389,13 +430,12 @@ export default function AnimationLoader() {
         return;
       }
 
-      // Normal advance within current stage
       const stagePhasesArr = STAGE_PHASES[stageRef.current];
       const idx = stagePhasesArr.indexOf(cur);
       if (idx >= 0 && idx < stagePhasesArr.length - 1) {
         goTo(stagePhasesArr[idx + 1], now);
       } else {
-        goTo(stagePhasesArr[0], now); // fallback
+        goTo(stagePhasesArr[0], now);
       }
     }
 
@@ -405,23 +445,20 @@ export default function AnimationLoader() {
       colorB: string,
     ): CanvasGradient {
       const W = canvas.offsetWidth;
-      // Tile the gradient across 3W so wrap-around is never visible within the canvas
       const scroll = (shimmerOffset % 1) * W;
       const grad = ctx.createLinearGradient(-scroll, 0, W * 3 - scroll, 0);
       const idxA = COLORS.indexOf(colorA) >= 0 ? COLORS.indexOf(colorA) : 0;
       const cC = COLORS[(idxA + 3) % COLORS.length];
-      // Seamless repeating tile: colorA → white → colorB → colorC → white → colorA → (repeat)
-      // Each tile is 1/3 of the gradient width
       for (let tile = 0; tile < 3; tile++) {
-        const o = tile / 3;
-        const s = 1 / 3;
-        grad.addColorStop(o + s * 0.0, colorA + 'ee');
-        grad.addColorStop(o + s * 0.15, '#ffffffcc');
-        grad.addColorStop(o + s * 0.3, colorB + 'ff');
-        grad.addColorStop(o + s * 0.5, cC + 'ee');
-        grad.addColorStop(o + s * 0.65, '#ffffffbb');
-        grad.addColorStop(o + s * 0.8, colorA + 'ff');
-        grad.addColorStop(Math.min(o + s * 0.999, 1), colorA + 'ee');
+        const o = tile / 3,
+          sv = 1 / 3;
+        grad.addColorStop(o + sv * 0.0, colorA + 'ee');
+        grad.addColorStop(o + sv * 0.15, '#ffffffcc');
+        grad.addColorStop(o + sv * 0.3, colorB + 'ff');
+        grad.addColorStop(o + sv * 0.5, cC + 'ee');
+        grad.addColorStop(o + sv * 0.65, '#ffffffbb');
+        grad.addColorStop(o + sv * 0.8, colorA + 'ff');
+        grad.addColorStop(Math.min(o + sv * 0.999, 1), colorA + 'ee');
       }
       return grad;
     }
@@ -432,7 +469,7 @@ export default function AnimationLoader() {
       cx: number,
       cy: number,
       opacity: number,
-    ): void {
+    ) {
       if (arc.radius < 1) return;
       arc.shimmerOffset = (arc.shimmerOffset + arc.shimmerSpeed * 16) % 1;
       ctx.save();
@@ -462,7 +499,7 @@ export default function AnimationLoader() {
       ringRot: number,
       opacity: number,
       lw: number,
-    ): void {
+    ) {
       stateRef.current.arcs
         .filter((a) => a.chosen)
         .forEach((arc) => {
@@ -494,7 +531,7 @@ export default function AnimationLoader() {
         });
     }
 
-    function draw(now: number): void {
+    function draw(now: number) {
       const s = stateRef.current;
       const w = canvas.offsetWidth,
         h = canvas.offsetHeight;
@@ -504,7 +541,6 @@ export default function AnimationLoader() {
 
       const elapsed = now - s.phaseStart;
       const phaseDur = PHASE_DURATIONS[s.phase] ?? 1000;
-      // If button pressed during a hold phase, expire the timer immediately
       const t =
         HOLD_PHASES.has(s.phase) && advanceRef.current
           ? 1
@@ -522,7 +558,7 @@ export default function AnimationLoader() {
 
       const phase = s.phase;
 
-      // ── ARCS RADIATE ─────────────────────────────────────────────────
+      // ARCS RADIATE
       if (phase === 'ARCS_RADIATE') {
         s.arcs.forEach((arc, i) => {
           arc.radius += 1.1 * (1 + i * 0.04);
@@ -547,7 +583,7 @@ export default function AnimationLoader() {
         });
       }
 
-      // ── ARCS CONVERGE ────────────────────────────────────────────────
+      // ARCS CONVERGE
       if (phase === 'ARCS_CONVERGE') {
         s.ringRotation += s.ringRotSpeed;
         s.arcs.forEach((arc, i) => {
@@ -572,13 +608,13 @@ export default function AnimationLoader() {
           drawRing(cx, cy, s.convergeRadius, s.ringRotation, ringOpacity, 10);
       }
 
-      // ── RING SPIN ────────────────────────────────────────────────────
+      // RING SPIN
       if (phase === 'RING_SPIN') {
         s.ringRotation += s.ringRotSpeed;
         drawRing(cx, cy, s.convergeRadius, s.ringRotation, 1, 10);
       }
 
-      // ── RING OUT ─────────────────────────────────────────────────────
+      // RING OUT
       if (phase === 'RING_OUT') {
         s.ringRotation += s.ringRotSpeed;
         drawRing(
@@ -591,20 +627,18 @@ export default function AnimationLoader() {
         );
       }
 
-      // ── RECTS ────────────────────────────────────────────────────────
+      // RECTS
       if (
         phase === 'RECTS_IN' ||
         phase === 'RECTS_IN_HOLD' ||
         phase === 'RECTS_OUT'
       ) {
         s.rects.forEach((rect, i) => {
-          const delay = (i / s.rects.length) * 0.6;
           let scaleX = 0,
             scaleY = 1,
             opacity = 0;
-
           if (phase === 'RECTS_IN') {
-            const delay2 = (i / s.rects.length) * 0.3; // stagger gấp đôi nhanh hơn
+            const delay2 = (i / s.rects.length) * 0.3;
             const lt = Math.max(0, (t - delay2) / (1 - delay2));
             if (lt < 0.05) return;
             rect.x += rect.vx;
@@ -617,7 +651,6 @@ export default function AnimationLoader() {
             rect.x += rect.vx;
             rect.y += rect.vy;
           } else {
-            // RECTS_OUT
             const squeezeEnd = 0.3;
             if (t < squeezeEnd) {
               const p = t / squeezeEnd;
@@ -638,7 +671,6 @@ export default function AnimationLoader() {
               opacity = 1 - p;
             }
           }
-
           if (opacity <= 0) return;
           ctx.save();
           ctx.translate(rect.x - rect.width / 2, rect.y);
@@ -656,13 +688,12 @@ export default function AnimationLoader() {
         });
       }
 
-      // ── LINES ────────────────────────────────────────────────────────
+      // LINES
       if (
         phase === 'LINES_IN' ||
         phase === 'LINES_HOLD' ||
         phase === 'LINES_OUT'
       ) {
-        // Pass 1: update bumpOffsets BEFORE drawing lines
         if (phase === 'LINES_HOLD' && s.lateLines.length > 0) {
           s.lateLines.forEach((ll) => {
             const lt = Math.max(
@@ -672,13 +703,10 @@ export default function AnimationLoader() {
             if (lt <= 0) return;
             const p = easeOut(Math.min(lt * 10, 1));
             const targetLine = s.lines[ll.targetLineIdx];
-            if (targetLine) {
-              targetLine.bumpOffset = p * (w + targetLine.width);
-            }
+            if (targetLine) targetLine.bumpOffset = p * (w + targetLine.width);
           });
         }
 
-        // Pass 2: draw all lines
         s.lines.forEach((line, i) => {
           const c1 = COLORS[i % COLORS.length];
           const c2 = COLORS[(i + 2) % COLORS.length];
@@ -715,17 +743,13 @@ export default function AnimationLoader() {
             const bump = line.bumpOffset || 0;
             x0 = cx - line.width / 2 + line.floatOffset + bump;
             x1 = cx + line.width / 2 + line.floatOffset + bump;
-
-            // Fade out original as it exits right edge
-            const exitStart = w * 0.7;
-            const exitEnd = w * 1.3;
+            const exitStart = w * 0.7,
+              exitEnd = w * 1.3;
             const bumpFade =
               bump > exitStart
                 ? 1 - Math.min((bump - exitStart) / (exitEnd - exitStart), 1)
                 : 1;
             opacity = (line.baseOpacity || 1) * bumpFade;
-
-            // Spawn replacement once original is fully off screen
             if (bump >= exitEnd && !line.replacement) {
               line.replacement = {
                 width: w * 0.1 + Math.random() * w * 0.189,
@@ -738,8 +762,6 @@ export default function AnimationLoader() {
                 floatOffset: 0,
               };
             }
-
-            // Draw replacement flying in from left
             if (line.replacement) {
               const rep = line.replacement;
               rep.progress = Math.min(rep.progress + 0.008, 1);
@@ -774,9 +796,6 @@ export default function AnimationLoader() {
                 ctx.restore();
               }
             }
-
-            if (opacity <= 0) return;
-
             if (opacity <= 0) return;
             line.shimmerOffset =
               (line.shimmerOffset + line.shimmerSpeed * 16) % 1;
@@ -825,7 +844,6 @@ export default function AnimationLoader() {
           ctx.restore();
         });
 
-        // Pass 3: draw late lines on top
         if (phase === 'LINES_HOLD' && s.lateLines.length > 0) {
           s.lateLines.forEach((ll) => {
             const lt = Math.max(
@@ -834,7 +852,6 @@ export default function AnimationLoader() {
             );
             if (lt <= 0) return;
             const p = easeOut(Math.min(lt * 10, 1));
-            // Once arrived, stay at final position
             if (p >= 1) ll.arrived = true;
             const x0 = ll.arrived
               ? cx - ll.width / 2
@@ -867,65 +884,309 @@ export default function AnimationLoader() {
 
     stateRef.current.phaseStart = performance.now();
     animRef.current = requestAnimationFrame(draw);
-
     return () => {
       cancelAnimationFrame(animRef.current);
       window.removeEventListener('resize', resize);
     };
   }, []);
 
+  return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />;
+}
+
+// ─── Progress Bar ─────────────────────────────────────────────────────────────
+
+function ProgressBar({
+  duration,
+  active,
+  onComplete,
+}: {
+  duration: number;
+  active: boolean;
+  onComplete: () => void;
+}) {
+  const barRef = useRef<HTMLDivElement>(null);
+  const startRef = useRef<number | null>(null);
+  const rafRef = useRef<number>(0);
+  const doneRef = useRef(false);
+
+  useEffect(() => {
+    if (!active) return;
+    startRef.current = null;
+    doneRef.current = false;
+    if (barRef.current) barRef.current.style.width = '0%';
+
+    function tick(now: number) {
+      if (!startRef.current) startRef.current = now;
+      const elapsed = now - startRef.current;
+      const pct = Math.min((elapsed / duration) * 100, 100);
+      if (barRef.current) barRef.current.style.width = pct + '%';
+      if (pct < 100) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else if (!doneRef.current) {
+        doneRef.current = true;
+        onComplete();
+      }
+    }
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [active, duration, onComplete]);
+
+  return (
+    <div className="h-px overflow-hidden rounded-full bg-black/10">
+      <div
+        ref={barRef}
+        className="h-full rounded-full transition-none"
+        style={{ background: 'rgba(0,0,0,0.35)', width: '0%' }}
+      />
+    </div>
+  );
+}
+
+// ─── Main Slider ───────────────────────────────────────────────────────────────
+
+// FADE_OUT_MS: how long old content fades out before new content appears
+const FADE_OUT_MS = 500;
+
+export default function SliderWithAnimation() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [visibleSlide, setVisibleSlide] = useState(0);
+  const [transitioning, setTransitioning] = useState(false);
+  const [progressActive, setProgressActive] = useState(true);
+
+  // Custom cursor state
+  const [cursorPos, setCursorPos] = useState({ x: -200, y: -200 });
+  const [cursorVisible, setCursorVisible] = useState(false);
+  const [cursorClicking, setCursorClicking] = useState(false);
+  const cursorTargetRef = useRef({ x: -200, y: -200 });
+  const cursorCurrentRef = useRef({ x: -200, y: -200 });
+  const cursorRafRef = useRef<number>(0);
+
+  const splideRef = useRef<Splide>(null);
+
+  // Smooth cursor follow via lerp on RAF
+  useEffect(() => {
+    const LERP = 0.1;
+    function tick() {
+      const tx = cursorTargetRef.current.x;
+      const ty = cursorTargetRef.current.y;
+      const cx = cursorCurrentRef.current.x;
+      const cy = cursorCurrentRef.current.y;
+      const nx = cx + (tx - cx) * LERP;
+      const ny = cy + (ty - cy) * LERP;
+      cursorCurrentRef.current = { x: nx, y: ny };
+      setCursorPos({ x: nx, y: ny });
+      cursorRafRef.current = requestAnimationFrame(tick);
+    }
+    cursorRafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(cursorRafRef.current);
+  }, []);
+
+  const goNext = useCallback(() => {
+    if (transitioning) return;
+    const next = (currentSlide + 1) % SLIDES.length;
+    setProgressActive(false);
+    setTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(next);
+      setVisibleSlide(next);
+      splideRef.current?.go(next);
+      setTransitioning(false);
+      setTimeout(() => setProgressActive(true), 60);
+    }, FADE_OUT_MS);
+  }, [currentSlide, transitioning]);
+
+  const handleProgressComplete = useCallback(() => {
+    goNext();
+  }, [goNext]);
+
+  const slide = SLIDES[visibleSlide];
+
   return (
     <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100vh',
-        background: '#e8ecef',
-        overflow: 'hidden',
+      className="relative h-screen w-full overflow-hidden bg-[#e8ecef]"
+      onMouseMove={(e) => {
+        cursorTargetRef.current = { x: e.clientX, y: e.clientY };
       }}
+      onMouseEnter={() => setCursorVisible(true)}
+      onMouseLeave={() => setCursorVisible(false)}
+      onMouseDown={() => setCursorClicking(true)}
+      onMouseUp={() => setCursorClicking(false)}
+      onClick={goNext}
     >
-      <canvas
-        ref={canvasRef}
+      {/* Canvas background */}
+      <AnimationBackground currentStage={currentSlide} />
+
+      {/* Splide — hidden state tracker */}
+      <div className="hidden">
+        <Splide
+          ref={splideRef}
+          options={{
+            type: 'fade',
+            speed: 0,
+            arrows: false,
+            pagination: false,
+            drag: false,
+            rewind: false,
+          }}
+        >
+          {SLIDES.map((_, i) => (
+            <SplideSlide key={i}>
+              <div />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </div>
+
+      {/* ── Custom cursor ─────────────────────────────────────────────── */}
+      <div
+        className="pointer-events-none fixed z-50"
         style={{
-          display: 'block',
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
+          left: cursorPos.x,
+          top: cursorPos.y,
+          transform: 'translate(-50%, -50%)',
+          opacity: cursorVisible ? 1 : 0,
+          transition: 'opacity 0.3s ease',
         }}
-      />
-      <button
-        onClick={() => {
-          advanceRef.current = true;
-        }}
-        style={{
-          position: 'absolute',
-          bottom: 40,
-          left: '50%',
-          transform: 'translateX(-50%)',
-          padding: '12px 36px',
-          fontSize: 15,
-          fontWeight: 600,
-          letterSpacing: '0.08em',
-          background: 'rgba(255,255,255,0.18)',
-          color: '#1a2a4a',
-          border: '1.5px solid rgba(255,255,255,0.55)',
-          borderRadius: 32,
-          cursor: 'pointer',
-          backdropFilter: 'blur(8px)',
-          boxShadow: '0 2px 16px rgba(26,111,212,0.10)',
-          transition: 'background 0.2s',
-          zIndex: 10,
-        }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.background = 'rgba(255,255,255,0.35)')
-        }
-        onMouseLeave={(e) =>
-          (e.currentTarget.style.background = 'rgba(255,255,255,0.18)')
-        }
       >
-        Next →
-      </button>
+        <div
+          style={{
+            width: cursorClicking ? 76 : 88,
+            height: cursorClicking ? 76 : 88,
+            borderRadius: '50%',
+            border: '1px solid rgba(0,0,0,0.2)',
+            background: 'rgba(232,236,239,0.7)',
+            backdropFilter: 'blur(6px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition:
+              'width 0.18s cubic-bezier(0.16,1,0.3,1), height 0.18s cubic-bezier(0.16,1,0.3,1)',
+          }}
+        >
+          <p
+            style={{
+              fontSize: 9.5,
+              lineHeight: 1.5,
+              textAlign: 'center',
+              color: 'rgba(0,0,0,0.5)',
+              letterSpacing: '0.08em',
+              fontFamily: 'ui-monospace, monospace',
+              textTransform: 'uppercase',
+              userSelect: 'none',
+            }}
+          >
+            Click to
+            <br />
+            next
+          </p>
+        </div>
+      </div>
+
+      {/* Slide content overlay */}
+      <div className="pointer-events-none absolute inset-0 flex flex-col justify-between p-8 md:p-14">
+        {/* Top bar */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="flex h-6 w-6 items-center justify-center rounded-full border border-black/20">
+              <div className="h-2 w-2 rounded-full bg-black/50" />
+            </div>
+            <span className="text-xs font-light tracking-[0.2em] text-black/35 uppercase">
+              Sequence
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            {SLIDES.map((_, i) => (
+              <div
+                key={i}
+                className="transition-all duration-700"
+                style={{
+                  width: i === currentSlide ? 24 : 6,
+                  height: 2,
+                  borderRadius: 9999,
+                  background:
+                    i === currentSlide ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0.15)',
+                }}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Center content */}
+        <div className="flex flex-1 items-center">
+          <div
+            style={{
+              opacity: transitioning ? 0 : 1,
+              transition: transitioning
+                ? `opacity ${FADE_OUT_MS}ms cubic-bezier(0.4, 0, 1, 1)`
+                : 'none',
+            }}
+          >
+            <div key={visibleSlide} className="max-w-xl">
+              <p
+                className="mb-5 text-xs font-light tracking-[0.25em] uppercase"
+                style={{
+                  color: slide.accent,
+                  animation:
+                    'fadeSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both',
+                }}
+              >
+                {slide.eyebrow}
+              </p>
+              <h1
+                className="mb-6 leading-none font-bold text-[#1a2a4a]"
+                style={{
+                  fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+                  letterSpacing: '-0.03em',
+                  fontFamily: '"Georgia", serif',
+                  whiteSpace: 'pre-line',
+                  animation:
+                    'fadeSlideUp 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both',
+                }}
+              >
+                {slide.title}
+              </h1>
+              <p
+                className="leading-relaxed text-black/40"
+                style={{
+                  fontSize: 'clamp(0.85rem, 1.5vw, 1rem)',
+                  whiteSpace: 'pre-line',
+                  fontFamily: 'ui-monospace, monospace',
+                  animation:
+                    'fadeSlideUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both',
+                }}
+              >
+                {slide.sub}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="flex items-end justify-between gap-8">
+          <div className="max-w-xs flex-1 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-light tracking-widest text-black/25 uppercase">
+                Autoplay
+              </span>
+              <span className="text-xs font-light text-black/25">
+                {currentSlide + 1} / {SLIDES.length}
+              </span>
+            </div>
+            <ProgressBar
+              duration={STAGE_AUTOPLAY[currentSlide]}
+              active={progressActive}
+              onComplete={handleProgressComplete}
+            />
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }
