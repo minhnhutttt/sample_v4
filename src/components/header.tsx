@@ -276,14 +276,14 @@ const Header = () => {
                           <img
                             src={item.image}
                             alt={item.alt}
-                            className="h-16 md:h-[144px]"
+                            className="h-16 md:h-[140px]"
                           />
                         </span>
                         <span className="absolute top-0 left-0 translate-y-full duration-300 group-hover/item:translate-y-0 max-md:group-[.open]/item:translate-y-0">
                           <img
                             src={item.image}
                             alt={item.alt}
-                            className="h-16 md:h-[144px]"
+                            className="h-16 md:h-[140px]"
                           />
                         </span>
                       </button>

@@ -194,15 +194,44 @@ const AboutPage = () => {
               <div className="flex justify-center gap-5 py-7.5 text-[14px] max-md:flex-wrap max-md:text-center md:gap-10 md:py-[45px] md:text-[16px]">
                 <Link
                   href="http://3x3.japanbasketball.jp/what-is"
-                  className="w-[180px]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
                 >
                   詳しいルール説明
+                  <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">
+                    <img
+                      src="/assets/images/ic-extention.svg"
+                      className="w-4 md:w-5"
+                      alt=""
+                    />
+                  </span>
                 </Link>
-                <Link href="/history" className="w-[180px]">
+                <Link
+                  href="/history"
+                  className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
+                >
                   チームの歴史を知る
+                  <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">
+                    <img
+                      src="/assets/images/btn-arrow.svg"
+                      className="max-md:w-4"
+                      alt=""
+                    />
+                  </span>
                 </Link>
-                <Link href="/team?s=レオブラックス" className="w-[180px]">
+                <Link
+                  href="/team?s=レオブラックス"
+                  className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
+                >
                   選手をもっと知る
+                  <span className="flex size-7 items-center justify-center rounded-full bg-white md:size-10">
+                    <img
+                      src="/assets/images/btn-arrow.svg"
+                      className="max-md:w-4"
+                      alt=""
+                    />
+                  </span>
                 </Link>
               </div>
               <ul className="my-5 flex items-center justify-center gap-[14px]">
