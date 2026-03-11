@@ -8,6 +8,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 
 import { NavLinks } from '@/config/constants';
+import { useAppDispatch } from '@/store/hooks';
+import { openModal } from '@/store/slices/modalSlice';
 
 import Button from './button';
 
@@ -20,6 +22,8 @@ const Header = () => {
   const burgerBotRef = useRef<HTMLSpanElement>(null);
   const headerWrapRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -171,14 +175,11 @@ const Header = () => {
 
   return (
     <>
-      <div
-        ref={headerWrapRef}
-        className="fixed top-0 right-0 left-0 z-100 will-change-transform"
-      >
-        <header className="relative z-50 pt-[2.2rem]">
+      <div ref={headerWrapRef} className="fixed top-0 right-0 left-0 z-50">
+        <header className="relative z-10 pt-[2.2rem]">
           {/* Main nav */}
           <div className="sh__inner site-max relative">
-            <div className="flex items-center justify-between py-[0.4rem] md:py-[1rem]">
+            <div className="relative z-10 flex items-center justify-between py-[0.4rem] md:py-[1rem]">
               <Link href="/" className="">
                 <img src="/assets/images/logo.png" className="" />
               </Link>
@@ -200,7 +201,11 @@ const Header = () => {
                     </li>
                   ))}
                 </ul>
-                <Button />
+                <Button
+                  text="お問い合わせ"
+                  en="CONTACT US"
+                  onClick={() => dispatch(openModal({ name: 'contact' }))}
+                />
               </div>
 
               {/* Hamburger placeholder */}
@@ -212,7 +217,7 @@ const Header = () => {
         {/* Burger button */}
         <button
           onClick={toggleMenu}
-          className="radius-global s:hidden pointer-events-auto absolute top-[1.5rem] right-[1.2rem] z-150 flex size-[4rem] items-center justify-center bg-[#85F4E2] md:hidden"
+          className="radius-global pointer-events-auto absolute top-[1.5rem] right-[1.2rem] z-50 z-150 flex size-[4rem] items-center justify-center bg-[#85F4E2] md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative flex h-[2rem] w-[1.5rem] flex-col items-center justify-center gap-[.4rem]">
@@ -235,7 +240,7 @@ const Header = () => {
       {/* Full-screen Mobile Menu Overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-[99] flex flex-col bg-[#424242] md:hidden"
+        className="fixed inset-0 z-[49] flex flex-col bg-[#424242] md:hidden"
         style={{
           clipPath: 'circle(0% at calc(100% - 3rem) 3rem)',
           pointerEvents: menuOpen ? 'auto' : 'none',
@@ -283,26 +288,6 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            <li
-              ref={(el) => {
-                if (el) navItemsRef.current[NavLinks.length] = el;
-              }}
-              style={{ opacity: 0, transform: 'translateY(60px)' }}
-            >
-              <Link
-                href="/"
-                onClick={closeMenu}
-                className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
-              >
-                <div className="">
-                  <p className="text-[2rem] font-bold">お問い合わせ</p>
-                  <p className="text-[1.4rem]">CONTACT US</p>
-                </div>
-                <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
-                  →
-                </span>
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

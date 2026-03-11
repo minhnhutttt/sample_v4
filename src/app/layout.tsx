@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Figtree } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
 import SmoothScroll from '@/components/SmoothScroll';
+import { ContactModalWrapper } from '@/components/contact/ContactModalWrapper';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import {
@@ -17,7 +18,7 @@ import {
 import './globals.css';
 import { Providers } from './providers';
 
-const noto = Noto_Sans_JP({
+const figtree = Figtree({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
 });
@@ -56,7 +57,7 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body
-        className={`${noto.className} bg-[#FFF6F6] text-[#424242] antialiased`}
+        className={`${figtree.className} bg-[#FFF6F6] text-[#424242] antialiased`}
       >
         <Providers>
           <Header />
@@ -67,6 +68,8 @@ const RootLayout = ({
               <Footer />
             </div>
           </div>
+
+          <ContactModalWrapper />
         </Providers>
       </body>
     </html>

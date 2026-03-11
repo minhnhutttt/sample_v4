@@ -398,7 +398,11 @@
   }
 
   .iu-btn:hover {
-    color: #cce561 !important;
+    color: #85f4e2 !important;
+  }
+
+  .animate-fadeUp {
+    animation: fadeUp 0.4s ease both;
   }
 
   /* Work Card Components */
@@ -434,7 +438,7 @@
     }
 
     .work-card:hover .work-card__pills {
-      color: #cce561;
+      color: #85f4e2;
     }
 
     .work-card-content__inner {
@@ -480,7 +484,7 @@
     }
 
     .h-main:before {
-      background-color: #cce561;
+      background-color: #85f4e2;
       top: 0;
       right: 0;
       bottom: 0;
@@ -518,7 +522,7 @@
     }
 
     .h-highlight:before {
-      background-color: #cce561;
+      background-color: #85f4e2;
       content: '';
       top: 0;
       right: 0;
@@ -539,7 +543,7 @@
     .h-main-multi {
       background-image:
         linear-gradient(currentColor, currentColor),
-        linear-gradient(#cce561, #cce561);
+        linear-gradient(#85f4e2, #85f4e2);
       background-position:
         0 95%,
         0 90%;
@@ -575,6 +579,17 @@
 /* ============================================
    KEYFRAME ANIMATIONS
    ============================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes marq {
   0% {
     transform: translate(0);

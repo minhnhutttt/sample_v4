@@ -3,10 +3,16 @@
 import { useLayoutEffect, useRef } from 'react';
 
 import gsap from 'gsap';
-import Link from 'next/link';
 
-const Button = () => {
-  const linkRef = useRef<HTMLAnchorElement>(null);
+type Props = {
+  text: string;
+  en: string;
+  isBack?: boolean;
+  onClick?: () => void;
+};
+
+const Button = ({ text, en, isBack = false, onClick }: Props) => {
+  const linkRef = useRef<HTMLButtonElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const textTopRef = useRef<HTMLDivElement>(null);
   const textBottomRef = useRef<HTMLDivElement>(null);
@@ -81,10 +87,10 @@ const Button = () => {
   }, []);
 
   return (
-    <Link
+    <button
+      onClick={onClick}
       ref={linkRef}
-      href={'/'}
-      className="group btn relative inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] bg-[#85F4E2] text-black"
+      className={`group btn relative z-1 inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] text-left text-black ${isBack ? 'border border-[#85F4E2]' : 'bg-[#85F4E2]'}`}
     >
       <div
         ref={bgRef}
@@ -92,47 +98,99 @@ const Button = () => {
       />
 
       <div className="relative z-2 flex h-full w-full items-center justify-between gap-x-[1rem] px-[1rem]">
+        {isBack && (
+          <svg
+            className="relative size-[2rem] flex-shrink-0 duration-500 group-hover:-translate-x-2"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_17069_696"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="18"
+              height="18"
+            >
+              <rect
+                x="18"
+                y="18"
+                width="18"
+                height="18"
+                transform="rotate(-180 18 18)"
+                fill="#D9D9D9"
+              />
+            </mask>
+            <g mask="url(#mask0_17069_696)">
+              <path
+                d="M6.90068 7.82969L15.6382 7.82969L15.6382 10.1922L6.90068 10.1922L10.6882 13.9797L9.00068 15.6484L2.36318 9.01094L9.00068 2.37344L10.6882 4.04219L6.90068 7.82969Z"
+                fill="#85F4E2"
+              />
+            </g>
+          </svg>
+        )}
         {/* Text container — clips animation */}
         <div className="relative overflow-hidden">
           {/* Top layer */}
           <div ref={textTopRef} className="flex flex-col">
-            <p className="text-[1.4rem] font-bold">お問い合わせ</p>
-            <p className="text-[1rem] text-[#424242]/80">CONTACT US</p>
+            <p
+              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#85F4E2]' : ''}`}
+            >
+              {text}
+            </p>
+            <p
+              className={`text-[1rem] ${isBack ? 'text-[#85F4E2]/50' : 'text-[#424242]/80'}`}
+            >
+              {en}
+            </p>
           </div>
 
           {/* Bottom layer */}
           <div ref={textBottomRef} className="absolute inset-0 flex flex-col">
-            <p className="text-[1.4rem] font-bold">お問い合わせ</p>
-            <p className="text-[1rem] text-[#424242]/80">CONTACT US</p>
+            <p
+              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#85F4E2]' : ''}`}
+            >
+              {text}
+            </p>
+            <p
+              className={`text-[1rem] ${isBack ? 'text-[#85F4E2]/50' : 'text-[#424242]/80'}`}
+            >
+              {en}
+            </p>
           </div>
         </div>
-        <svg
-          className="relative size-[2rem] flex-shrink-0 duration-500 group-hover:-translate-x-2"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <mask
-            id="mask0_19008_45"
-            maskUnits="userSpaceOnUse"
-            x="0"
-            y="0"
+        {!isBack && (
+          <svg
+            className="relative size-[2rem] flex-shrink-0 duration-500 group-hover:-translate-x-2"
             width="18"
             height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <rect width="18" height="18" fill="#D9D9D9" />
-          </mask>
-          <g mask="url(#mask0_19008_45)">
-            <path
-              d="M11.0993 10.1703H2.36182V7.80781H11.0993L7.31182 4.02031L8.99932 2.35156L15.6368 8.98906L8.99932 15.6266L7.31182 13.9578L11.0993 10.1703Z"
-              fill="#424242"
-            />
-          </g>
-        </svg>
+            <mask
+              id="mask0_19008_45"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="18"
+              height="18"
+            >
+              <rect width="18" height="18" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_19008_45)">
+              <path
+                d="M11.0993 10.1703H2.36182V7.80781H11.0993L7.31182 4.02031L8.99932 2.35156L15.6368 8.98906L8.99932 15.6266L7.31182 13.9578L11.0993 10.1703Z"
+                fill="#424242"
+              />
+            </g>
+          </svg>
+        )}
       </div>
-    </Link>
+    </button>
   );
 };
 

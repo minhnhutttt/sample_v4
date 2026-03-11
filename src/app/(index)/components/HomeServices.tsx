@@ -5,48 +5,27 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import Button from '@/components/button';
-import Rive from '@/components/rive';
-
 const SERVICES = [
   {
-    title: 'Strategy',
+    title: 'MAXIMIZING BUSINESS VALUE.',
+    text: 'プロダクトについて',
     description:
-      'As a strategic digital marketing agency, genuine impact starts with a plan. Before we spend a single dollar on media, we immerse ourselves in your business to deliver insights on your market, customers, and competition, providing deeply researched perspectives on where and how to grow your brand across the full customer journey.',
-    tags: [
-      'Market Research',
-      'Consumer Segmentation & Market Sizing',
-      'Competitive Intelligence',
-    ],
-    riv: '/assets/images/hero_strategy.riv',
+      '私たちは、厳選された高品質なプロダクトの提供を通じて、お客様の事業収益を最大化するパートナーです。 単なるツールの導入に留まらず、各企業の収益構造を理解し、無駄を排して利益を確実に残すための最適なソリューションを提案します。 「New Engen」のような戦略的な視点を持ちつつも、目的はあくまで事業の持続可能性。 プロダクトが貴社のオペレーションに深く浸透し、導入した瞬間から実利的なインパクトを生み出すことを約束します。 質の高いラインナップは、貴社のビジョンを具現化し、次なる成長ステージへと導く強力な利益のエンジンとなります。',
+    riv: '/assets/images/hero_strategy.png',
   },
   {
-    title: 'Media',
+    title: 'SUSTAINABLE GROWTH FOR EVERY BUSINESS.',
+    text: '成長を支える拡張性',
     description:
-      'As a digital marketing agency, we know real growth takes more than quick wins—it demands a strategic, full-funnel media approach. At New Engen, we leverage deep consumer research and insights, innovative creative strategy, and precision media planning and buying to craft high-performance campaigns that maximize impact while fueling long-term brand momentum.',
-    tags: ['Paid Search', 'Paid Social', 'Programmatic'],
-    riv: '/assets/images/hero_media.riv',
+      'ビジネスの規模やフェーズの変化に合わせ、柔軟に適応できる高い拡張性を備えています。 スタートアップの迅速な収益化から、大企業の複雑な業務最適化まで幅広くカバーし、必要なタイミングで利益貢献度の高いプロダクトを追加・統合できる環境を提供します。 ラインナップが増えても情報が破綻しない体系的な設計により、常に課題に直結する解決策を見つけ出しやすいカタログ的な操作感を実現しました。 課題やカテゴリに基づいた高度なフィルタリング機能を活用することで、将来的な事業拡大にもスムーズに対応し、貴社の持続的な成長を構造面から力強く支え続けます。',
+    riv: '/assets/images/hero_strategy.png',
   },
   {
-    title: 'Creative',
+    title: 'OPERATIONAL EFFICIENCY & GOVERNANCE.',
+    text: '信頼と実績のパフォーマンス',
     description:
-      'As a creative-driven digital agency, we craft audience-first content that doesn’t just look good—it performs and converts. From brand storytelling to performance-driven assets, our creative breaks through the noise, builds brand equity, and drives measurable results across every channel.',
-    tags: ['Paid Search', 'Paid Social', 'Programmatic'],
-    riv: '/assets/images/hero_creative.riv',
-  },
-  {
-    title: 'Measurement',
-    description:
-      'At New Engen, measurement isn’t an afterthought—it’s the foundation of success. Our always-on, AI-powered analytics provide a real-time, cross-channel view of performance, empowering brands to optimize spend, maximize impact, and scale with confidence.',
-    tags: ['Paid Search', 'Paid Social', 'Programmatic'],
-    riv: '/assets/images/hero_measurement.riv',
-  },
-  {
-    title: 'Retail Marketing',
-    description:
-      'As a digital marketing agency with deep retail expertise, we know retail marketing is more than just shelf space—it’s about strategic execution that drives measurable growth. At New Engen, we take a data-first approach to retail, combining digital media, shopper insights, and omnichannel activation to create campaigns that convert. With deep expertise in CPG and retail media, we optimize every touchpoint to turn browsers into buyers.',
-    tags: ['Paid Search', 'Paid Social', 'Programmatic'],
-    riv: '/assets/images/hero_retail.riv',
+      '最新のテクノロジーを基盤とし、安定した運用と確かな成果を提供します。 各プロダクトは、実戦で鍛え抜かれた高度な技術を採用しており、強固なセキュリティと高い信頼性を両立させています。 導入後のサポート体制や品質保証を明確に定義することで、外部ソリューションの活用において懸念されがちな運用の不安を払拭しました。 複雑な業務プロセスを自動化し、データに基づいた客観的な成果を出し続ける仕組みにより、現場の負担を軽減しながらガバナンスの強化とコストの適正化を同時に実現。 確かな実績に基づき、利益を残すための解決策をお届けします。',
+    riv: '/assets/images/hero_strategy.png',
   },
 ];
 
@@ -75,13 +54,10 @@ const HomeServices = () => {
   }, []);
 
   return (
-    <div className="bg-green w-full py-[9rem] md:pt-[15rem] md:pb-0">
+    <div className="w-full py-[9rem] md:pt-[15rem] md:pb-0">
       <div className="site-max flex flex-col items-start">
         <div className="flex flex-col gap-y-[3.5rem]">
-          <p className="h7 font-bold">Services</p>
-          <p className="h2 w-full md:max-w-[145rem]">
-            Driving marketing impact across the customer journey.
-          </p>
+          <p className="text-[4rem] font-bold md:text-[7rem]">About Products</p>
         </div>
       </div>
 
@@ -92,39 +68,25 @@ const HomeServices = () => {
             ref={(el) => {
               sectionRefs.current[i] = el;
             }}
-            className="bg-green h-screen w-full overflow-hidden"
+            className="h-screen w-full overflow-hidden bg-[#FFF6F6]"
           >
-            <div className="bg-green border-accent-teal/20 relative origin-top border-t md:pt-[10rem]">
+            <div className="relative origin-top md:pt-[10rem]">
               <div className="site-max flex flex-col">
                 <div className="relative flex">
-                  <div className="acc-services-item__title h3 relative flex h-[8rem] items-center md:h-[12rem]">
+                  <div className="acc-services-item__title relative my-[2rem] flex items-center text-[2rem] font-bold text-[#9579C8] md:text-[3.2rem]">
                     {service.title}
                   </div>
                 </div>
-                <div className="acc-services-item__content relative overflow-hidden">
+                <p className="text-[2rem] font-bold">{service.text}</p>
+                <div className="acc-services-item__content relative mt-[3rem] overflow-hidden md:mt-[6rem]">
                   <div className="relative flex flex-col max-md:gap-y-[2rem] md:flex-row md:items-start md:gap-x-[16.5rem]">
-                    <div className="acc-services-item__media radius-media relative flex flex-1 md:order-2 md:mt-0">
-                      <div className="aspect-9/5 w-full md:w-[80rem]">
-                        <Rive src={service.riv} />
-                      </div>
+                    <div className="acc-services-item__media radius-media relative flex flex-1 justify-center md:order-2 md:mt-0">
+                      <img src={service.riv} alt="" />
                     </div>
                     <div className="relative flex-1 md:order-1 md:max-w-[65rem]">
-                      <p className="text-[1.4rem] md:text-[2.2rem]">
+                      <p className="text-[1.4rem] md:text-[1.6rem]">
                         {service.description}
                       </p>
-                      <div className="mt-[1.5rem] flex flex-wrap gap-[1rem] md:mt-[2rem] md:gap-[1.5rem]">
-                        {service.tags.map((tag) => (
-                          <p
-                            key={tag}
-                            className="inline-flex h-[3rem] items-center rounded-full border border-current px-[.8rem] text-[1.4rem] leading-none whitespace-nowrap md:h-[3.4rem] md:px-[1.2rem]"
-                          >
-                            {tag}
-                          </p>
-                        ))}
-                      </div>
-                      <div className="mt-[4rem] md:mt-[8rem]">
-                        <Button href="/" text="Learn more" />
-                      </div>
                     </div>
                   </div>
                 </div>

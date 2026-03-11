@@ -9,6 +9,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import useScrollAnimations from '@/app/hooks/useScrollAnimations';
 import SplitTextReveal from '@/components/animations/Splittextreveal';
 import Button from '@/components/button';
+import { useAppDispatch } from '@/store/hooks';
+import { openModal } from '@/store/slices/modalSlice';
 import type { AbsRect } from '@/types/card-animation';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -17,34 +19,32 @@ const CARD_DEFS = [
   {
     id: 'sc0',
     destId: 'ph0',
-    name: 'Altra',
+    name: 'Steproof',
     image: '/assets/images/thumbnail.jpg',
-    tags: ['Fashion & Apparel', 'Outdoor & Active Lifestyle'],
+    tags: ['移動距離照明・自動化'],
   },
   {
     id: 'sc1',
     destId: 'ph1',
-    name: 'arrae',
+    name: 'VisionFlow',
     image: '/assets/images/thumbnail-02.jpg',
-    tags: ['Health & Wellness'],
+    tags: ['データ分析'],
   },
   {
     id: 'sc2',
     destId: 'ph2',
-    name: 'OREO',
+    name: 'CoreNexus',
     image: '/assets/images/thumbnail-03.jpg',
-    tags: ['Food & Beverage', 'CPG'],
+    tags: ['CRM/顧客管理'],
   },
   {
     id: 'sc3',
     destId: 'ph3',
-    name: 'Coca-Cola',
+    name: 'AquaGrid',
     image: '/assets/images/thumbnail-04.jpg',
-    tags: ['Food & Beverage', 'CPG'],
+    tags: ['在庫最適化'],
   },
 ] as const;
-
-const BRANDS = ['NORDSTROM', "HARRY'S", 'OREO', 'COCA-COLA', 'ALTRA'];
 
 // ─── Slot definitions ──────────────────────────────────────────────────────────
 const SLOTS = [
@@ -73,6 +73,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function HomeKv() {
+  const dispatch = useAppDispatch();
   const ref = useScrollAnimations();
   const scrollSectionRef = useRef<HTMLElement>(null);
   const stackRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -335,7 +336,11 @@ export default function HomeKv() {
               <p className="js-t-fade-up text-[1.4rem] md:max-w-[60rem]">
                 私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、収益性の向上と業務の最適化を支援します。
               </p>
-              <Button />
+              <Button
+                text="お問い合わせ"
+                en="CONTACT US"
+                onClick={() => dispatch(openModal({ name: 'contact' }))}
+              />
             </div>
           </div>
 
@@ -406,7 +411,7 @@ export default function HomeKv() {
           </div>
 
           {/* Destination grid */}
-          <div className="relative mt-[6rem] grid w-full grid-cols-1 gap-y-[4rem] md:mt-[10rem] md:grid-cols-4 md:gap-x-[8rem]">
+          <div className="relative mt-[6rem] grid w-full grid-cols-1 gap-y-[4rem] md:mt-[8rem] md:grid-cols-4 md:gap-x-[5.7rem]">
             {CARD_DEFS.map((card) => (
               <div key={card.destId} className="work-card relative col-span-1">
                 <div
@@ -416,12 +421,12 @@ export default function HomeKv() {
                     aspectRatio: '324/551',
                   }}
                 />
-                <div className="work-card-content relative z-2 -mt-[1rem] overflow-hidden">
-                  <div className="work-card-content__inner relative flex flex-col gap-y-[1.5rem] pt-[2.5rem] pb-[1.5rem]">
-                    <h3 className="work-card__title h4 relative z-2 !leading-none font-bold">
+                <div className="work-card-content relative z-2 -mt-[0.5rem] overflow-hidden md:-mt-[1.5rem]">
+                  <div className="work-card-content__inner relative flex flex-col gap-y-[1rem] pt-[2.5rem] pb-[1.5rem]">
+                    <h3 className="work-card__title relative z-2 text-[1.8rem] !leading-none font-bold">
                       {card.name}
                     </h3>
-                    <div className="work-card__pills relative z-2 flex gap-x-[0.5rem] md:gap-x-[1rem]">
+                    <div className="work-card__pills relative z-2 flex flex-wrap gap-[0.5rem] md:gap-[1rem]">
                       {card.tags.map((tag) => (
                         <span
                           key={tag}
@@ -435,10 +440,6 @@ export default function HomeKv() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-[4rem] text-center md:mt-[7.5rem]">
-            <Button />
           </div>
         </div>
       </section>

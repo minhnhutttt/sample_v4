@@ -1,327 +1,128 @@
 'use client';
 
+import Link from 'next/link';
+
+import { useAppDispatch } from '@/store/hooks';
+import { openModal } from '@/store/slices/modalSlice';
+
 import Button from './button';
 
-const PartnerLogo = ({ num }: { num: number }) => (
-  <div className="relative flex max-w-[20rem] min-w-[20rem] items-center justify-center border-r border-white/10 md:max-w-[27.5rem] md:min-w-[27.5rem]">
-    <div className="media-contain relative flex h-[4rem] w-[14rem] items-center justify-center md:h-[5rem] md:w-[17rem]">
-      <img
-        src={`/assets/images/partner-${String(num).padStart(2, '0')}.png`}
-        alt={`Partner ${num}`}
-        className="opacity-100 transition-opacity duration-500 ease-out"
-        loading="lazy"
-      />
-    </div>
-  </div>
-);
-
-const MarqueeTrack = () => {
-  const logos = Array.from({ length: 6 }, (_, i) => i + 1);
-
-  return (
-    <div className="sf-logos__marquee relative flex h-[8rem] md:h-[10rem]">
-      {logos.map((num) => (
-        <PartnerLogo key={`first-${num}`} num={num} />
-      ))}
-      {logos.map((num) => (
-        <PartnerLogo key={`second-${num}`} num={num} />
-      ))}
-    </div>
-  );
-};
 const Footer = () => {
+  const dispatch = useAppDispatch();
   return (
-    <footer className="bg-green relative overflow-hidden">
+    <footer className="relative overflow-hidden bg-[#424242] text-[#FFF6F6]">
       <div className="site-max">
-        <div className="py-[7.5rem] md:py-[12rem]">
+        <div className="flex justify-center py-[7.5rem] md:py-[12rem]">
           <svg
-            className="relative h-auto w-full text-[#618C70]"
-            viewBox="0 0 1680 219"
+            width="1194"
+            height="147"
+            viewBox="0 0 1194 147"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M1319.25 98.7029H1225.24C1223.04 98.7029 1221.67 101.097 1222.75 103.003L1235.25 124.698C1236.82 127.385 1239.65 129.047 1242.73 129.047H1290.71C1290.42 160.856 1265.55 185.141 1227.09 185.141C1183.12 185.141 1151.01 152.989 1151.01 109.355C1151.01 65.7205 1183.12 33.2756 1225.58 33.2756C1245.91 33.2756 1262.86 40.5561 1277.42 52.9673C1279.23 54.7752 1281.38 54.7752 1283.19 52.6741L1298.63 36.0119C1300.73 33.6176 1300.73 31.4676 1298.34 29.3665C1279.52 10.6032 1255.29 0 1225.58 0C1164.06 0 1116.76 47.5924 1116.76 109.404C1116.76 171.215 1164.06 218.514 1226.17 218.514C1288.27 218.514 1323.74 174.245 1323.74 118.199V103.345C1323.74 100.804 1321.69 98.8006 1319.2 98.8006"
-              className="fill-current"
-            ></path>
-            <path
-              d="M120.838 211.432C99.2892 173.905 33.9597 60.2012 33.9597 60.2012V209.917C33.9597 212.653 32.1517 214.461 29.4154 214.461H4.25108C1.51476 214.461 0 212.653 0 209.917V6.84307C0 4.10675 1.51476 2.29883 4.25108 2.29883H30.7347C33.1778 2.29883 34.8392 3.03177 36.2073 5.32833L127.043 162.618V6.84307C127.043 4.10675 128.558 2.29883 131.294 2.29883H156.459C159.195 2.29883 161.003 4.10675 161.003 6.84307V209.917C161.003 212.653 159.195 214.461 156.459 214.461H126.359C123.916 214.461 122.108 213.533 120.887 211.432"
-              className="fill-current"
-            ></path>
-            <path
-              d="M207.375 209.917V6.84307C207.375 4.10675 208.89 2.29883 211.626 2.29883H316.828C319.564 2.29883 321.079 4.10675 321.079 6.84307V28.0495C321.079 30.7858 319.564 32.5938 316.828 32.5938H241.335V90.7894H300.214C302.951 90.7894 304.759 92.5973 304.759 95.3336V116.833C304.759 119.57 302.951 121.084 300.214 121.084H241.335V184.117H316.828C319.564 184.117 321.372 185.925 321.372 188.662V209.868C321.372 212.604 319.564 214.412 316.828 214.412H211.626C208.89 214.412 207.375 212.604 207.375 209.868"
-              className="fill-current"
-            ></path>
-            <path
-              d="M757.863 209.917V6.84307C757.863 4.10675 759.378 2.29883 762.114 2.29883H867.316C870.052 2.29883 871.567 4.10675 871.567 6.84307V28.0495C871.567 30.7858 870.052 32.5938 867.316 32.5938H791.823V90.7894H850.752C853.488 90.7894 855.296 92.5973 855.296 95.3336V116.833C855.296 119.57 853.488 121.084 850.752 121.084H791.823V184.117H867.316C870.052 184.117 871.86 185.925 871.86 188.662V209.868C871.86 212.604 870.052 214.412 867.316 214.412H762.114C759.378 214.412 757.863 212.604 757.863 209.868"
-              className="fill-current"
-            ></path>
-            <path
-              d="M1036.33 211.432C1014.73 173.905 949.452 60.2012 949.452 60.2012V209.917C949.452 212.653 947.644 214.461 944.908 214.461H919.743C917.007 214.461 915.492 212.653 915.492 209.917V6.84307C915.492 4.10675 917.007 2.29883 919.743 2.29883H946.227C948.67 2.29883 950.331 3.03177 951.7 5.32833L1042.54 162.618V6.84307C1042.54 4.10675 1044.05 2.29883 1046.79 2.29883H1071.95C1074.69 2.29883 1076.49 4.10675 1076.49 6.84307V209.917C1076.49 212.653 1074.69 214.461 1071.95 214.461H1041.85C1039.41 214.461 1037.6 213.533 1036.38 211.432"
-              className="fill-current"
-            ></path>
-            <path
-              d="M1361.37 209.917V6.84307C1361.37 4.10675 1362.88 2.29883 1365.62 2.29883H1470.77C1473.51 2.29883 1475.02 4.10675 1475.02 6.84307V28.0495C1475.02 30.7858 1473.51 32.5938 1470.77 32.5938H1395.28V90.7894H1454.21C1456.94 90.7894 1458.75 92.5973 1458.75 95.3336V116.833C1458.75 119.57 1456.94 121.084 1454.21 121.084H1395.28V184.117H1470.77C1473.51 184.117 1475.32 185.925 1475.32 188.662V209.868C1475.32 212.604 1473.51 214.412 1470.77 214.412H1365.62C1362.88 214.412 1361.37 212.604 1361.37 209.868"
-              className="fill-current"
-            ></path>
-            <path
-              d="M1639.83 211.432C1618.29 173.905 1552.96 60.2012 1552.96 60.2012V209.917C1552.96 212.653 1551.15 214.461 1548.41 214.461H1523.25C1520.51 214.461 1519 212.653 1519 209.917V6.84307C1519 4.10675 1520.51 2.29883 1523.25 2.29883H1549.73C1552.17 2.29883 1553.84 3.03177 1555.2 5.32833L1646.04 162.618V6.84307C1646.04 4.10675 1647.55 2.29883 1650.29 2.29883H1675.45C1678.19 2.29883 1680 4.10675 1680 6.84307V209.917C1680 212.653 1678.19 214.461 1675.45 214.461H1645.36C1642.91 214.461 1641.1 213.533 1639.88 211.432"
-              className="fill-current"
-            ></path>
-            <path
-              d="M413.187 210.839L351.668 7.47239C350.74 4.44289 351.961 2.3418 355.284 2.3418H381.035C383.478 2.3418 385.579 3.27019 386.165 5.95764L433.465 168.72L484.673 5.95764C485.601 3.22133 487.116 2.3418 489.803 2.3418H514.968C517.704 2.3418 519.219 3.27019 520.098 5.95764L571.307 168.72L618.606 5.95764C619.534 3.22133 621.342 2.3418 623.736 2.3418H649.487C652.81 2.3418 654.031 4.44289 653.103 7.47239L591.585 210.839C590.998 213.283 588.848 214.455 586.112 214.455H558.847C556.403 214.455 554.009 213.234 553.374 210.839L502.459 44.7547L451.251 210.839C450.664 213.283 448.221 214.455 445.778 214.455H418.513C415.776 214.455 413.675 213.234 413.04 210.839"
-              className="fill-current"
-            ></path>
+              d="M-9.95696e-05 144.539V2.43905H27.8109V119.164H90.3349V144.539H-9.95696e-05ZM384.368 146.975C370.022 146.975 357.301 143.862 346.204 137.637C335.242 131.276 326.648 122.615 320.423 111.653C314.197 100.556 311.085 87.9021 311.085 73.6921C311.085 59.2114 314.197 46.4901 320.423 35.5281C326.648 24.4307 335.174 15.7694 346.001 9.54406C356.963 3.31872 369.549 0.206057 383.759 0.206057C398.104 0.206057 410.69 3.38639 421.517 9.74706C432.479 15.9724 441.072 24.6337 447.298 35.7311C453.523 46.6931 456.636 59.3467 456.636 73.6921C456.636 87.9021 453.523 100.556 447.298 111.653C441.208 122.615 432.682 131.276 421.72 137.637C410.893 143.862 398.442 146.975 384.368 146.975ZM384.368 121.6C393.029 121.6 400.608 119.57 407.104 115.51C413.735 111.315 418.878 105.631 422.532 98.4581C426.321 91.2854 428.216 83.0301 428.216 73.6921C428.216 64.2187 426.321 55.8957 422.532 48.7231C418.742 41.5504 413.532 35.9341 406.901 31.8741C400.269 27.6787 392.555 25.5811 383.759 25.5811C375.233 25.5811 367.586 27.6787 360.82 31.8741C354.188 35.9341 348.978 41.5504 345.189 48.7231C341.399 55.8957 339.505 64.2187 339.505 73.6921C339.505 83.0301 341.399 91.2854 345.189 98.4581C348.978 105.631 354.256 111.315 361.023 115.51C367.789 119.57 375.571 121.6 384.368 121.6ZM758.316 146.975C743.835 146.975 730.979 143.862 719.746 137.637C708.649 131.276 699.92 122.615 693.559 111.653C687.198 100.556 684.018 87.8344 684.018 73.4891C684.018 59.1437 687.198 46.4901 693.559 35.5281C699.92 24.4307 708.649 15.7694 719.746 9.54406C730.979 3.18339 743.835 0.00305998 758.316 0.00305998C766.977 0.00305998 774.962 1.28873 782.27 3.86006C789.578 6.43139 796.006 10.0177 801.555 14.6191C807.239 19.0851 811.976 24.2277 815.765 30.0471L793.029 44.2571C790.728 40.6031 787.683 37.3551 783.894 34.5131C780.24 31.6711 776.18 29.4381 771.714 27.8141C767.248 26.1901 762.782 25.3781 758.316 25.3781C749.384 25.3781 741.467 27.4757 734.565 31.6711C727.663 35.7311 722.25 41.3474 718.325 48.5201C714.4 55.6927 712.438 64.0157 712.438 73.4891C712.438 82.8271 714.333 91.1501 718.122 98.4581C722.047 105.766 727.528 111.518 734.565 115.713C741.602 119.773 749.722 121.803 758.925 121.803C766.098 121.803 772.458 120.382 778.007 117.54C783.691 114.698 788.157 110.706 791.405 105.563C794.653 100.42 796.277 94.4657 796.277 87.6991L822.667 83.6391C822.667 97.0371 819.893 108.473 814.344 117.946C808.931 127.419 801.352 134.66 791.608 139.667C781.999 144.539 770.902 146.975 758.316 146.975ZM762.985 90.1351V68.4141H822.667V85.6691L807.645 90.1351H762.985ZM1121.31 146.975C1106.97 146.975 1094.25 143.862 1083.15 137.637C1072.19 131.276 1063.59 122.615 1057.37 111.653C1051.14 100.556 1048.03 87.9021 1048.03 73.6921C1048.03 59.2114 1051.14 46.4901 1057.37 35.5281C1063.59 24.4307 1072.12 15.7694 1082.95 9.54406C1093.91 3.31872 1106.49 0.206057 1120.7 0.206057C1135.05 0.206057 1147.64 3.38639 1158.46 9.74706C1169.42 15.9724 1178.02 24.6337 1184.24 35.7311C1190.47 46.6931 1193.58 59.3467 1193.58 73.6921C1193.58 87.9021 1190.47 100.556 1184.24 111.653C1178.15 122.615 1169.63 131.276 1158.67 137.637C1147.84 143.862 1135.39 146.975 1121.31 146.975ZM1121.31 121.6C1129.97 121.6 1137.55 119.57 1144.05 115.51C1150.68 111.315 1155.82 105.631 1159.48 98.4581C1163.27 91.2854 1165.16 83.0301 1165.16 73.6921C1165.16 64.2187 1163.27 55.8957 1159.48 48.7231C1155.69 41.5504 1150.48 35.9341 1143.85 31.8741C1137.21 27.6787 1129.5 25.5811 1120.7 25.5811C1112.18 25.5811 1104.53 27.6787 1097.77 31.8741C1091.13 35.9341 1085.92 41.5504 1082.13 48.7231C1078.34 55.8957 1076.45 64.2187 1076.45 73.6921C1076.45 83.0301 1078.34 91.2854 1082.13 98.4581C1085.92 105.631 1091.2 111.315 1097.97 115.51C1104.73 119.57 1112.52 121.6 1121.31 121.6Z"
+              fill="#FFF6F6"
+            />
           </svg>
         </div>
       </div>
       <div className="relative flex">
-        <hr className="border-green-electric z-1 w-full opacity-20" />
-        <button
-          type="button"
-          className="absolute top-1/2 left-1/2 z-2 block -translate-x-1/2 -translate-y-1/2"
-          aria-label="Back to top"
-        >
-          <svg
-            className="relative h-[7.5rem] w-auto md:h-[10rem]"
-            viewBox="0 0 98 109"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M27.3422 38.3931C26.7295 38.0447 25.9727 38.0447 25.3601 38.3931C24.7474 38.7415 24.375 39.4022 24.375 40.111V41.2522L35.5351 47.6912L37.5172 44.2675L27.3422 38.3931Z"
-              fill="#364238"
-            ></path>
-            <path
-              d="M0 33.0568V75.9312C0 80.0877 2.21039 83.9198 5.81429 85.9981L42.9465 107.441C46.5384 109.52 50.9712 109.52 54.5631 107.441L91.6953 85.9981C95.2872 83.9198 97.5096 80.0877 97.5096 75.9312V33.0568C97.5096 28.9003 95.2992 25.0681 91.6953 22.9899L54.5631 1.55869C50.9712 -0.519562 46.5384 -0.519562 42.9465 1.55869L5.81429 22.9899C2.22241 25.0681 0 28.9003 0 33.0568Z"
-              fill="#CCE561"
-            ></path>
-            <path
-              d="M50.9705 77.7839V58.491L57.4094 62.2031L59.6198 58.3589L50.9705 53.3615V25.215L73.7231 38.3572L50.9705 77.7719V77.7839ZM46.5377 84.0908L23.785 70.9485L35.9782 49.8417L44.3273 54.6589V49.5414L38.1886 45.9975L46.5377 31.5339V84.0908ZM79.7776 38.8498C79.7776 37.5524 79.0809 36.3511 77.9637 35.7024L51.2708 20.2897C49.8773 19.4848 48.1114 19.9653 47.3065 21.3588L22.1633 64.906V44.4358L17.7305 41.8771V70.48C17.7305 71.7774 18.4272 72.9787 19.5444 73.6274L46.2373 89.0401C47.6308 89.845 49.4088 89.3645 50.2016 87.971L63.1516 65.5427L73.1224 71.2969V66.1794L65.362 61.6985L75.3328 44.4238V72.5703L76.438 73.207C77.1228 73.6034 77.9637 73.6034 78.6604 73.207C79.3452 72.8105 79.7656 72.0778 79.7656 71.2849V38.8378L79.7776 38.8498Z"
-              fill="#334238"
-            ></path>
-            <path
-              d="M21.0461 36.1108C20.3613 35.7144 19.5204 35.7144 18.8357 36.1108C18.1509 36.5072 17.7305 37.24 17.7305 38.0329V39.3183L30.212 46.5261L32.4224 42.6939L21.0461 36.1228V36.1108Z"
-              fill="#334238"
-            ></path>
-          </svg>
-        </button>
+        <hr className="z-1 w-full border-[#808080]" />
       </div>
-      <div className="site-max relative flex flex-col pt-[7.5rem] pb-[5rem] md:flex-row md:pt-[12rem] md:pb-[8rem]">
-        <div className="flex flex-col items-start gap-y-[2.5rem] md:max-w-[90rem] md:min-w-[90rem]">
-          <p className="h4 md:max-w-[70rem]">
-            We have relentless desire to challenge the status quo, and deep
-            digital expertise across hundreds of brands and verticals.
-          </p>
-          <Button href="#" text="Let's talk" />
-        </div>
-        <div className="mt-[4rem] flex flex-1 shrink-0 flex-col md:mt-0">
-          <div className="relative flex flex-col gap-y-[2.5rem] md:max-w-[70rem]">
-            <div className="text-[2em]">
-              Get the latest from New Engen—research-driven strategies,
-              data-backed trends, and thought leadership designed to fuel your
-              brand’s growth.
-            </div>
-            <form
-              action=""
-              className="relative flex gap-x-[1.2rem] md:gap-x-[1.6rem]"
-            >
-              <div className="relative flex w-full flex-1">
-                <input
-                  type="text"
-                  className="form-input radius-global"
-                  placeholder="Email*"
-                />
-              </div>
-              <Button href="/" text="Subscribe" />
-            </form>
-          </div>
-        </div>
-      </div>
-      <div className="site-max flex flex-col gap-y-[4rem] text-[1.35rem] md:flex-row">
-        <div className="flex md:max-w-[90rem] md:min-w-[90rem]">
-          <div className="relative flex w-full flex-1 flex-col gap-y-[1.2rem]">
-            <h4 className="h7 text-green-electric">Agency</h4>
-            <ul className="flex flex-col items-start gap-y-[.6rem]">
-              <li>
-                <a href="/work/" className="uline">
-                  Work
-                </a>
-              </li>
-              <li className="relative flex flex-col items-start">
-                <button
-                  type="button"
-                  className="uline rotate-icon-t js-dd-t flex items-center gap-x-[.8rem]"
-                >
-                  Services
-                  <svg
-                    className="rotate-icon relative h-[.8rem] w-auto"
-                    viewBox="0 0 12 9"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  ></svg>
-                </button>
-              </li>
-              <li className="relative flex flex-col items-start">
-                <button
-                  type="button"
-                  className="uline rotate-icon-t js-dd-t flex items-center gap-x-[.8rem]"
-                >
-                  Solutions
-                </button>
-              </li>
-              <li>
-                <a href="/insights/" className="uline">
-                  Insights
-                </a>
-              </li>
-              <li>
-                <a href="/technology/" className="uline">
-                  Technology
-                </a>
-              </li>
-              <li>
-                <a href="/company/" className="uline">
-                  Company
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="relative flex flex-1 flex-col gap-y-[1.2rem]">
-            <h4 className="h7 text-green-electric">Let`&apos;s social</h4>
-            <ul className="flex flex-col items-start gap-y-[.6rem]">
-              <li>
-                <a
-                  href="httpmd://www.linkedin.com/company/new-engen/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="uline"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="httpmd://www.facebook.com/newengen/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="uline"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="httpmd://www.instagram.com/newengencreators/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="uline"
-                >
-                  Instagram
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex flex-1 flex-col gap-y-[1.2rem]">
-          <h4 className="h7 text-green-electric">Get in touch</h4>
-          <ul className="grid grid-cols-1 gap-y-[2rem] md:grid-cols-2">
-            <li className="col-span-1">
-              <a
-                href="httpmd://maps.app.goo.gl/Fe31MSpa8TpQ4TAx7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col"
-              >
-                <div className="text-green-fern">Seattle HQ</div>
-                <address className="not-italic">
-                  837 N 34th St,
-                  <br />
-                  Seattle, WA 98103
-                </address>
-              </a>
-            </li>
-            <li className="col-span-1">
-              <a
-                href="httpmd://maps.app.goo.gl/Caf8NLCUvSzSebiB7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col"
-              >
-                <div className="text-green-fern">Northwest Arkansas Office</div>
-                <address className="not-italic">
-                  5115 W JB Hunt Drive
-                  <br />
-                  Suite 110 &amp; 210, <br />
-                  Rogers, AR 72758
-                </address>
-              </a>
-            </li>
-            <li className="col-span-1">
-              <a
-                href="httpmd://maps.app.goo.gl/GsUZKUwS9gLnztM9A"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col"
-              >
-                <div className="text-green-fern">
-                  Brooklyn Office &amp; Studio
+      <div className="site-max flex flex-col items-center py-[8rem]">
+        <p className="mb-[2rem] text-center text-[2.9em]">
+          READY TO TRANSFORM YOUR BUSINESS?
+        </p>
+        <Button
+          text="お問い合わせ"
+          en="CONTACT US"
+          onClick={() => dispatch(openModal({ name: 'contact' }))}
+        />
+        <div className="mx-auto w-full max-w-[57rem]">
+          <div className="py-[10rem]">
+            <p className="text-[1.8rem] font-medium text-[#85F4E2]">
+              Company Profile
+            </p>
+            <div className="mt-[3.6rem] flex gap-[2rem] max-md:flex-col md:items-end">
+              <figure>
+                <img src="/assets/images/map.png" alt="" />
+              </figure>
+              <div className="flex flex-1 md:items-end md:justify-end">
+                <div className="space-y-[1.2rem] text-[1.6rem]">
+                  <p>Global OEM Solutions Inc. </p>
+                  <p>東京都千代田区1-1-1</p>
                 </div>
-                <address className="not-italic">20 Jay St #432</address>
-              </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between">
+            <div>
+              <p className="mb-[2.8rem] text-[1.4rem] font-bold text-[#85F4E2]">
+                Index
+              </p>
+              <ul className="space-y-[2rem]">
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">製品一覧</p>
+                    <p className="text-[1rem] text-[#FFF6F6]/50">PRODUCTS</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">会社概要</p>
+                    <p className="text-[1rem] text-[#FFF6F6]/50">COMPANY</p>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-[2.8rem] text-[1.4rem] font-bold text-[#85F4E2]">
+                Let’s social
+              </p>
+              <ul className="space-y-[2rem]">
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">Linkedln</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">Facebook</p>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">Instagram</p>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-[2.8rem] text-[1.4rem] font-bold text-[#85F4E2]">
+                Case studies
+              </p>
+              <ul className="space-y-[2rem]">
+                <li>
+                  <Link href="" className="block">
+                    <p className="text-[1.4rem]">Steproof</p>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <ul className="flex justify-between py-[14rem] text-[1.05rem] text-[#FFF6F6]/50">
+            <li>
+              <Link href="/">Privacy Policy</Link>
             </li>
-            <li className="col-span-1">
-              <a
-                href="httpmd://maps.app.goo.gl/P3MurXuZfCStgjNJ6"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col"
-              >
-                <div className="text-green-fern">Manhattan Beach Studio</div>
-                <address className="not-italic">
-                  324 21st St, <br />
-                  Manhattan Beach, <br />
-                  CA 90266
-                </address>
-              </a>
+            <li>
+              <Link href="/">Cookie Policy</Link>
+            </li>
+            <li>
+              <Link href="/">Terms and Conditions</Link>
             </li>
           </ul>
         </div>
-      </div>
-      <div className="mt-[4rem] mb-[4rem] text-[1.35rem] md:mt-[7rem] md:mb-[10rem]">
-        <ul className="site-max flex flex-col gap-y-[1rem] md:flex-row">
-          <li className="relative w-full md:max-w-[45rem] md:min-w-[45rem]">
-            <a
-              href="#"
-              className="iubenda-noiframe iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
-              title="Privacy Policy"
-            >
-              Privacy Policy
-            </a>
-          </li>
-          <li className="relative w-full md:max-w-[45rem] md:min-w-[45rem]">
-            <a
-              href="#"
-              className="iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
-              title="Cookie Policy"
-            >
-              Cookie Policy
-            </a>
-          </li>
-          <li className="flex-1 whitespace-nowrap">
-            <a
-              href="#"
-              className="iubenda-noiframe iubenda-embed iubenda-noiframe iubenda-nostyle iu-btn"
-              title="Terms and Conditions"
-            >
-              Terms and Conditions
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div className="flex overflow-hidden border-t border-white/10">
-        <MarqueeTrack />
-        <MarqueeTrack />
       </div>
     </footer>
   );

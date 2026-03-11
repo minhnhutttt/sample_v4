@@ -5,21 +5,12 @@ import { useEffect, useRef, useState } from 'react';
 const DATA = [
   {
     img: '/assets/images/home-1.png',
-    text: 'Manhattan',
-    temp: '37°F',
-    time: '4:34 AM',
   },
   {
     img: '/assets/images/home-2.png',
-    text: 'Seattle',
-    temp: '37°F',
-    time: '4:34 AM',
   },
   {
     img: '/assets/images/home-3.png',
-    text: 'Rogers',
-    temp: '37°F',
-    time: '4:34 AM',
   },
 ];
 
@@ -30,7 +21,6 @@ const PARALLAX = 0.35;
 export default function ImageSlider() {
   const [idx, setIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState<number | null>(null);
-  const [captionVisible, setCaptionVisible] = useState(true);
   const [sliding, setSliding] = useState(false);
   const [progKey, setProgKey] = useState(0);
   const busyRef = useRef(false);
@@ -45,7 +35,6 @@ export default function ImageSlider() {
     busyRef.current = true;
 
     const next = (cur + 1) % DATA.length;
-    setCaptionVisible(false);
 
     setTimeout(() => {
       setNextIdx(next);
@@ -59,7 +48,6 @@ export default function ImageSlider() {
         setIdx(next);
         setNextIdx(null);
         setSliding(false);
-        setCaptionVisible(true);
         setProgKey((k) => k + 1);
         busyRef.current = false;
       }, SLIDE_MS);
@@ -131,22 +119,6 @@ export default function ImageSlider() {
               </div>
             </div>
           )}
-        </div>
-      </div>
-
-      <div className="flex items-center justify-center overflow-hidden">
-        <div className="site-max stack relative py-[2.5rem]">
-          <div
-            className="h7 flex w-full justify-between gap-4 text-center font-bold tracking-widest text-black"
-            style={{
-              opacity: captionVisible ? 1 : 0,
-              transition: 'opacity 0.5s ease, transform 0.5s ease',
-            }}
-          >
-            <p className="flex-1">{DATA[idx].text}</p>
-            <p>{DATA[idx].temp}</p>
-            <p className="flex-1">{DATA[idx].time}</p>
-          </div>
         </div>
       </div>
 
