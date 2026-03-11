@@ -21,10 +21,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     return {
       title: news.title,
-      description: news.headline,
+      description: news.subhead_1,
       openGraph: {
         title: news.title,
-        description: news.headline,
+        description: news.subhead_1,
         images: [
           {
             url: news.thumbnail.url,
@@ -137,26 +137,28 @@ const NewsDetailPage = async ({ params }: Props) => {
             </div>
 
             {/* Headline */}
-            {news.headline && (
+            {news.subhead_1 && (
               <h2 className="mb-5 border-b border-[#ccc] py-1 text-[18px] font-bold md:text-[22px]">
-                {news.headline}
+                {news.subhead_1}
               </h2>
             )}
 
             {/* Subhead */}
-            {news.subhead && (
+            {news.subhead_1 && (
               <h3 className="mb-5 text-[16px] font-medium md:text-[20px]">
-                {news.subhead}
+                {news.subhead_1}
               </h3>
             )}
 
             {/* Content */}
-            <div
-              className="prose max-w-none"
-              dangerouslySetInnerHTML={{
-                __html: news.newstext,
-              }}
-            />
+            {news.newstext_1 && (
+              <div
+                className="prose max-w-none"
+                dangerouslySetInnerHTML={{
+                  __html: news.newstext_1,
+                }}
+              />
+            )}
           </div>
           {/* Navigation */}
           <div className="mt-[90px] flex max-md:flex-wrap">

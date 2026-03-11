@@ -76,7 +76,7 @@ const GamePage = () => {
           <Matches />
           <div className="mt-12 flex justify-center md:mt-[54px]">
             <Link
-              href="/9oyk6m96irx6"
+              href="/news/9oyk6m96irx6"
               className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
             >
               レオブラックスの現在ランキング
@@ -91,7 +91,7 @@ const GamePage = () => {
           </div>
           <div className="mt-25 w-full md:mt-[166px]">
             <h2 className="mt-12 mb-8 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:mb-12 md:border-l-[8px] md:text-[32px]">
-              3x3 UNITED（スリー・バイ・スリー・ユナイテッド）とは？
+              3x3 UNITED（スリー・エックス・スリー・ユナイテッド）とは？
             </h2>
             <div className="mt-6 flex gap-10 max-lg:flex-col md:mt-[35px] md:gap-[55px]">
               <GameSlider />
@@ -207,34 +207,6 @@ const GamePage = () => {
               カメラ・スマホ:
               選手との距離が近いため、迫力ある写真が撮りやすいです。
             </Step>
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto my-32 w-full max-w-[1060px] md:my-[206px]">
-        <h2 className="mt-12 mb-8 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:mb-12 md:border-l-[8px] md:text-[32px]">
-          3×3　試合会場のお知らせ
-        </h2>
-        <div className="flex gap-7 max-md:flex-col md:gap-10">
-          <div className="md:w-[560px]">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230578.23512409747!2d129.80063353216772!3d33.4323784630427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356a7863814716bb%3A0x5f6704468603619b!2z5ZSQ5rSl5biC5b255omA!5e1!3m2!1sja!2sjp!4v1772532427516!5m2!1sja!2sjp"
-              width="100%"
-              height="330"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-          <div className="">
-            <Item
-              title="試合会場"
-              texts={[
-                'イオン唐津ショッピングセンター日本、〒847-0022 佐賀県唐津市鏡 字立神4671',
-                'イオン唐津ショッピングセンター日本、〒847-0022 佐賀県唐津市鏡 字立神4671',
-                'イオン唐津ショッピングセンター日本、〒847-0022 佐賀県唐津市鏡 字立神4671',
-              ]}
-            />
           </div>
         </div>
       </div>

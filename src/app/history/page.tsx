@@ -59,7 +59,7 @@ const HistoryPage = async () => {
                             <p className="flex-[0_0_50px] text-[16px] whitespace-nowrap">
                               {note.month}月
                             </p>
-                            <p className="text-[16px]">{note.text}月</p>
+                            <p className="text-[16px]">{note.text}</p>
                           </div>
                         ))}
                       </div>

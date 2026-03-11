@@ -65,22 +65,22 @@ const HomeFv = ({ topics }: { topics: React.ReactNode }) => {
       yPercent: 100,
       opacity: 0,
       transformOrigin: '0% 0%',
-      duration: 1.6,
+      duration: 1,
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top -=50',
+        start: 'top -=30',
         toggleActions: 'play none none none',
       },
     });
 
     gsap.to(contentRef.current, {
       y: -50,
-      duration: 1.6,
+      duration: 1,
       ease: 'power3.inOut',
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top -=50',
+        start: 'top -=30',
         toggleActions: 'play none none none',
       },
     });
@@ -158,9 +158,12 @@ const HomeFv = ({ topics }: { topics: React.ReactNode }) => {
           </div>
           <div
             ref={sliderRef}
-            className="absolute inset-x-0 bottom-0 z-10 pt-2.5 pb-4 md:pb-8"
+            className="absolute inset-x-0 bottom-3 z-10 pt-2.5 pb-4 md:bottom-0 md:pb-8"
           >
             {topics}
+            <div className="absolute right-6 bottom-0 py-1 text-left text-[12px] font-medium text-white [text-shadow:1px_1px_2px_#000] md:text-[14px]">
+              映像提供：KAPLI
+            </div>
           </div>
           <button
             ref={ballRef}

@@ -73,10 +73,6 @@ const AboutPage = () => {
           },
           {
             id: '#section03',
-            text: <>3x3は 「個人スポーツ」</>,
-          },
-          {
-            id: '#section04',
             text: <>チームを応援する 楽しみ方</>,
           },
         ].map((item, i) => (
@@ -185,7 +181,7 @@ const AboutPage = () => {
               </div>
             </div>
             <div
-              id="section04"
+              id="section03"
               className="mx-auto mt-[50px] w-full max-w-[960px] md:pb-7.5"
             >
               <p className="border-b border-[#C0C0C0] py-1 text-[18px] font-bold md:text-[22px]">

@@ -9,9 +9,9 @@ export type News = {
   newsimage: {
     url: string;
   };
-  headline: string;
+  subhead_1: string;
   subhead: string;
-  newstext: string;
+  newstext_1: string;
   publishedAt?: string;
 };
 export type NewsList = {
