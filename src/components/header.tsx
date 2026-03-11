@@ -175,63 +175,32 @@ const Header = () => {
         ref={headerWrapRef}
         className="fixed top-0 right-0 left-0 z-100 will-change-transform"
       >
-        <header className="relative z-50">
-          <div className="h6 pointer-events-auto relative z-10 flex h-[3.5rem] w-full items-center overflow-hidden bg-[#CCE561] text-center font-bold whitespace-nowrap text-black duration-300 md:justify-center">
-            <div className="marq relative flex" data-v-6f2835a6="">
-              <div className="marq-item relative pr-[7.5rem] md:pr-0">
-                <div className="site-max flex items-center justify-center">
-                  <a href="" className="flex justify-center">
-                    <span
-                      className="site-max flex items-center justify-center"
-                      data-v-6f2835a6=""
-                    >
-                      New Engen Announces Acquisition of Grapevine — Click to
-                      Learn More
-                    </span>
-                  </a>
-                </div>
-              </div>
-              <div className="marq-item relative pr-[7.5rem] md:hidden md:pr-0">
-                <div className="site-max flex items-center justify-center">
-                  <a href="" className="flex justify-center">
-                    <span
-                      className="site-max flex items-center justify-center"
-                      data-v-6f2835a6=""
-                    >
-                      New Engen Announces Acquisition of Grapevine — Click to
-                      Learn More
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <header className="relative z-50 pt-[2.2rem]">
           {/* Main nav */}
           <div className="sh__inner site-max relative">
             <div className="flex items-center justify-between py-[0.4rem] md:py-[1rem]">
-              <Link
-                href="/"
-                className="bg-green rounded-2xl px-[.5rem] py-[.6rem] md:px-[1rem] md:py-[0.8rem]"
-              >
-                <img
-                  src="/assets/images/logo.png"
-                  className="h-[4rem] md:h-[5rem]"
-                />
+              <Link href="/" className="">
+                <img src="/assets/images/logo.png" className="" />
               </Link>
 
               {/* Desktop nav */}
               <div className="hidden items-center gap-x-[1.2rem] md:flex">
-                <ul className="bg-green flex h-[5.5rem] items-center gap-x-[4rem] rounded-[0.5rem] px-[3.5rem] md:rounded-[1rem]">
+                <ul className="flex items-center gap-x-[4rem] rounded-[0.5rem] px-[3.5rem] md:rounded-[1rem]">
                   {NavLinks.map((item, i) => (
                     <li key={i}>
-                      <Link href={item.href} className="h5-alt uline">
-                        {item.text}
+                      <Link
+                        href={item.href}
+                        className="uline flex flex-col items-center justify-center text-center"
+                      >
+                        <p className="text-[1.4rem]">{item.text}</p>
+                        <p className="text-[1rem] text-[#424242]/80">
+                          {item.en}
+                        </p>
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <Button href="/" text="Let's talk" />
+                <Button />
               </div>
 
               {/* Hamburger placeholder */}
@@ -243,7 +212,7 @@ const Header = () => {
         {/* Burger button */}
         <button
           onClick={toggleMenu}
-          className="bg-pink radius-global s:hidden pointer-events-auto absolute top-[5rem] right-[1.2rem] z-150 flex size-[4rem] items-center justify-center md:hidden"
+          className="radius-global s:hidden pointer-events-auto absolute top-[1.5rem] right-[1.2rem] z-150 flex size-[4rem] items-center justify-center bg-[#85F4E2] md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative flex h-[2rem] w-[1.5rem] flex-col items-center justify-center gap-[.4rem]">
@@ -266,7 +235,7 @@ const Header = () => {
       {/* Full-screen Mobile Menu Overlay */}
       <div
         ref={overlayRef}
-        className="bg-green fixed inset-0 z-[99] flex flex-col md:hidden"
+        className="fixed inset-0 z-[99] flex flex-col bg-[#424242] md:hidden"
         style={{
           clipPath: 'circle(0% at calc(100% - 3rem) 3rem)',
           pointerEvents: menuOpen ? 'auto' : 'none',
@@ -276,21 +245,21 @@ const Header = () => {
         <div
           className="pointer-events-none absolute top-0 right-0 h-[60vw] w-[60vw] rounded-full opacity-10"
           style={{
-            background: 'radial-gradient(circle, #CCE561 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #424242 0%, transparent 70%)',
             transform: 'translate(30%, -30%)',
           }}
         />
         <div
           className="pointer-events-none absolute bottom-0 left-0 h-[40vw] w-[40vw] rounded-full opacity-5"
           style={{
-            background: 'radial-gradient(circle, #CCE561 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #424242 0%, transparent 70%)',
             transform: 'translate(-30%, 30%)',
           }}
         />
 
         {/* Menu content */}
         <div className="flex flex-1 flex-col items-start justify-center px-[2.5rem] pt-[8rem]">
-          <ul className="flex w-full flex-col gap-y-[0.5rem]">
+          <ul className="flex w-full flex-col gap-y-[0.5rem] text-white">
             {NavLinks.map((item, i) => (
               <li
                 key={i}
@@ -303,15 +272,11 @@ const Header = () => {
                   href={item.href}
                   onClick={closeMenu}
                   className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
-                  style={{
-                    fontSize: 'clamp(2rem, 7vw, 3.5rem)',
-                    fontWeight: 700,
-                    lineHeight: 1.1,
-                  }}
                 >
-                  <span className="transition-colors duration-200 group-hover:text-[#CCE561]">
-                    {item.text}
-                  </span>
+                  <div className="">
+                    <p className="text-[2rem] font-bold">{item.text}</p>
+                    <p className="text-[1.4rem]">{item.en}</p>
+                  </div>
                   <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                     →
                   </span>
@@ -328,15 +293,11 @@ const Header = () => {
                 href="/"
                 onClick={closeMenu}
                 className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
-                style={{
-                  fontSize: 'clamp(2rem, 7vw, 3.5rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.1,
-                }}
               >
-                <span className="transition-colors duration-200 group-hover:text-[#CCE561]">
-                  Let&apos;s talk
-                </span>
+                <div className="">
+                  <p className="text-[2rem] font-bold">お問い合わせ</p>
+                  <p className="text-[1.4rem]">CONTACT US</p>
+                </div>
                 <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                   →
                 </span>

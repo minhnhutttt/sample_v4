@@ -75,7 +75,6 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 export default function HomeKv() {
   const ref = useScrollAnimations();
   const scrollSectionRef = useRef<HTMLElement>(null);
-  const pillRef = useRef<HTMLSpanElement>(null);
   const stackRefs = useRef<Map<string, HTMLDivElement>>(new Map());
   const placeholderRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
@@ -177,27 +176,6 @@ export default function HomeKv() {
       rotIntervalId = setInterval(rotateCarousel, 2400);
     }
 
-    // ── Brand pill ─────────────────────────────────────────────────────────────
-    let bIdx = 0;
-    const brandInterval = setInterval(() => {
-      bIdx = (bIdx + 1) % BRANDS.length;
-      const pill = pillRef.current;
-      if (!pill) return;
-      gsap.to(pill, {
-        opacity: 0,
-        y: -8,
-        duration: 0.22,
-        onComplete() {
-          pill.textContent = BRANDS[bIdx];
-          gsap.fromTo(
-            pill,
-            { opacity: 0, y: 8 },
-            { opacity: 1, y: 0, duration: 0.22 },
-          );
-        },
-      });
-    }, 1900);
-
     // ── Flying card clones ─────────────────────────────────────────────────────
     // FIX: Append vào #smooth-content thay vì document.body
     // Khi fly cards nằm trong #smooth-content, tọa độ absolute của chúng
@@ -216,7 +194,7 @@ export default function HomeKv() {
       `;
       el.innerHTML = `
         <div style="width:100%;height:100%;display:flex;align-items:flex-end;">
-          <img src=${card.image} alt="" />
+          <img  style="width:100%;height:100%;display:flex;align-items:flex-end;" src=${card.image} alt="" />
         </div>`;
       smoothContent.appendChild(el);
       gsap.set(el, { opacity: 0, top: 0, left: 0, width: 0, height: 0 });
@@ -321,7 +299,6 @@ export default function HomeKv() {
 
     return () => {
       stopCarousel();
-      clearInterval(brandInterval);
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('load', buildTrigger);
       flyEls.forEach((el) => el.remove());
@@ -337,41 +314,39 @@ export default function HomeKv() {
   };
 
   return (
-    <div ref={ref} className="bg-green relative z-10">
+    <div ref={ref} className="relative z-10">
       {/* ════════════════════════ HERO ════════════════════════ */}
-      <section className="carousel-cards bg-green relative z-5 overflow-hidden">
-        <div className="site-max relative flex min-h-screen flex-col items-center gap-y-[3rem] pt-[10rem] pb-[3rem] pb-[10rem] md:flex-row md:pt-[17rem] md:pb-0 md:pb-[10rem]">
+      <section className="carousel-cards relative z-5 overflow-hidden">
+        <div className="site-max relative flex min-h-screen flex-col items-center gap-y-[3rem] pt-[12rem] pb-[7.2rem] md:flex-row">
           {/* Text */}
-          <div className="relative flex flex-1 flex-col md:justify-between">
+          <div className="relative flex flex-col md:justify-between">
             <SplitTextReveal
               as="h1"
               splitType="chars"
               triggerStart="top 80%"
               toggleActions="play none none none"
-              className="h1 br-allowed js-t-title upp font-black"
+              className="js-t-title text-[4.2rem] font-black md:text-[7.6rem]"
             >
-              Genuine. <br />
-              Impact.
+              事業の可能性を、 <br />
+              確かな利益へ。
             </SplitTextReveal>
 
-            <div className="fade-up mt-[2rem] flex flex-col items-start md:mt-[20rem]">
-              <p className="h4 js-t-fade-up md:max-w-[60rem]">
-                We are an industry-leading digital marketing agency partnering
-                with bold brands to drive impact across every stage of the
-                customer journey - maximizing it, measuring it, and repeating
-                it.
+            <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4.8rem] md:mt-[20rem]">
+              <p className="js-t-fade-up text-[1.4rem] md:max-w-[60rem]">
+                私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、収益性の向上と業務の最適化を支援します。
               </p>
+              <Button />
             </div>
           </div>
 
           {/* ── Card Stack ── */}
           <div className="fade-up relative flex flex-1 justify-center">
-            <div className="relative aspect-482/858 w-[24rem] md:w-[40.5rem]">
+            <div className="relative aspect-324/551 w-[24rem] md:w-[32.4rem]">
               {[...CARD_DEFS].reverse().map((card) => (
                 <div
                   key={card.id}
                   ref={setStackRef(card.id)}
-                  className="absolute top-0 right-0 aspect-482/858 w-[24rem] cursor-pointer overflow-hidden rounded-2xl md:w-[40.5rem]"
+                  className="absolute top-0 right-0 aspect-324/551 w-[24rem] cursor-pointer overflow-hidden rounded-2xl md:w-[32.4rem]"
                 >
                   <img src={card.image} alt="" />
                 </div>
@@ -393,25 +368,25 @@ export default function HomeKv() {
             <path
               className="scroll-icon__part"
               d="M17.6626 53L9.56124 60.8313L1.99997 53"
-              stroke="#CCE561"
+              stroke="#9579C8"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 36L9.56124 43.8313L1.99997 36"
-              stroke="#CCE561"
+              stroke="#9579C8"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 19.1687L9.56124 27L1.99997 19.1687"
-              stroke="#CCE561"
+              stroke="#9579C8"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 1.99999L9.56124 9.8313L1.99997 1.99998"
-              stroke="#CCE561"
+              stroke="#9579C8"
               strokeWidth="4"
             ></path>
           </svg>
@@ -421,24 +396,12 @@ export default function HomeKv() {
       {/* ════════════════════════ SCROLL SECTION ════════════════════════ */}
       <section
         ref={scrollSectionRef}
-        className="select-work w-full bg-[#FAF2E8] pt-[9rem] pb-[9rem] text-black md:pt-[15rem] md:pb-[15rem]"
+        className="select-work w-full py-[9rem] text-black md:py-[10rem]"
       >
         <div className="site-max mx-auto! flex flex-col items-start max-md:max-w-[400px]!">
-          <div className="js-flip-targets flex w-full flex-col items-center gap-y-[3.5rem]">
-            <p className="h7 text-center">Selected Work</p>
-
-            <div className="h2 relative flex w-full flex-col items-center gap-[2rem] md:mx-auto md:max-w-[124rem] md:flex-row md:whitespace-nowrap">
-              Creating impact for &nbsp;
-              <div className="bg-green-electric radius-global relative flex-1 max-md:w-full max-md:max-w-[28rem]">
-                <div className="stack relative overflow-hidden">
-                  <span
-                    ref={pillRef}
-                    className="h4 relative flex h-[6.5rem] items-center justify-center md:h-[7.5rem]"
-                  >
-                    NORDSTROM
-                  </span>
-                </div>
-              </div>
+          <div className="js-flip-targets flex w-full flex-col items-center justify-center gap-y-[3.5rem]">
+            <div className="relative text-center text-[3.6rem] font-bold md:text-[7rem]">
+              Recommended Products
             </div>
           </div>
 
@@ -450,7 +413,7 @@ export default function HomeKv() {
                   ref={setPlaceholderRef(card.destId)}
                   className="w-full rounded-[14px]"
                   style={{
-                    aspectRatio: '482/858',
+                    aspectRatio: '324/551',
                   }}
                 />
                 <div className="work-card-content relative z-2 -mt-[1rem] overflow-hidden">
@@ -462,7 +425,7 @@ export default function HomeKv() {
                       {card.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="s:h-[3.4rem] s:px-[1.2rem] inline-flex h-[3rem] items-center rounded-full border border-current px-[0.8rem] text-[1.4rem] leading-none whitespace-nowrap"
+                          className="inline-flex h-[3rem] items-center rounded-full border border-current px-[0.8rem] text-[1.4rem] leading-none whitespace-nowrap md:h-[3.4rem] md:px-[1.2rem]"
                         >
                           {tag}
                         </span>
@@ -475,7 +438,7 @@ export default function HomeKv() {
           </div>
 
           <div className="mt-[4rem] text-center md:mt-[7.5rem]">
-            <Button href="/" text="View all work" />
+            <Button />
           </div>
         </div>
       </section>

@@ -31,27 +31,13 @@ export const TWITTER = {
 
 export const NavLinks = [
   {
-    text: 'Work',
+    text: '製品一覧',
+    en: 'PRODUCTS',
     href: '/',
   },
   {
-    text: 'Services',
-    href: '/',
-  },
-  {
-    text: 'Solutions',
-    href: '/',
-  },
-  {
-    text: 'Insights',
-    href: '/',
-  },
-  {
-    text: 'Techonology',
-    href: '/',
-  },
-  {
-    text: 'Company',
+    text: '会社概要',
+    en: 'COMPANY',
     href: '/',
   },
 ];

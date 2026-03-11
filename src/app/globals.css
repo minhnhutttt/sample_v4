@@ -18,7 +18,7 @@
 
   @media (min-width: 769px) {
     :root {
-      --size: 1800;
+      --size: 1280;
     }
   }
 
@@ -192,8 +192,8 @@
 
   @media (min-width: 769px) {
     .site-max {
-      padding-left: 6rem;
-      padding-right: 6rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
     }
   }
 
