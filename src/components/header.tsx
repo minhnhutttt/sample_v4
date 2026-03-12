@@ -7,7 +7,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 
-import { NavLinks } from '@/config/constants';
 import { useAppDispatch } from '@/store/hooks';
 import { openModal } from '@/store/slices/modalSlice';
 
@@ -173,6 +172,12 @@ const Header = () => {
     }
   };
 
+  const ScrolltoCompany = () => {
+    const smoother = ScrollSmoother.get();
+    closeMenu();
+    smoother?.scrollTo('#company', true, 'top 100px');
+  };
+
   return (
     <>
       <div ref={headerWrapRef} className="fixed top-0 right-0 left-0 z-50">
@@ -187,19 +192,24 @@ const Header = () => {
               {/* Desktop nav */}
               <div className="hidden items-center gap-x-[1.2rem] md:flex">
                 <ul className="flex items-center gap-x-[4rem] rounded-[0.5rem] px-[3.5rem] md:rounded-[1rem]">
-                  {NavLinks.map((item, i) => (
-                    <li key={i}>
-                      <Link
-                        href={item.href}
-                        className="uline flex flex-col items-center justify-center text-center"
-                      >
-                        <p className="text-[1.4rem]">{item.text}</p>
-                        <p className="text-[1rem] text-[#424242]/80">
-                          {item.en}
-                        </p>
-                      </Link>
-                    </li>
-                  ))}
+                  <li>
+                    <a
+                      href="/steproof"
+                      className="uline flex flex-col items-center justify-center text-center"
+                    >
+                      <p className="text-[1.4rem]">製品一覧</p>
+                      <p className="text-[1rem] text-[#424242]/80">PRODUCTS</p>
+                    </a>
+                  </li>
+                  <li>
+                    <button
+                      onClick={ScrolltoCompany}
+                      className="uline flex flex-col items-center justify-center text-center"
+                    >
+                      <p className="text-[1.4rem]">会社概要</p>
+                      <p className="text-[1rem] text-[#424242]/80">COMPANY</p>
+                    </button>
+                  </li>
                 </ul>
                 <Button
                   text="お問い合わせ"
@@ -265,29 +275,35 @@ const Header = () => {
         {/* Menu content */}
         <div className="flex flex-1 flex-col items-start justify-center px-[2.5rem] pt-[8rem]">
           <ul className="flex w-full flex-col gap-y-[0.5rem] text-white">
-            {NavLinks.map((item, i) => (
-              <li
-                key={i}
-                ref={(el) => {
-                  if (el) navItemsRef.current[i] = el;
-                }}
-                style={{ opacity: 0, transform: 'translateY(60px)' }}
+            <li>
+              <a
+                href="/steproof"
+                onClick={closeMenu}
+                className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
               >
-                <Link
-                  href={item.href}
-                  onClick={closeMenu}
-                  className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
-                >
-                  <div className="">
-                    <p className="text-[2rem] font-bold">{item.text}</p>
-                    <p className="text-[1.4rem]">{item.en}</p>
-                  </div>
-                  <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
-                    →
-                  </span>
-                </Link>
-              </li>
-            ))}
+                <div className="">
+                  <p className="text-[2rem] font-bold">製品一覧</p>
+                  <p className="text-[1.4rem]">PRODUCTS</p>
+                </div>
+                <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
+                  →
+                </span>
+              </a>
+            </li>
+            <li>
+              <button
+                onClick={ScrolltoCompany}
+                className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
+              >
+                <div className="">
+                  <p className="text-[2rem] font-bold">会社概要</p>
+                  <p className="text-[1.4rem]">COMPANY</p>
+                </div>
+                <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
+                  →
+                </span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>

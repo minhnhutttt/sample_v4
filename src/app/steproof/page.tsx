@@ -86,7 +86,7 @@ const Workpage = () => {
           従業員は使い慣れたツールで操作を完結でき、管理側の工数も大幅に削減されます。セキュアな環境下でスピーディーな導入を実現し、手間をかけない制度運用をスタートさせます。
         </WorkItem>
       </div>
-      <div className="flex gap-[5.2rem] pb-[18rem] max-md:flex-col max-md:items-center">
+      <div className="flex justify-center gap-[5.2rem] pb-[18rem] max-md:flex-col max-md:items-center">
         <figure>
           <img src="/assets/images/work-item.png" alt="" />
         </figure>

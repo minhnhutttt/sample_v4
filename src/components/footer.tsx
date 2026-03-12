@@ -39,7 +39,7 @@ const Footer = () => {
           en="CONTACT US"
           onClick={() => dispatch(openModal({ name: 'contact' }))}
         />
-        <div className="mx-auto w-full max-w-[57rem]">
+        <div id="company" className="mx-auto w-full max-w-[57rem]">
           <div className="py-[10rem]">
             <p className="text-[1.8rem] font-medium text-[#85F4E2]">
               Company Profile
@@ -63,7 +63,7 @@ const Footer = () => {
               </p>
               <ul className="space-y-[2rem]">
                 <li>
-                  <Link href="" className="block">
+                  <Link href="/steproof" className="block">
                     <p className="text-[1.4rem]">製品一覧</p>
                     <p className="text-[1rem] text-[#FFF6F6]/50">PRODUCTS</p>
                   </Link>
@@ -104,7 +104,7 @@ const Footer = () => {
               </p>
               <ul className="space-y-[2rem]">
                 <li>
-                  <Link href="" className="block">
+                  <Link href="/steproof" className="block">
                     <p className="text-[1.4rem]">Steproof</p>
                   </Link>
                 </li>

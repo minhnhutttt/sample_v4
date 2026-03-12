@@ -38,6 +38,6 @@ export const NavLinks = [
   {
     text: '会社概要',
     en: 'COMPANY',
-    href: '/',
+    href: '/#company',
   },
 ];

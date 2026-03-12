@@ -314,6 +314,11 @@ export default function HomeKv() {
     if (el) placeholderRefs.current.set(id, el);
   };
 
+  const ScrolltoProducts = () => {
+    const smoother = ScrollSmoother.get();
+    smoother?.scrollTo('#products', true, 'top 100px');
+  };
+
   return (
     <div ref={ref} className="relative z-10">
       {/* ════════════════════════ HERO ════════════════════════ */}
@@ -363,6 +368,7 @@ export default function HomeKv() {
           type="button"
           className="scroll-icon absolute bottom-[4rem] left-[2rem] md:left-1/2 md:-translate-x-1/2"
           aria-label="Scroll"
+          onClick={ScrolltoProducts}
         >
           <svg
             className="h-[6.5rem] w-auto"
@@ -403,7 +409,10 @@ export default function HomeKv() {
         ref={scrollSectionRef}
         className="select-work w-full py-[9rem] text-black md:py-[10rem]"
       >
-        <div className="site-max mx-auto! flex flex-col items-start max-md:max-w-[400px]!">
+        <div
+          id="products"
+          className="site-max mx-auto! flex flex-col items-start max-md:max-w-[400px]!"
+        >
           <div className="js-flip-targets flex w-full flex-col items-center justify-center gap-y-[3.5rem]">
             <div className="relative text-center text-[3.6rem] font-bold md:text-[7rem]">
               Recommended Products
