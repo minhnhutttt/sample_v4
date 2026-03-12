@@ -23,33 +23,39 @@ const Matches = async () => {
           <p className="bg-[#636769] p-2 text-[14px] text-white md:text-[16px]">
             イオンモール佐賀大和
           </p>
-          <p className="mt-0.5 text-[16px] font-semibold">{matches.place}</p>
+          <p className="mt-0.5 text-[16px] font-semibold">
+            {matches.leo_blacks.place}
+          </p>
           <div>
             <div className="flex items-center justify-center gap-5">
               <div>
                 <div>
                   <span className="text-[40px] font-semibold md:text-[55px]">
-                    {dayjs(matches.match_date).format('MM/DD')}
+                    {dayjs(matches.leo_blacks.match_date).format('MM/DD')}
                   </span>
                   <span className="text-[24px] font-bold md:text-[32px]">
-                    （{dayjs(matches.match_date).locale('ja').format('ddd')}）
+                    （
+                    {dayjs(matches.leo_blacks.match_date)
+                      .locale('ja')
+                      .format('ddd')}
+                    ）
                   </span>
                 </div>
                 <p className="text-[28px] text-[#FF0000] md:text-[36px]">
-                  {dayjs(matches.match_date).format('HH:mm')}
+                  {dayjs(matches.leo_blacks.match_date).format('HH:mm')}
                 </p>
               </div>
               <span className="text-[20px] font-medium md:text-[24px]">VS</span>
               <div className="">
                 <Image
-                  src={matches.opponent_logo.url}
+                  src={matches.leo_blacks.opponent_logo.url}
                   alt=""
                   width={75}
                   height={75}
                   className=""
                 />
                 <p className="text-center text-[14px] font-bold md:text-[16px]">
-                  {matches.opponent_name}
+                  {matches.leo_blacks.opponent_name}
                 </p>
               </div>
             </div>
@@ -79,33 +85,39 @@ const Matches = async () => {
           <p className="bg-[#636769] p-2 text-[14px] text-white md:text-[16px]">
             イオンモール佐賀大和
           </p>
-          <p className="mt-0.5 text-[16px] font-semibold">{matches.place}</p>
+          <p className="mt-0.5 text-[16px] font-semibold">
+            {matches.leo_niners.place}
+          </p>
           <div>
             <div className="flex items-center justify-center gap-5">
               <div>
                 <div>
                   <span className="text-[40px] font-semibold md:text-[55px]">
-                    {dayjs(matches.match_date).format('MM/DD')}
+                    {dayjs(matches.leo_niners.match_date).format('MM/DD')}
                   </span>
                   <span className="text-[24px] font-bold md:text-[32px]">
-                    （{dayjs(matches.match_date).locale('ja').format('ddd')}）
+                    （
+                    {dayjs(matches.leo_niners.match_date)
+                      .locale('ja')
+                      .format('ddd')}
+                    ）
                   </span>
                 </div>
                 <p className="text-[28px] text-[#FF0000] md:text-[36px]">
-                  {dayjs(matches.match_date).format('HH:mm')}
+                  {dayjs(matches.leo_niners.match_date).format('HH:mm')}
                 </p>
               </div>
               <span className="text-[20px] font-medium md:text-[24px]">VS</span>
               <div className="">
                 <Image
-                  src={matches.opponent_logo.url}
+                  src={matches.leo_niners.opponent_logo.url}
                   alt=""
                   width={75}
                   height={75}
                   className=""
                 />
                 <p className="text-center text-[14px] font-bold md:text-[16px]">
-                  {matches.opponent_name}
+                  {matches.leo_niners.opponent_name}
                 </p>
               </div>
             </div>
