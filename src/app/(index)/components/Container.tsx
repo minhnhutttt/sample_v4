@@ -44,9 +44,9 @@ const Container = () => {
       </div>
       <div className="overflow-hidden py-50">
         <p className="text-center text-[100px]">Dev Toolkit Built to Flex</p>
-        <div className="h-[2000px] py-25">
+        <div className="h-[1000px] py-25">
           <div className="pointer-events-none relative flex aspect-5/1 w-full justify-center">
-            <div className="absolute flex w-[193em] items-start justify-center">
+            <div className="absolute flex w-[90em] items-start justify-center md:w-[193em]">
               <img
                 src="/images/radial-marquee-circle-deco.svg"
                 alt=""
@@ -57,7 +57,7 @@ const Container = () => {
                 <div className="absolute top-0 aspect-square w-full -rotate-90 [will-change:transform]">
                   <div className="absolute top-0 left-0 h-full w-full [will-change:transform]">
                     <div className="absolute top-0 flex h-full w-full origin-[center_center] animate-[rotateMarquee_90s_linear_infinite] items-center justify-center [will-change:transform]">
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -68,7 +68,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -79,7 +79,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -90,7 +90,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -101,7 +101,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -112,7 +112,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -123,7 +123,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -134,7 +134,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -145,7 +145,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -156,7 +156,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -167,7 +167,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -178,7 +178,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -189,7 +189,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -200,7 +200,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -211,7 +211,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -222,7 +222,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -233,7 +233,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -244,7 +244,7 @@ const Container = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="radial-marquee__item">
+                      <div className="radial-marquee__item w-[10em] md:w-[26em]">
                         <div className="flex rounded-[.3125em] pt-[3.375em] pr-[.375em] pl-[.375em] [flex-flow:column]">
                           <div className="flex aspect-video">
                             <img
@@ -259,6 +259,70 @@ const Container = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-[#1B85EA] p-5 md:p-10">
+        <div className="grid grid-cols-2 gap-5">
+          <div className="group h1 group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[60px] md:col-span-1 md:rounded-lg md:text-[150px]">
+            <div className="title-text absolute inset-0 z-10 flex scale-[0.96] items-center justify-center text-center leading-none font-bold text-white duration-300 group-hover:scale-100 group-hover:opacity-100 md:opacity-0">
+              Jimmy <br />
+              John
+            </div>
+            <div className="overflow-hidden">
+              <video
+                src="/videos/movie.mp4"
+                autoPlay
+                muted
+                preload="inline"
+                className="absolute inset-0 duration-300 group-hover:scale-105"
+              ></video>
+            </div>
+          </div>
+          <div className="group h1 group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[60px] md:col-span-1 md:rounded-lg md:text-[150px]">
+            <div className="title-text absolute inset-0 z-10 flex scale-[0.96] items-center justify-center text-center leading-none font-bold text-white duration-300 group-hover:scale-100 group-hover:opacity-100 md:opacity-0">
+              Jimmy <br />
+              John
+            </div>
+            <div className="overflow-hidden">
+              <video
+                src="/videos/movie.mp4"
+                autoPlay
+                muted
+                preload="inline"
+                className="absolute inset-0 duration-300 group-hover:scale-105"
+              ></video>
+            </div>
+          </div>
+          <div className="group h1 group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[60px] md:col-span-1 md:rounded-lg md:text-[150px]">
+            <div className="title-text absolute inset-0 z-10 flex scale-[0.96] items-center justify-center text-center leading-none font-bold text-white duration-300 group-hover:scale-100 group-hover:opacity-100 md:opacity-0">
+              Jimmy <br />
+              John
+            </div>
+            <div className="overflow-hidden">
+              <video
+                src="/videos/movie.mp4"
+                autoPlay
+                muted
+                preload="inline"
+                className="absolute inset-0 duration-300 group-hover:scale-105"
+              ></video>
+            </div>
+          </div>
+          <div className="group h1 group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[60px] md:col-span-1 md:rounded-lg md:text-[150px]">
+            <div className="title-text absolute inset-0 z-10 flex scale-[0.96] items-center justify-center text-center leading-none font-bold text-white duration-300 group-hover:scale-100 group-hover:opacity-100 md:opacity-0">
+              Jimmy <br />
+              John
+            </div>
+            <div className="overflow-hidden">
+              <video
+                src="/videos/movie.mp4"
+                autoPlay
+                muted
+                preload="inline"
+                className="absolute inset-0 duration-300 group-hover:scale-105"
+              ></video>
             </div>
           </div>
         </div>

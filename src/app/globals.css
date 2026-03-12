@@ -63,7 +63,7 @@
 @layer utilities {
   .radial-marquee__item {
     flex: none;
-    width: 26em;
+
     position: absolute;
     --y: 500%;
     --y-circ: calc((var(--y) * -1) + 50%);
