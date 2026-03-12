@@ -161,7 +161,7 @@ const HomeFv = ({ topics }: { topics: React.ReactNode }) => {
             className="absolute inset-x-0 bottom-3 z-10 pt-2.5 pb-4 md:bottom-0 md:pb-8"
           >
             {topics}
-            <div className="absolute right-6 bottom-0 py-1 text-left text-[12px] font-medium text-white [text-shadow:1px_1px_2px_#000] md:text-[14px]">
+            <div className="absolute right-6 -bottom-2 py-0.5 text-left text-[12px] font-medium text-gray-200 [text-shadow:1px_1px_2px_#000] md:bottom-0 md:py-1 md:text-[14px]">
               映像提供：KAPLI
             </div>
           </div>
