@@ -6,6 +6,7 @@ import HomeBanner from './components/HomeBanner';
 import HomeCan from './components/HomeCan';
 import HomeKv from './components/HomeKv';
 import HomePoint from './components/HomePoint';
+import HomeReassurance from './components/HomeReassurance';
 import HomeStart from './components/HomeStart';
 import HomeWorries from './components/HomeWorries';
 
@@ -32,6 +33,8 @@ const IndexPage = () => {
       <HomeBanner />
       <HomeStart />
       <HomeCan />
+      <HomeBanner />
+      <HomeReassurance />
     </div>
   );
 };
