@@ -4,7 +4,9 @@ import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import HomeBanner from './components/HomeBanner';
 import HomeCan from './components/HomeCan';
+import HomeFaq from './components/HomeFaq';
 import HomeKv from './components/HomeKv';
+import HomePartner from './components/HomePartner';
 import HomePoint from './components/HomePoint';
 import HomeReassurance from './components/HomeReassurance';
 import HomeStart from './components/HomeStart';
@@ -35,6 +37,8 @@ const IndexPage = () => {
       <HomeCan />
       <HomeBanner />
       <HomeReassurance />
+      <HomeFaq />
+      <HomePartner />
     </div>
   );
 };

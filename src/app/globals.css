@@ -18,4 +18,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  .u-text-gradient02 {
+    background: linear-gradient(180deg, #0090ff 0%, #77c4ff 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }

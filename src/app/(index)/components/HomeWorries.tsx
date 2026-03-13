@@ -8,7 +8,7 @@ const HomeWorries = () => {
     <div ref={ref} className="relative px-5 pt-25">
       <div className="absolute inset-0 bottom-[2.5rem] bg-[url(/assets/images/worries.png)] bg-cover bg-center"></div>
       <div className="mx-auto w-full max-w-[800px]">
-        <div className="mb-9 flex md:mb-13">
+        <div className="fade-up mb-9 flex md:mb-13">
           <p className="font-inter bg-[#7C7C7C] text-[24px] font-bold text-white md:text-[32px]">
             こんな悩み、ありませんか？
           </p>
@@ -24,7 +24,7 @@ const HomeWorries = () => {
               ].map((text) => (
                 <li
                   key={text}
-                  className="flex gap-2.5 text-[18px] font-medium md:text-[20px]"
+                  className="fade-up flex gap-2.5 text-[18px] font-medium md:text-[20px]"
                 >
                   <span className="mt-1">
                     <svg
@@ -45,7 +45,7 @@ const HomeWorries = () => {
             </ul>
           </div>
 
-          <div className="relative bg-[linear-gradient(94deg,_#CAF1FF_-4.54%,_#D9E7FF_97.79%)] p-7 text-[20px] font-medium after:absolute after:top-full after:left-1/2 after:mx-auto after:block after:aspect-132/36 after:w-[80px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri.png)] after:bg-cover md:p-10 md:text-[36px] md:after:w-[132px]">
+          <div className="fade-up relative bg-[linear-gradient(94deg,_#CAF1FF_-4.54%,_#D9E7FF_97.79%)] p-7 text-[20px] font-medium after:absolute after:top-full after:left-1/2 after:mx-auto after:block after:aspect-132/36 after:w-[80px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri.png)] after:bg-cover md:p-10 md:text-[36px] md:after:w-[132px]">
             <div className="">
               PALは
               <span className="border-gradient inline bg-[linear-gradient(#FFA5D6,_#FFA5D6)] [background-size:0%_0.6em] bg-position-[0_90%] bg-no-repeat [transition:background-size_.75s_cubic-bezier(.19,_1,_.22,_1)]">
