@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
+import HashScrollHandler from '@/components/Hashscrollhandler';
 import SmoothScroll from '@/components/SmoothScroll';
 import { ContactModalWrapper } from '@/components/contact/ContactModalWrapper';
 import Footer from '@/components/footer';
@@ -60,14 +61,16 @@ const RootLayout = ({
         className={`${figtree.className} bg-[#FFF6F6] text-[#424242] antialiased`}
       >
         <Providers>
-          <Header />
-          <SmoothScroll />
-          <div id="smooth-wrapper">
-            <div id="smooth-content">
-              {children}
-              <Footer />
+          <SmoothScroll>
+            <HashScrollHandler />
+            <Header />
+            <div id="smooth-wrapper">
+              <div id="smooth-content">
+                {children}
+                <Footer />
+              </div>
             </div>
-          </div>
+          </SmoothScroll>
 
           <ContactModalWrapper />
         </Providers>

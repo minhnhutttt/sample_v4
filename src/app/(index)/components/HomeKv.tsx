@@ -3,8 +3,8 @@
 import { useEffect, useRef } from 'react';
 
 import { gsap } from 'gsap';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 import useScrollAnimations from '@/app/hooks/useScrollAnimations';
 import SplitTextReveal from '@/components/animations/Splittextreveal';
@@ -12,6 +12,8 @@ import Button from '@/components/button';
 import { useAppDispatch } from '@/store/hooks';
 import { openModal } from '@/store/slices/modalSlice';
 import type { AbsRect } from '@/types/card-animation';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -22,6 +24,7 @@ const CARD_DEFS = [
     name: 'Steproof',
     image: '/assets/images/thumbnail.jpg',
     tags: ['移動距離照明・自動化'],
+    href: '/steproof',
   },
   {
     id: 'sc1',
@@ -29,6 +32,7 @@ const CARD_DEFS = [
     name: 'VisionFlow',
     image: '/assets/images/thumbnail-02.jpg',
     tags: ['データ分析'],
+    href: '/steproof#assess',
   },
   {
     id: 'sc2',
@@ -36,6 +40,7 @@ const CARD_DEFS = [
     name: 'CoreNexus',
     image: '/assets/images/thumbnail-03.jpg',
     tags: ['CRM/顧客管理'],
+    href: '/steproof#envision',
   },
   {
     id: 'sc3',
@@ -43,6 +48,7 @@ const CARD_DEFS = [
     name: 'AquaGrid',
     image: '/assets/images/thumbnail-04.jpg',
     tags: ['在庫最適化'],
+    href: '/steproof#execute',
   },
 ] as const;
 
@@ -58,10 +64,8 @@ const SLOTS = [
 
 function absRect(el: HTMLElement): AbsRect {
   const r = el.getBoundingClientRect();
-  const smoother = ScrollSmoother.get();
-  const scrollY = smoother ? smoother.scrollTop() : window.scrollY;
   return {
-    top: r.top + scrollY,
+    top: r.top + window.scrollY,
     left: r.left + window.scrollX,
     width: r.width,
     height: r.height,
@@ -76,20 +80,18 @@ export default function HomeKv() {
   const dispatch = useAppDispatch();
   const ref = useScrollAnimations();
   const scrollSectionRef = useRef<HTMLElement>(null);
-  const stackRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const stackRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const placeholderRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
     const N = CARD_DEFS.length;
 
-    let cardOrder: HTMLDivElement[] = CARD_DEFS.map(
+    let cardOrder: HTMLAnchorElement[] = CARD_DEFS.map(
       (c) => stackRefs.current.get(c.id)!,
     );
 
     // ── Place cards in their slots ─────────────────────────────────────────────
-    function applySlots(order: HTMLDivElement[], animate = false) {
+    function applySlots(order: HTMLAnchorElement[], animate = false) {
       order.forEach((el, slotIdx) => {
         const s = SLOTS[slotIdx];
         const props = {
@@ -178,12 +180,7 @@ export default function HomeKv() {
     }
 
     // ── Flying card clones ─────────────────────────────────────────────────────
-    // FIX: Append vào #smooth-content thay vì document.body
-    // Khi fly cards nằm trong #smooth-content, tọa độ absolute của chúng
-    // sẽ đồng bộ với transform của smoother — không bị lệch.
-    const smoothContent =
-      document.querySelector<HTMLElement>('#smooth-content') ?? document.body;
-
+    // Lenis không dùng wrapper transform → append vào document.body là OK
     const flyEls: HTMLDivElement[] = CARD_DEFS.map((card) => {
       const el = document.createElement('div');
       el.style.cssText = `
@@ -197,7 +194,7 @@ export default function HomeKv() {
         <div style="width:100%;height:100%;display:flex;align-items:flex-end;">
           <img  style="width:100%;height:100%;display:flex;align-items:flex-end;" src=${card.image} alt="" />
         </div>`;
-      smoothContent.appendChild(el);
+      document.body.appendChild(el);
       gsap.set(el, { opacity: 0, top: 0, left: 0, width: 0, height: 0 });
       return el;
     });
@@ -207,8 +204,6 @@ export default function HomeKv() {
     let snaps: SnapEntry[] = [];
 
     function snapshot() {
-      // FIX: absRect() giờ dùng smoother.scrollTop() bên trong
-      // nên snaps luôn phản ánh đúng vị trí trong document
       snaps = CARD_DEFS.map(({ id, destId }) => ({
         src: absRect(stackRefs.current.get(id)!),
         dest: absRect(placeholderRefs.current.get(destId)!),
@@ -217,13 +212,6 @@ export default function HomeKv() {
 
     // ── ScrollTrigger ──────────────────────────────────────────────────────────
     function buildTrigger() {
-      // FIX: Gọi smoother.effects() để đảm bảo smoother đã tính xong
-      // positions trước khi ta snapshot — tránh lấy coords ở trạng thái chưa settle
-      const smoother = ScrollSmoother.get();
-      if (smoother) {
-        smoother.effects();
-      }
-
       snapshot();
 
       let wasInZone = false;
@@ -233,10 +221,6 @@ export default function HomeKv() {
         start: 'top 85%',
         end: 'top 15%',
         scrub: true,
-        // FIX: refreshPriority âm để ScrollTrigger này refresh SAU khi
-        // ScrollSmoother đã refresh xong (smoother có priority mặc định cao hơn).
-        // Tránh tình trạng snapshot sai vị trí khi resize/refresh.
-        refreshPriority: -1,
 
         onUpdate(self) {
           const p = self.progress;
@@ -307,16 +291,11 @@ export default function HomeKv() {
     };
   }, []);
 
-  const setStackRef = (id: string) => (el: HTMLDivElement | null) => {
+  const setStackRef = (id: string) => (el: HTMLAnchorElement | null) => {
     if (el) stackRefs.current.set(id, el);
   };
   const setPlaceholderRef = (id: string) => (el: HTMLDivElement | null) => {
     if (el) placeholderRefs.current.set(id, el);
-  };
-
-  const ScrolltoProducts = () => {
-    const smoother = ScrollSmoother.get();
-    smoother?.scrollTo('#products', true, 'top 100px');
   };
 
   return (
@@ -353,22 +332,23 @@ export default function HomeKv() {
           <div className="fade-up relative flex flex-1 justify-center">
             <div className="relative aspect-324/551 w-[24rem] md:w-[32.4rem]">
               {[...CARD_DEFS].reverse().map((card) => (
-                <div
+                <Link
+                  href={card.href}
                   key={card.id}
                   ref={setStackRef(card.id)}
                   className="absolute top-0 right-0 aspect-324/551 w-[24rem] cursor-pointer overflow-hidden rounded-2xl md:w-[32.4rem]"
                 >
                   <img src={card.image} alt="" />
-                </div>
+                </Link>
               ))}
             </div>
           </div>
         </div>
-        <button
-          type="button"
+        {/* Dùng <a> anchor link — Lenis với anchors: true sẽ smooth scroll tự động */}
+        <Link
+          href="/#products"
           className="scroll-icon absolute bottom-[4rem] left-[2rem] md:left-1/2 md:-translate-x-1/2"
           aria-label="Scroll"
-          onClick={ScrolltoProducts}
         >
           <svg
             className="h-[6.5rem] w-auto"
@@ -401,7 +381,7 @@ export default function HomeKv() {
               strokeWidth="4"
             ></path>
           </svg>
-        </button>
+        </Link>
       </section>
 
       {/* ════════════════════════ SCROLL SECTION ════════════════════════ */}
@@ -422,7 +402,11 @@ export default function HomeKv() {
           {/* Destination grid */}
           <div className="relative mt-[6rem] grid w-full grid-cols-1 gap-y-[4rem] md:mt-[8rem] md:grid-cols-4 md:gap-x-[5.7rem]">
             {CARD_DEFS.map((card) => (
-              <div key={card.destId} className="work-card relative col-span-1">
+              <Link
+                href={card.href}
+                key={card.destId}
+                className="work-card relative col-span-1"
+              >
                 <div
                   ref={setPlaceholderRef(card.destId)}
                   className="w-full rounded-[14px]"
@@ -447,7 +431,7 @@ export default function HomeKv() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

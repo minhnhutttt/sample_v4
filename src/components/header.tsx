@@ -3,14 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { gsap } from 'gsap';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 
+import { useSmoothScroll } from '@/app/hooks/Usesmoothscroll';
 import { useAppDispatch } from '@/store/hooks';
 import { openModal } from '@/store/slices/modalSlice';
 
 import Button from './button';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,39 +25,26 @@ const Header = () => {
   const lastScrollY = useRef(0);
 
   const dispatch = useAppDispatch();
+  const { lenis, scrollTo, stop, start } = useSmoothScroll();
 
+  // ── Header hide/show on scroll ──────────────────────────────────────────────
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-    // ── Helper: lấy scroll position đúng dù có hay không có smoother ──────────
-    const getScrollY = () => {
-      const smoother = ScrollSmoother.get();
-      return smoother ? smoother.scrollTop() : window.scrollY;
-    };
-
-    // ── Cách đúng khi dùng ScrollSmoother: lắng nghe qua ScrollTrigger ────────
-    // window "scroll" event vẫn fire với native scroll (ScrollSmoother không
-    // chặn nó), nhưng scrollY của smoother lag phía sau native scroll.
-    // Dùng ScrollTrigger.create với onUpdate để đọc đúng progress từ smoother.
     const st = ScrollTrigger.create({
       start: 0,
       end: 'max',
-      // onUpdate chạy mỗi frame khi scroll, sau khi smoother đã cập nhật
-      onUpdate(self) {
-        const currentScrollY = getScrollY();
+      onUpdate() {
+        const currentScrollY = window.scrollY;
         const delta = currentScrollY - lastScrollY.current;
 
         if (!headerWrapRef.current) return;
 
         if (delta > 0 && currentScrollY > 80) {
-          // Scroll xuống & đã qua 80px → ẩn header
           gsap.to(headerWrapRef.current, {
             y: '-100%',
             duration: 0.4,
             overwrite: 'auto',
           });
         } else if (delta < 0) {
-          // Scroll lên → hiện header
           gsap.to(headerWrapRef.current, {
             y: '0%',
             duration: 0.4,
@@ -79,8 +68,8 @@ const Header = () => {
     setMenuOpen(true);
     document.body.style.overflow = 'hidden';
 
-    // Pause smoother khi mở menu để tránh scroll xảy ra phía sau overlay
-    ScrollSmoother.get()?.paused(true);
+    // Pause Lenis khi mở menu
+    stop();
 
     gsap.fromTo(
       overlayRef.current,
@@ -139,8 +128,8 @@ const Header = () => {
       onComplete: () => {
         setMenuOpen(false);
         document.body.style.overflow = '';
-        // Resume smoother sau khi menu đóng xong
-        ScrollSmoother.get()?.paused(false);
+        // Resume Lenis sau khi menu đóng xong
+        start();
       },
     });
 
@@ -173,9 +162,9 @@ const Header = () => {
   };
 
   const ScrolltoCompany = () => {
-    const smoother = ScrollSmoother.get();
     closeMenu();
-    smoother?.scrollTo('#company', true, 'top 100px');
+    // Lenis scrollTo: offset -100px tương đương 'top 100px' của ScrollSmoother
+    scrollTo('#company', { offset: -100 });
   };
 
   return (
@@ -193,22 +182,22 @@ const Header = () => {
               <div className="hidden items-center gap-x-[1.2rem] md:flex">
                 <ul className="flex items-center gap-x-[4rem] rounded-[0.5rem] px-[3.5rem] md:rounded-[1rem]">
                   <li>
-                    <a
-                      href="/steproof"
+                    <Link
+                      href="/#products"
                       className="uline flex flex-col items-center justify-center text-center"
                     >
                       <p className="text-[1.4rem]">製品一覧</p>
                       <p className="text-[1rem] text-[#424242]/80">PRODUCTS</p>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <button
-                      onClick={ScrolltoCompany}
+                    <Link
+                      href="#company"
                       className="uline flex flex-col items-center justify-center text-center"
                     >
                       <p className="text-[1.4rem]">会社概要</p>
                       <p className="text-[1rem] text-[#424242]/80">COMPANY</p>
-                    </button>
+                    </Link>
                   </li>
                 </ul>
                 <Button
@@ -276,8 +265,8 @@ const Header = () => {
         <div className="flex flex-1 flex-col items-start justify-center px-[2.5rem] pt-[8rem]">
           <ul className="flex w-full flex-col gap-y-[0.5rem] text-white">
             <li>
-              <a
-                href="/steproof"
+              <Link
+                href="/#products"
                 onClick={closeMenu}
                 className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
               >
@@ -288,11 +277,12 @@ const Header = () => {
                 <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                   →
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={ScrolltoCompany}
+              <Link
+                href="#company"
+                onClick={closeMenu}
                 className="group flex w-full items-center justify-between border-b border-white/10 py-[1.2rem]"
               >
                 <div className="">
@@ -302,7 +292,7 @@ const Header = () => {
                 <span className="/20 text-[1.5rem] transition-all duration-200 group-hover:translate-x-1 group-hover:text-[#CCE561]">
                   →
                 </span>
-              </button>
+              </Link>
             </li>
           </ul>
         </div>

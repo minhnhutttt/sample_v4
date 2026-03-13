@@ -1,17 +1,19 @@
 import { ReactNode } from 'react';
 
 const WorkItem = ({
+  id,
   head,
   title,
   text,
   children,
 }: {
+  id: string;
   head: string;
   title: string;
   text: string;
   children: ReactNode;
 }) => (
-  <div className="flex gap-[2rem] max-md:flex-col">
+  <div id={id} className="flex gap-[2rem] max-md:flex-col">
     <div className="md:flex-1">
       <p className="text-[4rem] leading-none font-bold text-[#242424] underline md:text-[7rem]">
         {head}
@@ -61,6 +63,7 @@ const Workpage = () => {
       </div>
       <div className="space-y-[10rem] py-[18rem]">
         <WorkItem
+          id="assess"
           head="Assess"
           title="IDENTIFYING CORE OPERATIONAL CHALLENGES."
           text="現状課題の把握と知識不足の解消"
@@ -69,6 +72,7 @@ const Workpage = () => {
           Steproofは、まず貴社の現状を丁寧にヒアリングし、制度導入を阻むボトルネックを明確化します。本来享受できるはずのメリットを再認識し、機会損失を防ぐための最適なアプローチを提案することで、導入に向けた確かな土台を築きます。
         </WorkItem>
         <WorkItem
+          id="envision"
           head="Envision"
           title="STRATEGIZING FOR MUTUAL GROWTH."
           text="会社と従業員双方にメリットのある制度設計"
@@ -77,6 +81,7 @@ const Workpage = () => {
           これら双方向の恩恵を最大化する活用イメージを具体化することで、単なるツール導入に留まらない、組織全体のウェルビーイング向上に寄与する戦略を構築します。
         </WorkItem>
         <WorkItem
+          id="execute"
           head="Execute"
           title="AUTOMATING PROCESSES VIA LINE INTEGRATION."
           text="LINEを活用した自動化の実装"
@@ -88,13 +93,13 @@ const Workpage = () => {
       </div>
       <div className="flex justify-center gap-[5.2rem] pb-[18rem] max-md:flex-col max-md:items-center">
         <figure>
-          <img src="/assets/images/work-item.png" alt="" />
+          <img src="/assets/images/thumbnail-02.jpg" alt="" />
         </figure>
         <figure>
-          <img src="/assets/images/work-item.png" alt="" />
+          <img src="/assets/images/thumbnail-03.jpg" alt="" />
         </figure>
         <figure>
-          <img src="/assets/images/work-item.png" alt="" />
+          <img src="/assets/images/thumbnail-04.jpg" alt="" />
         </figure>
       </div>
     </div>

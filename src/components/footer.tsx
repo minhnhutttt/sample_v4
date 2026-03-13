@@ -63,13 +63,13 @@ const Footer = () => {
               </p>
               <ul className="space-y-[2rem]">
                 <li>
-                  <Link href="/steproof" className="block">
+                  <Link href="/#products" className="block">
                     <p className="text-[1.4rem]">製品一覧</p>
                     <p className="text-[1rem] text-[#FFF6F6]/50">PRODUCTS</p>
                   </Link>
                 </li>
                 <li>
-                  <Link href="" className="block">
+                  <Link href="#company" className="block">
                     <p className="text-[1.4rem]">会社概要</p>
                     <p className="text-[1rem] text-[#FFF6F6]/50">COMPANY</p>
                   </Link>
