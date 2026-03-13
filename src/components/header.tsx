@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { useSmoothScroll } from '@/app/hooks/Usesmoothscroll';
 import { useAppDispatch } from '@/store/hooks';
@@ -25,42 +26,52 @@ const Header = () => {
   const lastScrollY = useRef(0);
 
   const dispatch = useAppDispatch();
-  const { lenis, scrollTo, stop, start } = useSmoothScroll();
+  const { stop, start } = useSmoothScroll();
 
   // ── Header hide/show on scroll ──────────────────────────────────────────────
+  const pathname = usePathname();
+
   useEffect(() => {
-    const st = ScrollTrigger.create({
-      start: 0,
-      end: 'max',
-      onUpdate() {
-        const currentScrollY = window.scrollY;
-        const delta = currentScrollY - lastScrollY.current;
+    // Reset scroll position tracking
+    lastScrollY.current = 0;
 
-        if (!headerWrapRef.current) return;
+    // Đợi DOM mới render xong
+    const raf = requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
 
-        if (delta > 0 && currentScrollY > 80) {
-          gsap.to(headerWrapRef.current, {
-            y: '-100%',
-            duration: 0.4,
-            overwrite: 'auto',
-          });
-        } else if (delta < 0) {
-          gsap.to(headerWrapRef.current, {
-            y: '0%',
-            duration: 0.4,
-            ease: 'power2.out',
-            overwrite: 'auto',
-          });
-        }
+      const st = ScrollTrigger.create({
+        start: 0,
+        end: 'max',
+        onUpdate() {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - lastScrollY.current;
 
-        lastScrollY.current = currentScrollY;
-      },
+          if (!headerWrapRef.current) return;
+
+          if (delta > 0 && currentScrollY > 80) {
+            gsap.to(headerWrapRef.current, {
+              y: '-100%',
+              duration: 0.4,
+              overwrite: 'auto',
+            });
+          } else if (delta < 0) {
+            gsap.to(headerWrapRef.current, {
+              y: '0%',
+              duration: 0.4,
+              ease: 'power2.out',
+              overwrite: 'auto',
+            });
+          }
+
+          lastScrollY.current = currentScrollY;
+        },
+      });
+
+      return () => st.kill();
     });
 
-    return () => {
-      st.kill();
-    };
-  }, []);
+    return () => cancelAnimationFrame(raf);
+  }, [pathname]);
 
   const openMenu = () => {
     if (!overlayRef.current) return;
@@ -159,12 +170,6 @@ const Header = () => {
     } else {
       openMenu();
     }
-  };
-
-  const ScrolltoCompany = () => {
-    closeMenu();
-    // Lenis scrollTo: offset -100px tương đương 'top 100px' của ScrollSmoother
-    scrollTo('#company', { offset: -100 });
   };
 
   return (
