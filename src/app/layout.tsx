@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import type { Metadata } from 'next';
 import { Bebas_Neue, Noto_Sans_JP, Orbitron } from 'next/font/google';
 import 'sonner/dist/styles.css';
@@ -12,6 +14,7 @@ import {
   SITE_URL_WITH_SCHEME,
   TWITTER,
 } from '@/config/constants';
+import { LoadingProvider } from '@/providers/LoadingProvider';
 
 import './globals.css';
 import { Providers } from './providers';
@@ -68,11 +71,15 @@ const RootLayout = ({
       <body
         className={`${noto.className} ${bebas_neue.variable} ${orbitron.variable} antialiased`}
       >
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+        <Suspense>
+          <Providers>
+            <LoadingProvider>
+              <Header />
+              {children}
+              <Footer />
+            </LoadingProvider>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

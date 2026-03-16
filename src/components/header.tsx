@@ -1,10 +1,11 @@
-'use client'
+'use client';
 
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+import { TransitionLink } from './navigation/TransitionLink';
 
 type LinkType = {
   label: string;
@@ -26,7 +27,7 @@ const LinkItem = ({
   children: ReactNode;
   onClick: () => void;
 }) => (
-  <Link
+  <TransitionLink
     href={href}
     onClick={onClick}
     className="group/link relative flex w-full items-center overflow-hidden pr-4 text-[16px] text-white min-[1400]:text-[20px] md:text-[18px]"
@@ -41,7 +42,7 @@ const LinkItem = ({
         className="duration-300 group-hover/link:translate-x-4 max-md:w-4"
       />
     </span>
-  </Link>
+  </TransitionLink>
 );
 
 const NewsItem = ({
@@ -57,7 +58,7 @@ const NewsItem = ({
   children: ReactNode;
   onClick: () => void;
 }) => (
-  <Link
+  <TransitionLink
     href={href}
     onClick={onClick}
     className="group/news relative flex w-full items-center gap-4 rounded-tl-3xl rounded-br-3xl border border-white p-4 text-[14px] text-white duration-300 hover:bg-[#e4032e] md:text-[16px]"
@@ -76,7 +77,7 @@ const NewsItem = ({
       height={20}
       className="absolute right-4 bottom-4 duration-300 group-hover/news:translate-x-2 max-md:w-4"
     />
-  </Link>
+  </TransitionLink>
 );
 
 const Header = () => {
@@ -188,7 +189,10 @@ const Header = () => {
           />
         </div>
 
-        <Link href="/" className="relative top-0.5 left-0 md:top-3 md:left-4">
+        <TransitionLink
+          href="/"
+          className="relative top-0.5 left-0 md:top-3 md:left-4"
+        >
           <Image
             src="/assets/images/logo.png"
             alt="logo"
@@ -196,7 +200,7 @@ const Header = () => {
             height={96}
             className="max-md:w-[86px]"
           />
-        </Link>
+        </TransitionLink>
 
         <button
           onClick={toggle}
@@ -302,7 +306,7 @@ const Header = () => {
                 </div>
                 <ul className="group/bottoms flex gap-6 py-10 text-white max-md:flex-col md:items-center md:gap-10 md:py-20 xl:py-[120px]">
                   <li>
-                    <Link
+                    <TransitionLink
                       href="/about"
                       onClick={close}
                       className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
@@ -318,10 +322,10 @@ const Header = () => {
                           className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
                         />
                       </span>
-                    </Link>
+                    </TransitionLink>
                   </li>
                   <li>
-                    <Link
+                    <TransitionLink
                       href="/contact"
                       onClick={close}
                       className="flex flex-col text-[30px] leading-none duration-300 group-hover/bottoms:opacity-60 hover:!opacity-100 md:text-[50px]"
@@ -337,7 +341,7 @@ const Header = () => {
                           className="duration-300 group-hover/bottom:translate-x-4 max-md:w-4"
                         />
                       </span>
-                    </Link>
+                    </TransitionLink>
                   </li>
                 </ul>
               </div>

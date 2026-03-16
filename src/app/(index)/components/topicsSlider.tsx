@@ -1,11 +1,12 @@
-'use client'
+'use client';
 
 import { ReactNode } from 'react';
 
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 import Image from 'next/image';
-import Link from 'next/link';
+
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 
 const SliderItem = ({
   text,
@@ -17,7 +18,7 @@ const SliderItem = ({
   image: string;
 }) => (
   <SplideSlide>
-    <Link
+    <TransitionLink
       href={link}
       className="font-bebas-neue group relative flex items-center justify-center overflow-hidden rounded-tl-2xl rounded-br-2xl border border-white text-white max-md:w-[150px]"
     >
@@ -31,7 +32,7 @@ const SliderItem = ({
       <p className="absolute text-center text-[30px] leading-none md:text-[46px]">
         {text}
       </p>
-    </Link>
+    </TransitionLink>
   </SplideSlide>
 );
 

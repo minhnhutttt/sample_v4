@@ -1,15 +1,17 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { NavLinks } from '@/config/constants';
 
+import { TransitionLink } from './navigation/TransitionLink';
+
 const Footer = () => {
   return (
     <footer className="bg-black px-5 pt-10 pb-8 md:px-12 md:pt-12">
       <div className="flex items-center justify-center gap-16 md:gap-25">
-        <Link href="/">
+        <TransitionLink href="/">
           <Image
             src="/assets/images/logo.png"
             alt="logo"
@@ -17,8 +19,8 @@ const Footer = () => {
             height={64}
             className="max-md:w-[65px]"
           />
-        </Link>
-        <Link href="/">
+        </TransitionLink>
+        <TransitionLink href="/">
           <Image
             src="/assets/images/logo2.png"
             alt="logo"
@@ -26,18 +28,18 @@ const Footer = () => {
             height={63}
             className="max-md:size-[45px]"
           />
-        </Link>
+        </TransitionLink>
       </div>
       <div className="mt-13 mb-32">
         <ul className="flex flex-wrap items-center justify-center gap-6 text-[14px] text-white max-md:flex-col md:gap-[65px]">
           {NavLinks.map((item, i) => (
             <li key={i}>
-              <Link
+              <TransitionLink
                 href={item.href}
                 className="px-2 duration-200 hover:underline"
               >
                 {item.text}
-              </Link>
+              </TransitionLink>
             </li>
           ))}
         </ul>
@@ -83,8 +85,10 @@ const Footer = () => {
       <div className="flex flex-wrap items-center justify-between gap-5 text-[14px] text-white max-md:flex-col-reverse">
         <p className="">Copyright  LEO BLACKS SAGA. All Rights Reserved.</p>
         <div className="flex gap-5">
-          <Link href="/privacy-policy">プライバシーポリシー</Link>
-          <Link href="/terms">利用規約</Link>
+          <TransitionLink href="/privacy-policy">
+            プライバシーポリシー
+          </TransitionLink>
+          <TransitionLink href="/terms">利用規約</TransitionLink>
         </div>
       </div>
     </footer>

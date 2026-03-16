@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 // import Matches from '@/components/matches';
 import { OG, TWITTER } from '@/config/constants';
 
@@ -77,7 +77,7 @@ const GamePage = () => {
             準備中
           </p>
           <div className="mt-12 flex justify-center md:mt-[54px]">
-            <Link
+            <TransitionLink
               href="/news/9oyk6m96irx6"
               className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
             >
@@ -89,7 +89,7 @@ const GamePage = () => {
                   alt=""
                 />
               </span>
-            </Link>
+            </TransitionLink>
           </div>
           <div className="mt-25 w-full md:mt-[166px]">
             <h2 className="mt-12 mb-8 border-l-[4px] border-[#F0162B] pl-4 text-[24px] font-bold md:mt-[70px] md:mb-12 md:border-l-[8px] md:text-[32px]">
@@ -122,7 +122,7 @@ const GamePage = () => {
               </div>
             </div>
             <div className="mt-12 flex justify-center md:mt-[54px]">
-              <Link
+              <TransitionLink
                 href="/about"
                 className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
               >
@@ -134,7 +134,7 @@ const GamePage = () => {
                     alt=""
                   />
                 </span>
-              </Link>
+              </TransitionLink>
             </div>
           </div>
         </div>

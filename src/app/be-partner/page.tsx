@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { OG, TWITTER } from '@/config/constants';
 
 import ContactForm from '../contact/contactForm';
@@ -375,7 +376,7 @@ const BePartnerPage = () => {
               </div>
             </div>
             <div className="mt-12 flex justify-center md:mt-[54px]">
-              <Link
+              <TransitionLink
                 href="/partners"
                 className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
               >
@@ -387,7 +388,7 @@ const BePartnerPage = () => {
                     alt=""
                   />
                 </span>
-              </Link>
+              </TransitionLink>
             </div>
           </div>
         </div>

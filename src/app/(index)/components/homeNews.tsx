@@ -1,8 +1,8 @@
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
-import Link from 'next/link';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { getNewsList } from '@/services/microcms';
 
 const HomeNews = async () => {
@@ -21,7 +21,7 @@ const HomeNews = async () => {
             <ul className="mt-2 space-y-[15px]">
               {news.contents.map((item) => (
                 <li key={item.id}>
-                  <Link
+                  <TransitionLink
                     href={`/news/${item.id}`}
                     className="flex items-center gap-3 bg-[#F4F4F4] px-3.75 py-4 leading-[1.3] md:gap-5"
                   >
@@ -34,13 +34,13 @@ const HomeNews = async () => {
                     <span className="line-clamp-1 flex-1 text-[14px] md:text-[18px]">
                       {item.title}
                     </span>
-                  </Link>
+                  </TransitionLink>
                 </li>
               ))}
             </ul>
           </div>
           <div className="mt-12 flex justify-center md:mt-[54px]">
-            <Link
+            <TransitionLink
               href="/news"
               className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:w-[300px] md:text-[20px]"
             >
@@ -52,7 +52,7 @@ const HomeNews = async () => {
                   alt=""
                 />
               </span>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </div>

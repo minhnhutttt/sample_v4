@@ -1,8 +1,7 @@
-'use client'
-
-import Link from 'next/link';
+'use client';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { PartnerData } from '@/data/partners';
 
 const chunkArray = <T,>(arr: T[], size: number): T[][] =>
@@ -49,7 +48,7 @@ const HomePartner = () => {
           ))}
         </div>
         <div className="flex justify-center">
-          <Link
+          <TransitionLink
             href="/partners"
             className="flex h-14 w-[260px] items-center justify-center gap-5 bg-[#FF4E4E] text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:w-[300px] md:text-[20px]"
           >
@@ -61,7 +60,7 @@ const HomePartner = () => {
                 alt=""
               />
             </span>
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import Link from 'next/link';
 
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { PER_PAGE } from '@/config/constants';
 import { getNewsPage } from '@/services/microcms';
 import { News } from '@/types/news';
@@ -37,7 +37,7 @@ export default function NewsList({ initialNews, totalCount, category }: Props) {
       <ul className="mt-5 grid w-full max-w-[992px] grid-cols-2 gap-x-5 gap-y-12 md:gap-x-10 md:gap-y-32 lg:grid-cols-3">
         {news.map((item) => (
           <li key={item.id} className="text-left md:w-[304px]">
-            <Link href={`/news/${item.id}`} className="flex flex-col">
+            <TransitionLink href={`/news/${item.id}`} className="flex flex-col">
               <Image
                 src={item.thumbnail.url}
                 alt=""
@@ -51,7 +51,7 @@ export default function NewsList({ initialNews, totalCount, category }: Props) {
               <span className="line-clamp-2 text-[14px] md:text-[16px]">
                 {item.title}
               </span>
-            </Link>
+            </TransitionLink>
           </li>
         ))}
       </ul>

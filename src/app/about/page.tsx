@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { OG, TWITTER } from '@/config/constants';
 
 export const metadata: Metadata = {
@@ -203,7 +204,7 @@ const AboutPage = () => {
                     />
                   </span>
                 </Link>
-                <Link
+                <TransitionLink
                   href="/history"
                   className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
                 >
@@ -215,8 +216,8 @@ const AboutPage = () => {
                       alt=""
                     />
                   </span>
-                </Link>
-                <Link
+                </TransitionLink>
+                <TransitionLink
                   href="/team?s=レオブラックス"
                   className="flex h-14 items-center justify-center gap-5 bg-[#FF4E4E] px-3 text-[16px] font-bold text-white duration-300 hover:opacity-70 md:h-[70px] md:px-[30px] md:text-[20px]"
                 >
@@ -228,7 +229,7 @@ const AboutPage = () => {
                       alt=""
                     />
                   </span>
-                </Link>
+                </TransitionLink>
               </div>
               <ul className="my-5 flex items-center justify-center gap-[14px]">
                 <li>

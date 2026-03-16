@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { getAdjacentNews, getNewsDetail } from '@/services/microcms';
 import { News } from '@/types/news';
 
@@ -166,16 +167,16 @@ const NewsDetailPage = async ({ params }: Props) => {
           <div className="mt-[90px] flex max-md:flex-wrap">
             {/* Previous */}
             {prev ? (
-              <Link
+              <TransitionLink
                 href={`/news/${prev.id}`}
                 className="flex h-12 flex-1 items-center bg-[#F1F1F1] px-5 text-[14px] duration-300 hover:opacity-75 max-md:order-2 md:h-[60px] md:text-[16px]"
               >
                 ＜　前の記事へ
-              </Link>
+              </TransitionLink>
             ) : (
               <div className="flex-1 max-md:order-2" />
             )}
-            <Link
+            <TransitionLink
               href="/news"
               className="flex h-12 w-full items-center justify-center gap-5 bg-[linear-gradient(94deg,_#FF5E5E_3.04%,_#FF4E4E_113.13%)] px-5 text-[14px] text-white duration-300 hover:opacity-75 md:h-[60px] md:w-[200px] md:text-[16px]"
             >
@@ -192,15 +193,15 @@ const NewsDetailPage = async ({ params }: Props) => {
                 />
               </svg>
               <span>NEWS一覧</span>
-            </Link>
+            </TransitionLink>
             {/* Next */}
             {next ? (
-              <Link
+              <TransitionLink
                 href={`/news/${next.id}`}
                 className="flex h-12 flex-1 items-center justify-end bg-[#F1F1F1] px-5 text-[14px] duration-300 hover:opacity-75 max-md:order-3 md:h-[60px] md:text-[16px]"
               >
                 次の記事へ　＞
-              </Link>
+              </TransitionLink>
             ) : (
               <div className="flex-1 max-md:order-3" />
             )}

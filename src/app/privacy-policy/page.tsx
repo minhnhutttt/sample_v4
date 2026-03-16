@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
 import Title from '@/components/common/title';
+import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { OG, TWITTER } from '@/config/constants';
 
 export const metadata: Metadata = {
@@ -356,7 +356,9 @@ const PrivacyPolicyPage = () => {
                   <div>
                     <strong>【Webの場合】</strong>
                     <br />
-                    <Link href="/contact">お問い合わせフォーム</Link>
+                    <TransitionLink href="/contact">
+                      お問い合わせフォーム
+                    </TransitionLink>
                     <br />
                     <strong>【郵送の場合】</strong>
                     <br />
