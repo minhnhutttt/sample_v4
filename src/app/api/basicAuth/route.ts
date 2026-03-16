@@ -1,8 +1,8 @@
-export const GET = async () => {
+export async function GET() {
   return new Response(`Auth Required.`, {
     status: 401,
     headers: {
-      'WWW-Authenticate': 'Basic realm="Secure Area"',
+      'WWW-authenticate': 'Basic realm="Secure Area"',
     },
-  });
-};
+  })
+}
