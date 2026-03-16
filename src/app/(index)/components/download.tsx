@@ -1,35 +1,36 @@
-'use client'
+'use client';
 
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger)
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Download = () => {
-  const sectionRef = useRef<HTMLElement>(null)
-  const imageRef = useRef<HTMLImageElement>(null)
-  const logoRef = useRef<HTMLImageElement>(null)
-  const textRef = useRef<HTMLParagraphElement>(null)
-  const buttonsRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const sectionEl = sectionRef.current
-    const imageEl = imageRef.current
-    const logoEl = logoRef.current
-    const textEl = textRef.current
-    const buttonsEl = buttonsRef.current
+    const sectionEl = sectionRef.current;
+    const imageEl = imageRef.current;
+    const logoEl = logoRef.current;
+    const textEl = textRef.current;
+    const buttonsEl = buttonsRef.current;
 
-    if (!sectionEl || !imageEl || !logoEl || !textEl || !buttonsEl) return
+    if (!sectionEl || !imageEl || !logoEl || !textEl || !buttonsEl) return;
 
     const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia();
 
       mm.add('(min-width: 768px)', () => {
         gsap.set([imageEl, logoEl, textEl, buttonsEl], {
           transformOrigin: 'center center',
           willChange: 'transform, opacity',
-        })
+        });
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -39,48 +40,48 @@ const Download = () => {
             invalidateOnRefresh: true,
           },
           defaults: { ease: 'power4.out' },
-        })
+        });
 
         tl.fromTo(
           imageEl,
           { scale: 2.2, autoAlpha: 0, y: 80 },
           { scale: 1, autoAlpha: 1, y: 0, duration: 1.2 },
-          0
+          0,
         )
           .fromTo(
             logoEl,
             { scale: 2.1, autoAlpha: 0, y: 60 },
             { scale: 1, autoAlpha: 1, y: 0, duration: 1.05 },
-            0.05
+            0.05,
           )
           .fromTo(
             textEl,
             { scale: 1.7, autoAlpha: 0, y: 50 },
             { scale: 1, autoAlpha: 1, y: 0, duration: 0.95 },
-            0.12
+            0.12,
           )
           .fromTo(
             buttonsEl,
             { scale: 1.7, autoAlpha: 0, y: 40 },
             { scale: 1, autoAlpha: 1, y: 0, duration: 0.85 },
-            0.18
-          )
+            0.18,
+          );
 
         return () => {
-          tl.kill()
-          gsap.set([imageEl, logoEl, textEl, buttonsEl], { clearProps: 'all' })
-        }
-      })
+          tl.kill();
+          gsap.set([imageEl, logoEl, textEl, buttonsEl], { clearProps: 'all' });
+        };
+      });
 
       return () => {
-        mm.revert()
-      }
-    }, sectionEl)
+        mm.revert();
+      };
+    }, sectionEl);
 
     return () => {
-      ctx.revert()
-    }
-  }, [])
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section
@@ -95,16 +96,16 @@ const Download = () => {
             <img
               src="/assets/images/logo.svg"
               alt="KIVO APP"
-              className="mx-auto h-[clamp(104px,78px+9.6vw,224px)] w-auto max-w-full select-none object-contain"
+              className="mx-auto h-[clamp(104px,78px+9.6vw,224px)] w-auto max-w-full object-contain select-none"
               draggable={false}
             />
           </div>
           <p className="text-[clamp(14px,13.415px+100vw*.0015,16px)] text-[#ffffff]">
-            あなたが届ける情報には、
+            あなたのコンテンツに、
             <br className="max-md:hidden" />
-            かけがえのない価値があります。
+            正しい価値を保証する。
             <br className="max-md:hidden" />
-            その価値が、正しく受け取られる場所。それがKIVOです。
+            流出しない設計で、あなたの代わりに守り続ける。
           </p>
           <div className="flex gap-5">
             <a href="#">
@@ -117,11 +118,7 @@ const Download = () => {
         </div>
 
         <div className="mt-10 w-full" data-component="image-asset-static">
-          <img
-            className="w-full p-4"
-            src="/assets/images/app-img.png"
-            alt=""
-          />
+          <img className="w-full p-4" src="/assets/images/app-img.png" alt="" />
         </div>
       </div>
 
@@ -142,7 +139,7 @@ const Download = () => {
               ref={logoRef}
               src="/assets/images/logo.svg"
               alt="KIVO APP"
-              className="h-[clamp(104px,78px+6.4vw,224px)] w-auto max-w-full select-none object-contain"
+              className="h-[clamp(104px,78px+6.4vw,224px)] w-auto max-w-full object-contain select-none"
               draggable={false}
             />
           </div>
@@ -151,11 +148,12 @@ const Download = () => {
             className="mt-12 max-w-[720px] leading-[1.1] tracking-[-.02em] text-[#ffffff]"
           >
             <span className="block text-[clamp(28px,22px+1.25vw,48px)]">
-              あなたが届ける情報には、<br />
-              かけがえのない価値があります。
+              あなたのコンテンツに、
+              <br />
+              正しい価値を保証する。
             </span>
             <span className="mt-12 block text-[clamp(14px,11px+0.625vw,24px)]">
-              その価値が、正しく受け取られる場所。それがKIVOです。
+              流出しない設計で、あなたの代わりに守り続ける。
             </span>
           </p>
           <div ref={buttonsRef} className="mt-12 flex gap-5">
@@ -169,7 +167,7 @@ const Download = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Download
+export default Download;

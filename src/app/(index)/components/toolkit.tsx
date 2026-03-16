@@ -1,38 +1,39 @@
-'use client'
+'use client';
 
-import { VideoModal } from '@/app/detail/components/Videomodal'
-import { memo, useState } from 'react'
+import { memo, useState } from 'react';
+
+import { VideoModal } from '@/app/detail/components/Videomodal';
 
 const VIDEOS = [
-  { src: '/assets/video/video-01.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-02.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-03.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-04.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-01.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-02.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-03.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-04.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-01.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-02.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-03.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-04.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-01.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-02.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-03.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-04.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-01.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/video-02.mp4', label: 'Pixelate Image Render Effect' },
-]
+  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+];
 
-const POSTER = '/assets/images/kv.png'
+const POSTER = '/assets/images/kv.png';
 
 interface VideoCardProps {
-  src: string
-  label: string
+  src: string;
+  label: string;
 }
 
 const VideoCard = memo(({ src, label }: VideoCardProps) => (
-  <div className="flex flex-col p-2.5 bg-white rounded-xl">
+  <div className="flex flex-col rounded-xl bg-white p-2.5">
     <div className="flex aspect-8/5">
       <video
         className="h-full w-full object-cover"
@@ -45,39 +46,39 @@ const VideoCard = memo(({ src, label }: VideoCardProps) => (
         src={src}
       />
     </div>
-    <div className="text-black md:text-[18px] pt-3 pb-1 text-[13px] font-bold">
+    <div className="pt-3 pb-1 text-[13px] font-bold text-black md:text-[18px]">
       {label}
     </div>
   </div>
-))
-VideoCard.displayName = 'VideoCard'
+));
+VideoCard.displayName = 'VideoCard';
 
 const MarqueeItem = memo(({ src, label }: VideoCardProps) => (
   <div className="radial-marquee__item w-[13em] md:w-[24em]">
     <VideoCard src={src} label={label} />
   </div>
-))
-MarqueeItem.displayName = 'MarqueeItem'
+));
+MarqueeItem.displayName = 'MarqueeItem';
 
 const Toolkit = () => {
-  const [modalOpen, setModalOpen] = useState(false)
-  const REEL_SRC = '/assets/video/video-01.mp4'
+  const [modalOpen, setModalOpen] = useState(false);
+  const REEL_SRC = '/assets/video/m-4.mp4';
 
   return (
-    <div className="text-white relative">
+    <div className="js-header-color relative bg-stone-900 text-white">
       {/* Header */}
       <div className="p-10 max-md:px-5">
         <div className="flex flex-col gap-[5svh]">
-          <div className="flex justify-center items-center gap-5 max-md:flex-col">
+          <div className="flex items-center justify-center gap-5 max-md:flex-col">
             <div
-              className="md:text-[104px] text-[50px] whitespace-nowrap font-bold text-right"
+              className="text-right text-[50px] font-bold whitespace-nowrap md:text-[104px]"
               aria-hidden="true"
             >
               KIVO
             </div>
             <img src="/assets/images/logo.svg" alt="KIVO logo" />
             <div
-              className="md:text-[104px] text-[40px] whitespace-nowrap font-bold"
+              className="text-[40px] font-bold whitespace-nowrap md:text-[104px]"
               aria-hidden="true"
             >
               THE CONTRACT
@@ -86,17 +87,18 @@ const Toolkit = () => {
 
           <p
             data-load-reveal=""
-            className="text-center md:text-[30px] text-[20px] font-shippori"
+            className="font-shippori text-center text-[20px] md:text-[30px]"
           >
             発信する時代は終わった。 確定させる時代が来た。
             <br />
-            KIVOは、情報の価値が契約によって成立する、 最初のプラットフォームである。
+            KIVOは、情報の価値が契約によって成立する
+            <br /> 最初のプラットフォームである。
           </p>
         </div>
       </div>
 
       {/* Radial Marquee */}
-      <div className="overflow-hidden md:py-20 py-16">
+      <div className="overflow-hidden py-16 md:py-20">
         <div className="pointer-events-none relative flex aspect-5/1 w-full justify-center">
           <div className="absolute flex w-[110em] items-start justify-center md:w-[190em]">
             <img
@@ -120,15 +122,25 @@ const Toolkit = () => {
         </div>
 
         {/* Content Section */}
-        <div className="py-60 md:py-80 px-5 md:px-10 relative">
-          <p className="text-center md:text-[30px] text-[20px] font-shippori mb-50">
-            SNSはフォロワーを最大化する。KIVOは価値を最大化する。
+        <div className="relative px-5 py-30 md:px-10 md:py-40">
+          <p className="font-shippori mb-50 text-center text-[20px] md:text-[30px]">
+            SNSはフォロワーを最大化する。
+            <br />
+            KIVOは価値を最大化する。
             <br />
             <br />
-            クリエイターに必要だったのは、 フォロワーではなく、契約者だ。拡散ではなく、保護だ。
+            クリエイターに必要だったのは、
+            <br />
+            フォロワーではなく契約者。
+            <br />
+            拡散ではなく保護。
             <br />
             <br />
-            アプリの外に流出させない。クリエイターの情報を守る。それが、設計の最重要思想である。
+            アプリの外に流出させない。
+            <br />
+            クリエイターの情報を守る。
+            <br />
+            それが、設計の最重要思想。
           </p>
 
           <div className="flex justify-center">
@@ -137,30 +149,30 @@ const Toolkit = () => {
               <button
                 type="button"
                 onClick={() => setModalOpen(true)}
-                className="group relative flex justify-center pt-10 pb-4 md:py-20 gap-6 items-center cursor-pointer"
+                className="group relative flex cursor-pointer items-center justify-center gap-6 pt-10 pb-4 md:py-10"
                 aria-label="Play reel video"
               >
                 <div className="absolute size-[460px] md:size-[600px]">
                   <img
                     src="/assets/images/reel-circle-deco.svg"
                     alt=""
-                    className="absolute w-full h-full inset-0 object-contain transition-transform duration-700 group-hover:rotate-[15deg]"
+                    className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:rotate-[15deg]"
                   />
                 </div>
-                <div className="absolute w-full h-px bg-white/10 left-0 top-1/2 -translate-y-1/2" />
+                <div className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-white/10" />
 
-                <p className="md:text-[100px] text-[40px] font-bold text-white/60 max-md:hidden duration-300 group-hover:text-white/90 group-hover:-translate-x-5">
+                <p className="text-[40px] font-bold text-white/60 duration-300 group-hover:-translate-x-5 group-hover:text-white/90 max-md:hidden md:text-[100px]">
                   Play
                 </p>
 
-                <div className="md:w-[340px] w-[320px] relative">
-                  <div className="absolute inset-0 flex items-center justify-between px-5 text-[20px] md:text-[24px] z-10">
+                <div className="relative w-[320px] md:w-[340px]">
+                  <div className="absolute inset-0 z-10 flex items-center justify-between px-5 text-[20px] md:text-[24px]">
                     <p>Osmo in use</p>
                     <p>00:48</p>
                   </div>
 
                   <video
-                    className="h-full w-full object-cover aspect-video transition-opacity duration-300  group-hover:opacity-70"
+                    className="aspect-video h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-70"
                     autoPlay
                     loop
                     muted
@@ -171,13 +183,15 @@ const Toolkit = () => {
                   />
                 </div>
 
-                <p className="md:text-[100px] text-[40px] font-bold text-white/60 max-md:hidden duration-300 group-hover:text-white/90 group-hover:translate-x-5">
+                <p className="text-[40px] font-bold text-white/60 duration-300 group-hover:translate-x-5 group-hover:text-white/90 max-md:hidden md:text-[100px]">
                   Reel
                 </p>
               </button>
 
               <div className="flex justify-end">
-                <img src="/assets/images/blocked.png" alt="" />
+                <p className="font-caveat text-[20px] text-[#f84131] md:text-[32px]">
+                  Screenshots are blocked!
+                </p>
               </div>
             </div>
           </div>
@@ -185,7 +199,7 @@ const Toolkit = () => {
       </div>
 
       {/* Center divider */}
-      <div className="absolute h-full w-px bg-white/10 top-0 left-1/2 -translate-x-1/2" />
+      <div className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-white/10" />
 
       {/* Video Modal */}
       <VideoModal
@@ -194,7 +208,7 @@ const Toolkit = () => {
         onClose={() => setModalOpen(false)}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Toolkit
+export default Toolkit;

@@ -1,33 +1,34 @@
-'use client'
+'use client';
 
-import gsap from 'gsap'
-import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import SplitText from 'gsap/SplitText'
-import Link from 'next/link'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
-gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText)
+import gsap from 'gsap';
+import DrawSVGPlugin from 'gsap/DrawSVGPlugin';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+import Link from 'next/link';
+
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText);
 
 const Footer = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const pathRef = useRef<SVGPathElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
-  const wrapTextRef = useRef<HTMLDivElement | null>(null)
-  const text01Ref = useRef<HTMLParagraphElement | null>(null)
-  const text02Ref = useRef<HTMLParagraphElement | null>(null)
-  const text03Ref = useRef<HTMLParagraphElement | null>(null)
-  const text04Ref = useRef<HTMLParagraphElement | null>(null)
+  const wrapTextRef = useRef<HTMLDivElement | null>(null);
+  const text01Ref = useRef<HTMLParagraphElement | null>(null);
+  const text02Ref = useRef<HTMLParagraphElement | null>(null);
+  const text03Ref = useRef<HTMLParagraphElement | null>(null);
+  const text04Ref = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current
-    const path = pathRef.current
-    if (!wrapper || !path) return
+    const wrapper = wrapperRef.current;
+    const path = pathRef.current;
+    if (!wrapper || !path) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(path, { drawSVG: '0% 0%' })
+      gsap.set(path, { drawSVG: '0% 0%' });
 
-      const splitText = new SplitText(text04Ref.current, { type: 'chars' })
+      const splitText = new SplitText(text04Ref.current, { type: 'chars' });
       const swayTween = gsap.to(path, {
         x: 4,
         y: 0,
@@ -37,7 +38,7 @@ const Footer = () => {
         duration: 2.6,
         paused: true,
         transformOrigin: 'center center',
-      })
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -46,14 +47,14 @@ const Footer = () => {
           end: 'bottom center',
           invalidateOnRefresh: true,
         },
-      })
+      });
 
       tl.to(path, {
         drawSVG: '0% 100%',
         ease: 'none',
         duration: 2,
         onComplete: () => {
-          swayTween.play()
+          swayTween.play();
         },
         onStart: () => {
           gsap
@@ -95,17 +96,17 @@ const Footer = () => {
               stagger: 0.04,
               ease: 'power1.inOut',
               duration: 0.3,
-            })
+            });
         },
-      })
-    }, wrapper)
+      });
+    }, wrapper);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
-      <div className="overflow-hidden bg-[#F78629]">
+      <div className="relative overflow-hidden bg-[#F78629]">
         <div
           ref={wrapperRef}
           className="relative flex min-h-screen items-center justify-center px-5 font-bold text-black"
@@ -141,12 +142,12 @@ const Footer = () => {
               >
                 JOIN
               </p>
-	              <p
-	                className="h-0 scale-y-0 overflow-hidden bg-stone-900 px-4"
-	                ref={text02Ref}
-	              >
-	                THE
-	              </p>
+              <p
+                className="h-0 scale-y-0 overflow-hidden bg-stone-900 px-4"
+                ref={text02Ref}
+              >
+                THE
+              </p>
               <p
                 className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-stone-900 px-4"
                 ref={text03Ref}
@@ -171,70 +172,109 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="relative h-[calc(100%-max(27.6px,27.6px+100vw*.0402))] pt-[max(24px,24px+100vw*.0212)] pb-[40vw]">
-          <a
-            href="#"
-            className="group absolute top-0 left-0 flex h-[27.5vw] w-[27.5vw] items-center justify-center overflow-hidden rounded-full border-white duration-200 hover:rotate-[20deg] hover:border-[20px]"
-          >
-            <span>
-              <img src="/assets/images/join-01.png" alt="" />
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center text-[clamp(30px,46.55px+100vw*.015,140px)] font-bold text-white max-md:text-[clamp(18px,2.9vw,22px)]">
-              NEWS
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 duration-200 group-hover:opacity-100">
-              <img src="/assets/images/x.png" alt="" />
-            </span>
-          </a>
-          <Link
-            href="/company"
-            className="group absolute bottom-0 left-[calc((100%-27.5vw)*1/(4-1))] flex h-[27.5vw] w-[27.5vw] items-center justify-center overflow-hidden rounded-full border-white duration-200 hover:rotate-[20deg] hover:border-[20px]"
-          >
-            <span>
-              <img src="/assets/images/join-02.png" alt="" />
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center text-[clamp(30px,46.55px+100vw*.015,140px)] font-bold text-white max-md:text-[clamp(18px,2.9vw,22px)]">
-              COMPANY
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 duration-200 group-hover:opacity-100">
-              <img src="/assets/images/x.png" alt="" />
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="group absolute top-0 left-[calc((100%-27.5vw)*2/(4-1))] flex h-[27.5vw] w-[27.5vw] items-center justify-center overflow-hidden rounded-full border-white duration-200 hover:rotate-[20deg] hover:border-[20px]"
-          >
-            <span>
-              <img src="/assets/images/join-03.png" alt="" />
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center text-[clamp(30px,46.55px+100vw*.015,140px)] font-bold text-white max-md:text-[clamp(18px,2.9vw,22px)]">
-              APP
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 duration-200 group-hover:opacity-100">
-              <img src="/assets/images/x.png" alt="" />
-            </span>
-          </Link>
-          <a
-            href="#"
-            className="group absolute bottom-0 left-[calc((100%-27.5vw)*3/(4-1))] flex h-[27.5vw] w-[27.5vw] items-center justify-center overflow-hidden rounded-full border-white duration-200 hover:rotate-[20deg] hover:border-[20px]"
-          >
-            <span>
-              <img src="/assets/images/join-04.png" alt="" />
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center text-[clamp(30px,46.55px+100vw*.015,140px)] font-bold text-white max-md:text-[clamp(18px,2.9vw,22px)]">
-              PREMIUM
-            </span>
-            <span className="absolute inset-0 flex items-center justify-center opacity-0 duration-200 group-hover:opacity-100">
-              <img src="/assets/images/x.png" alt="" />
-            </span>
-          </a>
-        </div>
+        <footer>
+          {/* footer_top */}
+          <div className="mx-auto w-full max-w-[440px] px-5 pt-32 pb-40 lg:max-w-[66rem]">
+            {/* footer_nav */}
+            <div className="grid grid-cols-2 gap-x-10 gap-y-24 pb-40 font-bold md:gap-x-24 lg:grid-cols-4">
+              {/* Column 1 */}
+              <div className="flex flex-col items-start gap-y-6">
+                <Link
+                  href="/"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/our-work"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Our work
+                </Link>
+                <Link
+                  href="/about-us"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  About us
+                </Link>
+                <Link
+                  href="/backstage"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Backstage
+                </Link>
+              </div>
+
+              {/* Column 2 */}
+              <div className="flex flex-col items-start gap-y-6">
+                <Link
+                  href="/career"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Career
+                </Link>
+                <Link
+                  href="/contact-us"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Contact
+                </Link>
+                <Link
+                  href="/why-outloud"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Why Outloud?
+                </Link>
+              </div>
+
+              {/* Column 3 */}
+              <div className="flex flex-col items-start gap-y-6">
+                <a
+                  href="https://work.outloud.co/pohoda"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  Pohoda
+                </a>
+                <a
+                  href="https://work.outloud.co/cloudtalk"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  CloudTalk
+                </a>
+                <a
+                  href="https://work.outloud.co/studyshep"
+                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                >
+                  StudyShep
+                </a>
+              </div>
+
+              {/* Column 4 — Contact */}
+              <div className="flex flex-col items-start">
+                <p className="text-sm font-medium tracking-widest uppercase opacity-60">
+                  E-mail
+                </p>
+                <a
+                  href="mailto:hello@outloud.co"
+                  className="block leading-[1.6] transition-opacity hover:opacity-70 md:text-[20px]"
+                >
+                  hello@outloud.co
+                </a>
+
+                <div className="mt-8 mb-2">
+                  <p className="text-sm font-medium tracking-widest uppercase opacity-60">
+                    Follow us
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
         <p className="my-10 text-center text-[clamp(34px,29.242px+100vw*.0122,50px)] leading-[1.2] font-bold uppercase">
-          {' '}
           Keep up with all the latest on our socials!
         </p>
       </div>
-      <footer className="bg-[#F78629] px-5 max-md:pb-12">
+      <div className="relative bg-[#F78629] px-5 max-md:pb-12">
         <div className="flex items-center justify-between border-t-2 border-black p-4">
           <div className="flex items-center gap-5">
             <a
@@ -247,13 +287,19 @@ const Footer = () => {
               href="#"
               className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
             >
+              Terms of Use
+            </a>
+            <a
+              href="#"
+              className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
+            >
               Complaints Book
             </a>
           </div>
         </div>
-      </footer>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

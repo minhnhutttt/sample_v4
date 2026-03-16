@@ -1,30 +1,37 @@
-import type { Metadata } from 'next'
-import { Creepster, Shippori_Mincho } from 'next/font/google'
-import { ReactNode } from 'react'
+import { ReactNode } from 'react';
 
-import Footer from '@/components/layout/footer'
-import Header from '@/components/layout/header'
+import type { Metadata } from 'next';
+import { Caveat, Creepster, Shippori_Mincho } from 'next/font/google';
+
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
 import {
-  SITE_URL,
-  SITE_NAME,
   DEFAULT_DESCRIPTION,
   OG,
+  SITE_NAME,
+  SITE_URL,
   TWITTER,
-} from '@/config/constants'
-import './globals.scss'
-import { SlideThemeProvider } from '@/providers/slide-theme'
+} from '@/config/constants';
+import { SlideThemeProvider } from '@/providers/slide-theme';
+
+import './globals.scss';
 
 const creepster = Creepster({
   weight: ['400'],
   subsets: ['latin'],
   variable: '--font-creepster',
-})
+});
 
 const shippori = Shippori_Mincho({
   weight: ['400'],
   subsets: ['latin'],
   variable: '--font-shippori',
-})
+});
+const caveat = Caveat({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-caveat',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL ?? 'http://localhost:3000'),
@@ -43,12 +50,14 @@ export const metadata: Metadata = {
   twitter: {
     ...TWITTER,
   },
-}
+};
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="ja">
-      <body className={`bg-stone-900 ${creepster.variable} ${shippori.variable}`}>
+      <body
+        className={`bg-stone-900 ${creepster.variable} ${shippori.variable} ${caveat.variable}`}
+      >
         <SlideThemeProvider>
           <Header />
           {children}
@@ -56,7 +65,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         </SlideThemeProvider>
       </body>
     </html>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;

@@ -1,14 +1,14 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
-import { SITE_URL, OG } from '@/config/constants'
+import PageFv from '@/components/PageFv';
+import { OG, SITE_URL } from '@/config/constants';
 
-import BoardMember from './components/boardMember'
-import CompanyProfile from './components/companyProfile'
-import Fv from './components/fv'
-import History from './components/history'
-import KivoPhotos from './components/kivoPhotos'
-import OfficeViewPhotos from './components/officeViewPhotos'
-import Vision from './components/vision'
+import BoardMember from './components/boardMember';
+import CompanyProfile from './components/companyProfile';
+import History from './components/history';
+import KivoPhotos from './components/kivoPhotos';
+import OfficeViewPhotos from './components/officeViewPhotos';
+import Vision from './components/vision';
 
 export const metadata: Metadata = {
   openGraph: {
@@ -18,12 +18,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
-}
+};
 
 const ClubsPage = () => {
   return (
     <>
-      <Fv />
+      <PageFv />
       <BoardMember />
       <OfficeViewPhotos />
       <Vision />
@@ -31,7 +31,7 @@ const ClubsPage = () => {
       <KivoPhotos />
       <CompanyProfile />
     </>
-  )
-}
+  );
+};
 
-export default ClubsPage
+export default ClubsPage;

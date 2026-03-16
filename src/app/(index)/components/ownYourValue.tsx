@@ -1,37 +1,34 @@
-'use client'
+'use client';
 
-import gsap from 'gsap'
-import DrawSVGPlugin from 'gsap/DrawSVGPlugin'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import SplitText from 'gsap/SplitText'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
-gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText)
+import gsap from 'gsap';
+import DrawSVGPlugin from 'gsap/DrawSVGPlugin';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText);
 
 const OwnYourValue = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const pathRef = useRef<SVGPathElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
-  const wrapTextRef = useRef<HTMLDivElement | null>(null)
-  const text01Ref = useRef<HTMLParagraphElement | null>(null)
-  const text02Ref = useRef<HTMLParagraphElement | null>(null)
-  const text03Ref = useRef<HTMLParagraphElement | null>(null)
-  const text04Ref = useRef<HTMLParagraphElement | null>(null)
-  const messageRef = useRef<HTMLParagraphElement | null>(null)
+  const wrapTextRef = useRef<HTMLDivElement | null>(null);
+  const text01Ref = useRef<HTMLParagraphElement | null>(null);
+  const text02Ref = useRef<HTMLParagraphElement | null>(null);
+  const text03Ref = useRef<HTMLParagraphElement | null>(null);
+  const text04Ref = useRef<HTMLParagraphElement | null>(null);
 
   useEffect(() => {
-    const wrapper = wrapperRef.current
-    const path = pathRef.current
-    if (!wrapper || !path) return
+    const wrapper = wrapperRef.current;
+    const path = pathRef.current;
+    if (!wrapper || !path) return;
 
     const ctx = gsap.context(() => {
-      const isMobile = window.matchMedia('(max-width: 767.98px)').matches
-      gsap.set(path, { drawSVG: '0% 0%' })
+      const isMobile = window.matchMedia('(max-width: 767.98px)').matches;
+      gsap.set(path, { drawSVG: '0% 0%' });
 
-      const splitText = new SplitText(text04Ref.current, { type: 'chars' })
-      const splitMessage = messageRef.current
-        ? new SplitText(messageRef.current, { type: 'chars' })
-        : null
+      const splitText = new SplitText(text04Ref.current, { type: 'chars' });
       const swayTween = gsap.to(path, {
         x: 4,
         y: 0,
@@ -41,7 +38,7 @@ const OwnYourValue = () => {
         duration: 2.6,
         paused: true,
         transformOrigin: 'center center',
-      })
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -50,14 +47,14 @@ const OwnYourValue = () => {
           end: isMobile ? 'bottom 35%' : 'bottom center',
           invalidateOnRefresh: true,
         },
-      })
+      });
 
       tl.to(path, {
         drawSVG: '0% 100%',
         ease: 'none',
         duration: 2,
         onComplete: () => {
-          swayTween.play()
+          swayTween.play();
         },
         onStart: () => {
           gsap
@@ -99,44 +96,23 @@ const OwnYourValue = () => {
               stagger: 0.04,
               ease: 'power1.inOut',
               duration: 0.3,
-            })
+            });
         },
-      })
-
-      if (splitMessage) {
-        gsap.set(splitMessage.chars, {
-          opacity: 0,
-          filter: 'blur(4px)',
-        })
-
-        gsap.to(splitMessage.chars, {
-          opacity: 1,
-          filter: 'blur(0px)',
-          stagger: 0.015,
-          ease: 'power2.out',
-          duration: 0.45,
-          scrollTrigger: {
-            trigger: messageRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        })
-      }
+      });
 
       return () => {
-        splitText.revert()
-        splitMessage?.revert()
-      }
-    }, wrapper)
+        splitText.revert();
+      };
+    }, wrapper);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div className="relative mt-[100vh] overflow-hidden">
       <div
         ref={wrapperRef}
-        className="relative flex min-h-screen items-center justify-center px-5 font-bold text-black"
+        className="relative flex min-h-screen items-center justify-center bg-[#FFF8F2] px-5 font-bold text-black"
       >
         <div className="js-svg-pin absolute inset-0">
           <div className="h-full w-full max-md:-translate-y-[12vh]">
@@ -158,52 +134,43 @@ const OwnYourValue = () => {
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center text-[clamp(30px,28px+100vw*.1525,120px)] leading-none uppercase whitespace-nowrap">
+        <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center text-[clamp(30px,28px+100vw*.1525,120px)] leading-none whitespace-nowrap uppercase">
           <div
             ref={wrapTextRef}
-            className="relative scale-x-0 rounded-4xl bg-[#F78629]"
+            className="font-shippori relative scale-x-0 rounded-4xl bg-[#F78629] text-white"
           >
             <p
               ref={text01Ref}
               className="origin-top rounded-4xl bg-[#F78629] p-4"
             >
-              情報には
+              情報の
             </p>
             <p
               className="h-0 scale-y-0 overflow-hidden bg-[#F78629] p-4"
               ref={text02Ref}
             >
-              価値が
+              主権を
             </p>
             <p
               className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-[#F78629] p-4"
               ref={text03Ref}
             >
-              あります
+              取り戻す
             </p>
 
             <p
               ref={text04Ref}
-              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(20px,20px+100vw*.1,100px)] whitespace-nowrap text-white"
+              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(20px,20px+100vw*.1,100px)] whitespace-nowrap text-[#242424]"
             >
-              <span className="inline-block -rotate-5">Own Your Value</span>
+              <span className="inline-block -rotate-5 text-shadow-lg">
+                RECLAIM YOUR VALUE
+              </span>
             </p>
           </div>
         </div>
       </div>
-
-      <p
-        ref={messageRef}
-        className="mt-18 mb-8 px-4 px-5 text-center max-md:text-left text-[clamp(18px,16px+100vw*.006,24px)] leading-snug font-bold text-[#F78629] uppercase md:text-[clamp(26px,23px+0.75vw,36px)]"
-      >
-        KIVOは、あなたの情報の価値をしっかりと守りながら、{' '}
-        <br className="max-md:hidden" />
-        その情報を「価値として、必要な人に届けられる」
-        <br className="max-md:hidden" />
-        コミュニケーションの場所です。
-      </p>
     </div>
-  )
-}
+  );
+};
 
-export default OwnYourValue
+export default OwnYourValue;

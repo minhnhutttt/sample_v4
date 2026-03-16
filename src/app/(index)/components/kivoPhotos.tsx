@@ -1,14 +1,16 @@
-'use client'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import SplitText from 'gsap/SplitText'
-import { useLayoutEffect, useRef } from 'react'
+'use client';
 
-gsap.registerPlugin(ScrollTrigger, SplitText)
+import { useLayoutEffect, useRef } from 'react';
 
-const EASE = 'power3.out'
-const DUR = 0.6
-const STAG = { each: 0.06, from: 'start' as const }
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+const EASE = 'power3.out';
+const DUR = 0.6;
+const STAG = { each: 0.06, from: 'start' as const };
 
 const dataImage = [
   '/assets/images/1.png',
@@ -50,26 +52,26 @@ const dataImage = [
   '/assets/images/15.png',
   '',
   '/assets/images/16.png',
-]
+];
 
 export default function KivoPhotos() {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const textTopRef = useRef<HTMLSpanElement>(null)
-  const textMiddleRef = useRef<HTMLSpanElement>(null)
-  const textBottomRef = useRef<HTMLSpanElement>(null)
-  const textRef = useRef<HTMLParagraphElement>(null)
-  const buttonRef = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const textTopRef = useRef<HTMLSpanElement>(null);
+  const textMiddleRef = useRef<HTMLSpanElement>(null);
+  const textBottomRef = useRef<HTMLSpanElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const buttonRef = useRef<HTMLDivElement>(null);
 
-  const gridRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const wrapper = wrapperRef.current
-    const topEl = textTopRef.current
-    const middleEl = textMiddleRef.current
-    const bottomEl = textBottomRef.current
-    const textEl = textRef.current
-    const buttonEl = buttonRef.current
-    const gridEl = gridRef.current
+    const wrapper = wrapperRef.current;
+    const topEl = textTopRef.current;
+    const middleEl = textMiddleRef.current;
+    const bottomEl = textBottomRef.current;
+    const textEl = textRef.current;
+    const buttonEl = buttonRef.current;
+    const gridEl = gridRef.current;
 
     if (
       !wrapper ||
@@ -80,19 +82,19 @@ export default function KivoPhotos() {
       !gridEl ||
       !buttonEl
     )
-      return
+      return;
 
-    const splits: SplitText[] = []
+    const splits: SplitText[] = [];
 
     const ctx = gsap.context(() => {
-      const splitTop = new SplitText(topEl, { type: 'chars' })
-      const splitMiddle = new SplitText(middleEl, { type: 'chars' })
-      const splitBottom = new SplitText(bottomEl, { type: 'chars' })
-      const splitText = new SplitText(textEl, { type: 'chars' })
-      splits.push(splitTop, splitMiddle, splitBottom, splitText)
-      gsap.set(splitText.chars, { autoAlpha: 0, scale: 1.5 })
+      const splitTop = new SplitText(topEl, { type: 'chars' });
+      const splitMiddle = new SplitText(middleEl, { type: 'chars' });
+      const splitBottom = new SplitText(bottomEl, { type: 'chars' });
+      const splitText = new SplitText(textEl, { type: 'chars' });
+      splits.push(splitTop, splitMiddle, splitBottom, splitText);
+      gsap.set(splitText.chars, { autoAlpha: 0, scale: 1.5 });
 
-      const END = '+=200%'
+      const END = '+=200%';
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -104,25 +106,25 @@ export default function KivoPhotos() {
           invalidateOnRefresh: true,
         },
         defaults: { ease: EASE, duration: DUR, stagger: STAG },
-      })
+      });
 
       const scaleChars = (
         targets: Element[] | NodeListOf<Element>,
         fromScale: number,
         toScale: number,
         origin: string,
-        pos?: gsap.Position
+        pos?: gsap.Position,
       ) =>
         tl.fromTo(
           targets,
           { scaleY: fromScale, transformOrigin: origin },
           { scaleY: toScale, transformOrigin: origin },
-          pos
-        )
+          pos,
+        );
 
-      scaleChars(splitTop.chars, 1, 0, '50% 0%')
-      scaleChars(splitMiddle.chars, 0, 1, '50% 100%', '<')
-      scaleChars(splitMiddle.chars, 1, 0, '50% 0%')
+      scaleChars(splitTop.chars, 1, 0, '50% 0%');
+      scaleChars(splitMiddle.chars, 0, 1, '50% 100%', '<');
+      scaleChars(splitMiddle.chars, 1, 0, '50% 0%');
       tl.fromTo(
         splitBottom.chars,
         { scaleY: 0, transformOrigin: '50% 100%' },
@@ -135,30 +137,30 @@ export default function KivoPhotos() {
               scale: 1,
               ease: EASE,
               duration: DUR,
-            })
+            });
             gsap.to(buttonEl, {
               opacity: 1,
               scale: 1,
               ease: EASE,
               duration: DUR,
-            })
+            });
           },
         },
-        '<'
-      )
+        '<',
+      );
 
       const items = Array.from(
-        gridEl.querySelectorAll<HTMLImageElement>('[data-grid-item]')
-      )
+        gridEl.querySelectorAll<HTMLImageElement>('[data-grid-item]'),
+      );
 
       items.forEach((el) => {
         if (!el.dataset.rot)
-          el.dataset.rot = String(gsap.utils.random(-8, 8, 0.1))
+          el.dataset.rot = String(gsap.utils.random(-8, 8, 0.1));
         if (!el.dataset.scl)
-          el.dataset.scl = String(gsap.utils.random(0.92, 2, 0.01))
-        el.style.willChange = 'transform'
-        el.style.transformOrigin = '50% 50%'
-      })
+          el.dataset.scl = String(gsap.utils.random(0.92, 2, 0.01));
+        el.style.willChange = 'transform';
+        el.style.transformOrigin = '50% 50%';
+      });
 
       const imgTl = gsap.timeline({
         scrollTrigger: {
@@ -169,33 +171,33 @@ export default function KivoPhotos() {
           markers: false,
           invalidateOnRefresh: true,
         },
-      })
+      });
 
       const getCenter = () => {
-        const vw = window.innerWidth
-        const vh = window.innerHeight
-        return { cx: vw / 2, cy: vh / 2 }
-      }
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        return { cx: vw / 2, cy: vh / 2 };
+      };
 
       imgTl.to(items, {
         x: (_i, el: HTMLElement) => {
-          const rect = el.getBoundingClientRect()
-          const { cx } = getCenter()
-          const ex = rect.left + rect.width / 2
-          return cx - ex
+          const rect = el.getBoundingClientRect();
+          const { cx } = getCenter();
+          const ex = rect.left + rect.width / 2;
+          return cx - ex;
         },
         y: (_i, el: HTMLElement) => {
-          const rect = el.getBoundingClientRect()
-          const { cy } = getCenter()
-          const ey = rect.top + rect.height / 2
-          return cy - ey
+          const rect = el.getBoundingClientRect();
+          const { cy } = getCenter();
+          const ey = rect.top + rect.height / 2;
+          return cy - ey;
         },
         rotate: (_i, el: HTMLElement) => Number(el.dataset.rot || 0),
         scale: (_i, el: HTMLElement) => Number(el.dataset.scl || 2),
         ease: 'power3.out',
         duration: 1.2,
         stagger: { amount: 2, from: 'start' },
-      })
+      });
 
       imgTl.to(
         items,
@@ -204,20 +206,20 @@ export default function KivoPhotos() {
             Number(el.dataset.rot || 0) > 0 ? 2 : 2,
           duration: 0.6,
         },
-        '>-0.2'
-      )
-    }, wrapper)
-    ScrollTrigger.refresh()
+        '>-0.2',
+      );
+    }, wrapper);
+    ScrollTrigger.refresh();
     return () => {
-      ctx.revert()
-      splits.forEach((s) => s.revert())
-    }
-  }, [])
+      ctx.revert();
+      splits.forEach((s) => s.revert());
+    };
+  }, []);
 
   return (
     <div
       ref={wrapperRef}
-      className="relative flex min-h-screen items-center justify-center"
+      className="relative flex min-h-screen items-center justify-center bg-[#FFF8F2]"
     >
       <div
         ref={gridRef}
@@ -239,46 +241,35 @@ export default function KivoPhotos() {
         ))}
       </div>
 
-	      <div className="relative z-10 text-[clamp(80px,calc(50px+17.25vw),300px)] leading-none font-bold whitespace-nowrap text-[#F78629] will-change-transform">
-	        <span ref={textTopRef} className="inline-block w-full text-center">
-	          KIVO
-	        </span>
-	        <span
-	          ref={textMiddleRef}
-	          className="absolute inset-0 inline-block w-full text-center"
-	        >
-	          KIVO
-	        </span>
-	        <span
-	          ref={textBottomRef}
-	          className="absolute inset-0 inline-block w-full text-center"
-	        >
-	          KIVO
-	        </span>
+      <div className="relative z-10 text-[clamp(80px,calc(50px+17.25vw),300px)] leading-none font-bold whitespace-nowrap text-[#F78629] will-change-transform">
+        <span ref={textTopRef} className="inline-block w-full text-center">
+          KIVO
+        </span>
+        <span
+          ref={textMiddleRef}
+          className="absolute inset-0 inline-block w-full text-center"
+        >
+          KIVO
+        </span>
+        <span
+          ref={textBottomRef}
+          className="absolute inset-0 inline-block w-full text-center"
+        >
+          KIVO
+        </span>
         <p
           ref={textRef}
-          className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-md:-translate-y-[65px] text-[clamp(12px,12px+100vw*.1,100px)] whitespace-nowrap text-white"
+          className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(12px,12px+100vw*.1,100px)] whitespace-nowrap text-[#242424] max-md:-translate-y-[65px]"
         >
-	          <span className="inline-block -rotate-5">Let&apos;s send it now</span>
+          <span className="inline-block -rotate-5 text-shadow-lg">
+            GUARDED IMPACT & VALUE
+          </span>
         </p>
         <div
           ref={buttonRef}
           className="relative z-10 flex justify-center gap-5 opacity-0 max-md:mt-10"
-        >
-		          <a
-		            href="#download"
-		            className="relative inline-flex w-[190px] max-md:w-[160px] h-[52px] items-center justify-center rounded-full border border-[#1c1917] bg-[#F78629] px-[max(20.4px,20.4px+100vw*.0021)] text-[clamp(12px,11.2px+100vw*.002,14px)] leading-[1.1em] tracking-[.06em] text-black duration-300 hover:tracking-normal hover:opacity-80"
-		          >
-		            アプリをダウンロード
-		          </a>
-		          <a
-		            href="#"
-		            className="relative inline-flex w-[190px] max-md:w-[160px] h-[52px] items-center justify-center rounded-full border border-[#F78629] px-[max(20.4px,20.4px+100vw*.0021)] text-[clamp(12px,11.2px+100vw*.002,14px)] leading-[1.1em] tracking-[.06em] text-[#F78629] duration-300 bg-[#1c1917] hover:bg-[#F78629] hover:tracking-normal hover:text-black hover:opacity-80 hover:border-[#1c1917]"
-		          >
-	            詳細を見る
-	          </a>
-        </div>
+        ></div>
       </div>
     </div>
-  )
+  );
 }

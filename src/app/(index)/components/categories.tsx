@@ -1,25 +1,28 @@
 'use client';
 
-import Link from "next/link";
+import Link from 'next/link';
 
 const ITEMS = [
-  { title: 'App \nIntroduction', src: '/assets/video/video-01.mp4' },
-  { title: 'Download \nKIVO', src: '/assets/video/video-02.mp4' },
-  { title: 'Premium \nBenefits', src: '/assets/video/video-03.mp4' },
-  { title: 'Support', src: '/assets/video/video-04.mp4' },
-  { title: 'KIVO \nvs Other', src: '/assets/video/video-01.mp4' },
-  { title: 'Announcements', src: '/assets/video/video-02.mp4' },
-  { title: 'We are \nKIVO', src: '/assets/video/video-03.mp4' },
-  { title: 'Brand asset', src: '/assets/video/video-04.mp4' },
-  { title: 'Terms of Use', src: '/assets/video/video-01.mp4' },
-  { title: 'Privacy Policy', src: '/assets/video/video-02.mp4' },
+  { title: 'KIVOって、\nどんなアプリ？', src: '/assets/video/m-1.mp4' },
+  { title: 'まずはここから\n始めよう', src: '/assets/video/m-4.mp4' },
+  { title: '本気で稼ぐなら、\nPremiumへ', src: '/assets/video/m-3.mp4' },
+  { title: '困ったときは\nお気軽に', src: '/assets/video/m-2.mp4' },
+  { title: '他と何が違うの？\n正直に答えます', src: '/assets/video/m-1.mp4' },
+  { title: '最新情報は\nここでチェック', src: '/assets/video/m-4.mp4' },
+  { title: 'KIVOをつくって\nいる人たち', src: '/assets/video/m-3.mp4' },
+  { title: 'ロゴや素材は\nこちらからどうぞ', src: '/assets/video/m-2.mp4' },
+  { title: 'ご利用前に\nご確認ください', src: '/assets/video/m-1.mp4' },
+  { title: '大切な情報の\n扱い方について', src: '/assets/video/video-02.mp4' },
 ];
 
 const CardItem = ({ title, src }: { title: string; src: string }) => {
   const [line1, line2] = title.split('\n');
   return (
-    <Link href="#" className="group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[40px] md:col-span-1 md:rounded-lg md:text-[100px]">
-      <div className="title-text absolute inset-0 bg-black/20 z-10 flex scale-[0.96] items-center justify-center text-center text-white font-bold leading-snug duration-300 group-hover:scale-100 group-hover:opacity-100 md:opacity-0">
+    <Link
+      href="#"
+      className="group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[40px] md:col-span-1 md:rounded-lg md:text-[4cqw]"
+    >
+      <div className="title-text font-shippori absolute inset-0 z-10 flex items-center justify-center bg-black/30 p-5 text-center leading-snug font-bold text-white duration-300">
         {line1} <br /> {line2}
       </div>
       <div className="overflow-hidden">
@@ -36,8 +39,8 @@ const CardItem = ({ title, src }: { title: string; src: string }) => {
 };
 
 const Categories = () => (
-  <div className="bg-[#f78629] p-5 md:p-10 mb-30 md:mb-40">
-    <div className="grid grid-cols-2 gap-5">
+  <div className="relative bg-[#f78629] p-5 md:p-10">
+    <div className="@container grid grid-cols-2 gap-5">
       {ITEMS.map((item) => (
         <CardItem key={item.title} {...item} />
       ))}
