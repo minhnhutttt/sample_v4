@@ -21,7 +21,7 @@ const HomeCan = () => {
               <tr>
                 <th></th>
                 <th>無料体験</th>
-                <th>月額プラン</th>
+                <th>有料プラン</th>
               </tr>
             </thead>
             <tbody>
@@ -139,12 +139,22 @@ const HomeCan = () => {
                     </p>
                   </td>
                   <td>
-                    <span className="text-[20px] md:text-[36px]">85,000</span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
+                    <p>
+                      <span className="text-[20px] md:text-[36px]">85,000</span>
+                      <span className="text-[14px] md:text-[24px]">円</span>
+                    </p>
+                    <p className="text-[16px] font-medium md:text-[20px]">
+                      （税込価格　93,500円）
+                    </p>
                   </td>
                   <td>
-                    <span className="text-[20px] md:text-[36px]">30,000</span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
+                    <p>
+                      <span className="text-[20px] md:text-[36px]">30,000</span>
+                      <span className="text-[14px] md:text-[24px]">円</span>
+                    </p>
+                    <p className="text-[16px] font-medium md:text-[20px]">
+                      （税込価格 33,000円）
+                    </p>
                   </td>
                 </tr>
                 <tr>
@@ -157,14 +167,26 @@ const HomeCan = () => {
                     </p>
                   </td>
                   <td>
-                    <span className="text-[20px] md:text-[36px]">
-                      1,020,000
-                    </span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
+                    <p>
+                      <span className="text-[20px] md:text-[36px]">
+                        1,020,000
+                      </span>
+                      <span className="text-[14px] md:text-[24px]">円</span>
+                    </p>
+                    <p className="text-[16px] font-medium md:text-[20px]">
+                      （税込価格 1,122,000円）
+                    </p>
                   </td>
                   <td>
-                    <span className="text-[20px] md:text-[36px]">360,000</span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
+                    <p>
+                      <span className="text-[20px] md:text-[36px]">
+                        360,000
+                      </span>
+                      <span className="text-[14px] md:text-[24px]">円</span>
+                    </p>
+                    <p className="text-[16px] font-medium md:text-[20px]">
+                      （税込価格 396,000円）
+                    </p>
                   </td>
                 </tr>
                 <tr>
@@ -177,8 +199,15 @@ const HomeCan = () => {
                     </p>
                   </td>
                   <td>
-                    <span className="text-[20px] md:text-[36px]">200,000</span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
+                    <p>
+                      <span className="text-[20px] md:text-[36px]">
+                        200,000
+                      </span>
+                      <span className="text-[14px] md:text-[24px]">円</span>
+                    </p>
+                    <p className="text-[16px] font-medium md:text-[20px]">
+                      （税込価格 220,000円）
+                    </p>
                   </td>
                   <td>
                     <span className="text-[20px] md:text-[36px]">0</span>
@@ -234,8 +263,34 @@ const HomeCan = () => {
                     </div>
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    <p className="text-[20px] font-bold md:text-[32px]">
+                      設定の更新
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span className="text-[18px] md:text-[28px]">
+                        100回まで / 月
+                      </span>
+                    </p>
+                  </td>
+                  <td>
+                    <p>
+                      <span className="text-[18px] md:text-[28px]">
+                        10回まで / 月
+                      </span>
+                    </p>
+                  </td>
+                </tr>
               </tbody>
             </table>
+            <p className="py-4 text-[12px] md:text-[14px]">
+              ※上記はPALのシステム利用料（及びサポート費用）です。Google広告の出稿費（広告費実費）は含まれておりません。
+              <br />
+              広告費は別途、お客様のクレジットカードからGoogleへ直接のお支払いとなります。
+            </p>
           </div>
         </div>
       </div>

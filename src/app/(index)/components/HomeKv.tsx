@@ -2,10 +2,10 @@ import ButtonCta from '@/components/buttonCta';
 
 const HomeKv = () => {
   return (
-    <div className="relative overflow-hidden bg-[url(/assets/images/fv.png)] bg-cover bg-center px-5 md:h-[785px]">
-      <div className="@container relative mx-auto w-full max-w-[1020px] max-md:py-25 md:pt-[187px]">
+    <div className="relative overflow-hidden bg-[url(/assets/images/fv-sp.png)] bg-cover bg-top px-5 md:bg-[url(/assets/images/fv.png)] md:bg-center lg:h-[785px]">
+      <div className="@container relative mx-auto w-full max-w-[1020px] max-lg:py-25 lg:pt-[187px]">
         <div className="relative">
-          <div className="relative z-10 w-full max-w-[586px] text-center max-md:mx-auto">
+          <div className="relative z-10 w-full max-w-[586px] text-center max-lg:mx-auto">
             <p className="font-inter text-[20px] font-medium md:text-[24px]">
               広告は、AIが出す時代。
             </p>
@@ -29,7 +29,7 @@ const HomeKv = () => {
             </div>
           </div>
 
-          <div className="-top-11 -right-10 max-md:mt-6 max-md:flex max-md:items-center max-md:justify-center md:absolute">
+          <div className="-top-11 -right-10 max-lg:mt-6 max-lg:flex max-lg:items-center max-lg:justify-center lg:absolute">
             <img src="/assets/images/fv-img.png" alt="" />
           </div>
         </div>

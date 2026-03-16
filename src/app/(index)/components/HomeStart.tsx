@@ -19,8 +19,8 @@ const HomeStart = () => {
             <span className="h-1 flex-1 bg-[#00BDC7] md:w-[160px]"></span>
           </div>
         </div>
-        <div className="relative py-[40px] md:py-[50px]">
-          <div className="fade-up relative mb-5 flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 after:absolute after:top-full after:left-1/2 after:z-10 after:mx-auto after:block after:aspect-65/36 after:w-[40px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri2.png)] after:bg-cover md:gap-25 md:rounded-[50px] md:px-7.5 md:after:w-[65px]">
+        <div className="fade-up relative py-[40px] md:py-[50px]">
+          <div className="relative mb-5 flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 after:absolute after:top-full after:left-1/2 after:z-30 after:mx-auto after:block after:aspect-65/36 after:w-[40px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri2.png)] after:bg-cover md:gap-25 md:rounded-[50px] md:px-7.5 md:after:w-[65px]">
             <div className="flex size-[60px] flex-col items-center justify-center rounded-full bg-white leading-snug md:size-[84px]">
               <span className="text-[14px] font-medium md:text-[18px]">
                 step
@@ -36,7 +36,7 @@ const HomeStart = () => {
               </p>
             </div>
           </div>
-          <div className="fade-up relative mb-5 flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 after:absolute after:top-full after:left-1/2 after:z-10 after:mx-auto after:block after:aspect-65/36 after:w-[40px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri2.png)] after:bg-cover md:gap-25 md:rounded-[50px] md:px-7.5 md:after:w-[65px]">
+          <div className="relative mb-5 flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 after:absolute after:top-full after:left-1/2 after:z-30 after:mx-auto after:block after:aspect-65/36 after:w-[40px] after:-translate-x-1/2 after:bg-[url(/assets/images/tri2.png)] after:bg-cover md:gap-25 md:rounded-[50px] md:px-7.5 md:after:w-[65px]">
             <div className="flex size-[60px] flex-col items-center justify-center rounded-full bg-white leading-snug md:size-[84px]">
               <span className="text-[14px] font-medium md:text-[18px]">
                 step
@@ -52,7 +52,7 @@ const HomeStart = () => {
               </p>
             </div>
           </div>
-          <div className="fade-up relative flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 md:gap-25 md:rounded-[50px] md:px-7.5">
+          <div className="relative flex items-center gap-10 rounded-[20px] bg-[#EBEBEB] px-5 py-5 md:gap-25 md:rounded-[50px] md:px-7.5">
             <div className="flex size-[60px] flex-col items-center justify-center rounded-full bg-white leading-snug md:size-[84px]">
               <span className="text-[14px] font-medium md:text-[18px]">
                 step

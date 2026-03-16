@@ -22,7 +22,7 @@ const Footer = () => {
             <Link href="/">運営会社</Link>
           </li>
         </ul>
-        <div>&copy; {new Date().getFullYear()} ©2026　PAL</div>
+        <div>&copy; {new Date().getFullYear()} PAL</div>
       </div>
     </footer>
   );

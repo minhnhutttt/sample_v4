@@ -34,20 +34,20 @@ const HomePoint = () => {
               <div className="flex-1 md:pt-36">
                 <div className="flex">
                   <p className="border-b-[6px] border-[#00BDC7] text-[24px] leading-none font-bold md:text-[32px]">
-                    point
+                    action
                     <span className="relative text-[36px] font-black after:absolute after:-top-1 after:-right-4 after:aspect-53/45 after:w-8 after:bg-[url(/assets/images/title-deco.png)] after:bg-cover md:text-[77px] md:after:w-[53px]">
                       01
                     </span>
                   </p>
                 </div>
-                <div className="mt-4 pl-5 md:pl-10">
-                  <h3 className="text-[32px] font-bold md:text-[48px]">
+                <div className="mt-4 lg:pl-10">
+                  <h3 className="text-[32px] font-bold lg:text-[48px]">
                     ページを解析
                   </h3>
                   <p className="mt-2.5 text-[15px] tracking-tight md:text-[18px]">
                     PAL AIがページ情報を読み込んで、
                     <br />
-                    強み・特徴・伝えるべきポイントを整理します
+                    強み・特徴・伝えるべきポイントを整理します。
                   </p>
                 </div>
               </div>
@@ -61,14 +61,14 @@ const HomePoint = () => {
               <div className="flex-1 md:pt-5">
                 <div className="flex">
                   <p className="border-b-[6px] border-[#00BDC7] text-[24px] leading-none font-bold md:text-[32px]">
-                    point
+                    action
                     <span className="relative text-[36px] font-black after:absolute after:-top-1 after:-right-4 after:aspect-53/45 after:w-8 after:bg-[url(/assets/images/title-deco.png)] after:bg-cover md:text-[77px] md:after:w-[53px]">
                       02
                     </span>
                   </p>
                 </div>
-                <div className="mt-4 pl-5 md:pl-10">
-                  <h3 className="text-[32px] font-bold md:text-[48px]">
+                <div className="mt-4 lg:pl-7 xl:pl-10">
+                  <h3 className="text-[32px] font-bold lg:text-[48px]">
                     広告・キーワードを
                     <br />
                     自動生成
@@ -91,14 +91,14 @@ const HomePoint = () => {
               <div className="flex-1 md:pt-20">
                 <div className="flex">
                   <p className="border-b-[6px] border-[#00BDC7] text-[24px] leading-none font-bold md:text-[32px]">
-                    point
+                    action
                     <span className="relative text-[36px] font-black after:absolute after:-top-1 after:-right-4 after:aspect-53/45 after:w-8 after:bg-[url(/assets/images/title-deco.png)] after:bg-cover md:text-[77px] md:after:w-[53px]">
                       03
                     </span>
                   </p>
                 </div>
-                <div className="mt-4 pl-5 md:pl-10">
-                  <h3 className="text-[32px] font-bold md:text-[48px]">
+                <div className="mt-4 lg:pl-10">
+                  <h3 className="text-[32px] font-bold lg:text-[48px]">
                     Google広告へ
                     <br />
                     自動設定
@@ -130,14 +130,14 @@ const HomePoint = () => {
               <div className="flex-1 md:pt-10">
                 <div className="flex">
                   <p className="border-b-[6px] border-[#00BDC7] text-[24px] leading-none font-bold md:text-[32px]">
-                    point
+                    action
                     <span className="relative text-[36px] font-black after:absolute after:-top-1 after:-right-4 after:aspect-53/45 after:w-8 after:bg-[url(/assets/images/title-deco.png)] after:bg-cover md:text-[77px] md:after:w-[53px]">
                       04
                     </span>
                   </p>
                 </div>
                 <div className="mt-4">
-                  <h3 className="text-[32px] font-bold md:text-[48px]">
+                  <h3 className="text-[32px] font-bold lg:text-[48px]">
                     設定の更新
                   </h3>
                   <p className="mt-2.5 text-[15px] tracking-tight md:text-[18px]">
