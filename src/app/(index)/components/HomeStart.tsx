@@ -48,7 +48,7 @@ const HomeStart = () => {
                 URLを入れてレビュー
               </p>
               <p className="text-[15px] md:text-[18px]">
-                AIでがページの内容を解析して広告内容のサンプルをお見せします。
+                AIがページの内容を解析して広告内容のサンプルをお見せします。
               </p>
             </div>
           </div>

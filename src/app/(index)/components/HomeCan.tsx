@@ -109,13 +109,10 @@ const HomeCan = () => {
         <div className="mt-36 md:mt-50">
           <div className="fade-up flex items-center justify-center">
             <span className="font-inter text-center text-[38px] font-bold md:text-[64px]">
-              月額プラン/年額プラン
+              利用料
             </span>
           </div>
-          <p className="fade-up py-8 text-center text-[14px] md:py-[50px] md:text-[18px]">
-            ご利用料料金は広告予算規模により変化します。
-          </p>
-          <div className="fade-up">
+          <div className="fade-up pt-8 md:pt-[50px]">
             <table className="w-full border-collapse text-center font-bold [&_td]:border [&_td]:border-[#666666] [&_th,&_td]:h-[90px] md:[&_th,&_td]:h-[107px] [&_th:nth-of-type(2),&_td:nth-of-type(2)]:border-[2px] [&_th:nth-of-type(2),&_td:nth-of-type(2)]:border-[#39BBF8] [&_th:nth-of-type(2),&_td:nth-of-type(2)]:bg-[#96D5F2]">
               <thead>
                 <tr>
@@ -133,9 +130,6 @@ const HomeCan = () => {
                   <td>
                     <p className="text-[20px] font-bold md:text-[32px]">
                       月額費用
-                    </p>
-                    <p className="text-[16px] font-medium md:text-[20px]">
-                      （税抜）
                     </p>
                   </td>
                   <td>
@@ -161,9 +155,6 @@ const HomeCan = () => {
                   <td>
                     <p className="text-[20px] font-bold md:text-[32px]">
                       年間費用
-                    </p>
-                    <p className="text-[16px] font-medium md:text-[20px]">
-                      （税抜）
                     </p>
                   </td>
                   <td>
@@ -194,9 +185,6 @@ const HomeCan = () => {
                     <p className="text-[20px] font-bold md:text-[32px]">
                       導入費
                     </p>
-                    <p className="text-[16px] font-medium md:text-[20px]">
-                      （税抜）
-                    </p>
                   </td>
                   <td>
                     <p>
@@ -218,9 +206,6 @@ const HomeCan = () => {
                   <td>
                     <p className="text-[20px] font-bold md:text-[32px]">
                       導入補助
-                    </p>
-                    <p className="text-[16px] font-medium md:text-[20px]">
-                      （税抜）
                     </p>
                   </td>
                   <td>
