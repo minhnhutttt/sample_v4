@@ -188,7 +188,10 @@ const Toolkit = () => {
                 </p>
               </button>
 
-              <div className="flex justify-end">
+              <div className="flex items-end justify-end gap-2 max-md:mt-3">
+                <figure className="relative -top-4 w-12 md:w-[70px]">
+                  <img src="/assets/images/arr.svg" alt="" />
+                </figure>
                 <p className="font-caveat text-[20px] text-[#f84131] md:text-[32px]">
                   Screenshots are blocked!
                 </p>

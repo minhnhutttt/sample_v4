@@ -137,7 +137,7 @@ const OwnYourValue = () => {
         <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center text-[clamp(30px,28px+100vw*.1525,120px)] leading-none whitespace-nowrap uppercase">
           <div
             ref={wrapTextRef}
-            className="font-shippori relative scale-x-0 rounded-4xl bg-[#F78629] text-white"
+            className="relative scale-x-0 rounded-4xl bg-[#F78629] text-white"
           >
             <p
               ref={text01Ref}

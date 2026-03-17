@@ -22,8 +22,9 @@ const AppPage = () => {
       <PageFv
         text={
           <>
-            KIVO.INC <br />
-            Information
+            KIVO App
+            <br />
+            Introduction
           </>
         }
       />
