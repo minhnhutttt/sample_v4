@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 
 import Title from '@/components/common/title';
+import Matches from '@/components/matches';
 import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { getNewsList } from '@/services/microcms';
 
@@ -11,10 +12,9 @@ const HomeNews = async () => {
   return (
     <div className="bg-[url(/assets/images/bg-grid.png)] px-5 pt-20 pb-[120px] md:pt-44 md:pb-[169px]">
       <div className="mx-auto w-full max-w-[1024px]">
-        {/*
         <Title title="GAME" sub="試合情報" />
         <Matches />
-        */}
+
         <div className="mt-20 md:mt-[130px]">
           <div>
             <Title title="NEWS" sub="ニュース" />
