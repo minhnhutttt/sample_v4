@@ -5,7 +5,6 @@ import { getMatches } from '@/services/microcms';
 
 const Matches = async () => {
   const matches = await getMatches();
-  console.log(matches);
   const leoblacksOpponentLogoUrl =
     typeof matches.leo_blacks.opponent_logo === 'string'
       ? matches.leo_blacks.opponent_logo
