@@ -23,7 +23,14 @@ export const metadata: Metadata = {
 const ClubsPage = () => {
   return (
     <>
-      <PageFv />
+      <PageFv
+        text={
+          <>
+            KIVO.INC <br />
+            Information
+          </>
+        }
+      />
       <BoardMember />
       <OfficeViewPhotos />
       <Vision />

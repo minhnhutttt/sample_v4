@@ -19,7 +19,14 @@ export const metadata: Metadata = {
 const AppPage = () => {
   return (
     <div>
-      <PageFv />
+      <PageFv
+        text={
+          <>
+            KIVO.INC <br />
+            Information
+          </>
+        }
+      />
       <Download />
       <Products />
     </div>

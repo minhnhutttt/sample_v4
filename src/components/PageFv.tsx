@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef } from 'react';
+import { ReactNode, useLayoutEffect, useRef } from 'react';
 
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
@@ -10,7 +10,7 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const PageFv = () => {
+const PageFv = ({ text }: { text: ReactNode }) => {
   useInfiniteScroll();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -139,22 +139,19 @@ const PageFv = () => {
             className="relative scale-y-[1.2] text-center text-[clamp(80px,calc(30px+14.25vw),300px)] leading-[0.9] font-bold tracking-tighter whitespace-nowrap text-[#F78629] opacity-0 will-change-transform max-md:origin-top max-md:text-[clamp(52px,16vw,70px)]"
           >
             <span ref={clubsTopRef} className="inline-block">
-              KIVO.INC <br />
-              Information
+              {text}
             </span>
             <span
               ref={clubsMiddleRef}
               className="absolute inset-0 inline-block"
             >
-              KIVO.INC <br />
-              Information
+              {text}
             </span>
             <span
               ref={clubsBottomRef}
               className="absolute inset-0 inline-block"
             >
-              KIVO.INC <br />
-              Information
+              {text}
             </span>
           </div>
         </div>

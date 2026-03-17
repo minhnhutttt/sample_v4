@@ -172,102 +172,74 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <footer>
-          {/* footer_top */}
-          <div className="mx-auto w-full max-w-[440px] px-5 pt-32 pb-40 lg:max-w-[66rem]">
-            {/* footer_nav */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-24 pb-40 font-bold md:gap-x-24 lg:grid-cols-4">
-              {/* Column 1 */}
-              <div className="flex flex-col items-start gap-y-6">
+        <footer className="w-full px-5 py-20 md:py-32">
+          <div className="mx-auto w-full max-w-[1440px]">
+            <ul className="grid grid-cols-2 gap-5 font-bold md:grid-cols-4 md:text-[28px]">
+              <li>
                 <Link
-                  href="/"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
                   Home
                 </Link>
+              </li>
+              <li>
                 <Link
-                  href="/our-work"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
-                  Our work
+                  About
                 </Link>
+              </li>
+              <li>
                 <Link
-                  href="/about-us"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
-                  About us
+                  App
                 </Link>
+              </li>
+              <li>
                 <Link
-                  href="/backstage"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
-                  Backstage
+                  Company
                 </Link>
-              </div>
-
-              {/* Column 2 */}
-              <div className="flex flex-col items-start gap-y-6">
+              </li>
+              <li>
                 <Link
-                  href="/career"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
-                  Career
+                  Premium
                 </Link>
+              </li>
+              <li>
                 <Link
-                  href="/contact-us"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
+                >
+                  Download
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
+                >
+                  Detail
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
                 >
                   Contact
                 </Link>
-                <Link
-                  href="/why-outloud"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
-                >
-                  Why Outloud?
-                </Link>
-              </div>
-
-              {/* Column 3 */}
-              <div className="flex flex-col items-start gap-y-6">
-                <a
-                  href="https://work.outloud.co/pohoda"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
-                >
-                  Pohoda
-                </a>
-                <a
-                  href="https://work.outloud.co/cloudtalk"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
-                >
-                  CloudTalk
-                </a>
-                <a
-                  href="https://work.outloud.co/studyshep"
-                  className="py-1 text-xl leading-[1.6] tracking-[0.3px] transition-opacity hover:opacity-70"
-                >
-                  StudyShep
-                </a>
-              </div>
-
-              {/* Column 4 — Contact */}
-              <div className="flex flex-col items-start">
-                <p className="text-sm font-medium tracking-widest uppercase opacity-60">
-                  E-mail
-                </p>
-                <a
-                  href="mailto:hello@outloud.co"
-                  className="block leading-[1.6] transition-opacity hover:opacity-70 md:text-[20px]"
-                >
-                  hello@outloud.co
-                </a>
-
-                <div className="mt-8 mb-2">
-                  <p className="text-sm font-medium tracking-widest uppercase opacity-60">
-                    Follow us
-                  </p>
-                </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </footer>
         <p className="my-10 text-center text-[clamp(34px,29.242px+100vw*.0122,50px)] leading-[1.2] font-bold uppercase">

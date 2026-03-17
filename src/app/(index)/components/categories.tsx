@@ -3,27 +3,78 @@
 import Link from 'next/link';
 
 const ITEMS = [
-  { title: 'KIVOって、\nどんなアプリ？', src: '/assets/video/m-1.mp4' },
-  { title: 'まずはここから\n始めよう', src: '/assets/video/m-4.mp4' },
-  { title: '本気で稼ぐなら、\nPremiumへ', src: '/assets/video/m-3.mp4' },
-  { title: '困ったときは\nお気軽に', src: '/assets/video/m-2.mp4' },
-  { title: '他と何が違うの？\n正直に答えます', src: '/assets/video/m-1.mp4' },
-  { title: '最新情報は\nここでチェック', src: '/assets/video/m-4.mp4' },
-  { title: 'KIVOをつくって\nいる人たち', src: '/assets/video/m-3.mp4' },
-  { title: 'ロゴや素材は\nこちらからどうぞ', src: '/assets/video/m-2.mp4' },
-  { title: 'ご利用前に\nご確認ください', src: '/assets/video/m-1.mp4' },
-  { title: '大切な情報の\n扱い方について', src: '/assets/video/video-02.mp4' },
+  {
+    title: 'App \nIntroduction',
+    text: 'KIVOって、どんなアプリ？',
+    src: '/assets/video/video-01.mp4',
+  },
+  {
+    title: 'Download \nKIVO',
+    text: 'まずはここから始めよう',
+    src: '/assets/video/video-02.mp4',
+  },
+  {
+    title: 'Premium \nBenefits',
+    text: '本気で稼ぐなら、Premiumへ',
+    src: '/assets/video/video-03.mp4',
+  },
+  {
+    title: 'Support',
+    text: '困ったときはお気軽に',
+    src: '/assets/video/video-04.mp4',
+  },
+  {
+    title: 'KIVO \nvs Other',
+    text: '他と何が違うの？正直に答えます',
+    src: '/assets/video/video-01.mp4',
+  },
+  {
+    title: 'Announcements',
+    text: '最新情報はここでチェック',
+    src: '/assets/video/video-02.mp4',
+  },
+  {
+    title: 'We are \nKIVO',
+    text: 'KIVOをつくっている人たち',
+    src: '/assets/video/video-03.mp4',
+  },
+  {
+    title: 'Brand asset',
+    text: 'ロゴや素材はこちらからどうぞ',
+    src: '/assets/video/video-04.mp4',
+  },
+  {
+    title: 'Terms of Use',
+    text: 'ご利用前にご確認ください',
+    src: '/assets/video/video-01.mp4',
+  },
+  {
+    title: 'Privacy Policy',
+    text: '大切な情報の扱い方について',
+    src: '/assets/video/video-02.mp4',
+  },
 ];
 
-const CardItem = ({ title, src }: { title: string; src: string }) => {
+const CardItem = ({
+  title,
+  text,
+  src,
+}: {
+  title: string;
+  text: string;
+  src: string;
+}) => {
   const [line1, line2] = title.split('\n');
   return (
     <Link
       href="#"
       className="group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[40px] md:col-span-1 md:rounded-lg md:text-[4cqw]"
     >
-      <div className="title-text font-shippori absolute inset-0 z-10 flex items-center justify-center bg-black/30 p-5 text-center leading-snug font-bold text-white duration-300">
-        {line1} <br /> {line2}
+      <div className="title-text font-shippori absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/30 p-5 text-center leading-snug font-bold text-white duration-300">
+        <p>
+          {line1} <br /> {line2}
+        </p>
+        <p className="mt-1.5 text-[19px] md:mt-[1cqw] md:text-[2cqw]">{text}</p>
       </div>
       <div className="overflow-hidden">
         <video
