@@ -95,6 +95,56 @@ const DownloadPage = () => {
             </div>
           </div>
         </div>
+        <div className="mx-auto w-full max-w-100 py-28 text-white md:max-w-[1280px] md:py-40">
+          <h2 className="text-center text-[50px] font-bold md:text-[70px]">
+            始めるのは、驚くほどシンプルです。
+          </h2>
+          <p className="text-center text-[20px] md:text-[28px]">
+            電話番号もメールアドレスも不要です。
+          </p>
+          <div className="grid grid-cols-2 gap-1 pt-12 md:grid-cols-4 md:pt-20">
+            <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
+              <figure>
+                <img src="/assets/images/1.png" alt="" />
+              </figure>
+              <div className="pt-5">
+                <p className="text-[14px] font-bold md:text-[20px]">
+                  01.招待リンクを受け取る
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
+              <figure>
+                <img src="/assets/images/2.png" alt="" />
+              </figure>
+              <div className="pt-5">
+                <p className="text-[14px] font-bold md:text-[20px]">
+                  02.App Storeからダウンロード
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
+              <figure>
+                <img src="/assets/images/3.png" alt="" />
+              </figure>
+              <div className="pt-5">
+                <p className="text-[14px] font-bold md:text-[20px]">
+                  03.招待リンクからアプリを開いてアカウント作成
+                </p>
+              </div>
+            </div>
+            <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
+              <figure>
+                <img src="/assets/images/4.png" alt="" />
+              </figure>
+              <div className="pt-5">
+                <p className="text-[14px] font-bold md:text-[20px]">
+                  04.KIVOへようこそ！
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className=""></div>
     </div>
