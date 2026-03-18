@@ -14,6 +14,7 @@ const GLITCH_DURATION = 0.75;
 const LoadingScreen = forwardRef<LoadingScreenHandle>((_, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  const loadingWrapRef = useRef<HTMLDivElement>(null);
   const img1Ref = useRef<HTMLImageElement>(null);
   const img2WrapRef = useRef<HTMLDivElement>(null);
   const img2Ref = useRef<HTMLImageElement>(null);
@@ -43,8 +44,8 @@ const LoadingScreen = forwardRef<LoadingScreenHandle>((_, ref) => {
   useImperativeHandle(ref, () => ({
     play(onMidpoint?: () => void) {
       if (!containerRef.current) return;
-
-      gsap.set(bgRef.current, { opacity: 0 });
+      loadingWrapRef.current?.classList.add('is-play');
+      gsap.set(bgRef.current, { opacity: 0, backgroundColor: '#000' });
       gsap.set(mapRef.current, { opacity: 0 });
       gsap.set(
         [textLine1Ref.current, textLine2Ref.current, textLine3Ref.current],
@@ -53,35 +54,32 @@ const LoadingScreen = forwardRef<LoadingScreenHandle>((_, ref) => {
 
       const tl = gsap.timeline();
 
-      tl.to(bgRef.current, { opacity: 1, duration: 0.4, ease: 'power2.out' })
+      tl.to(bgRef.current, { opacity: 1, duration: 0.15, ease: 'power2.out' })
         .add(() => onMidpoint?.())
         .to(
           img1Ref.current,
-          { opacity: 1, duration: 0.4, ease: 'power2.out' },
-          '+=0.1',
+          { opacity: 1, duration: 0.15, ease: 'power2.out' },
+          '+=0.05',
         )
-
-        .to(img2WrapRef.current, { opacity: 1, duration: 0 }, '+=0.15')
+        .to(img2WrapRef.current, { opacity: 1, duration: 0 }, '+=0.05')
         .add(() => {
           triggerImg2Glitch();
         })
-        .to({}, { duration: GLITCH_DURATION + 0.5 })
-
+        .to({}, { duration: 0.3 + 0.25 }) // 0.3 + 0.25 = 0.55s
         .to(
           img3Ref.current,
-          { opacity: 1, duration: 0.4, ease: 'power2.out' },
-          '+=0.15',
+          { opacity: 1, duration: 0.15, ease: 'power2.out' },
+          '+=0.05',
         )
-
         .to(
           [img1Ref.current, img2WrapRef.current, img3Ref.current],
-          { opacity: 0, duration: 0.35, ease: 'power2.in' },
-          '+=0.1',
+          { opacity: 0, duration: 0.15, ease: 'power2.in' },
+          '+=0.05',
         )
         .to(
           bgRef.current,
-          { opacity: 0, duration: 0.5, ease: 'power2.inOut' },
-          '-=0.1',
+          { opacity: 0, duration: 0.2, ease: 'power2.inOut' },
+          '-=0.05',
         );
     },
 
@@ -286,8 +284,11 @@ const LoadingScreen = forwardRef<LoadingScreenHandle>((_, ref) => {
         <div ref={bgRef} className="absolute inset-0 bg-[#FF0000]" />
 
         {/* 3 ảnh loading */}
-        <div className="absolute inset-0 flex h-full w-full items-center justify-center p-5">
-          <div className="relative">
+        <div
+          ref={loadingWrapRef}
+          className="group absolute inset-0 flex h-full w-full items-center justify-center p-5"
+        >
+          <div className="relative group-[.is-play]:w-[300px] md:group-[.is-play]:w-[500px]">
             <img
               ref={img1Ref}
               className="relative z-10 opacity-0"
