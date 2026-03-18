@@ -32,6 +32,9 @@ const Footer = () => {
       </div>
       <div className="site-max flex flex-col items-center py-[8rem]">
         <p className="mb-[2rem] text-center text-[2.9em]">
+          私たちと事業の可能性を広げていきませんか？
+        </p>
+        <p className="mb-[2rem] text-center text-[2.9em]">
           READY TO TRANSFORM YOUR BUSINESS?
         </p>
         <Button

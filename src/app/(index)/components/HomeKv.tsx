@@ -23,7 +23,6 @@ const CARD_DEFS = [
     destId: 'ph0',
     name: 'Steproof',
     image: '/assets/images/thumbnail.jpg',
-    tags: ['移動距離照明・自動化'],
     href: '/steproof',
   },
   {
@@ -31,24 +30,21 @@ const CARD_DEFS = [
     destId: 'ph1',
     name: 'VisionFlow',
     image: '/assets/images/thumbnail-02.jpg',
-    tags: ['データ分析'],
-    href: '/steproof#assess',
+    href: '/steproof#section-A',
   },
   {
     id: 'sc2',
     destId: 'ph2',
     name: 'CoreNexus',
     image: '/assets/images/thumbnail-03.jpg',
-    tags: ['CRM/顧客管理'],
-    href: '/steproof#envision',
+    href: '/steproof#section-B',
   },
   {
     id: 'sc3',
     destId: 'ph3',
     name: 'AquaGrid',
     image: '/assets/images/thumbnail-04.jpg',
-    tags: ['在庫最適化'],
-    href: '/steproof#execute',
+    href: '/steproof#section-C',
   },
 ] as const;
 
@@ -317,8 +313,10 @@ export default function HomeKv() {
             </SplitTextReveal>
 
             <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4.8rem] md:mt-[20rem]">
-              <p className="js-t-fade-up text-[1.4rem] md:max-w-[60rem]">
-                私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、収益性の向上と業務の最適化を支援します。
+              <p className="js-t-fade-up text-[1.8rem] md:max-w-[60rem]">
+                私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、
+                <br className="max-md:hidden" />
+                収益性の向上と業務の最適化を支援します。
               </p>
               <Button
                 text="お問い合わせ"
@@ -395,7 +393,7 @@ export default function HomeKv() {
         >
           <div className="js-flip-targets flex w-full flex-col items-center justify-center gap-y-[3.5rem]">
             <div className="relative text-center text-[3.6rem] font-bold md:text-[7rem]">
-              Recommended Products
+              Our Products
             </div>
           </div>
 
@@ -415,20 +413,10 @@ export default function HomeKv() {
                   }}
                 />
                 <div className="work-card-content relative z-2 -mt-[0.5rem] overflow-hidden md:-mt-[1.5rem]">
-                  <div className="work-card-content__inner relative flex flex-col gap-y-[1rem] pt-[2.5rem] pb-[1.5rem]">
+                  <div className="work-card-content__inner relative flex flex-col gap-y-[1rem] pt-[4rem] pb-[2.5rem]">
                     <h3 className="work-card__title relative z-2 text-[1.8rem] !leading-none font-bold">
                       {card.name}
                     </h3>
-                    <div className="work-card__pills relative z-2 flex flex-wrap gap-[0.5rem] md:gap-[1rem]">
-                      {card.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="inline-flex h-[3rem] items-center rounded-full border border-current px-[0.8rem] text-[1.4rem] leading-none whitespace-nowrap md:h-[3.4rem] md:px-[1.2rem]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
               </Link>

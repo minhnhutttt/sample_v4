@@ -8,9 +8,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const SERVICES = [
   {
     title: 'MAXIMIZING BUSINESS VALUE.',
-    text: 'プロダクトについて',
+    text: '利益を設計する',
     description:
-      '私たちは、厳選された高品質なプロダクトの提供を通じて、お客様の事業収益を最大化するパートナーです。 単なるツールの導入に留まらず、各企業の収益構造を理解し、無駄を排して利益を確実に残すための最適なソリューションを提案します。 「New Engen」のような戦略的な視点を持ちつつも、目的はあくまで事業の持続可能性。 プロダクトが貴社のオペレーションに深く浸透し、導入した瞬間から実利的なインパクトを生み出すことを約束します。 質の高いラインナップは、貴社のビジョンを具現化し、次なる成長ステージへと導く強力な利益のエンジンとなります。',
+      '私たちは、厳選された高品質なプロダクトの提供を通じて、お客様の事業収益を最大化するパートナーです。単なるツールの導入に留まらず、各企業の収益構造を理解し、無駄を排して利益を確実に残すための最適なソリューションを提案します。 戦略的な視点を持ちながらも、目的はあくまで事業の持続可能性。プロダクトが貴社のオペレーションに深く浸透し、導入した瞬間から実利的なインパクトを生み出すことを約束します。質の高いラインナップは、貴社のビジョンを具現化し、次なる成長ステージへと導く強力な利益のエンジンとなります。',
     riv: '/assets/images/hero_strategy.png',
   },
   {
@@ -57,7 +57,7 @@ const HomeServices = () => {
     <div className="w-full py-[9rem] md:pt-[15rem] md:pb-0">
       <div className="site-max flex flex-col items-start">
         <div className="flex flex-col gap-y-[3.5rem]">
-          <p className="text-[4rem] font-bold md:text-[7rem]">About Products</p>
+          <p className="text-[4rem] font-bold md:text-[7rem]">How We Make</p>
         </div>
       </div>
 
