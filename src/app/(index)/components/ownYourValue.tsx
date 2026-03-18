@@ -109,7 +109,7 @@ const OwnYourValue = () => {
   }, []);
 
   return (
-    <div className="relative mt-[100vh] overflow-hidden">
+    <div className="relative z-10 overflow-hidden">
       <div
         ref={wrapperRef}
         className="relative flex min-h-screen items-center justify-center bg-[#FFF8F2] px-5 font-bold text-black"

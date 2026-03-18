@@ -22,11 +22,19 @@ export const metadata: Metadata = {
 
 const IndexPage = () => {
   return (
-    <div className="overflow-x-hidden">
+    <div className="relative">
       <Kv />
-      <OwnYourValue />
-      <Toolkit />
-      <Categories />
+      <div className="mt-[100vh]" />
+      {/* <OverScroll /> */}
+      <div className="sticky inset-x-0 top-0">
+        <OwnYourValue />
+      </div>
+      <div className="inset-x-0 top-0">
+        <Toolkit />
+      </div>
+      <div className="inset-x-0 top-0">
+        <Categories />
+      </div>
       <KivoPhotos />
       <DeliverValue />
       <Download />

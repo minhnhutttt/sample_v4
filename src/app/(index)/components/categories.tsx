@@ -4,51 +4,61 @@ import Link from 'next/link';
 
 const ITEMS = [
   {
+    link: '/app',
     title: 'App \nIntroduction',
     text: 'KIVOって、どんなアプリ？',
     src: '/assets/video/video-01.mp4',
   },
   {
+    link: '/download',
     title: 'Download \nKIVO',
     text: 'まずはここから始めよう',
     src: '/assets/video/video-02.mp4',
   },
   {
+    link: '#',
     title: 'Premium \nBenefits',
     text: '本気で稼ぐなら、Premiumへ',
     src: '/assets/video/video-03.mp4',
   },
   {
+    link: '#',
     title: 'Support',
     text: '困ったときはお気軽に',
     src: '/assets/video/video-04.mp4',
   },
   {
+    link: '#',
     title: 'KIVO \nvs Other',
     text: '他と何が違うの？正直に答えます',
     src: '/assets/video/video-01.mp4',
   },
   {
+    link: '#',
     title: 'Announcements',
     text: '最新情報はここでチェック',
     src: '/assets/video/video-02.mp4',
   },
   {
+    link: '/company',
     title: 'We are \nKIVO',
     text: 'KIVOをつくっている人たち',
     src: '/assets/video/video-03.mp4',
   },
   {
+    link: '#',
     title: 'Brand asset',
     text: 'ロゴや素材はこちらからどうぞ',
     src: '/assets/video/video-04.mp4',
   },
   {
+    link: '#',
     title: 'Terms of Use',
     text: 'ご利用前にご確認ください',
     src: '/assets/video/video-01.mp4',
   },
   {
+    link: '#',
     title: 'Privacy Policy',
     text: '大切な情報の扱い方について',
     src: '/assets/video/video-02.mp4',

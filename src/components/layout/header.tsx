@@ -17,12 +17,12 @@ const kivoAppItems: NavItem[] = [
   { label: 'KIVOをダウンロード', sub: 'Download KIVO', href: '/download' },
   { label: 'プレミアム特典', sub: 'Premium Benefits', href: '/premium' },
   { label: 'サポート', sub: 'Support', href: '/support' },
-  { label: 'KIVO vs Other', href: '/compare' },
+  { label: 'KIVOの強み', sub: 'KIVO vs Other', href: '/compare' },
 ];
 
 const aboutItems: NavItem[] = [
   { label: 'お知らせ・公開情報', sub: 'Announcements', href: '/news' },
-  { label: 'We are KIVO', href: '/company' },
+  { label: '運営会社概要', sub: 'We are KIVO', href: '/company' },
   { label: 'ブランドアセット', sub: 'Brand asset', href: '/brand' },
 ];
 
