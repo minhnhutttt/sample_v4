@@ -160,7 +160,7 @@ const OwnYourValue = () => {
 
             <p
               ref={text04Ref}
-              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(20px,20px+100vw*.1,100px)] whitespace-nowrap text-[#242424]"
+              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(12px,10px+100vw*.1,100px)] whitespace-nowrap text-[#242424] md:text-[clamp(20px,20px+100vw*.1,100px)]"
             >
               <span className="inline-block -rotate-5 text-shadow-lg">
                 RECLAIM YOUR VALUE

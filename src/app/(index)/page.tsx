@@ -4,11 +4,11 @@ import { OG, SITE_URL } from '@/config/constants';
 
 import Categories from './components/categories';
 import DeliverValue from './components/deliverValue';
-import Download from './components/download';
 import KivoPhotos from './components/kivoPhotos';
 import Kv from './components/kv';
 import OwnYourValue from './components/ownYourValue';
 import Toolkit from './components/toolkit';
+import Video from './components/video';
 
 export const metadata: Metadata = {
   openGraph: {
@@ -22,22 +22,22 @@ export const metadata: Metadata = {
 
 const IndexPage = () => {
   return (
-    <div className="relative">
+    <div>
       <Kv />
       <div className="mt-[100vh]" />
-      {/* <OverScroll /> */}
       <div className="sticky inset-x-0 top-0">
         <OwnYourValue />
       </div>
-      <div className="inset-x-0 top-0">
-        <Toolkit />
+      <Toolkit />
+      <div className="sticky inset-x-0 top-0">
+        <Video />
       </div>
-      <div className="inset-x-0 top-0">
-        <Categories />
-      </div>
+      <Categories />
       <KivoPhotos />
-      <DeliverValue />
-      <Download />
+      <div className="mt-[100vh]" />
+      <div className="overflow-x-hidden">
+        <DeliverValue />
+      </div>
     </div>
   );
 };

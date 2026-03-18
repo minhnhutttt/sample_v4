@@ -5,6 +5,8 @@ import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
+import Download from './download';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function DeliverValue() {
@@ -19,6 +21,7 @@ export default function DeliverValue() {
   const weight7Ref = useRef<HTMLDivElement>(null);
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const svgWrapRef = useRef<HTMLDivElement>(null);
   const svgBoxRef = useRef<HTMLDivElement>(null);
   const blackTextRef = useRef<SVGTextElement>(null);
@@ -28,6 +31,8 @@ export default function DeliverValue() {
   const spSlot2Ref = useRef<HTMLDivElement>(null);
   const spText1Ref = useRef<HTMLDivElement>(null);
   const spText2Ref = useRef<HTMLDivElement>(null);
+
+  const downloadRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -107,6 +112,8 @@ export default function DeliverValue() {
         willChange: 'transform',
       });
 
+      gsap.set(videoRef.current, { opacity: 0 });
+
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
@@ -135,6 +142,7 @@ export default function DeliverValue() {
 
       mm.add('(min-width: 768px)', () => {
         fitSvgHeight();
+        gsap.set(downloadRef.current, { yPercent: 100 });
         gsap.set(blackText, { opacity: 1 });
 
         const svgTl = gsap.timeline({
@@ -152,6 +160,7 @@ export default function DeliverValue() {
         });
 
         svgTl
+          .to(videoRef.current, { opacity: 1, duration: 0.3 }, 0)
           .to(
             svgWrapEl,
             {
@@ -228,6 +237,15 @@ export default function DeliverValue() {
               ease: 'power1.inOut',
             },
             '<+=0.35',
+          )
+          .to(
+            downloadRef.current,
+            {
+              yPercent: 0,
+              duration: 1,
+              ease: 'power2.out',
+            },
+            '>-0.1',
           );
 
         // Fade the black "Deliver" out early in the pinned scroll section.
@@ -302,10 +320,10 @@ export default function DeliverValue() {
 
   return (
     <section className="relative bg-[#F78629] md:h-[500svh]">
-      <div className="flex min-h-[100svh] justify-center md:min-h-[200svh]">
+      <div className="flex min-h-[100svh] justify-center bg-[#F78629] md:min-h-[200svh]">
         <div
           ref={sectionRef}
-          className="sticky top-0 right-0 left-0 z-20 flex h-[50vh] items-end max-md:hidden md:h-screen"
+          className="sticky top-0 right-0 left-0 z-20 flex h-[50vh] items-end bg-[#F78629] max-md:hidden md:h-screen"
         >
           <div
             ref={textRef}
@@ -322,7 +340,10 @@ export default function DeliverValue() {
           </div>
         </div>
 
-        <div ref={spWrapperRef} className="flex h-screen flex-col md:hidden">
+        <div
+          ref={spWrapperRef}
+          className="flex h-screen flex-col bg-[#F78629] md:hidden"
+        >
           <div className="h-[70vh]">
             <div
               ref={spSlot1Ref}
@@ -362,10 +383,11 @@ export default function DeliverValue() {
 
       <div
         ref={svgContainerRef}
-        className="relative -mt-[50svh] h-[50vh] overflow-hidden md:-mt-[100svh] md:h-screen"
+        className="relative -mt-[50svh] h-[50vh] overflow-hidden bg-[#F78629] md:-mt-[100svh] md:h-screen"
       >
         <div className="absolute inset-0 -z-10">
           <video
+            ref={videoRef}
             src="/assets/video/video-03.mp4"
             className="h-full w-full object-cover"
             autoPlay
@@ -469,6 +491,12 @@ export default function DeliverValue() {
             src="/assets/images/coin-img-02.png"
             alt=""
           />
+        </div>
+        <div
+          ref={downloadRef}
+          className="absolute right-0 bottom-0 left-0 z-50"
+        >
+          <Download />
         </div>
       </div>
     </section>

@@ -102,6 +102,7 @@ export default function KivoPhotos() {
           start: 'top top',
           end: END,
           pin: true,
+          pinSpacing: false,
           scrub: 1,
           invalidateOnRefresh: true,
         },
@@ -167,6 +168,7 @@ export default function KivoPhotos() {
           trigger: wrapper,
           start: 'top top',
           end: END,
+          pinSpacing: false,
           scrub: 1,
           markers: false,
           invalidateOnRefresh: true,
@@ -219,7 +221,7 @@ export default function KivoPhotos() {
   return (
     <div
       ref={wrapperRef}
-      className="relative flex min-h-screen items-center justify-center bg-[#FFF8F2]"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#FFF8F2]"
     >
       <div
         ref={gridRef}
@@ -259,7 +261,7 @@ export default function KivoPhotos() {
         </span>
         <p
           ref={textRef}
-          className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(12px,12px+100vw*.1,100px)] whitespace-nowrap text-[#242424] max-md:-translate-y-[65px]"
+          className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(10px,5px+100vw*.1,060px)] whitespace-nowrap text-[#242424] max-md:-translate-y-[65px] md:text-[clamp(12px,12px+100vw*.1,100px)]"
         >
           <span className="inline-block -rotate-5 text-shadow-lg">
             GUARDED IMPACT & VALUE

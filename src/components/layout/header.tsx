@@ -45,7 +45,7 @@ function MarqueeTicker() {
         .kivo-marquee-track {
           display: flex;
           white-space: nowrap;
-          animation: kivo-marquee 40s linear infinite;
+          animation: kivo-marquee 70s linear infinite;
           will-change: transform;
         }
       `}</style>
