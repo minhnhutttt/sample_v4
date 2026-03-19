@@ -2,11 +2,55 @@
 
 import { useEffect, useRef } from 'react';
 
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import gsap from 'gsap';
 import DrawSVGPlugin from 'gsap/DrawSVGPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitText from 'gsap/SplitText';
 import Link from 'next/link';
+
+const ITEMS = [
+  {
+    link: '/app',
+    title: 'App Introduction',
+    src: '/assets/lottie/1.lottie',
+  },
+  {
+    link: '/download',
+    title: 'Download KIVO',
+    src: '/assets/lottie/2.lottie',
+  },
+  {
+    link: '#',
+    title: 'Premium Benefits',
+    src: '/assets/lottie/3.lottie',
+  },
+  {
+    link: '#',
+    title: 'Support',
+    src: '/assets/lottie/4.lottie',
+  },
+  {
+    link: '#',
+    title: 'KIVO vs Other',
+    src: '/assets/lottie/5.lottie',
+  },
+  {
+    link: '#',
+    title: 'Announcements',
+    src: '/assets/lottie/6.lottie',
+  },
+  {
+    link: '/company',
+    title: 'We are KIVO',
+    src: '/assets/lottie/7.lottie',
+  },
+  {
+    link: '#',
+    title: 'Brand asset',
+    src: '/assets/lottie/8.lottie',
+  },
+];
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, SplitText);
 
@@ -175,70 +219,18 @@ const Footer = () => {
         <footer className="w-full px-5 py-20 md:py-32">
           <div className="mx-auto w-full max-w-[1440px]">
             <ul className="grid grid-cols-2 gap-5 font-bold md:grid-cols-4 md:text-[28px]">
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  App
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Company
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Premium
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Download
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Detail
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="block px-5 duration-200 hover:tracking-wide hover:underline hover:opacity-80"
-                >
-                  Contact
-                </Link>
-              </li>
+              {ITEMS.map((item, i) => (
+                <li className="relative overflow-hidden rounded-lg" key={i}>
+                  <Link href={item.link} className="group overflow-hidden">
+                    <span className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 text-white">
+                      {item.title}
+                    </span>
+                    <span className="block overflow-hidden bg-black p-5 duration-300 group-hover:scale-110">
+                      <DotLottieReact src={item.src} loop autoplay />
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </footer>

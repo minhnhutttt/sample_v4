@@ -7,7 +7,9 @@ import BoardMember from './components/boardMember';
 import CompanyProfile from './components/companyProfile';
 import History from './components/history';
 import KivoPhotos from './components/kivoPhotos';
+import Mission from './components/mission';
 import OfficeViewPhotos from './components/officeViewPhotos';
+import OurBeliefs from './components/ourBeliefs';
 import Vision from './components/vision';
 
 export const metadata: Metadata = {
@@ -31,12 +33,14 @@ const ClubsPage = () => {
           </>
         }
       />
-      <BoardMember />
-      <OfficeViewPhotos />
+      <Mission />
       <Vision />
+      <BoardMember />
+      <OurBeliefs />
       <History />
       <KivoPhotos />
       <CompanyProfile />
+      <OfficeViewPhotos />
     </>
   );
 };

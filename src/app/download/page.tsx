@@ -48,14 +48,14 @@ const DownloadPage = () => {
               <h1 className="text-[50px] font-bold md:text-[70px]">
                 まずはここから始めよう。
               </h1>
-              <div className="mt-10 max-md:pl-[42%] md:mt-20">
+              <div className="mt-10 max-md:pl-[46%] md:mt-20">
                 <p className="text-[18px] font-medium md:text-[40px]">
                   KIVOは招待制です。招待リンクをお持ちの方は、今すぐダウンロードできます。
                 </p>
 
                 <div className="mt-5 mb-4 flex justify-center md:mt-14 md:mb-6">
                   <Image
-                    src="/assets/images/kivo.svg"
+                    src="/assets/images/icon.png"
                     alt=""
                     width={331}
                     height={225}
@@ -104,41 +104,29 @@ const DownloadPage = () => {
           </p>
           <div className="grid grid-cols-2 gap-1 pt-12 md:grid-cols-4 md:pt-20">
             <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
-              <figure>
-                <img src="/assets/images/1.png" alt="" />
-              </figure>
-              <div className="pt-5">
-                <p className="text-[14px] font-bold md:text-[20px]">
+              <div>
+                <p className="text-[14px] font-bold md:text-[19px]">
                   01.招待リンクを受け取る
                 </p>
               </div>
             </div>
             <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
-              <figure>
-                <img src="/assets/images/2.png" alt="" />
-              </figure>
-              <div className="pt-5">
-                <p className="text-[14px] font-bold md:text-[20px]">
+              <div>
+                <p className="text-[14px] font-bold md:text-[19px]">
                   02.App Storeからダウンロード
                 </p>
               </div>
             </div>
             <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
-              <figure>
-                <img src="/assets/images/3.png" alt="" />
-              </figure>
-              <div className="pt-5">
-                <p className="text-[14px] font-bold md:text-[20px]">
+              <div>
+                <p className="text-[14px] font-bold md:text-[19px]">
                   03.招待リンクからアプリを開いてアカウント作成
                 </p>
               </div>
             </div>
             <div className="rounded-lg border border-white/10 bg-[#242424]/90 p-2.5 md:p-5">
-              <figure>
-                <img src="/assets/images/4.png" alt="" />
-              </figure>
-              <div className="pt-5">
-                <p className="text-[14px] font-bold md:text-[20px]">
+              <div>
+                <p className="text-[14px] font-bold md:text-[19px]">
                   04.KIVOへようこそ！
                 </p>
               </div>
@@ -146,7 +134,6 @@ const DownloadPage = () => {
           </div>
         </div>
       </div>
-      <div className=""></div>
     </div>
   );
 };

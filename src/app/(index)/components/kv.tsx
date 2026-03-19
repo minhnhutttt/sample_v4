@@ -497,10 +497,10 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           <div className="absolute inset-0 z-40 flex items-center justify-center text-center text-white">
             <div>
               <h3 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(18px,17.415px+100vw*.0015,20px)] leading-[1em] tracking-[-.01em] uppercase">
-                Kivo App
+                CONTENT GUARD
               </h3>
               <h2 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(36px,28.863px+100vw*.0183,60px)] leading-[1em] tracking-[-.01em] uppercase">
-                あなたの情報が価値になる
+                KIVOなら、コンテンツが流出しない
               </h2>
             </div>
           </div>
@@ -523,10 +523,10 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           <div className="absolute inset-0 z-40 flex items-center justify-center text-center text-white">
             <div>
               <h3 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(18px,17.415px+100vw*.0015,20px)] leading-[1em] tracking-[-.01em] uppercase">
-                Kivo Talk
+                MAXIMUM VALUE
               </h3>
               <h2 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(36px,28.863px+100vw*.0183,60px)] leading-[1em] tracking-[-.01em] uppercase">
-                必要な人に、必要な情報が届く
+                流出しないから、コンテンツの価値が消耗しない
               </h2>
             </div>
           </div>
@@ -549,10 +549,10 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           <div className="absolute inset-0 z-40 flex items-center justify-center text-center text-white">
             <div>
               <h3 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(18px,17.415px+100vw*.0015,20px)] leading-[1em] tracking-[-.01em] uppercase">
-                Channel Power
+                FULL REVENUE
               </h3>
               <h2 className="relative mt-[min(20px,20px+100vw*0)] text-[clamp(36px,28.863px+100vw*.0183,60px)] leading-[1em] tracking-[-.01em] uppercase">
-                チャンネルでより多くの人に発信
+                取りこぼされてきた収益が今、全部あなたのものに
               </h2>
             </div>
           </div>

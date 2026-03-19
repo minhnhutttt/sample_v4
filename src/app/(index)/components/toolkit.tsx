@@ -84,10 +84,10 @@ const Toolkit = () => {
             data-load-reveal=""
             className="font-shippori text-center text-[20px] md:text-[30px]"
           >
-            発信する時代は終わった。 確定させる時代が来た。
+            発信する時代は終わった。確定させる時代が来た。
             <br />
             KIVOは、情報の価値が契約によって成立する
-            <br /> 最初のプラットフォームである。
+            <br /> 最初のプラットフォームです。
           </p>
         </div>
       </div>

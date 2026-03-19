@@ -1,3 +1,4 @@
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import type { Metadata } from 'next';
 
 import PageFv from '@/components/PageFv';
@@ -6,18 +7,18 @@ import { OG, TWITTER } from '@/config/constants';
 import FAQAccordion from './components/FAQAccordion';
 
 export const metadata: Metadata = {
-  title: 'Download',
+  title: 'Premium',
   openGraph: {
     ...OG,
-    title: 'download',
-    url: '/download',
+    title: 'premium',
+    url: '/premium',
   },
   twitter: {
     ...TWITTER,
-    title: 'download',
+    title: 'premium',
   },
   alternates: {
-    canonical: '/download',
+    canonical: '/premium',
   },
 };
 
@@ -34,24 +35,12 @@ const PremiumPage = () => {
       />
       <div className="bg-white px-5 py-28 md:py-33.5">
         <div className="flex items-start gap-5 max-md:flex-col">
-          <div className="flex-1">
-            <img
-              src="/assets/images/premium-01.webp"
-              className="aspect-square h-full w-full rounded-2xl object-cover"
-              alt=""
-            />
+          <div className="flex flex-1 items-center justify-center bg-black p-5">
+            <img src="/assets/images/premium-01.png" className="" alt="" />
           </div>
 
           <div className="flex-1">
-            <figure>
-              <img
-                src="/assets/images/premium-qr.svg"
-                alt=""
-                className="w-[245px] rounded-2xl md:w-[345px]"
-              />
-            </figure>
-            <p className="text-[20px] md:text-[27px]">KIVO Appをダウンロード</p>
-            <p className="mt-20 text-[32px] leading-[1.2] xl:text-[50px]">
+            <p className="text-[28px] leading-[1.2] md:text-[32px] xl:text-[50px]">
               クリエイターの可能性を、
               <br />
               Premiumが広げる。 <br />
@@ -70,12 +59,22 @@ const PremiumPage = () => {
               </p>
             </div>
             <div className="flex-1">
-              <img src="/assets/images/premium-02.webp" alt="" />
+              <DotLottieReact
+                className="w-full"
+                src="/assets/lottie/2-1.lottie"
+                loop
+                autoplay
+              />
             </div>
           </div>
           <div className="flex items-center gap-8 max-md:flex-col xl:gap-[70px]">
             <div className="flex-1">
-              <img src="/assets/images/premium-03.webp" alt="" />
+              <DotLottieReact
+                className="w-full"
+                src="/assets/lottie/2-2.lottie"
+                loop
+                autoplay
+              />
             </div>
             <div className="flex-1">
               <p className="mb-3 text-[16px] md:text-[20px]">
@@ -96,58 +95,43 @@ const PremiumPage = () => {
               </p>
             </div>
             <div className="flex-1">
-              <img src="/assets/images/premium-02.webp" alt="" />
+              <DotLottieReact
+                className="w-full"
+                src="/assets/lottie/2-3.lottie"
+                loop
+                autoplay
+              />
             </div>
           </div>
         </div>
       </div>
       <div className="flex flex-wrap bg-[rgb(246,246,246)] px-5 py-20 md:py-28">
-        <div className="w-full p-5 md:w-1/2 xl:w-1/4">
+        <div className="w-full p-5 md:w-1/2 xl:w-1/3">
           <p className="mb-3 text-[36px] lg:text-[50px]">
             KIVOは価値が壊れない設計になっています。
           </p>
-          <div className="flex">
-            <a
-              href="#"
-              className="block rounded-full border border-black p-5 text-[18px] md:p-7 md:text-[24px]"
-            >
-              設計思想について知る
-            </a>
-          </div>
         </div>
-        <div className="w-full p-5 md:w-1/2 xl:w-1/4">
-          <figure>
-            <img
-              src="/assets/images/premium-04.webp"
-              className="rounded-2xl"
-              alt=""
-            />
-          </figure>
+        <div className="w-full p-5 md:w-1/2 xl:w-1/3">
+          <DotLottieReact
+            className="w-full"
+            src="/assets/lottie/2-4.lottie"
+            loop
+            autoplay
+          />
           <p className="mt-5 text-[20px] md:text-[36px]">
             スクリーンショット制御
           </p>
         </div>
-        <div className="w-full p-5 md:w-1/2 xl:w-1/4">
-          <figure>
-            <img
-              src="/assets/images/premium-04.webp"
-              className="rounded-2xl"
-              alt=""
-            />
-          </figure>
+        <div className="w-full p-5 md:w-1/2 xl:w-1/3">
+          <DotLottieReact
+            className="w-full"
+            src="/assets/lottie/2-5.lottie"
+            loop
+            autoplay
+          />
           <p className="mt-5 text-[20px] md:text-[36px]">
             アプリ外への転送・ダウンロード不可設計
           </p>
-        </div>
-        <div className="w-full p-5 md:w-1/2 xl:w-1/4">
-          <figure>
-            <img
-              src="/assets/images/premium-04.webp"
-              className="rounded-2xl"
-              alt=""
-            />
-          </figure>
-          <p className="mt-5 text-[20px] md:text-[36px]">月額の値下げ不可</p>
         </div>
       </div>
       <div className="bg-white">

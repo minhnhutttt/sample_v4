@@ -136,7 +136,7 @@ const PageFv = ({ text }: { text: ReactNode }) => {
         <div className="absolute inset-0 z-40 flex justify-center bg-[#F78629]/[0.2] text-center text-white max-md:pt-40 md:items-center">
           <div
             ref={clubsWrapperRef}
-            className="relative scale-y-[1.2] text-center text-[clamp(80px,calc(30px+14.25vw),300px)] leading-[0.9] font-bold tracking-tighter whitespace-nowrap text-[#F78629] opacity-0 will-change-transform max-md:origin-top max-md:text-[clamp(52px,16vw,70px)]"
+            className="relative scale-y-[1.2] text-center text-[clamp(80px,calc(30px+11.25vw),300px)] leading-[0.9] font-bold tracking-tighter whitespace-nowrap text-[#F78629] opacity-0 will-change-transform max-md:origin-top max-md:text-[clamp(30px,13vw,70px)]"
           >
             <span ref={clubsTopRef} className="inline-block">
               {text}

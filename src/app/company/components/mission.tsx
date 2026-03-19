@@ -8,7 +8,7 @@ import SplitText from 'gsap/SplitText';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const Vision = () => {
+const Mission = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const textMiddleRef = useRef<HTMLSpanElement>(null);
   const textBottomRef = useRef<HTMLSpanElement>(null);
@@ -67,17 +67,17 @@ const Vision = () => {
     >
       <div className="relative z-10 text-center text-[clamp(60px,calc(30px+10.25vw),240px)] leading-none font-bold tracking-tight whitespace-nowrap text-[#F78629] will-change-transform">
         <span ref={textMiddleRef} className="inline-block">
-          VISION
+          MISSION
         </span>
         <span ref={textBottomRef} className="absolute inset-0 inline-block">
-          VISION
+          MISSION
         </span>
-        <p className="mx-auto mt-4 w-full max-w-[600px] px-5 text-center text-[clamp(18px,16px+100vw*.006,24px)] leading-snug tracking-[0.08em] whitespace-nowrap text-[#F78629] uppercase md:text-[clamp(26px,23px+0.75vw,36px)]">
-          情報の価値が、流れない世界をつくる
+        <p className="mx-auto mt-4 w-full px-5 text-center text-[clamp(18px,16px+100vw*.006,24px)] leading-snug tracking-[0.08em] break-all whitespace-normal text-[#F78629] uppercase md:text-[clamp(26px,23px+0.75vw,36px)]">
+          情報が持つ価値の主権を、クリエイターに取り戻す。
         </p>
       </div>
     </div>
   );
 };
 
-export default Vision;
+export default Mission;

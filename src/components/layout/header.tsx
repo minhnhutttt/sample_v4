@@ -21,7 +21,7 @@ const kivoAppItems: NavItem[] = [
 ];
 
 const aboutItems: NavItem[] = [
-  { label: 'お知らせ・公開情報', sub: 'Announcements', href: '/news' },
+  { label: 'お知らせ・公開情報', sub: 'Announcements', href: '/announcements' },
   { label: '運営会社概要', sub: 'We are KIVO', href: '/company' },
   { label: 'ブランドアセット', sub: 'Brand asset', href: '/brand' },
 ];

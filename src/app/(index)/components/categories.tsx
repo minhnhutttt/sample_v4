@@ -1,5 +1,6 @@
 'use client';
 
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Link from 'next/link';
 
 const ITEMS = [
@@ -7,61 +8,61 @@ const ITEMS = [
     link: '/app',
     title: 'App \nIntroduction',
     text: 'KIVOって、どんなアプリ？',
-    src: '/assets/video/video-01.mp4',
+    src: '/assets/lottie/1.lottie',
   },
   {
     link: '/download',
     title: 'Download \nKIVO',
     text: 'まずはここから始めよう',
-    src: '/assets/video/video-02.mp4',
+    src: '/assets/lottie/2.lottie',
   },
   {
     link: '#',
     title: 'Premium \nBenefits',
     text: '本気で稼ぐなら、Premiumへ',
-    src: '/assets/video/video-03.mp4',
+    src: '/assets/lottie/3.lottie',
   },
   {
     link: '#',
     title: 'Support',
     text: '困ったときはお気軽に',
-    src: '/assets/video/video-04.mp4',
+    src: '/assets/lottie/4.lottie',
   },
   {
     link: '#',
     title: 'KIVO \nvs Other',
     text: '他と何が違うの？正直に答えます',
-    src: '/assets/video/video-01.mp4',
+    src: '/assets/lottie/5.lottie',
   },
   {
     link: '#',
     title: 'Announcements',
     text: '最新情報はここでチェック',
-    src: '/assets/video/video-02.mp4',
+    src: '/assets/lottie/6.lottie',
   },
   {
     link: '/company',
     title: 'We are \nKIVO',
     text: 'KIVOをつくっている人たち',
-    src: '/assets/video/video-03.mp4',
+    src: '/assets/lottie/7.lottie',
   },
   {
     link: '#',
     title: 'Brand asset',
     text: 'ロゴや素材はこちらからどうぞ',
-    src: '/assets/video/video-04.mp4',
+    src: '/assets/lottie/8.lottie',
   },
   {
     link: '#',
     title: 'Terms of Use',
     text: 'ご利用前にご確認ください',
-    src: '/assets/video/video-01.mp4',
+    src: '/assets/lottie/9.lottie',
   },
   {
     link: '#',
     title: 'Privacy Policy',
     text: '大切な情報の扱い方について',
-    src: '/assets/video/video-02.mp4',
+    src: '/assets/lottie/10.lottie',
   },
 ];
 
@@ -87,12 +88,11 @@ const CardItem = ({
         <p className="mt-1.5 text-[19px] md:mt-[1cqw] md:text-[2cqw]">{text}</p>
       </div>
       <div className="overflow-hidden">
-        <video
-          src={src}
-          autoPlay
-          muted
-          preload="metadata"
+        <DotLottieReact
           className="absolute inset-0 duration-300 group-hover:scale-105"
+          src={src}
+          loop
+          autoplay
         />
       </div>
     </Link>

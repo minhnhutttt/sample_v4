@@ -1,27 +1,30 @@
-'use client'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useLayoutEffect, useRef } from 'react'
+'use client';
 
-gsap.registerPlugin(ScrollTrigger)
+import { useLayoutEffect, useRef } from 'react';
+
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+
+gsap.registerPlugin(ScrollTrigger);
 const BoardMember = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const item02Ref = useRef<HTMLDivElement>(null)
-  const item04Ref = useRef<HTMLDivElement>(null)
-  const item05Ref = useRef<HTMLDivElement>(null)
-  const item06Ref = useRef<HTMLDivElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const item02Ref = useRef<HTMLDivElement>(null);
+  const item04Ref = useRef<HTMLDivElement>(null);
+  const item05Ref = useRef<HTMLDivElement>(null);
+  const item06Ref = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
-    const wrapper = wrapperRef.current
+    const wrapper = wrapperRef.current;
 
     const items = [
       item02Ref.current,
       item04Ref.current,
       item05Ref.current,
       item06Ref.current,
-    ].filter(Boolean) as HTMLDivElement[]
+    ].filter(Boolean) as HTMLDivElement[];
 
-    if (!wrapper || items.length === 0) return
+    if (!wrapper || items.length === 0) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
@@ -31,24 +34,85 @@ const BoardMember = () => {
           end: 'bottom top',
           invalidateOnRefresh: true,
         },
-      })
+      });
 
       tl.from(items, {
         top: 'auto',
         left: 'auto',
         duration: 1,
-      })
-    }, wrapper)
+      });
+    }, wrapper);
     return () => {
-      ctx.revert()
-    }
-  }, [])
+      ctx.revert();
+    };
+  }, []);
+
+  const wrapperTextRef = useRef<HTMLDivElement>(null);
+  const textMiddleRef = useRef<HTMLSpanElement>(null);
+  const textBottomRef = useRef<HTMLSpanElement>(null);
+
+  useLayoutEffect(() => {
+    const wrapper = wrapperRef.current;
+    const middleEl = textMiddleRef.current;
+    const bottomEl = textBottomRef.current;
+
+    if (!wrapper || !middleEl || !bottomEl) return;
+
+    const ctx = gsap.context(() => {
+      const splitMiddle = new SplitText(middleEl, { type: 'chars' });
+      const splitBottom = new SplitText(bottomEl, { type: 'chars' });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperTextRef.current,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+        defaults: {
+          ease: 'none',
+          duration: 1.6,
+          stagger: { each: 0.06, from: 'start' },
+        },
+      });
+
+      gsap.set([splitMiddle.chars], {
+        scaleY: 0,
+      });
+
+      const scaleChars = (
+        targets: Element[] | NodeListOf<Element>,
+        toScale: number,
+        origin: string,
+        pos?: gsap.Position,
+      ) => tl.to(targets, { scaleY: toScale, transformOrigin: origin }, pos);
+
+      scaleChars(splitBottom.chars, 0, '50% 100%');
+      scaleChars(splitMiddle.chars, 1, '50% 0%', '<');
+    }, wrapper);
+
+    ScrollTrigger.refresh();
+    return () => {
+      ctx.revert();
+    };
+  }, []);
 
   return (
-    <div className="bg-stone-900 px-5 pt-32 pb-28 md:pt-32 md:pb-64 text-[#f6c548]">
-      <h2 className="text-center text-[clamp(68px,46.55px+100vw*.055,140px)] leading-[1.3] tracking-tighter uppercase">
-        Board Member
-      </h2>
+    <div className="overflow-hidden bg-stone-900 px-5 pt-32 pb-28 text-[#f6c548] md:pt-32 md:pb-64">
+      <div
+        ref={wrapperTextRef}
+        className="flex flex-col gap-[max(22.8px,22.8px+100vw*.0148)] py-[max(24px,24px+100vw*.0212)]"
+      >
+        <div className="relative z-10 text-center text-[clamp(40px,calc(15px+9.25vw),180px)] leading-none font-bold tracking-tight whitespace-nowrap text-[#F78629] will-change-transform">
+          <span ref={textMiddleRef} className="inline-block">
+            Board Member
+          </span>
+          <span ref={textBottomRef} className="absolute inset-0 inline-block">
+            Board Member
+          </span>
+        </div>
+      </div>
       <div
         ref={wrapperRef}
         className="relative flex min-h-screen items-center justify-center font-bold text-black"
@@ -61,7 +125,7 @@ const BoardMember = () => {
             Arima Yoshiki
           </p>
           <img
-            src="/assets/images/people-02.png"
+            src="/assets/images/ARIMA-YOSHIKI-CEO.png"
             alt=""
             className="h-[clamp(100px,13vw,180px)] w-auto object-cover"
           />
@@ -77,7 +141,7 @@ const BoardMember = () => {
             Kato Yoshiya
           </p>
           <img
-            src="/assets/images/people-02.png"
+            src="/assets/images/KATO-YOSHIYA-CFO.png"
             alt=""
             className="h-[clamp(100px,13vw,180px)] w-auto object-cover"
           />
@@ -93,7 +157,7 @@ const BoardMember = () => {
             Ishida Toshiyuki
           </p>
           <img
-            src="/assets/images/people-01.png"
+            src="/assets/images/ISHIDA-TOSHIYUKI-COO.png"
             alt=""
             className="h-[clamp(100px,13vw,180px)] w-auto object-cover"
           />
@@ -109,7 +173,7 @@ const BoardMember = () => {
             Naridomi Yasuhiro
           </p>
           <img
-            src="/assets/images/people-02.png"
+            src="/assets/images/NARIDOMI-YASUHIRO-CTO.png"
             alt=""
             className="h-[clamp(100px,13vw,180px)] w-auto object-cover"
           />
@@ -119,7 +183,7 @@ const BoardMember = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default BoardMember
+export default BoardMember;
