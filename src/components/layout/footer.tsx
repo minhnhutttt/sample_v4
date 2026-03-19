@@ -230,7 +230,7 @@ const Footer = () => {
                     </span>
                     <span className="block overflow-hidden bg-black p-5 duration-300 group-hover:scale-110">
                       <DotLottieReact
-                        key={pathname}
+                        key={item.title}
                         src={item.src}
                         loop
                         autoplay

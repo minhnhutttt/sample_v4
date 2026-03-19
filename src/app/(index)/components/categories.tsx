@@ -2,7 +2,6 @@
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 const ITEMS = [
   {
@@ -68,19 +67,20 @@ const ITEMS = [
 ];
 
 const CardItem = ({
+  link,
   title,
   text,
   src,
 }: {
+  link: string;
   title: string;
   text: string;
   src: string;
 }) => {
   const [line1, line2] = title.split('\n');
-  const pathname = usePathname();
   return (
     <Link
-      href="#"
+      href={link}
       className="group js-projects relative col-span-2 block aspect-[16/9] overflow-clip rounded-md text-[40px] md:col-span-1 md:rounded-lg md:text-[4cqw]"
     >
       <div className="title-text font-shippori absolute inset-0 z-10 flex flex-col items-center justify-center bg-black/30 p-5 text-center leading-snug font-bold text-white duration-300">
@@ -90,7 +90,7 @@ const CardItem = ({
         <p className="mt-1.5 text-[19px] md:mt-[1cqw] md:text-[2cqw]">{text}</p>
       </div>
       <div className="overflow-hidden">
-        <DotLottieReact key={pathname} src={src} loop autoplay />
+        <DotLottieReact key={text} src={src} loop autoplay />
       </div>
     </Link>
   );
