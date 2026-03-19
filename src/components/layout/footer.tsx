@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useId, useRef } from 'react';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import gsap from 'gsap';
@@ -8,6 +8,7 @@ import DrawSVGPlugin from 'gsap/DrawSVGPlugin';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitText from 'gsap/SplitText';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ITEMS = [
   {
@@ -21,12 +22,12 @@ const ITEMS = [
     src: '/assets/lottie/2.lottie',
   },
   {
-    link: '#',
+    link: '/premium',
     title: 'Premium Benefits',
     src: '/assets/lottie/3.lottie',
   },
   {
-    link: '#',
+    link: '/support',
     title: 'Support',
     src: '/assets/lottie/4.lottie',
   },
@@ -36,7 +37,7 @@ const ITEMS = [
     src: '/assets/lottie/5.lottie',
   },
   {
-    link: '#',
+    link: '/announcements',
     title: 'Announcements',
     src: '/assets/lottie/6.lottie',
   },
@@ -63,6 +64,7 @@ const Footer = () => {
   const text02Ref = useRef<HTMLParagraphElement | null>(null);
   const text03Ref = useRef<HTMLParagraphElement | null>(null);
   const text04Ref = useRef<HTMLParagraphElement | null>(null);
+  const id = useId();
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -148,6 +150,7 @@ const Footer = () => {
     return () => ctx.revert();
   }, []);
 
+  const pathname = usePathname();
   return (
     <>
       <div className="relative overflow-hidden bg-[#F78629]">
@@ -208,7 +211,7 @@ const Footer = () => {
             </div>
             <div className="relative z-10 mt-10 flex justify-center gap-5">
               <a
-                href="#"
+                href="/company"
                 className="relative inline-flex h-[42px] items-center justify-center rounded-full border border-[#000] px-[max(20.4px,20.4px+100vw*.0021)] text-[clamp(10px,9.415px+100vw*.0015,12px)] leading-[1.1em] tracking-[.06em] text-[#000] duration-300 hover:bg-[#F78629] hover:tracking-normal hover:text-black hover:opacity-80"
               >
                 KNOW MORE
@@ -226,7 +229,12 @@ const Footer = () => {
                       {item.title}
                     </span>
                     <span className="block overflow-hidden bg-black p-5 duration-300 group-hover:scale-110">
-                      <DotLottieReact src={item.src} loop autoplay />
+                      <DotLottieReact
+                        key={pathname}
+                        src={item.src}
+                        loop
+                        autoplay
+                      />
                     </span>
                   </Link>
                 </li>

@@ -2,6 +2,7 @@
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ITEMS = [
   {
@@ -17,13 +18,13 @@ const ITEMS = [
     src: '/assets/lottie/2.lottie',
   },
   {
-    link: '#',
+    link: '/premium',
     title: 'Premium \nBenefits',
     text: '本気で稼ぐなら、Premiumへ',
     src: '/assets/lottie/3.lottie',
   },
   {
-    link: '#',
+    link: '/support',
     title: 'Support',
     text: '困ったときはお気軽に',
     src: '/assets/lottie/4.lottie',
@@ -35,7 +36,7 @@ const ITEMS = [
     src: '/assets/lottie/5.lottie',
   },
   {
-    link: '#',
+    link: '/announcements',
     title: 'Announcements',
     text: '最新情報はここでチェック',
     src: '/assets/lottie/6.lottie',
@@ -76,6 +77,7 @@ const CardItem = ({
   src: string;
 }) => {
   const [line1, line2] = title.split('\n');
+  const pathname = usePathname();
   return (
     <Link
       href="#"
@@ -88,12 +90,7 @@ const CardItem = ({
         <p className="mt-1.5 text-[19px] md:mt-[1cqw] md:text-[2cqw]">{text}</p>
       </div>
       <div className="overflow-hidden">
-        <DotLottieReact
-          className="absolute inset-0 duration-300 group-hover:scale-105"
-          src={src}
-          loop
-          autoplay
-        />
+        <DotLottieReact key={pathname} src={src} loop autoplay />
       </div>
     </Link>
   );
@@ -102,7 +99,7 @@ const CardItem = ({
 const Categories = () => (
   <div className="relative bg-[#f78629] p-5 md:p-10">
     <div className="@container grid grid-cols-2 gap-5">
-      {ITEMS.map((item) => (
+      {ITEMS.map((item, i) => (
         <CardItem key={item.title} {...item} />
       ))}
     </div>

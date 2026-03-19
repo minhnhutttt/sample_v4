@@ -14,7 +14,6 @@ const PageFv = ({ text }: { text: ReactNode }) => {
   useInfiniteScroll();
 
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLDivElement>(null);
   const clubsWrapperRef = useRef<HTMLDivElement>(null);
   const clubsTopRef = useRef<HTMLSpanElement>(null);
   const clubsMiddleRef = useRef<HTMLSpanElement>(null);
@@ -22,19 +21,11 @@ const PageFv = ({ text }: { text: ReactNode }) => {
 
   useLayoutEffect(() => {
     const wrapperEl = wrapperRef.current;
-    const buttonEl = buttonRef.current;
     const clubsWrapperEl = clubsWrapperRef.current;
     const topEl = clubsTopRef.current;
     const middleEl = clubsMiddleRef.current;
     const bottomEl = clubsBottomRef.current;
-    if (
-      !wrapperEl ||
-      !buttonEl ||
-      !clubsWrapperEl ||
-      !topEl ||
-      !middleEl ||
-      !bottomEl
-    )
+    if (!wrapperEl || !clubsWrapperEl || !topEl || !middleEl || !bottomEl)
       return;
 
     const mm = gsap.matchMedia();
@@ -44,8 +35,6 @@ const PageFv = ({ text }: { text: ReactNode }) => {
         isSP: '(max-width: 767px)',
       },
       (ctx) => {
-        const { isPC, isSP } = ctx.conditions!;
-
         const btnTl = gsap.timeline({
           scrollTrigger: {
             trigger: wrapperEl,
@@ -55,13 +44,6 @@ const PageFv = ({ text }: { text: ReactNode }) => {
             invalidateOnRefresh: true,
           },
         });
-
-        if (isPC) {
-          btnTl.to(buttonEl, { xPercent: 100 });
-        }
-        if (isSP) {
-          btnTl.to(buttonEl, { yPercent: 100, opacity: 0 });
-        }
 
         return () => {
           btnTl.kill();
@@ -102,7 +84,7 @@ const PageFv = ({ text }: { text: ReactNode }) => {
   return (
     <div
       ref={wrapperRef}
-      className="relative flex h-[calc(100vh-64px)] flex-col items-center justify-center overflow-hidden md:min-h-screen"
+      className="relative flex h-[650px] flex-col items-center justify-center overflow-hidden md:min-h-screen"
     >
       <div className="absolute inset-0 z-10">
         <div
@@ -133,7 +115,7 @@ const PageFv = ({ text }: { text: ReactNode }) => {
           src="/assets/video/video-04.mp4"
         />
 
-        <div className="absolute inset-0 z-40 flex justify-center bg-[#F78629]/[0.2] text-center text-white max-md:pt-40 md:items-center">
+        <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#F78629]/[0.2] text-center text-white max-md:py-30">
           <div
             ref={clubsWrapperRef}
             className="relative scale-y-[1.2] text-center text-[clamp(80px,calc(30px+11.25vw),300px)] leading-[0.9] font-bold tracking-tighter whitespace-nowrap text-[#F78629] opacity-0 will-change-transform max-md:origin-top max-md:text-[clamp(30px,13vw,70px)]"
@@ -155,18 +137,6 @@ const PageFv = ({ text }: { text: ReactNode }) => {
             </span>
           </div>
         </div>
-      </div>
-
-      <div
-        ref={buttonRef}
-        className="fixed right-0 bottom-18 z-50 flex justify-center will-change-transform max-md:left-0 md:bottom-4"
-      >
-        <a
-          href="#"
-          className="relative inline-flex h-[clamp(48px,46.206px+100vw*.0046,54px)] items-center justify-center border border-[#fff4a6] px-[max(20.4px,20.4px+100vw*.0021)] font-bold text-[#fff4a6] uppercase duration-300 hover:bg-[#F78629] hover:text-black"
-        >
-          Schedule a visit
-        </a>
       </div>
     </div>
   );

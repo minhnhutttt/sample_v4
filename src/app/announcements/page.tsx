@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import PageFv from '@/components/PageFv';
 import { OG, TWITTER } from '@/config/constants';
 
+import AnnouncementsHead from './components/announcementsHead';
 import AnnouncementsItems from './components/announcementsItems';
 
 export const metadata: Metadata = {
@@ -34,43 +35,7 @@ const AnnouncementsPage = () => {
       />
       <div className="bg-[#FAF2E8]">
         <div className="pt-28 md:pt-33.5">
-          <div className="px-5 pb-10">
-            <div className="@container mx-auto w-full max-w-[1400px]">
-              <h2 className="text-center text-[15cqw] leading-none font-black uppercase md:text-[13cqw]">
-                <p>UPDATES</p>
-                <p className="flex items-center justify-center max-md:flex-col">
-                  BY KIVO
-                  <button className="group relative mt-[2cqw] flex h-[20cqw] w-[50cqw] items-center justify-center overflow-hidden rounded-[3cqw] text-[4cqw] md:h-[9cqw] md:w-[12cqw] md:rounded-[2cqw] md:text-[1.2cqw]">
-                    <div className="absolute inset-0 bg-[#f78629]"></div>
-                    <div className="absolute inset-0 translate-y-full bg-[#fff4a6] duration-200 group-hover:translate-y-0"></div>
-                    <div className="relative flex h-full w-full items-center justify-center">
-                      <svg
-                        className="absolute top-[0.5cqw] right-[0.5cqw] z-2 size-[5cqw] text-current duration-200 group-hover:top-[1cqw] group-hover:right-[1cqw] md:size-[2cqw]"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          className="stroke-current"
-                          d="M5.53757 7.1199L5.72853 18.386L16.6127 18.195"
-                          strokeWidth="4"
-                        ></path>
-                        <path
-                          className="stroke-current"
-                          d="M18.1953 5.53754L6.32908 17.4038"
-                          strokeWidth="4"
-                        ></path>
-                      </svg>
-                      Subscribe to the newsletter
-                    </div>
-                  </button>
-                </p>
-              </h2>
-              <p className="mt-[2cqw] text-center text-[20px] md:text-[2cqw]">
-                KIVOの最新情報、プレスリリース、アップデートノートをここで発信します。
-              </p>
-            </div>
-          </div>
+          <AnnouncementsHead />
           <div className="py-15 md:py-20">
             <div className="border-y border-black/20">
               <div className="mx-auto grid w-full divide-y divide-black/20 md:grid-cols-3 md:divide-x">

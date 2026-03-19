@@ -85,7 +85,7 @@
     flex: none;
 
     position: absolute;
-    --y: 500%;
+    --y: 240%;
     --y-circ: calc((var(--y) * -1) + 50%);
     transform-origin: center var(--y);
   }

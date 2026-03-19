@@ -59,22 +59,12 @@ const PremiumPage = () => {
               </p>
             </div>
             <div className="flex-1">
-              <DotLottieReact
-                className="w-full"
-                src="/assets/lottie/2-1.lottie"
-                loop
-                autoplay
-              />
+              <DotLottieReact src="/assets/lottie/2-1.lottie" loop autoplay />
             </div>
           </div>
           <div className="flex items-center gap-8 max-md:flex-col xl:gap-[70px]">
             <div className="flex-1">
-              <DotLottieReact
-                className="w-full"
-                src="/assets/lottie/2-2.lottie"
-                loop
-                autoplay
-              />
+              <DotLottieReact src="/assets/lottie/2-2.lottie" loop autoplay />
             </div>
             <div className="flex-1">
               <p className="mb-3 text-[16px] md:text-[20px]">
@@ -95,12 +85,7 @@ const PremiumPage = () => {
               </p>
             </div>
             <div className="flex-1">
-              <DotLottieReact
-                className="w-full"
-                src="/assets/lottie/2-3.lottie"
-                loop
-                autoplay
-              />
+              <DotLottieReact src="/assets/lottie/2-3.lottie" loop autoplay />
             </div>
           </div>
         </div>

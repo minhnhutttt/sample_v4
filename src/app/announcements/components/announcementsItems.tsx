@@ -1,15 +1,19 @@
+import Link from 'next/link';
+
 export const AnnouncementsItem = ({
+  href,
   image,
   tags,
   date,
   title,
 }: {
+  href: string;
   image: string;
   tags: string[];
   date: string;
   title: string;
 }) => (
-  <div className="group">
+  <Link href={href} className="group">
     <figure>
       <img
         src={image}
@@ -35,55 +39,63 @@ export const AnnouncementsItem = ({
         </span>
       </h4>
     </div>
-  </div>
+  </Link>
 );
 
 const AnnouncementsItems = () => {
   const data = [
     {
-      image: '/assets/images/announcements-01.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['使い方'],
       date: '2026年3月23日',
       title: 'Channelの始め方：チャンネル開設とはじめての投稿',
     },
     {
-      image: '/assets/images/announcements-02.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['使い方'],
       date: '2026年3月22日',
       title: 'Dropの作り方：単品コンテンツを販売するまでの手順',
     },
     {
-      image: '/assets/images/announcements-03.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['アップデート'],
       date: '2026年3月20日',
       title: 'Drop機能の開発が完了：TestFlight版で提供開始',
     },
     {
-      image: '/assets/images/announcements-01.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['アップデート'],
       date: '2026年3月20日',
       title: 'Discover機能の開発が完了：TestFlight版で提供開始',
     },
     {
-      image: '/assets/images/announcements-02.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['コーポレート'],
       date: '2026年3月5日',
       title: 'KIVOが招待制を採用した理由',
     },
     {
-      image: '/assets/images/announcements-03.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['アップデート'],
       date: '2026年2月18日',
       title: 'スクリーンショット制御機能の開発が完了：TestFlight版で提供開始',
     },
     {
-      image: '/assets/images/announcements-01.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['コーポレート'],
       date: '2026年2月3日',
       title: '契約型経済とは何か——KIVOが目指す世界',
     },
     {
-      image: '/assets/images/announcements-02.png',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
       tags: ['プレスリリース'],
       date: '2026年1月15日',
       title: 'TestFlight版の提供開始',
@@ -94,6 +106,7 @@ const AnnouncementsItems = () => {
       <div className="grid gap-10 md:grid-cols-3 lg:gap-20">
         {data.map((item, i) => (
           <AnnouncementsItem
+            href={item.href}
             image={item.image}
             tags={item.tags}
             date={item.date}

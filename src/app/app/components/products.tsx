@@ -101,7 +101,6 @@ const CustomCursor = ({ visible }: { visible: boolean }) => {
 
 // ── ProductItem ────────────────────────────────────────────────
 const ProductItem = ({
-  video,
   href,
   img,
   head,
@@ -109,7 +108,6 @@ const ProductItem = ({
   onEnter,
   onLeave,
 }: {
-  video: string;
   href: string;
   img: string;
   head: string;
@@ -124,12 +122,10 @@ const ProductItem = ({
 
   useEffect(() => {
     const el = itemRef.current;
-    const videoEl = videoRef.current;
     const headEl = headRef.current;
     const textEl = textRef.current;
-    if (!el || !videoEl || !headEl || !textEl) return;
+    if (!el || !headEl || !textEl) return;
 
-    gsap.set(videoEl, { scale: 1.2 });
     gsap.set([headEl, textEl], { opacity: 0, y: 40 });
 
     const tl = gsap.timeline({
@@ -142,35 +138,18 @@ const ProductItem = ({
       },
     });
 
-    tl.to(videoEl, { scale: 1, duration: 1.1, ease: 'power3.out' })
-      .to(
-        headEl,
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-        '-=0.5',
-      )
-      .to(
-        textEl,
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-        '-=0.5',
-      );
-
-    const handleMouseEnter = () => {
-      videoEl.play();
-      onEnter();
-    };
-    const handleMouseLeave = () => {
-      videoEl.pause();
-      videoEl.currentTime = 0;
-      onLeave();
-    };
-
-    el.addEventListener('mouseenter', handleMouseEnter);
-    el.addEventListener('mouseleave', handleMouseLeave);
+    tl.to(
+      headEl,
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+      '-=0.5',
+    ).to(
+      textEl,
+      { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
+      '-=0.5',
+    );
 
     return () => {
       tl.kill();
-      el.removeEventListener('mouseenter', handleMouseEnter);
-      el.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [onEnter, onLeave]);
 
@@ -181,18 +160,8 @@ const ProductItem = ({
       className="flex flex-col items-start gap-6 text-white md:even:mt-[160px]"
       style={{ cursor: 'none' }}
     >
-      <div className="aspect-[1/1.17845] w-full overflow-hidden">
-        <video
-          ref={videoRef}
-          src={video}
-          className="h-full w-full object-cover"
-          style={{ backgroundImage: `url(${img})` }}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={img}
-        />
+      <div className="w-full overflow-hidden">
+        <img src={img} alt="" />
       </div>
       <h3 ref={headRef} className="text-[20px] md:text-[28px]">
         {head}
@@ -223,39 +192,33 @@ export default function Products() {
 
   const items = [
     {
-      video: '/assets/video/app-01.mp4',
-      img: '/assets/images/app-img-01.jpg',
-      head: 'A prize-winning mobile experience. Designed and developed from zero to launch.',
-      text: 'Discovery',
+      img: '/assets/images/toolkit-01.png',
+      head: 'チャンネルとドロップが並ぶ発見の入口。あなたにあったコンテンツを見つけよう！',
+      text: 'Discover',
     },
     {
-      video: '/assets/video/app-02.mp4',
-      img: '/assets/images/app-img-02.jpg',
-      head: 'Making public transport intuitive, fast, and actually enjoyable',
+      img: '/assets/images/toolkit-02.png',
+      head: 'ドロップは、写真や動画、音声や音楽、PDFなどのファイルを単品で販売する機能。あなたもドロップを販売して収益を得よう！',
       text: 'Drop',
     },
     {
-      video: '/assets/video/app-03.mp4',
-      img: '/assets/images/app-img-03.jpg',
-      head: 'Mobile app for 30.000 participants of the biggest Slovak music festival',
+      img: '/assets/images/toolkit-03.png',
+      head: 'チャンネルは、プレミアムユーザーだけの特典。使い慣れたサブスクリプションモデルで多くのファンへコンテンツを届けよう！',
       text: 'Channel',
     },
     {
-      video: '/assets/video/app-04.mp4',
-      img: '/assets/images/app-img-04.jpg',
-      head: 'Deep learning app that makes learning more efficient and fun',
+      img: '/assets/images/toolkit-04.png',
+      head: 'KIVOならではの流出しないDM・グループチャットだから安心して会話ができる！限られた相手にだけドロップも販売可能。',
       text: 'Chat',
     },
     {
-      video: '/assets/video/app-05.mp4',
-      img: '/assets/images/app-img-05.jpg',
-      head: 'Mobile & Web app redesign for a calling software used by call centers all around the world',
+      img: '/assets/images/toolkit-05.png',
+      head: 'プロフィール編集や、ポイント残高・プラン・ポリシーの確認ができる。大切な情報もあるから、一度は確認しておこう！',
       text: 'Account',
     },
     {
-      video: '/assets/video/app-06.mp4',
-      img: '/assets/images/app-img-06.jpg',
-      head: "Streamlining OVB's operations with smart, unified business data",
+      img: '/assets/images/toolkit-06.png',
+      head: 'メールも電話番号も不要。招待リンクを受け取ったらパスキー登録ですぐに利用できる！',
       text: 'Welcome Onboarding',
     },
   ];
@@ -284,19 +247,19 @@ export default function Products() {
         <div className="mx-auto w-full max-w-[480px] md:max-w-[1280px]">
           <div className="grid gap-10 text-white md:grid-cols-2 lg:gap-[96px]">
             <div className="flex flex-col gap-2 leading-snug">
-              <p className="text-[80px] md:text-[130px]">$500M+</p>
+              <p className="text-[80px] md:text-[130px]">計測中...</p>
               <p className="text-[16px] text-[#8c939d] md:text-[20px]">
                 Total Contracted Value
               </p>
             </div>
             <div className="flex flex-col gap-2 leading-snug">
-              <p className="text-[80px] md:text-[130px]">Over 70%</p>
+              <p className="text-[80px] md:text-[130px]">計測中...</p>
               <p className="text-[16px] text-[#8c939d] md:text-[20px]">
                 Repurchase Rate for Paid Content
               </p>
             </div>
           </div>
-          <div className="py-16 md:py-24">
+          {/* <div className="py-16 md:py-24">
             <p className="text-[28px] leading-snug text-white md:text-[60px]">
               &quot;Outloud exhibits excellent communication that ensures a
               smooth collaboration. They exceed expectations by considering all
@@ -351,54 +314,56 @@ export default function Products() {
                 </svg>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="py-16 text-white md:py-24">
             <h4 className="text-center text-[40px] font-bold md:text-[80px]">
-              クリエイターの新たな成長エンジンとして支持を受けています。
+              KIVOはこんな課題を持つ人々のために作られました
             </h4>
             <div className="mt-20 grid grid-cols-2 gap-10 md:grid-cols-3 lg:gap-[96px]">
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="有料で配布した資料が、無断で転載されたことがある。コンテンツに値段をつけても、価値がコントロールできない。"
               />
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="フォロワーは増えている。でも収益が伴わない。流出対策をしないプラットフォームの仕様で取りこぼしている収益がある気がする。"
               />
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="クローズドなグループで話した内容が、外に漏れたことがある。安心して話せる場所が、どこにもない。"
               />
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="信頼できる相手とだけつながりたい。誰でも入れるコミュニティに疲れてきた。"
               />
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="クリエイターエコノミーは拡大しているのに、収益の大半はプラットフォームに吸収されている。個人が直接稼げる構造が社会的にまだ十分ではない。"
               />
               <DesignItem
                 icon="/assets/images/logo.svg"
-                text="Internal tool development for a software company with funding of over $50M that globally handles IT device security"
+                text="広告依存モデルの限界が見えている。次の収益構造はユーザー間の直接契約だ。ただそのインフラが不完全だ。"
               />
             </div>
           </div>
           <div className="py-16 text-white md:py-24">
-            <p className="text-center text-[22px] md:text-[80px]">
-              招待リンクはないけど始めたい？
+            <p className="text-center text-[22px] md:text-[40px] xl:text-[80px]">
+              KIVOの展開に、
               <br />
-              あなたがクリエイターなら
+              あなたも参加できます。
               <br />
-              運営が直接迎えにいきます。
+              一緒に広げてみませんか？
+              <br />
+              パートナーシップの
+              <br />
+              ご相談はこちらから。
             </p>
             <div className="mt-4 flex justify-center">
               <a
-                href="http://"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-[60px] w-[280px] items-center justify-center rounded-full bg-[#21B94E] text-[18px] md:text-[24px]"
+                href="/support"
+                className="flex h-[60px] w-[280px] items-center justify-center rounded-full bg-[#F78629] px-1 py-2 text-[10px] text-[18px] leading-none font-bold text-white transition-all duration-200 group-[.active]:bg-[#242424] md:px-3 md:text-[12px] md:text-[24px]"
               >
-                公式LINEで申請する
+                KIVOパートナーになる
               </a>
             </div>
           </div>

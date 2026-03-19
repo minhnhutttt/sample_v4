@@ -3,24 +3,24 @@
 import { memo } from 'react';
 
 const VIDEOS = [
-  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-2.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-1.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-4.mp4', label: 'Pixelate Image Render Effect' },
-  { src: '/assets/video/m-3.mp4', label: 'Pixelate Image Render Effect' },
+  { src: '/assets/images/toolkit-01.png', label: 'Discover' },
+  { src: '/assets/images/toolkit-02.png', label: 'Drop' },
+  { src: '/assets/images/toolkit-03.png', label: 'Channel' },
+  { src: '/assets/images/toolkit-04.png', label: 'Chat' },
+  { src: '/assets/images/toolkit-01.png', label: 'Discover' },
+  { src: '/assets/images/toolkit-02.png', label: 'Drop' },
+  { src: '/assets/images/toolkit-03.png', label: 'Channel' },
+  { src: '/assets/images/toolkit-04.png', label: 'Chat' },
+  { src: '/assets/images/toolkit-01.png', label: 'Discover' },
+  { src: '/assets/images/toolkit-02.png', label: 'Drop' },
+  { src: '/assets/images/toolkit-03.png', label: 'Channel' },
+  { src: '/assets/images/toolkit-04.png', label: 'Chat' },
+  { src: '/assets/images/toolkit-01.png', label: 'Discover' },
+  { src: '/assets/images/toolkit-02.png', label: 'Drop' },
+  { src: '/assets/images/toolkit-03.png', label: 'Channel' },
+  { src: '/assets/images/toolkit-04.png', label: 'Chat' },
+  { src: '/assets/images/toolkit-01.png', label: 'Discover' },
+  { src: '/assets/images/toolkit-02.png', label: 'Drop' },
 ];
 
 const POSTER = '/assets/images/kv.png';
@@ -32,17 +32,8 @@ interface VideoCardProps {
 
 const VideoCard = memo(({ src, label }: VideoCardProps) => (
   <div className="flex flex-col rounded-xl bg-white p-2.5">
-    <div className="flex aspect-8/5">
-      <video
-        className="h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        poster={POSTER}
-        src={src}
-      />
+    <div className="flex aspect-393/852">
+      <img className="h-full w-full object-cover" src={src} alt="" />
     </div>
     <div className="pt-3 pb-1 text-[13px] font-bold text-black md:text-[18px]">
       {label}
@@ -52,7 +43,7 @@ const VideoCard = memo(({ src, label }: VideoCardProps) => (
 VideoCard.displayName = 'VideoCard';
 
 const MarqueeItem = memo(({ src, label }: VideoCardProps) => (
-  <div className="radial-marquee__item w-[13em] md:w-[24em]">
+  <div className="radial-marquee__item w-[10em] md:w-[19em]">
     <VideoCard src={src} label={label} />
   </div>
 ));
@@ -95,7 +86,7 @@ const Toolkit = () => {
       {/* Radial Marquee */}
       <div className="overflow-hidden py-16 md:py-20">
         <div className="pointer-events-none relative flex aspect-5/1 w-full justify-center">
-          <div className="absolute flex w-[110em] items-start justify-center md:w-[190em]">
+          <div className="absolute flex w-[110em] items-start justify-center md:w-[205em]">
             <img
               src="/assets/images/radial-marquee-circle-deco.svg"
               alt=""
@@ -117,7 +108,7 @@ const Toolkit = () => {
         </div>
 
         {/* Content Section */}
-        <div className="relative px-5 pt-30 md:px-10 md:pt-40">
+        <div className="relative px-5 pt-100 md:px-10 md:pt-130">
           <p className="font-shippori text-center text-[20px] md:text-[30px]">
             SNSはフォロワーを最大化する。
             <br />

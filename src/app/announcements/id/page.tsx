@@ -1,29 +1,34 @@
+import AnnouncementsHead from '../components/announcementsHead';
 import { AnnouncementsItem } from '../components/announcementsItems';
 
 const AnnouncementsDetail = () => {
   const data = [
     {
-      image: '/assets/images/announcements-01.png',
-      tags: ['tag1', 'tag2'],
-      date: '01.01.2026',
-      title: 'November 2025 TikTok Trends: Viral Moments You Need to Know',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
+      tags: ['使い方'],
+      date: '2026年3月23日',
+      title: 'Channelの始め方：チャンネル開設とはじめての投稿',
     },
     {
-      image: '/assets/images/announcements-01.png',
-      tags: ['tag1', 'tag2'],
-      date: '01.01.2026',
-      title: 'November 2025 TikTok Trends: Viral Moments You Need to Know',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
+      tags: ['使い方'],
+      date: '2026年3月22日',
+      title: 'Dropの作り方：単品コンテンツを販売するまでの手順',
     },
     {
-      image: '/assets/images/announcements-01.png',
-      tags: ['tag1', 'tag2'],
-      date: '01.01.2026',
-      title: 'November 2025 TikTok Trends: Viral Moments You Need to Know',
+      href: '/announcements/id',
+      image: '/assets/images/icon.png',
+      tags: ['アップデート'],
+      date: '2026年3月20日',
+      title: 'Drop機能の開発が完了：TestFlight版で提供開始',
     },
   ];
   return (
-    <div>
+    <div className="bg-[#FAF2E8]">
       <div className="px-5 pt-28 md:pt-33.5">
+        <AnnouncementsHead />
         <div className="mx-auto w-full max-w-[1400px]">
           <div className="mt-3 flex items-center gap-3 md:mt-5">
             <p className="flex h-[30px] items-center justify-center rounded-2xl border border-black px-2 text-[14px] md:h-[34px] md:px-3">
@@ -160,6 +165,7 @@ const AnnouncementsDetail = () => {
             <div className="grid gap-10 md:grid-cols-3 lg:gap-20">
               {data.map((item, i) => (
                 <AnnouncementsItem
+                  href={item.href}
                   image={item.image}
                   tags={item.tags}
                   date={item.date}
