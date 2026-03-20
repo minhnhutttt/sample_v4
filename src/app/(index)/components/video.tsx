@@ -38,11 +38,6 @@ const Video = () => {
                 </p>
 
                 <div className="relative mx-auto w-[180px] md:w-[220px]">
-                  <div className="absolute inset-0 z-10 flex items-center justify-between px-5 text-[15px] md:text-[20px]">
-                    <p>Osmo in use</p>
-                    <p>00:14</p>
-                  </div>
-
                   <video
                     className="aspect-1170/2532 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-70"
                     autoPlay
