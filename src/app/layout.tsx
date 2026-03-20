@@ -5,6 +5,7 @@ import { Caveat, Creepster, Shippori_Mincho } from 'next/font/google';
 
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
+import ScrollToTop from '@/components/layout/scrollToTop';
 import {
   DEFAULT_DESCRIPTION,
   OG,
@@ -59,6 +60,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         className={`bg-stone-900 ${creepster.variable} ${shippori.variable} ${caveat.variable}`}
       >
         <SlideThemeProvider>
+          <ScrollToTop />
           <Header />
           {children}
           <Footer />

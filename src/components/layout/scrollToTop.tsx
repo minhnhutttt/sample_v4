@@ -1,12 +1,15 @@
-'use client'
+'use client';
 
-import { useEffect } from 'react'
+import { useEffect } from 'react';
+
+import { usePathname } from 'next/navigation';
 
 export default function ScrollToTop() {
-  useEffect(() => {
-    window.history.scrollRestoration = 'manual'
-    window.scrollTo(0, 0)
-  }, [])
+  const pathname = usePathname();
 
-  return null
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 }

@@ -38,9 +38,9 @@ const AnnouncementsPage = () => {
           <AnnouncementsHead />
           <div className="py-15 md:py-20">
             <div className="border-y border-black/20">
-              <div className="mx-auto grid w-full divide-y divide-black/20 md:grid-cols-3 md:divide-x">
+              <div className="mx-auto grid w-full divide-y divide-black/20 lg:grid-cols-3 lg:divide-x">
                 <div className="p-5">
-                  <div className="relative flex items-center text-[16px]">
+                  <div className="relative mx-auto flex items-center text-[16px] max-lg:max-w-[480px]">
                     <select className="h-16 w-full appearance-none rounded-2xl border border-black px-5 md:h-20">
                       <option value="">全て</option>
                       <option value="">アップデート</option>
@@ -64,14 +64,14 @@ const AnnouncementsPage = () => {
                   </div>
                 </div>
                 <div className="p-5">
-                  <div className="grid h-16 grid-cols-3 divide-x divide-black rounded-2xl border border-black md:h-20">
+                  <div className="mx-auto grid h-16 grid-cols-3 divide-x divide-black rounded-2xl border border-black text-[14px] max-lg:max-w-[480px] md:h-20 xl:text-[16px]">
                     <button className="h-full">アップデート</button>
                     <button className="h-full">使い方</button>
                     <button className="h-full">プレスリリース</button>
                   </div>
                 </div>
                 <div className="p-5">
-                  <div className="relative flex items-center">
+                  <div className="relative mx-auto flex items-center max-lg:max-w-[480px]">
                     <input
                       type="text"
                       className="h-16 w-full rounded-2xl border border-black px-5 md:h-20"

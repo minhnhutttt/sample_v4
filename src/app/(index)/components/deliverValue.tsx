@@ -31,7 +31,6 @@ export default function DeliverValue() {
   const spSlot2Ref = useRef<HTMLDivElement>(null);
   const spText1Ref = useRef<HTMLDivElement>(null);
   const spText2Ref = useRef<HTMLDivElement>(null);
-
   const downloadRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -112,8 +111,6 @@ export default function DeliverValue() {
         willChange: 'transform',
       });
 
-      gsap.set(videoRef.current, { opacity: 0 });
-
       const tl = gsap.timeline({
         defaults: { ease: 'none' },
         scrollTrigger: {
@@ -160,7 +157,7 @@ export default function DeliverValue() {
         });
 
         svgTl
-          .to(videoRef.current, { opacity: 1, duration: 0.3 }, 0)
+          .from(videoRef.current, { opacity: 0, duration: 0.3 }, 0)
           .to(
             svgWrapEl,
             {
@@ -323,7 +320,7 @@ export default function DeliverValue() {
       <div className="flex min-h-[100svh] justify-center bg-[#F78629] md:min-h-[200svh]">
         <div
           ref={sectionRef}
-          className="sticky top-0 right-0 left-0 z-20 flex h-[50vh] items-end bg-[#F78629] max-md:hidden md:h-screen"
+          className="sticky top-0 right-0 left-0 z-20 flex h-[50vh] items-end max-md:hidden md:h-screen"
         >
           <div
             ref={textRef}
@@ -340,10 +337,7 @@ export default function DeliverValue() {
           </div>
         </div>
 
-        <div
-          ref={spWrapperRef}
-          className="flex h-screen flex-col bg-[#F78629] md:hidden"
-        >
+        <div ref={spWrapperRef} className="flex h-screen flex-col md:hidden">
           <div className="h-[70vh]">
             <div
               ref={spSlot1Ref}
@@ -370,7 +364,7 @@ export default function DeliverValue() {
           </div>
           <div className="flex-1">
             <video
-              src="/assets/video/video-04.mp4"
+              src="/assets/video/video-03.mp4"
               className="h-full w-full object-cover"
               autoPlay
               muted
@@ -383,7 +377,7 @@ export default function DeliverValue() {
 
       <div
         ref={svgContainerRef}
-        className="relative -mt-[50svh] h-[50vh] overflow-hidden bg-[#F78629] md:-mt-[100svh] md:h-screen"
+        className="relative -mt-[50svh] h-[50vh] overflow-hidden md:-mt-[100svh] md:h-screen"
       >
         <div className="absolute inset-0 -z-10">
           <video
@@ -494,10 +488,13 @@ export default function DeliverValue() {
         </div>
         <div
           ref={downloadRef}
-          className="absolute right-0 bottom-0 left-0 z-50"
+          className="absolute right-0 bottom-0 left-0 z-50 max-md:hidden"
         >
           <Download />
         </div>
+      </div>
+      <div className="md:hidden">
+        <Download />
       </div>
     </section>
   );

@@ -64,7 +64,7 @@ const Toolkit = () => {
             </div>
             <img src="/assets/images/logo.svg" alt="KIVO logo" />
             <div
-              className="text-[40px] font-bold whitespace-nowrap md:text-[104px]"
+              className="text-[40px] font-bold whitespace-nowrap md:text-[100px]"
               aria-hidden="true"
             >
               THE CONTRACT

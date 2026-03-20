@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import gsap from 'gsap';
@@ -64,7 +64,6 @@ const Footer = () => {
   const text02Ref = useRef<HTMLParagraphElement | null>(null);
   const text03Ref = useRef<HTMLParagraphElement | null>(null);
   const text04Ref = useRef<HTMLParagraphElement | null>(null);
-  const id = useId();
 
   useEffect(() => {
     const wrapper = wrapperRef.current;
@@ -221,11 +220,11 @@ const Footer = () => {
         </div>
         <footer className="w-full px-5 py-20 md:py-32">
           <div className="mx-auto w-full max-w-[1440px]">
-            <ul className="grid grid-cols-2 gap-5 font-bold md:grid-cols-4 md:text-[28px]">
+            <ul className="grid grid-cols-2 gap-5 font-bold md:grid-cols-4 md:text-[20px] xl:text-[28px]">
               {ITEMS.map((item, i) => (
                 <li className="relative overflow-hidden rounded-lg" key={i}>
                   <Link href={item.link} className="group overflow-hidden">
-                    <span className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 text-white">
+                    <span className="absolute inset-0 z-10 flex items-center justify-center bg-black/30 text-center text-white">
                       {item.title}
                     </span>
                     <span className="block overflow-hidden bg-black p-5 duration-300 group-hover:scale-110">
@@ -242,9 +241,6 @@ const Footer = () => {
             </ul>
           </div>
         </footer>
-        <p className="my-10 text-center text-[clamp(34px,29.242px+100vw*.0122,50px)] leading-[1.2] font-bold uppercase">
-          Keep up with all the latest on our socials!
-        </p>
       </div>
       <div className="relative bg-[#F78629] px-5 max-md:pb-12">
         <div className="flex items-center justify-between border-t-2 border-black p-4">
@@ -260,12 +256,6 @@ const Footer = () => {
               className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
             >
               Terms of Use
-            </a>
-            <a
-              href="#"
-              className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
-            >
-              Complaints Book
             </a>
           </div>
         </div>

@@ -45,7 +45,7 @@ const DownloadPage = () => {
           </div>
           <div className="relative z-10 flex flex-1">
             <div className="w-full">
-              <h1 className="text-[50px] font-bold md:text-[70px]">
+              <h1 className="text-[40px] font-bold md:text-[70px]">
                 まずはここから始めよう。
               </h1>
               <div className="mt-10 max-md:pl-[46%] md:mt-20">
@@ -96,10 +96,10 @@ const DownloadPage = () => {
           </div>
         </div>
         <div className="mx-auto w-full max-w-100 py-28 text-white md:max-w-[1280px] md:py-40">
-          <h2 className="text-center text-[50px] font-bold md:text-[70px]">
+          <h2 className="text-center text-[32px] font-bold md:text-[70px]">
             始めるのは、驚くほどシンプルです。
           </h2>
-          <p className="text-center text-[20px] md:text-[28px]">
+          <p className="text-center text-[18px] md:text-[28px]">
             電話番号もメールアドレスも不要です。
           </p>
           <div className="grid grid-cols-2 gap-1 pt-12 md:grid-cols-4 md:pt-20">

@@ -1,11 +1,12 @@
-'use client'
+'use client';
 
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-import SplitText from 'gsap/SplitText'
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger, SplitText)
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import SplitText from 'gsap/SplitText';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const timelineItems = [
   {
@@ -28,26 +29,26 @@ const timelineItems = [
     title: 'Android App ローンチ',
     description: 'Android App Launch',
   },
-]
+];
 
 const History = () => {
-  const wrapperRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef<HTMLDivElement>(null)
-  const textMiddleRef = useRef<HTMLSpanElement>(null)
-  const textBottomRef = useRef<HTMLSpanElement>(null)
-  const itemRefs = useRef<Array<HTMLLIElement | null>>([])
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const textMiddleRef = useRef<HTMLSpanElement>(null);
+  const textBottomRef = useRef<HTMLSpanElement>(null);
+  const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
 
   useLayoutEffect(() => {
-    const wrapper = wrapperRef.current
-    const heading = headingRef.current
-    const middleEl = textMiddleRef.current
-    const bottomEl = textBottomRef.current
+    const wrapper = wrapperRef.current;
+    const heading = headingRef.current;
+    const middleEl = textMiddleRef.current;
+    const bottomEl = textBottomRef.current;
 
-    if (!wrapper || !heading || !middleEl || !bottomEl) return
+    if (!wrapper || !heading || !middleEl || !bottomEl) return;
 
     const ctx = gsap.context(() => {
-      const splitMiddle = new SplitText(middleEl, { type: 'chars' })
-      const splitBottom = new SplitText(bottomEl, { type: 'chars' })
+      const splitMiddle = new SplitText(middleEl, { type: 'chars' });
+      const splitBottom = new SplitText(bottomEl, { type: 'chars' });
 
       const headingTl = gsap.timeline({
         scrollTrigger: {
@@ -62,20 +63,23 @@ const History = () => {
           duration: 1.6,
           stagger: { each: 0.06, from: 'start' },
         },
-      })
+      });
 
-      gsap.set(splitMiddle.chars, { scaleY: 0 })
-      headingTl.to(splitBottom.chars, { scaleY: 0, transformOrigin: '50% 100%' })
+      gsap.set(splitMiddle.chars, { scaleY: 0 });
+      headingTl.to(splitBottom.chars, {
+        scaleY: 0,
+        transformOrigin: '50% 100%',
+      });
       headingTl.to(
         splitMiddle.chars,
         { scaleY: 1, transformOrigin: '50% 0%' },
-        '<'
-      )
+        '<',
+      );
 
       itemRefs.current.forEach((item, index) => {
-        if (!item) return
-        const card = item.querySelector<HTMLElement>('[data-timeline-card]')
-        if (!card) return
+        if (!item) return;
+        const card = item.querySelector<HTMLElement>('[data-timeline-card]');
+        if (!card) return;
 
         gsap.fromTo(
           card,
@@ -99,16 +103,16 @@ const History = () => {
               scrub: 1,
               invalidateOnRefresh: true,
             },
-          }
-        )
-      })
-    }, wrapper)
+          },
+        );
+      });
+    }, wrapper);
 
-    ScrollTrigger.refresh()
+    ScrollTrigger.refresh();
     return () => {
-      ctx.revert()
-    }
-  }, [])
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <section
@@ -127,14 +131,14 @@ const History = () => {
         </span>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1200px] px-5 md:px-10 md:w-[900px]">
+      <div className="relative mx-auto w-full px-5 md:max-w-[1200px] md:px-10">
         <div className="absolute top-0 bottom-0 left-1/2 w-[6px] -translate-x-1/2 bg-white max-md:left-6 max-md:translate-x-0" />
         <ul className="space-y-10 md:space-y-12">
           {timelineItems.map((item, index) => (
             <li
               key={`${item.year}-${index}`}
               ref={(node) => {
-                itemRefs.current[index] = node
+                itemRefs.current[index] = node;
               }}
               className="relative pt-8"
             >
@@ -149,7 +153,9 @@ const History = () => {
                   {item.year}
                 </time>
                 <div className="mr-2 flex h-[100px] flex-1 flex-col items-center justify-center max-md:mr-0 max-md:w-full">
-                  <h3 className="text-[20px] font-bold text-black">{item.title}</h3>
+                  <h3 className="text-[20px] font-bold text-black">
+                    {item.title}
+                  </h3>
                   <p className="text-center text-[14px] text-black">
                     {item.description}
                   </p>
@@ -160,7 +166,7 @@ const History = () => {
         </ul>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default History
+export default History;

@@ -99,12 +99,12 @@ const BoardMember = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden bg-stone-900 px-5 pt-32 pb-28 text-[#f6c548] md:pt-32 md:pb-64">
+    <div className="overflow-hidden bg-stone-900 px-5 pt-32 pb-28 text-[#f6c548] md:pt-32 md:pb-40">
       <div
         ref={wrapperTextRef}
         className="flex flex-col gap-[max(22.8px,22.8px+100vw*.0148)] py-[max(24px,24px+100vw*.0212)]"
       >
-        <div className="relative z-10 text-center text-[clamp(40px,calc(15px+9.25vw),180px)] leading-none font-bold tracking-tight whitespace-nowrap text-[#F78629] will-change-transform">
+        <div className="relative z-10 text-center text-[clamp(40px,calc(14px+9.25vw),180px)] leading-none font-bold tracking-tight whitespace-nowrap text-[#F78629] will-change-transform">
           <span ref={textMiddleRef} className="inline-block">
             Board Member
           </span>
@@ -135,7 +135,7 @@ const BoardMember = () => {
         </div>
         <div
           ref={item04Ref}
-          className="absolute top-[38%] left-[65%] flex h-[clamp(190px,26vw,320px)] w-[clamp(150px,20vw,240px)] rotate-[2deg] flex-col items-center justify-center rounded-2xl bg-[#D9F7BB] p-4 md:top-[30%] md:left-[64%] md:p-6"
+          className="absolute top-[34%] left-[55%] flex h-[clamp(190px,26vw,320px)] w-[clamp(150px,20vw,240px)] rotate-[2deg] flex-col items-center justify-center rounded-2xl bg-[#D9F7BB] p-4 md:top-[30%] md:left-[64%] md:p-6"
         >
           <p className="text-center text-[clamp(18px,17.415px+100vw*.0015,20px)] uppercase">
             Kato Yoshiya
@@ -151,7 +151,7 @@ const BoardMember = () => {
         </div>
         <div
           ref={item05Ref}
-          className="absolute top-[70%] left-[45%] flex h-[clamp(190px,26vw,320px)] w-[clamp(150px,20vw,240px)] rotate-[-2deg] flex-col items-center justify-center rounded-2xl bg-[#E07787] p-4 md:top-[60%] md:left-[45%] md:p-6"
+          className="absolute top-[65%] left-[45%] flex h-[clamp(190px,26vw,320px)] w-[clamp(150px,20vw,240px)] rotate-[-2deg] flex-col items-center justify-center rounded-2xl bg-[#E07787] p-4 md:top-[60%] md:left-[45%] md:p-6"
         >
           <p className="text-center text-[clamp(18px,17.415px+100vw*.0015,20px)] uppercase">
             Ishida Toshiyuki

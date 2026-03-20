@@ -22,7 +22,7 @@ export const AnnouncementsItem = ({
       />
     </figure>
     <div className="">
-      <div className="mt-3 flex items-center gap-3 md:mt-5">
+      <div className="mt-3 flex flex-wrap items-center gap-3 md:mt-5">
         {tags.map((tag) => (
           <p
             className="flex h-[30px] items-center justify-center rounded-2xl border border-black px-2 text-[14px] md:h-[34px] md:px-3"
@@ -103,7 +103,7 @@ const AnnouncementsItems = () => {
   ];
   return (
     <div className="">
-      <div className="grid gap-10 md:grid-cols-3 lg:gap-20">
+      <div className="grid gap-8 max-md:mx-auto max-md:max-w-[440px] md:grid-cols-3 lg:gap-20">
         {data.map((item, i) => (
           <AnnouncementsItem
             href={item.href}

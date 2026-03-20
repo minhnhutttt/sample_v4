@@ -417,7 +417,7 @@ const SupportPage = () => {
             </div>
           </div>
         </div>
-        <div className="px-5">
+        <div className="">
           <div className="mx-auto w-full max-w-[1280px]">
             <div className="my-20 md:my-[100px]">
               <h4 className="text-center text-[24px] font-bold md:text-[50px]">

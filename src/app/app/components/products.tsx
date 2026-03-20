@@ -247,13 +247,17 @@ export default function Products() {
         <div className="mx-auto w-full max-w-[480px] md:max-w-[1280px]">
           <div className="grid gap-10 text-white md:grid-cols-2 lg:gap-[96px]">
             <div className="flex flex-col gap-2 leading-snug">
-              <p className="text-[80px] md:text-[130px]">計測中...</p>
+              <p className="text-[40px] md:text-[80px] xl:text-[130px]">
+                計測中...
+              </p>
               <p className="text-[16px] text-[#8c939d] md:text-[20px]">
                 Total Contracted Value
               </p>
             </div>
             <div className="flex flex-col gap-2 leading-snug">
-              <p className="text-[80px] md:text-[130px]">計測中...</p>
+              <p className="text-[40px] md:text-[80px] xl:text-[130px]">
+                計測中...
+              </p>
               <p className="text-[16px] text-[#8c939d] md:text-[20px]">
                 Repurchase Rate for Paid Content
               </p>
@@ -316,10 +320,10 @@ export default function Products() {
             </div>
           </div> */}
           <div className="py-16 text-white md:py-24">
-            <h4 className="text-center text-[40px] font-bold md:text-[80px]">
+            <h4 className="text-center text-[40px] font-bold md:text-[60px] lg:text-[80px]">
               KIVOはこんな課題を持つ人々のために作られました
             </h4>
-            <div className="mt-20 grid grid-cols-2 gap-10 md:grid-cols-3 lg:gap-[96px]">
+            <div className="mt-20 grid grid-cols-2 gap-5 gap-y-10 md:grid-cols-3 md:gap-10 lg:gap-[96px]">
               <DesignItem
                 icon="/assets/images/logo.svg"
                 text="有料で配布した資料が、無断で転載されたことがある。コンテンツに値段をつけても、価値がコントロールできない。"
