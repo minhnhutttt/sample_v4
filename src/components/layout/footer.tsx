@@ -245,14 +245,14 @@ const Footer = () => {
       <div className="relative bg-[#F78629] px-5 max-md:pb-12">
         <div className="flex items-center justify-between border-t-2 border-black p-4">
           <div className="flex items-center gap-5">
-            <a
-              href="#"
+            <Link
+              href="/privacy-policy"
               className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
             >
               Privacy Policy
-            </a>
+            </Link>
             <a
-              href="#"
+              href="/terms"
               className="text-[clamp(10px,8.206px+100vw*.0046,16px)] font-bold uppercase"
             >
               Terms of Use

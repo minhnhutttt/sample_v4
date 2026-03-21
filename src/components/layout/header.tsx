@@ -28,7 +28,11 @@ const aboutItems: NavItem[] = [
 
 const legalItems: NavItem[] = [
   { label: '利用規約', sub: 'Terms of Use', href: '/terms' },
-  { label: 'プライバシーポリシー', sub: 'Privacy Policy', href: '/privacy' },
+  {
+    label: 'プライバシーポリシー',
+    sub: 'Privacy Policy',
+    href: '/privacy-policy',
+  },
 ];
 
 const MARQUEE_TEXT = 'NEW: KIVO公式サイト公開のお知らせ';

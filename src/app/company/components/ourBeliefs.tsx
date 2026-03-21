@@ -77,12 +77,12 @@ const OurBeliefs = () => {
       </div>
       <div className="relative">
         <div className="sticky top-0 border-t border-black/50 bg-[#F78629] px-5 py-10 md:px-10 md:py-20">
-          <p className="text-[24px] font-bold md:text-[32px]">
+          <p className="text-[24px] font-bold md:w-[46%] md:text-[32px]">
             情報には、価値がある。
             <br />
             しかし今、その価値は確定していない。
           </p>
-          <div className="mt-5 ml-auto w-full max-w-[820px] text-[15px] md:text-right md:text-[20px]">
+          <div className="mt-5 ml-auto w-full text-[15px] md:w-[46%] md:text-[20px]">
             インターネットが普及して以来、情報は自由に流通するようになった。それは確かに、世界を豊かにした。
             <br />
             しかし同時に、一つの構造的な問題が生まれた。
@@ -94,12 +94,12 @@ const OurBeliefs = () => {
           </div>
         </div>
         <div className="sticky top-0 border-t border-black/50 bg-[#F78629] px-10 py-10 md:py-20">
-          <p className="text-[24px] font-bold md:text-[32px]">
+          <p className="text-[24px] font-bold md:w-[46%] md:text-[32px]">
             私たちが問うのは、
             <br />
             「価値はいつ確定するのか」という問いだ。
           </p>
-          <div className="mt-5 ml-auto w-full max-w-[820px] text-[15px] md:text-right md:text-[20px]">
+          <div className="mt-5 ml-auto w-full text-[15px] md:w-[46%] md:text-[20px]">
             現在のデジタル市場は、企業主導型モデルか広告最適化モデルのどちらかに依存している。両者に共通するのは、個人と個人が直接契約する構造が存在しないことだ。
             <br />
             私たちはその空白に、一つの答えを置く。
@@ -110,10 +110,10 @@ const OurBeliefs = () => {
           </div>
         </div>
         <div className="sticky top-0 border-t border-black/50 bg-[#F78629] px-10 py-10 md:py-20">
-          <p className="text-[24px] font-bold md:text-[32px]">
+          <p className="text-[24px] font-bold md:w-[46%] md:text-[32px]">
             KIVOは、契約を単位とする経済基盤である。
           </p>
-          <div className="mt-5 ml-auto w-full max-w-[820px] text-[15px] md:text-right md:text-[20px]">
+          <div className="mt-5 ml-auto w-full text-[15px] md:w-[46%] md:text-[20px]">
             SNSではない。メディアでもない。決済ツールでもない。
             <br />
             私たちが実装しようとしているのは、個人と個人が直接契約できるインフラだ。

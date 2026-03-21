@@ -53,13 +53,13 @@ const ITEMS = [
     src: '/assets/lottie/8.lottie',
   },
   {
-    link: '#',
+    link: '/terms',
     title: 'Terms of Use',
     text: 'ご利用前にご確認ください',
     src: '/assets/lottie/9.lottie',
   },
   {
-    link: '#',
+    link: '/privacy-policy',
     title: 'Privacy Policy',
     text: '大切な情報の扱い方について',
     src: '/assets/lottie/10.lottie',
