@@ -1,4 +1,5 @@
 @use 'tailwindcss';
+@plugin "@tailwindcss/typography";
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
 @source "./src/**/*.{js,ts,jsx,tsx,mdx}";
 

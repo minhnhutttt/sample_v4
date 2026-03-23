@@ -10,6 +10,10 @@ import { useSlideTheme } from '@/providers/slide-theme';
 
 gsap.registerPlugin(SplitText);
 
+const SPEED_MULTIPLIER = 3;
+
+const t = (val: number) => val / SPEED_MULTIPLIER;
+
 type SplitOptions = {
   readDelayFromDataset?: boolean;
 };
@@ -33,12 +37,10 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
   const img02Ref = useRef<HTMLDivElement | null>(null);
   const img03Ref = useRef<HTMLDivElement | null>(null);
 
-  // block chỉ còn chứa text overlay, không chứa ribbon
   const block01Ref = useRef<HTMLDivElement | null>(null);
   const block02Ref = useRef<HTMLDivElement | null>(null);
   const block03Ref = useRef<HTMLDivElement | null>(null);
 
-  // ribbon layer độc lập — luôn visible, GSAP animate màu trực tiếp
   const ribbonRef = useRef<HTMLDivElement | null>(null);
 
   const pagerRef = useRef<HTMLDivElement | null>(null);
@@ -93,26 +95,30 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         const s = slides[i];
         if (!s) return;
         gsap.set(s.video, { autoAlpha: 1 });
-        gsap.to(s.img, { autoAlpha: 1, duration: 0.2 });
-        gsap.to(s.block, { autoAlpha: 1, duration: 0.15, ease: 'power1.out' });
+        gsap.to(s.img, { autoAlpha: 1, duration: t(0.2) });
+        gsap.to(s.block, {
+          autoAlpha: 1,
+          duration: t(0.15),
+          ease: 'power1.out',
+        });
         syncActiveVideoPlayback(i);
       };
       const hideGroup = (i: number) => {
         const s = slides[i];
         if (!s) return;
         gsap.set(s.video, { autoAlpha: 0 });
-        gsap.to(s.img, { autoAlpha: 0, duration: 0.2 });
+        gsap.to(s.img, { autoAlpha: 0, duration: t(0.2) });
         gsap.set(s.block, { autoAlpha: 0 });
         const videoEl = getVideoElement(i);
         videoEl?.pause();
       };
       const showImageOnly = (i: number, opts?: gsap.TweenVars) => {
-        const t = slides[i]?.img;
-        if (t) gsap.to(t, { autoAlpha: 1, duration: 0, ...opts });
+        const tgt = slides[i]?.img;
+        if (tgt) gsap.to(tgt, { autoAlpha: 1, duration: 0, ...opts });
       };
       const hideImageOnly = (i: number, opts?: gsap.TweenVars) => {
-        const t = slides[i]?.img;
-        if (t) gsap.to(t, { autoAlpha: 0, duration: 0, ...opts });
+        const tgt = slides[i]?.img;
+        if (tgt) gsap.to(tgt, { autoAlpha: 0, duration: 0, ...opts });
       };
 
       gsap.set([topRef.current, bottomRef.current], { yPercent: 0 });
@@ -126,13 +132,12 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           ribbonRef.current!.querySelectorAll<HTMLElement>('.js-ribbon'),
         );
 
-      // Set màu khởi tạo
       gsap.set(getAllRibbonEls(), { backgroundColor: RIBBON_COLORS[0] });
 
       const animateRibbonColor = (toIndex: number) => {
         gsap.to(getAllRibbonEls(), {
           backgroundColor: RIBBON_COLORS[toIndex],
-          duration: CLOSE_DUR + OPEN_DUR,
+          duration: t(CLOSE_DUR_BASE + OPEN_DUR_BASE),
           ease: 'power2.inOut',
           overwrite: true,
         });
@@ -158,13 +163,13 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
             scaleY: fromScale,
             force3D: true,
             transformOrigin: origin,
-            stagger: { each: 0.05, from: staggerFrom },
+            stagger: { each: t(0.05), from: staggerFrom },
           },
           {
             scaleY: toScale,
             force3D: true,
             transformOrigin: origin,
-            stagger: { each: 0.05, from: staggerFrom },
+            stagger: { each: t(0.05), from: staggerFrom },
           },
           pos,
         );
@@ -172,7 +177,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
 
       blocks.forEach((block) => {
         const delay = options?.readDelayFromDataset
-          ? Number(block.dataset.delay ?? 0) / 1000
+          ? t(Number(block.dataset.delay ?? 0) / 1000)
           : 0;
         const topEl = block.querySelector<HTMLSpanElement>('.split-text-top');
         const bottomEl =
@@ -187,24 +192,32 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         });
 
         const tl = gsap.timeline({
-          defaults: { duration: 2, ease: 'power3.inOut' },
+          defaults: { duration: t(2), ease: 'power3.inOut' },
           repeat: -1,
-          repeatDelay: 1,
+          repeatDelay: t(1),
           delay,
         });
         addStep(tl, splitTop.chars, 1, 0, '50% 0%', 'start');
         addStep(tl, splitBottom.chars, 0, 1, '50% 100%', 'start', '<');
-        addStep(tl, splitBottom.chars, 1, 0, '50% 100%', 'end', '+=1');
+        addStep(tl, splitBottom.chars, 1, 0, '50% 100%', 'end', `+=${t(1)}`);
         addStep(tl, splitTop.chars, 0, 1, '50% 0%', 'end', '<');
         marqueeTLs.push(tl);
       });
 
       // ===== Timings & state =====
-      const OPEN_DUR = 1;
-      const CLOSE_DUR = 1;
-      const HOLD_BEFORE_CLOSE = 5;
-      const IMAGE_FADE = 0.6;
-      const IMAGE_FADE_DELAY = 0.15;
+      // Base values (giá trị gốc — KHÔNG sửa các dòng này)
+      const OPEN_DUR_BASE = 1;
+      const CLOSE_DUR_BASE = 1;
+      const HOLD_BEFORE_CLOSE_BASE = 5;
+      const IMAGE_FADE_BASE = 0.6;
+      const IMAGE_FADE_DELAY_BASE = 0.15;
+
+      // Scaled values (dùng trong animation)
+      const OPEN_DUR = t(OPEN_DUR_BASE);
+      const CLOSE_DUR = t(CLOSE_DUR_BASE);
+      const HOLD_BEFORE_CLOSE = t(HOLD_BEFORE_CLOSE_BASE);
+      const IMAGE_FADE = t(IMAGE_FADE_BASE);
+      const IMAGE_FADE_DELAY = t(IMAGE_FADE_DELAY_BASE);
 
       let current = 0;
       let phase: 'opening' | 'open' | 'closing' = 'opening';
@@ -259,8 +272,8 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           progressTweens[i] = null;
           setFill(i);
         } else {
-          progressTweens.forEach((t, idx) => {
-            t?.kill();
+          progressTweens.forEach((tween, idx) => {
+            tween?.kill();
             progressTweens[idx] = null;
             setFill(idx);
           });
@@ -291,7 +304,6 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         return { halfTop, halfBottom };
       };
 
-      // ribbon halves luôn lấy từ ribbonRef (không phụ thuộc block)
       const getRibbonHalves = () => {
         const halfTop = Array.from(
           ribbonRef.current!.querySelectorAll<HTMLElement>(
@@ -350,7 +362,6 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         phase = 'closing';
         resetProgress(i);
 
-        // animate màu mượt — ribbon luôn visible nên không bị giật
         animateRibbonColor(next);
 
         gsap
@@ -416,15 +427,15 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           { yPercent: 100, delay: 2, duration: 1, ease: 'power3.inOut' },
           0,
         )
-        .to(wrapRef.current, { opacity: 0, duration: 2, ease: 'power3.out' })
+        .to(wrapRef.current, { opacity: 0, duration: 1, ease: 'power3.out' })
         .from(
           container.current,
-          { scale: 0, duration: 2, ease: 'power3.out' },
+          { scale: 0, duration: 1, ease: 'power3.out' },
           '<',
         )
         .from(
           pagerRef.current,
-          { autoAlpha: 0, duration: 2, ease: 'power3.out' },
+          { autoAlpha: 0, duration: 1, ease: 'power3.out' },
           '<',
         )
         .add(() => {
@@ -436,7 +447,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         openingTl.kill();
         autoplayTween?.kill();
         resetProgress();
-        marqueeTLs.forEach((t) => t.kill());
+        marqueeTLs.forEach((tl) => tl.kill());
         splits.forEach((s) => s.revert());
       };
     }, scope);
@@ -558,7 +569,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           </div>
         </div>
 
-        {/* ✅ Ribbon layer độc lập — luôn visible, không bị ảnh hưởng bởi block show/hide */}
+        {/* Ribbon layer độc lập */}
         <div
           ref={ribbonRef}
           className="pointer-events-none absolute inset-0 z-20 flex h-screen items-center justify-center"
@@ -634,7 +645,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           </div>
         </div>
 
-        {/* Marquee container — chỉ chứa text blocks, không chứa ribbon */}
+        {/* Marquee container */}
         <div
           ref={container}
           className="pointer-events-none relative z-20 flex h-screen items-center justify-center"
@@ -645,13 +656,8 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
             </div>
           </div>
 
-          {/* Block 01 — chỉ text overlay */}
           <div ref={block01Ref} className="flex items-center justify-center" />
-
-          {/* Block 02 — chỉ text overlay */}
           <div ref={block02Ref} className="flex items-center justify-center" />
-
-          {/* Block 03 — chỉ text overlay */}
           <div ref={block03Ref} className="flex items-center justify-center" />
         </div>
 
@@ -663,6 +669,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
           />
         </div>
       </section>
+
       {/* Opening overlay */}
       <div
         ref={wrapRef}

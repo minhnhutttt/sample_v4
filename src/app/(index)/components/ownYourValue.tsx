@@ -134,36 +134,36 @@ const OwnYourValue = () => {
           </div>
         </div>
 
-        <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center text-[clamp(30px,28px+100vw*.1525,120px)] leading-none whitespace-nowrap uppercase">
+        <div className="relative z-10 flex flex-col items-center justify-center px-5 text-center text-[clamp(10px,20px+100vw*.1025,120px)] leading-none whitespace-nowrap uppercase md:text-[clamp(30px,28px+100vw*.1525,120px)]">
           <div
             ref={wrapTextRef}
-            className="relative scale-x-0 rounded-4xl bg-[#F78629] text-white"
+            className="relative scale-x-0 rounded-4xl bg-[#F78629] tracking-[-0.03em] text-white"
           >
             <p
               ref={text01Ref}
               className="origin-top rounded-4xl bg-[#F78629] p-4"
             >
-              情報の
+              コンテンツ
             </p>
             <p
               className="h-0 scale-y-0 overflow-hidden bg-[#F78629] p-4"
               ref={text02Ref}
             >
-              主権を
+              を守る。
             </p>
             <p
-              className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-[#F78629] p-4"
+              className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-[#F78629] p-4 tracking-[-0.1em]"
               ref={text03Ref}
             >
-              取り戻す
+              売る。稼ぐ。
             </p>
 
             <p
               ref={text04Ref}
-              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(12px,10px+100vw*.1,100px)] whitespace-nowrap text-[#242424] md:text-[clamp(20px,20px+100vw*.1,100px)]"
+              className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(12px,30px+100vw*.1,400px)] whitespace-nowrap text-[#242424] md:text-[clamp(20px,25px+100vw*.1,160px)]"
             >
               <span className="inline-block -rotate-5 text-shadow-lg">
-                RECLAIM YOUR VALUE
+                Let&apos;s try KIVO!!
               </span>
             </p>
           </div>

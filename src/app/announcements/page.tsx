@@ -1,10 +1,14 @@
+import { Suspense } from 'react';
+
 import type { Metadata } from 'next';
 
 import PageFv from '@/components/PageFv';
 import { OG, TWITTER } from '@/config/constants';
 
+import { getAnnouncements } from '../lib/microcms';
+import { AnnouncementFilter } from './components/announcementFilter';
 import AnnouncementsHead from './components/announcementsHead';
-import AnnouncementsItems from './components/announcementsItems';
+import { AnnouncementsItem } from './components/announcementsItems';
 
 export const metadata: Metadata = {
   title: 'Announcements',
@@ -22,7 +26,19 @@ export const metadata: Metadata = {
   },
 };
 
-const AnnouncementsPage = () => {
+export const revalidate = 60;
+
+type Props = {
+  searchParams: Promise<{ category?: string; q?: string }>;
+};
+export default async function AnnouncementsPage({ searchParams }: Props) {
+  const { category, q } = await searchParams;
+
+  const { contents: articles } = await getAnnouncements({
+    limit: 12,
+    category: category || undefined,
+    q: q || undefined,
+  });
   return (
     <div>
       <PageFv
@@ -34,69 +50,30 @@ const AnnouncementsPage = () => {
         }
       />
       <div className="bg-[#FAF2E8]">
-        <div className="pt-28 md:pt-33.5">
+        <div className="py-28 md:py-33.5">
           <AnnouncementsHead />
           <div className="py-15 md:py-20">
-            <div className="border-y border-black/20">
-              <div className="mx-auto grid w-full divide-y divide-black/20 lg:grid-cols-3 lg:divide-x">
-                <div className="p-5">
-                  <div className="relative mx-auto flex items-center text-[16px] max-lg:max-w-[480px]">
-                    <select className="h-16 w-full appearance-none rounded-2xl border border-black px-5 md:h-20">
-                      <option value="">全て</option>
-                      <option value="">アップデート</option>
-                      <option value="trends">使い方</option>
-                      <option value="in-the-news">プレスリリース</option>
-                      <option value="tiktok">お知らせ</option>
-                      <option value="platform">コーポレート</option>
-                    </select>
-                    <svg
-                      className="absolute right-5 h-3 w-auto"
-                      viewBox="0 0 20 13"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        className="stroke-current"
-                        d="M17.6631 2.06908L9.56173 9.90039L2.00046 2.06908"
-                        strokeWidth="4"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="mx-auto grid h-16 grid-cols-3 divide-x divide-black rounded-2xl border border-black text-[14px] max-lg:max-w-[480px] md:h-20 xl:text-[16px]">
-                    <button className="h-full">アップデート</button>
-                    <button className="h-full">使い方</button>
-                    <button className="h-full">プレスリリース</button>
-                  </div>
-                </div>
-                <div className="p-5">
-                  <div className="relative mx-auto flex items-center max-lg:max-w-[480px]">
-                    <input
-                      type="text"
-                      className="h-16 w-full rounded-2xl border border-black px-5 md:h-20"
-                      placeholder="Search:"
-                    />
-                    <svg
-                      className="absolute right-5 h-8 md:h-10"
-                      viewBox="0 -960 960 960"
-                      fill="#000000"
-                    >
-                      <path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Suspense
+              fallback={<div className="h-[112px] border-y border-black/20" />}
+            >
+              <AnnouncementFilter />
+            </Suspense>
           </div>
           <div className="px-5">
-            <AnnouncementsItems />
+            {articles.length > 0 ? (
+              <div className="grid gap-8 max-md:mx-auto max-md:max-w-[440px] md:grid-cols-3 lg:gap-20">
+                {articles.map((article) => (
+                  <AnnouncementsItem key={article.id} article={article} />
+                ))}
+              </div>
+            ) : (
+              <div className="py-24 text-center text-gray-400">
+                <p className="text-lg">記事がありません</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
-      ;
     </div>
   );
-};
-
-export default AnnouncementsPage;
+}

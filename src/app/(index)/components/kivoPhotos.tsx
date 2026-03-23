@@ -264,7 +264,7 @@ export default function KivoPhotos() {
           className="font-creepster absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[clamp(10px,5px+100vw*.1,060px)] whitespace-nowrap text-[#242424] max-md:-translate-y-[65px] md:text-[clamp(12px,12px+100vw*.1,100px)]"
         >
           <span className="inline-block -rotate-5 text-shadow-lg">
-            GUARDED IMPACT & VALUE
+            PROTECT. SELL & EARN.
           </span>
         </p>
         <div

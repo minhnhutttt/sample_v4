@@ -87,24 +87,6 @@ const PageFv = ({ text }: { text: ReactNode }) => {
       className="relative flex h-[650px] flex-col items-center justify-center overflow-hidden md:min-h-screen"
     >
       <div className="absolute inset-0 z-10">
-        <div
-          data-infinite-scroll="6:30s"
-          className="absolute inset-x-0 top-0 flex w-max gap-10 py-3"
-        >
-          <div className="flex shrink-0 items-center gap-10">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="relative flex items-center justify-center"
-              >
-                <div className="flex items-center text-[clamp(14px,13.415px+100vw*.0015,16px)] text-[#F78629] uppercase">
-                  Make Every Share Matter.
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <video
           className="h-full w-full object-cover"
           autoPlay
