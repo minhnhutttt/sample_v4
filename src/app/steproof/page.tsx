@@ -1,4 +1,10 @@
+'use client';
+
 import { ReactNode } from 'react';
+
+import Button from '@/components/button';
+import { useAppDispatch } from '@/store/hooks';
+import { openModal } from '@/store/slices/modalSlice';
 
 const WorkItem = ({
   id,
@@ -11,7 +17,7 @@ const WorkItem = ({
   id: string;
   head: string;
   subHead: string;
-  title: string;
+  title: ReactNode;
   text: string;
   children: ReactNode;
 }) => (
@@ -39,12 +45,21 @@ const WorkItem = ({
 );
 
 const Workpage = () => {
+  const dispatch = useAppDispatch();
   return (
     <div className="site-max relative min-h-screen pt-[12rem] pb-[7.2rem]">
       <h1 className="text-[7rem] font-black md:text-[11.7rem]">Steproof</h1>
-      <p className="my-[6rem] text-[2.2rem] leading-none md:text-[3.2rem]">
-        その移動を、確実な記録に。
-      </p>
+      <div className="my-[6rem] flex justify-between gap-[2rem] max-md:flex-col md:items-center">
+        <p className="text-[2.2rem] leading-none md:text-[3.2rem]">
+          その移動を、確実な記録に。
+        </p>
+        <Button
+          lg
+          text="Steproofを使ってみる"
+          en="TRY USING Steproof"
+          onClick={() => dispatch(openModal({ name: 'contact' }))}
+        />
+      </div>
       <div className="">
         <img src="/assets/images/work.png" alt="" className="w-full" />
       </div>
@@ -80,7 +95,13 @@ const Workpage = () => {
           id="section-B"
           head="Envision"
           subHead="解決策を設計する"
-          title="会社と従業員双方にメリットのある制度設計"
+          title={
+            <>
+              会社と従業員
+              <br />
+              双方にメリットのある制度設計
+            </>
+          }
           text="STRATEGIZING FOR MUTUAL GROWTH."
         >
           制度活用の要は、会社と従業員の双方が納得できる設計にあります。Steproofは、企業側にはガバナンスの強化や適正な経費計上による管理体制の健全化を、従業員側には日当による処遇改善や働き方の柔軟性向上といった具体的なメリットを提示します。

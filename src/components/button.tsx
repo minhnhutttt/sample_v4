@@ -7,11 +7,12 @@ import gsap from 'gsap';
 type Props = {
   text: string;
   en: string;
+  lg?: boolean;
   isBack?: boolean;
   onClick?: () => void;
 };
 
-const Button = ({ text, en, isBack = false, onClick }: Props) => {
+const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
   const linkRef = useRef<HTMLButtonElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const textTopRef = useRef<HTMLDivElement>(null);
@@ -90,7 +91,7 @@ const Button = ({ text, en, isBack = false, onClick }: Props) => {
     <button
       onClick={onClick}
       ref={linkRef}
-      className={`group btn relative z-1 inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] text-left text-black ${isBack ? 'border border-[#85F4E2]' : 'bg-[#85F4E2]'}`}
+      className={`group btn relative z-1 inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] text-left text-black ${lg ? 'h-[5.2rem] w-[20rem]' : 'h-[5.2rem] w-[14.2rem]'} ${isBack ? 'border border-[#85F4E2]' : lg ? 'bg-[#424242]' : 'bg-[#85F4E2]'}`}
     >
       <div
         ref={bgRef}
@@ -137,12 +138,12 @@ const Button = ({ text, en, isBack = false, onClick }: Props) => {
           {/* Top layer */}
           <div ref={textTopRef} className="flex flex-col">
             <p
-              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#85F4E2]' : ''}`}
+              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#85F4E2]' : lg ? 'text-white' : 'text-[#424242]'}`}
             >
               {text}
             </p>
             <p
-              className={`text-[1rem] ${isBack ? 'text-[#85F4E2]/50' : 'text-[#424242]/80'}`}
+              className={`text-[1rem] ${isBack ? 'text-[#85F4E2]/50' : lg ? 'text-[#FFF6F6]/50' : 'text-[#424242]/80'}`}
             >
               {en}
             </p>
@@ -183,8 +184,8 @@ const Button = ({ text, en, isBack = false, onClick }: Props) => {
             </mask>
             <g mask="url(#mask0_19008_45)">
               <path
+                className={`${lg ? 'fill-white' : 'fill-[#424242]'}`}
                 d="M11.0993 10.1703H2.36182V7.80781H11.0993L7.31182 4.02031L8.99932 2.35156L15.6368 8.98906L8.99932 15.6266L7.31182 13.9578L11.0993 10.1703Z"
-                fill="#424242"
               />
             </g>
           </svg>

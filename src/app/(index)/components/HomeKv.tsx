@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,27 +22,31 @@ const CARD_DEFS = [
     id: 'sc0',
     destId: 'ph0',
     name: 'Steproof',
+    tag: '移動距離照明・自動化',
     image: '/assets/images/thumbnail.jpg',
     href: '/steproof',
   },
   {
     id: 'sc1',
     destId: 'ph1',
-    name: 'VisionFlow',
+    name: 'Steproof / Asses',
+    tag: '現状を見極める',
     image: '/assets/images/thumbnail-02.jpg',
     href: '/steproof#section-A',
   },
   {
     id: 'sc2',
     destId: 'ph2',
-    name: 'CoreNexus',
+    name: 'Steproof / Envision',
+    tag: '解決策を設計する',
     image: '/assets/images/thumbnail-03.jpg',
     href: '/steproof#section-B',
   },
   {
     id: 'sc3',
     destId: 'ph3',
-    name: 'AquaGrid',
+    name: 'Steproof / Execute',
+    tag: '形に落とし込む',
     image: '/assets/images/thumbnail-04.jpg',
     href: '/steproof#section-C',
   },
@@ -79,6 +83,9 @@ export default function HomeKv() {
   const stackRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const placeholderRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const rotateToRef = useRef<(targetCardIndex: number) => void>(() => {});
+
   useEffect(() => {
     const N = CARD_DEFS.length;
 
@@ -107,16 +114,33 @@ export default function HomeKv() {
     }
 
     applySlots(cardOrder);
+    setActiveIndex(0);
 
-    // ── Carousel rotation ──────────────────────────────────────────────────────
+    // ── Sync active button ─────────────────────────────────────────────────────
+    function syncActive() {
+      const frontEl = cardOrder[0];
+      const idx = CARD_DEFS.findIndex(
+        (c) => stackRefs.current.get(c.id) === frontEl,
+      );
+      setActiveIndex(idx);
+    }
+
+    // ── Auto rotate ────────────────────────────────────────────────────────────
     let autoRotate = true;
     let isAnimating = false;
 
-    function rotateCarousel() {
-      if (!autoRotate || isAnimating) return;
+    function rotateOnce(onDone?: () => void) {
+      if (isAnimating) return;
       isAnimating = true;
 
       const exitEl = cardOrder[0];
+
+      // Sync active ngay khi exit bắt đầu → card kế tiếp lên front
+      const nextFrontEl = cardOrder[1];
+      const nextIdx = CARD_DEFS.findIndex(
+        (c) => stackRefs.current.get(c.id) === nextFrontEl,
+      );
+      setActiveIndex(nextIdx);
 
       gsap.to(exitEl, {
         x: -70,
@@ -124,7 +148,7 @@ export default function HomeKv() {
         rotation: -14,
         scale: 0.65,
         opacity: 0,
-        duration: 0.48,
+        duration: 0.7,
         ease: 'power2.in',
         onComplete() {
           cardOrder = [...cardOrder.slice(1), exitEl];
@@ -149,11 +173,14 @@ export default function HomeKv() {
               scale: s.scale,
               opacity: s.opacity,
               zIndex: s.zIndex,
-              duration: 0.55,
+              duration: 0.8,
               ease: 'power3.out',
               onComplete() {
                 completedCount++;
-                if (completedCount === N) isAnimating = false;
+                if (completedCount === N) {
+                  isAnimating = false;
+                  onDone?.();
+                }
               },
             });
           });
@@ -161,7 +188,12 @@ export default function HomeKv() {
       });
     }
 
-    let rotIntervalId = setInterval(rotateCarousel, 2400);
+    function rotateCarousel() {
+      if (!autoRotate) return;
+      rotateOnce();
+    }
+
+    let rotIntervalId = setInterval(rotateCarousel, 4000);
 
     function stopCarousel() {
       autoRotate = false;
@@ -172,11 +204,95 @@ export default function HomeKv() {
       autoRotate = true;
       isAnimating = false;
       clearInterval(rotIntervalId);
-      rotIntervalId = setInterval(rotateCarousel, 2400);
+      rotIntervalId = setInterval(rotateCarousel, 4000);
     }
 
+    // ── Rotate to specific card - fast duration khi click ────────────────────
+    function rotateTo(targetDefIndex: number) {
+      stopCarousel();
+
+      const frontEl = cardOrder[0];
+      const currentDefIndex = CARD_DEFS.findIndex(
+        (c) => stackRefs.current.get(c.id) === frontEl,
+      );
+
+      if (currentDefIndex === targetDefIndex) {
+        startCarousel();
+        return;
+      }
+
+      const steps = (targetDefIndex - currentDefIndex + N) % N;
+
+      function doStep(remaining: number) {
+        if (remaining <= 0) {
+          startCarousel();
+          return;
+        }
+
+        if (isAnimating) return;
+        isAnimating = true;
+
+        const exitEl = cardOrder[0];
+
+        // Sync active ngay khi exit bắt đầu
+        const nextFrontEl = cardOrder[1];
+        const nextIdx = CARD_DEFS.findIndex(
+          (c) => stackRefs.current.get(c.id) === nextFrontEl,
+        );
+        setActiveIndex(nextIdx);
+
+        gsap.to(exitEl, {
+          x: -70,
+          y: 130,
+          rotation: -14,
+          scale: 0.65,
+          opacity: 0,
+          duration: 0.2, // nhanh hơn khi click
+          ease: 'power2.in',
+          onComplete() {
+            cardOrder = [...cardOrder.slice(1), exitEl];
+
+            const backSlot = SLOTS[N - 1];
+            gsap.set(exitEl, {
+              x: backSlot.x,
+              y: backSlot.y,
+              rotation: backSlot.rotation,
+              scale: backSlot.scale,
+              opacity: 0,
+              zIndex: backSlot.zIndex,
+            });
+
+            let completedCount = 0;
+            cardOrder.forEach((el, slotIdx) => {
+              const s = SLOTS[slotIdx];
+              gsap.to(el, {
+                x: s.x,
+                y: s.y,
+                rotation: s.rotation,
+                scale: s.scale,
+                opacity: s.opacity,
+                zIndex: s.zIndex,
+                duration: 0.25, // nhanh hơn khi click
+                ease: 'power3.out',
+                onComplete() {
+                  completedCount++;
+                  if (completedCount === N) {
+                    isAnimating = false;
+                    doStep(remaining - 1);
+                  }
+                },
+              });
+            });
+          },
+        });
+      }
+
+      doStep(steps);
+    }
+
+    rotateToRef.current = rotateTo;
+
     // ── Flying card clones ─────────────────────────────────────────────────────
-    // Lenis không dùng wrapper transform → append vào document.body là OK
     const flyEls: HTMLDivElement[] = CARD_DEFS.map((card) => {
       const el = document.createElement('div');
       el.style.cssText = `
@@ -188,7 +304,7 @@ export default function HomeKv() {
       `;
       el.innerHTML = `
         <div style="width:100%;height:100%;display:flex;align-items:flex-end;">
-          <img  style="width:100%;height:100%;display:flex;align-items:flex-end;" src=${card.image} alt="" />
+          <img style="width:100%;height:100%;display:flex;align-items:flex-end;" src=${card.image} alt="" />
         </div>`;
       document.body.appendChild(el);
       gsap.set(el, { opacity: 0, top: 0, left: 0, width: 0, height: 0 });
@@ -225,10 +341,7 @@ export default function HomeKv() {
           if (inZone && !wasInZone) {
             wasInZone = true;
             stopCarousel();
-
-            // Re-snapshot tại thời điểm enter để đảm bảo coords mới nhất
             snapshot();
-
             snaps.forEach(({ src }, i) => {
               gsap.set(flyEls[i], {
                 top: src.top,
@@ -312,7 +425,7 @@ export default function HomeKv() {
               確かな利益へ。
             </SplitTextReveal>
 
-            <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4.8rem] md:mt-[20rem]">
+            <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4rem] md:mt-[15rem]">
               <p className="js-t-fade-up text-[1.8rem] md:max-w-[60rem]">
                 私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、
                 <br className="max-md:hidden" />
@@ -323,6 +436,26 @@ export default function HomeKv() {
                 en="CONTACT US"
                 onClick={() => dispatch(openModal({ name: 'contact' }))}
               />
+
+              {/* ── Nav buttons (sync with carousel) ── */}
+              <div className="flex flex-col items-start">
+                {CARD_DEFS.map((card, i) => (
+                  <button
+                    key={card.id}
+                    onClick={() => rotateToRef.current(i)}
+                    className={`carousel-cards-title relative overflow-hidden text-[2rem] font-bold text-[#9579C8]/25${
+                      activeIndex === i ? 'is-active' : ''
+                    }`}
+                  >
+                    {card.name}
+                    <div className="carousel-cards-title__mask --1 absolute inset-0 z-2 overflow-hidden">
+                      <div className="carousel-cards-title__mask --2 absolute inset-0 text-[#9579C8]">
+                        {card.name}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -342,7 +475,6 @@ export default function HomeKv() {
             </div>
           </div>
         </div>
-        {/* Dùng <a> anchor link — Lenis với anchors: true sẽ smooth scroll tự động */}
         <Link
           href="/#products"
           className="scroll-icon absolute bottom-[4rem] left-[2rem] md:left-1/2 md:-translate-x-1/2"
@@ -408,15 +540,18 @@ export default function HomeKv() {
                 <div
                   ref={setPlaceholderRef(card.destId)}
                   className="w-full rounded-[14px]"
-                  style={{
-                    aspectRatio: '324/551',
-                  }}
+                  style={{ aspectRatio: '324/551' }}
                 />
                 <div className="work-card-content relative z-2 -mt-[0.5rem] overflow-hidden md:-mt-[1.5rem]">
                   <div className="work-card-content__inner relative flex flex-col gap-y-[1rem] pt-[4rem] pb-[2.5rem]">
                     <h3 className="work-card__title relative z-2 text-[1.8rem] !leading-none font-bold">
                       {card.name}
                     </h3>
+                    <div className="work-card__pills relative z-2 flex flex-wrap gap-[0.5rem] md:gap-[1rem]">
+                      <span className="inline-flex h-[3rem] items-center rounded-full border border-current px-[0.8rem] text-[1.4rem] leading-none whitespace-nowrap md:h-[3.4rem] md:px-[1.2rem]">
+                        {card.tag}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Link>

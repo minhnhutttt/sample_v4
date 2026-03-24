@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -11,21 +12,21 @@ const SERVICES = [
     text: '利益を設計する',
     description:
       '私たちは、厳選された高品質なプロダクトの提供を通じて、お客様の事業収益を最大化するパートナーです。単なるツールの導入に留まらず、各企業の収益構造を理解し、無駄を排して利益を確実に残すための最適なソリューションを提案します。 戦略的な視点を持ちながらも、目的はあくまで事業の持続可能性。プロダクトが貴社のオペレーションに深く浸透し、導入した瞬間から実利的なインパクトを生み出すことを約束します。質の高いラインナップは、貴社のビジョンを具現化し、次なる成長ステージへと導く強力な利益のエンジンとなります。',
-    riv: '/assets/images/hero_strategy.png',
+    riv: '/assets/lottie/money.lottie',
   },
   {
     title: 'SUSTAINABLE GROWTH FOR EVERY BUSINESS.',
     text: '成長を支える拡張性',
     description:
       'ビジネスの規模やフェーズの変化に合わせ、柔軟に適応できる高い拡張性を備えています。 スタートアップの迅速な収益化から、大企業の複雑な業務最適化まで幅広くカバーし、必要なタイミングで利益貢献度の高いプロダクトを追加・統合できる環境を提供します。 ラインナップが増えても情報が破綻しない体系的な設計により、常に課題に直結する解決策を見つけ出しやすいカタログ的な操作感を実現しました。 課題やカテゴリに基づいた高度なフィルタリング機能を活用することで、将来的な事業拡大にもスムーズに対応し、貴社の持続的な成長を構造面から力強く支え続けます。',
-    riv: '/assets/images/hero_strategy.png',
+    riv: '/assets/lottie/gear.lottie',
   },
   {
     title: 'OPERATIONAL EFFICIENCY & GOVERNANCE.',
     text: '信頼と実績のパフォーマンス',
     description:
       '最新のテクノロジーを基盤とし、安定した運用と確かな成果を提供します。 各プロダクトは、実戦で鍛え抜かれた高度な技術を採用しており、強固なセキュリティと高い信頼性を両立させています。 導入後のサポート体制や品質保証を明確に定義することで、外部ソリューションの活用において懸念されがちな運用の不安を払拭しました。 複雑な業務プロセスを自動化し、データに基づいた客観的な成果を出し続ける仕組みにより、現場の負担を軽減しながらガバナンスの強化とコストの適正化を同時に実現。 確かな実績に基づき、利益を残すための解決策をお届けします。',
-    riv: '/assets/images/hero_strategy.png',
+    riv: '/assets/lottie/bulb.lottie',
   },
 ];
 
@@ -80,8 +81,8 @@ const HomeServices = () => {
                 <p className="text-[2rem] font-bold">{service.text}</p>
                 <div className="acc-services-item__content relative mt-[3rem] overflow-hidden md:mt-[6rem]">
                   <div className="relative flex flex-col max-md:gap-y-[2rem] md:flex-row md:items-start md:gap-x-[16.5rem]">
-                    <div className="acc-services-item__media radius-media relative flex flex-1 justify-center md:order-2 md:mt-0">
-                      <img src={service.riv} alt="" />
+                    <div className="acc-services-item__media radius-media relative flex flex-1 items-center justify-center bg-white md:order-2 md:mt-0">
+                      <DotLottieReact src={service.riv} loop autoplay />
                     </div>
                     <div className="relative flex-1 md:order-1 md:max-w-[65rem]">
                       <p className="text-[1.4rem] md:text-[1.6rem]">
