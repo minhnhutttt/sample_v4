@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
+import Link from 'next/link';
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,7 +21,13 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  return <header>header</header>;
+  return (
+    <header className="flex h-20 items-center px-5 md:h-25">
+      <Link href="/">
+        <img src="/assets/images/logo.svg" alt="" className="max-md:w-20" />
+      </Link>
+    </header>
+  );
 };
 
 export default Header;

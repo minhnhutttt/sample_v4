@@ -3,6 +3,7 @@ import { Inter, Noto_Sans_JP } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
 import Footer from '@/components/footer';
+import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -62,6 +63,7 @@ const RootLayout = ({
         className={`${noto.className} ${inter.variable} text-[#333] antialiased`}
       >
         <Providers>
+          <Header />
           {children}
           <Footer />
         </Providers>
