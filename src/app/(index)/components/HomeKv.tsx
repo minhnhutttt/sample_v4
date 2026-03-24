@@ -443,7 +443,7 @@ export default function HomeKv() {
                   <button
                     key={card.id}
                     onClick={() => rotateToRef.current(i)}
-                    className={`carousel-cards-title relative overflow-hidden text-[2rem] font-bold text-[#9579C8]/25${
+                    className={`carousel-cards-title relative overflow-hidden text-[2rem] font-bold text-[#9579C8]/25 ${
                       activeIndex === i ? 'is-active' : ''
                     }`}
                   >
