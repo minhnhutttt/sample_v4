@@ -1,25 +1,12 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
-
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  const close = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
-  useEffect(() => {
-    const body = document.body;
-
-    if (isOpen) {
-      body.classList.add('overflow-hidden');
-    } else {
-      body.classList.remove('overflow-hidden');
-    }
-  }, [isOpen]);
+  if (pathname === '/') return null;
 
   return (
     <header className="flex h-20 items-center px-5 md:h-25">
