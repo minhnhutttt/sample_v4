@@ -1,15 +1,4 @@
-import { getAnnouncementBar } from '@/app/lib/microcms';
-import { AnnouncementBarItem } from '@/app/types/microcms';
-
-import { AnnouncementBar } from './announcementBar';
-
-const AnnouncementsHead = async () => {
-  let barItems: AnnouncementBarItem[] = [];
-  try {
-    barItems = await getAnnouncementBar();
-  } catch (e) {
-    console.error('Failed to fetch announcement bar:', e);
-  }
+const AnnouncementsHead = () => {
   return (
     <div className="px-5 pb-10">
       <div className="@container mx-auto w-full max-w-[1400px]">
@@ -26,7 +15,6 @@ const AnnouncementsHead = async () => {
           KIVOの最新情報、プレスリリース、アップデートノートをここで発信します。
         </p>
       </div>
-      <AnnouncementBar items={barItems} />
     </div>
   );
 };

@@ -96,6 +96,11 @@ const OwnYourValue = () => {
               stagger: 0.04,
               ease: 'power1.inOut',
               duration: 0.3,
+            })
+            .to(text04Ref.current, {
+              opacity: 0.7,
+              ease: 'power1.inOut',
+              duration: 0.3,
             });
         },
       });
@@ -143,19 +148,19 @@ const OwnYourValue = () => {
               ref={text01Ref}
               className="origin-top rounded-4xl bg-[#F78629] p-4"
             >
-              コンテンツ
+              守って
             </p>
             <p
               className="h-0 scale-y-0 overflow-hidden bg-[#F78629] p-4"
               ref={text02Ref}
             >
-              を守る。
+              売って
             </p>
             <p
-              className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-[#F78629] p-4 tracking-[-0.1em]"
+              className="h-0 scale-y-0 overflow-hidden rounded-4xl bg-[#F78629] p-4"
               ref={text03Ref}
             >
-              売る。稼ぐ。
+              稼ごう！
             </p>
 
             <p

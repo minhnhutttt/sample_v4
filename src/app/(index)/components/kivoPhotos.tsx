@@ -134,6 +134,7 @@ export default function KivoPhotos() {
           transformOrigin: '50% 100%',
           onStart: () => {
             gsap.to(splitText.chars, {
+              opacity: 0.7,
               autoAlpha: 1,
               scale: 1,
               ease: EASE,

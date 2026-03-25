@@ -194,7 +194,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
         const tl = gsap.timeline({
           defaults: { duration: t(2), ease: 'power3.inOut' },
           repeat: -1,
-          repeatDelay: t(1),
+          repeatDelay: t(6),
           delay,
         });
         addStep(tl, splitTop.chars, 1, 0, '50% 0%', 'start');
@@ -208,7 +208,7 @@ const Kv = ({ options }: { options?: SplitOptions }) => {
       // Base values (giá trị gốc — KHÔNG sửa các dòng này)
       const OPEN_DUR_BASE = 1;
       const CLOSE_DUR_BASE = 1;
-      const HOLD_BEFORE_CLOSE_BASE = 5;
+      const HOLD_BEFORE_CLOSE_BASE = 10;
       const IMAGE_FADE_BASE = 0.6;
       const IMAGE_FADE_DELAY_BASE = 0.15;
 

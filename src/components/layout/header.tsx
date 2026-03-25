@@ -35,43 +35,6 @@ const legalItems: NavItem[] = [
   },
 ];
 
-const MARQUEE_TEXT = 'NEW: KIVO公式サイト公開のお知らせ';
-
-// ─── Marquee ───────────────────────────────────────────────────────────────
-function MarqueeTicker() {
-  return (
-    <div className="flex h-5 items-center overflow-hidden bg-[#F78629] duration-200 group-[.active]:bg-[#242424]">
-      <style>{`
-        @keyframes kivo-marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        .kivo-marquee-track {
-          display: flex;
-          white-space: nowrap;
-          animation: kivo-marquee 70s linear infinite;
-          will-change: transform;
-        }
-      `}</style>
-      <div className="kivo-marquee-track">
-        {[0, 1].map((outerIdx) => (
-          <div key={outerIdx} className="flex">
-            {Array.from({ length: 12 }).map((_, i) => (
-              <div
-                className="flex items-center gap-4 px-4 text-xs font-semibold tracking-wide text-black duration-200 group-[.active]:text-white"
-                key={i}
-              >
-                <img src="/assets/images/kivo.svg" alt="" />
-                {MARQUEE_TEXT}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 // ─── Single menu row ────────────────────────────────────────────────────────
 function MenuItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
   return (
@@ -94,8 +57,12 @@ function MenuItem({ item, onClick }: { item: NavItem; onClick?: () => void }) {
   );
 }
 
+type HeaderProps = {
+  ticker?: React.ReactNode;
+};
+
 // ─── Navbar ─────────────────────────────────────────────────────────────────
-export default function Header() {
+export default function Header({ ticker }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [headerColor, setHeaderColor] = useState(false); // ← thêm state này
   const ref = useRef<HTMLDivElement>(null);
@@ -194,6 +161,7 @@ export default function Header() {
             {/* Center — logo */}
             <Link
               href="/"
+              onClick={close}
               aria-label="KIVO home"
               className="absolute top-1/2 left-1/2 w-[53px] -translate-x-1/2 -translate-y-1/2"
             >
@@ -376,7 +344,7 @@ export default function Header() {
             </div>
           </div>
           <div className="bg-[#242424] p-1.5 duration-200 group-[.active]:bg-[#F78629]">
-            <MarqueeTicker />
+            {ticker}
           </div>
         </div>
 

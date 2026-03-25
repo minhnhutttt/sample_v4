@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Caveat, Creepster, Shippori_Mincho } from 'next/font/google';
 
+import MarqueeTicker from '@/components/MarqueeTicker';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import ScrollToTop from '@/components/layout/scrollToTop';
@@ -61,7 +62,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
       >
         <SlideThemeProvider>
           <ScrollToTop />
-          <Header />
+          <Header ticker={<MarqueeTicker />} />
           {children}
           <Footer />
         </SlideThemeProvider>

@@ -1,4 +1,3 @@
-// src/lib/microcms.ts
 import { createClient } from 'microcms-js-sdk';
 
 import type {
