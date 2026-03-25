@@ -34,9 +34,6 @@ const Footer = () => {
         <p className="mb-[2rem] text-center text-[2.9em]">
           私たちと事業の可能性を広げていきませんか？
         </p>
-        <p className="mb-[2rem] text-center text-[2.9em]">
-          READY TO TRANSFORM YOUR BUSINESS?
-        </p>
         <Button
           text="お問い合わせ"
           en="CONTACT US"

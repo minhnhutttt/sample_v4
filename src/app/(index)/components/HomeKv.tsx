@@ -411,9 +411,9 @@ export default function HomeKv() {
     <div ref={ref} className="relative z-10">
       {/* ════════════════════════ HERO ════════════════════════ */}
       <section className="carousel-cards relative z-5 overflow-hidden">
-        <div className="site-max relative flex min-h-screen flex-col items-center gap-y-[3rem] pt-[12rem] pb-[7.2rem] md:flex-row">
+        <div className="site-max relative flex flex-col items-end gap-y-[3rem] pt-[12rem] pb-[7.2rem] max-md:items-center md:flex-row">
           {/* Text */}
-          <div className="relative flex flex-col md:justify-between">
+          <div className="relative flex flex-col">
             <SplitTextReveal
               as="h1"
               splitType="chars"
@@ -425,11 +425,13 @@ export default function HomeKv() {
               確かな利益へ。
             </SplitTextReveal>
 
-            <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4rem] md:mt-[15rem]">
+            <div className="fade-up mt-[2rem] flex flex-col items-start gap-[4rem] md:mt-[3rem]">
               <p className="js-t-fade-up text-[1.8rem] md:max-w-[60rem]">
-                私たちは、企業の持続的な成長を支える厳選されたプロダクトを提供し、
+                私たちは企業の持続的な成長を支える厳選されたプロダクトを
                 <br className="max-md:hidden" />
-                収益性の向上と業務の最適化を支援します。
+                提供し、収益性の向上と業務の最適化を支援します。
+                <br />
+                事業の可能性を私たちと広げていきませんか？
               </p>
               <Button
                 text="お問い合わせ"
@@ -469,7 +471,7 @@ export default function HomeKv() {
                   ref={setStackRef(card.id)}
                   className="absolute top-0 right-0 aspect-324/551 w-[24rem] cursor-pointer overflow-hidden rounded-2xl md:w-[32.4rem]"
                 >
-                  <img src={card.image} alt="" />
+                  <img src={card.image} alt="" className="w-full" />
                 </Link>
               ))}
             </div>
@@ -477,7 +479,7 @@ export default function HomeKv() {
         </div>
         <Link
           href="/#products"
-          className="scroll-icon absolute bottom-[4rem] left-[2rem] md:left-1/2 md:-translate-x-1/2"
+          className="scroll-icon absolute bottom-[0rem] left-[2rem] md:left-1/2 md:-translate-x-1/2"
           aria-label="Scroll"
         >
           <svg

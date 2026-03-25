@@ -109,7 +109,7 @@ const Workpage = () => {
         </WorkItem>
         <WorkItem
           id="section-C"
-          head="Execute"
+          head="Achive"
           subHead="形に落とし込む"
           title="LINEを活用した自動化の実装"
           text="AUTOMATING PROCESSES VIA LINE INTEGRATION."
