@@ -87,11 +87,18 @@ const CompanyPage = () => {
                   },
                   { label: 'TEL', text: '0897-47-8601' },
                   { label: '資本金', text: '20,000千円' },
-                  { label: '建設業許可', text: '愛媛県知事許可 第０018851号' },
-                  { label: '業務内容', text: 'とび・土工工事、管工事' },
+                  {
+                    label: '事業内容',
+                    text: '管工事、とび工事、土工工事、弁設備工事、保温工事、回転機整備',
+                  },
+                  { label: '建設業許可', text: '愛媛県知事許可 第018851号' },
+                  {
+                    label: '労働者派遣事業者許可',
+                    text: '厚生労働大臣許可 派38-300319',
+                  },
                 ].map((item) => (
                   <div className="flex gap-6 md:gap-8" key={item.label}>
-                    <p className="w-18 md:w-20">{item.label}</p>
+                    <p className="w-18 md:w-40">{item.label}</p>
                     <p className="flex-1">{item.text}</p>
                   </div>
                 ))}
