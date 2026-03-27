@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     },
     rules: {
       "unused-imports/no-unused-imports": "error",
+      '@typescript-eslint/no-explicit-any': 'off',
       "unused-imports/no-unused-vars": [
         "warn",
         { args: "after-used", argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
