@@ -12,13 +12,12 @@ interface CurvedCarouselProps {
   isBack?: boolean;
 }
 
-// ── Responsive config ─────────────────────────────────────────────────────────
 interface ResponsiveConfig {
-  scale: number; // group scale
-  cameraZ: number; // camera Z distance
-  cameraY: number; // camera Y base position
-  offsetX: number; // camera X offset (negative = shift left)
-  lookAtX: number; // lookAt X target
+  scale: number;
+  cameraZ: number;
+  cameraY: number;
+  offsetX: number;
+  lookAtX: number;
 }
 
 function getResponsiveConfig(screenWidth: number): ResponsiveConfig {
@@ -27,18 +26,16 @@ function getResponsiveConfig(screenWidth: number): ResponsiveConfig {
       scale: 0.65,
       cameraZ: 3.5,
       cameraY: 1.2,
-      offsetX: 0.6, // lệch trái
-      lookAtX: 0.4,
+      offsetX: -0.6,
+      lookAtX: -0.4,
     };
   }
-  return {
-    scale: 1,
-    cameraZ: 3.5,
-    cameraY: 1.2,
-    offsetX: 0,
-    lookAtX: 0,
-  };
+  return { scale: 1, cameraZ: 3.5, cameraY: 1.2, offsetX: 0, lookAtX: 0 };
 }
+
+const ROTATION_Z_MIN = 0.1;
+const ROTATION_Z_MAX = 0.4;
+const ROTATION_Z_DEFAULT = 0.28;
 
 export default function CurvedCarousel({
   isBack = false,
@@ -53,16 +50,21 @@ export default function CurvedCarousel({
     let disposed = false;
     let renderer: THREE.WebGLRenderer | null = null;
 
+    // Track mouse X position (0 = left edge, 1 = right edge)
+    let mouseNorm = 0.5; // start at center
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseNorm = e.clientX / window.innerWidth; // 0..1
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
     const setup = async () => {
-      // ── Scene ────────────────────────────────────────────────────────────
       const scene = new THREE.Scene();
 
       const w = mount.clientWidth || window.innerWidth;
       const h = mount.clientHeight || window.innerHeight;
 
       const camera = new THREE.PerspectiveCamera(55, w / h, 0.1, 100);
-
-      // Apply initial responsive config
       let cfg = getResponsiveConfig(window.innerWidth);
       camera.position.set(cfg.offsetX, cfg.cameraY, cfg.cameraZ);
       camera.lookAt(cfg.lookAtX, 0, -2);
@@ -76,26 +78,22 @@ export default function CurvedCarousel({
       renderer.domElement.style.left = '0';
       mount.appendChild(renderer.domElement);
 
-      // ── Group ────────────────────────────────────────────────────────────
       const group = new THREE.Group();
-      group.rotation.z = 0.28;
+      group.rotation.z = ROTATION_Z_DEFAULT;
       group.rotation.x = 0.3;
       group.scale.setScalar(cfg.scale);
       scene.add(group);
 
-      // ── Load textures ────────────────────────────────────────────────────
       const textures = await Promise.all(
         CARDS.map((data) => makeCardTexture(data)),
       );
       if (disposed) return;
 
-      // ── Build meshes ─────────────────────────────────────────────────────
       const meshes = textures.map((tex) => buildCurvedCard(tex, isBack));
       meshes.forEach((m) => group.add(m));
 
       const N = CARDS.length;
 
-      // ── Position cards ───────────────────────────────────────────────────
       function positionCards(rotY: number): void {
         const step = (Math.PI * 2) / N;
         meshes.forEach((mesh, i) => {
@@ -117,8 +115,8 @@ export default function CurvedCarousel({
         });
       }
 
-      // ── Animate ──────────────────────────────────────────────────────────
       let rotY = 0;
+      let currentRotZ = ROTATION_Z_DEFAULT;
 
       const animate = () => {
         if (disposed) return;
@@ -127,28 +125,28 @@ export default function CurvedCarousel({
         group.updateMatrixWorld(true);
         positionCards(rotY);
 
-        // Camera bob + responsive Y offset
+        // mouseNorm: 0 = far left → max rotation, 1 = far right → min rotation
+        const targetRotZ =
+          ROTATION_Z_MAX - mouseNorm * (ROTATION_Z_MAX - ROTATION_Z_MIN);
+        // Smooth lerp toward target
+        currentRotZ += (targetRotZ - currentRotZ) * 0.05;
+        group.rotation.z = currentRotZ;
+
         camera.position.y = cfg.cameraY + Math.sin(Date.now() * 0.0004) * 0.1;
         camera.lookAt(cfg.lookAtX, 0, -2);
-
         renderer!.render(scene, camera);
       };
 
       animate();
 
-      // ── Resize ───────────────────────────────────────────────────────────
       const handleResize = () => {
         if (!mount || !renderer) return;
-
         const w = mount.clientWidth || window.innerWidth;
         const h = mount.clientHeight || window.innerHeight;
-
-        // Update responsive config
         cfg = getResponsiveConfig(window.innerWidth);
         group.scale.setScalar(cfg.scale);
         camera.position.set(cfg.offsetX, cfg.cameraY, cfg.cameraZ);
         camera.lookAt(cfg.lookAtX, 0, -2);
-
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
@@ -164,6 +162,7 @@ export default function CurvedCarousel({
     return () => {
       disposed = true;
       cancelAnimationFrame(rafId);
+      window.removeEventListener('mousemove', handleMouseMove);
       (mount as any)._resizeCleanup?.();
       if (renderer) {
         renderer.dispose();

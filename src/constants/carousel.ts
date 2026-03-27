@@ -10,8 +10,8 @@ export const CARDS: CardData[] = Array.from(
 );
 
 // Cylinder / card dimensions
-export const RADIUS = 2;
+export const RADIUS = 2.2;
 export const CARD_W = 1.6 * 0.7;
 export const CARD_H = 2.4 * 0.7;
 export const CURVE_SEGS = 24;
-export const SPEED = 0.003;
+export const SPEED = -0.003;
