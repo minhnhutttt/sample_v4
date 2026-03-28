@@ -46,63 +46,6 @@ function NexusIcon2() {
   );
 }
 
-// function VideoPreview() {
-//   const videoRef = useRef(null);
-//   const wrapperRef = useRef(null);
-
-//   useEffect(() => {
-//     let ctx: any;
-
-//     async function initGSAP() {
-//       const { gsap } = await import("gsap");
-//       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-
-//       gsap.registerPlugin(ScrollTrigger);
-
-//       ctx = gsap.context(() => {
-//         // Set trạng thái ban đầu: phóng to
-//         gsap.set(wrapperRef.current, { scale: 0.7, transformOrigin: "center center" });
-
-//         // Scroll xuống → zoom out về scale(1)
-//         gsap.to(wrapperRef.current, {
-//           scale: 1,
-//           ease: "none",
-//           scrollTrigger: {
-//             trigger: wrapperRef.current,
-//             start: "top bottom",   // bắt đầu khi top video vào 80% viewport
-//             end: "bottom 50%",  // kết thúc khi bottom video qua 30% viewport
-//             scrub: 1.5,         // scrub mượt, số càng lớn càng lag nhẹ (cinematic)
-//             // markers: true,   // bỏ comment để debug
-//           },
-//         });
-//       }, wrapperRef);
-//     }
-
-//     initGSAP();
-
-//     return () => ctx?.revert();
-//   }, []);
-
-//   return (
-//     <div
-//       ref={wrapperRef}
-//       className="section-2__video-preview-wrapper relative overflow-hidden"
-//     >
-//       <video
-//         ref={videoRef}
-//         crossOrigin="anonymous"
-//         autoPlay
-//         loop
-//         muted
-//         playsInline
-//         className="w-full h-full absolute inset-0"
-//         aria-hidden="true"
-//       >
-//         <source src="/videos/fa_homepage_comp.mp4" type="video/mp4" />
-//       </video>
-//     </div>
-//   );
-// }
 // ─── Main Section component ───────────────────────────────────────────────────
 
 export default function HomeNexus() {
@@ -113,9 +56,9 @@ export default function HomeNexus() {
           <div className="section-2 row row--gx row--gy row--stretch">
             {/* ── Media column ── */}
             <div className="col col--6:md col--last col--first:md mt-0:md col-12 mt-2.75">
-              <div className="section-2__media pr-1:md">
+              <div className="section-2__media">
                 <div className="section-2__media-wrapper">
-                  <div className="mx-auto aspect-1630/1914 w-[500px]">
+                  <div className="mx-auto aspect-1630/1914 w-full md:max-w-[500px]">
                     <VideoPreview />
                   </div>
 
@@ -124,7 +67,7 @@ export default function HomeNexus() {
                     alt=""
                     width={653}
                     height={561}
-                    className="section-2__media-decoration img-full"
+                    className="section-2__media-decoration max-md:w-[100px]"
                     aria-hidden="true"
                   />
                 </div>
@@ -143,7 +86,7 @@ export default function HomeNexus() {
               {/* Title */}
               <div className="section-2__content-top">
                 <div className="section-2__title">
-                  <h2 className="text-h2 text-box-trim">
+                  <h2 className="text-h2 text-box-trim max-md:py-1">
                     <span>Your&nbsp;</span>
                     <span className="section-2__title-seen-word">
                       <span>Nexus</span>

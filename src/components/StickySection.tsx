@@ -27,6 +27,23 @@ export default function StickySection({ children }: StickySectionProps) {
     // Báo cho ScrollTrigger biết scroll container
     ScrollTrigger.defaults({ scroller });
 
+    // Tính top cho mobile (< 768px)
+    const applyMobileTop = () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        const screenHeight = window.innerHeight;
+        const layerHeight = layer.offsetHeight;
+        const top =
+          screenHeight >= layerHeight ? 0 : screenHeight - layerHeight;
+        layer.style.top = `${top}px`;
+      } else {
+        layer.style.top = '';
+      }
+    };
+
+    applyMobileTop();
+    window.addEventListener('resize', applyMobileTop);
+
     gsap.set(layer, {
       translateX: '5%',
       rotation: 5,
@@ -36,7 +53,7 @@ export default function StickySection({ children }: StickySectionProps) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        scroller, // chỉ định scroller cho trigger này
+        scroller,
         start: 'top bottom',
         end: 'top 30%',
         scrub: 1,
@@ -54,7 +71,7 @@ export default function StickySection({ children }: StickySectionProps) {
     return () => {
       tl.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
-      // Reset default scroller về window khi unmount
+      window.removeEventListener('resize', applyMobileTop);
       ScrollTrigger.defaults({ scroller: window });
     };
   }, []);
