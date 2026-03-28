@@ -23,11 +23,11 @@ interface ResponsiveConfig {
 function getResponsiveConfig(screenWidth: number): ResponsiveConfig {
   if (screenWidth < 768) {
     return {
-      scale: 0.65,
+      scale: 0.5,
       cameraZ: 3.5,
       cameraY: 1.2,
-      offsetX: -0.6,
-      lookAtX: -0.4,
+      offsetX: 0.6,
+      lookAtX: 0.4,
     };
   }
   return { scale: 1, cameraZ: 3.5, cameraY: 1.2, offsetX: 0, lookAtX: 0 };

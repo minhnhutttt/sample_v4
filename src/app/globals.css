@@ -7942,8 +7942,6 @@
     --aspect-ratio: 16/9;
     aspect-ratio: var(--aspect-ratio);
     border: 0;
-    display: block;
-    height: auto;
     width: 100%;
   }
 
@@ -8338,11 +8336,11 @@
   }
 
   .text-h2 {
-    font-size: var(--xxxxl, calc(var(--scale-text-rem) * 38.5))
+    font-size: var(--xxxxl, calc(var(--scale-text-rem) * 8.5))
       var(
         --n-xxxxl,
-        var(--md, calc(var(--scale-text-rem) * 22.8))
-          var(--n-md, calc(var(--scale-text-rem) * 14.3))
+        var(--md, calc(var(--scale-text-rem) * 10.8))
+          var(--n-md, calc(var(--scale-text-rem) * 4.3))
       );
     --lh: var(--xxxxl, calc(var(--scale-text-rem) * 30))
       var(
@@ -8416,7 +8414,7 @@
   }
 
   .text-h5 {
-    font-size: calc(var(--scale-text-rem) * 8.5);
+    font-size: calc(var(--scale-text-rem) * 3);
     --lh: calc(var(--scale-text-rem) * 9);
     font-family: Hardbop, Helvetica, Arial, sans-serif;
     font-weight: 700;
@@ -10012,7 +10010,7 @@
   }
 
   .btn--text-h5 {
-    font-size: calc(var(--scale-text-rem) * 8.5);
+    font-size: calc(var(--scale-text-rem) * 3);
     --lh: calc(var(--scale-text-rem) * 9);
     font-family: Hardbop, Helvetica, Arial, sans-serif;
     font-weight: 700;

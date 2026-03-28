@@ -4,6 +4,7 @@ import Header from '@/components/header';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import HomeFv from './components/HomeFv';
+import HomeNexus from './components/HomeNexus';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -27,6 +28,8 @@ const IndexPage = () => {
           <div className="scrollable__area-inner">
             <Header />
             <HomeFv />
+            <HomeNexus />
+            <HomeNexus />
           </div>
         </div>
       </div>

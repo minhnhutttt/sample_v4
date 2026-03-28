@@ -13,13 +13,13 @@ export default function HomeFv() {
     <section className="section section--under-next">
       <div className="section__layer section__layer--sticky section__layer--full-height ui-orange ui-background intro intro--show">
         <HomeText />
-        <div className="intro__footer mt-3:md pointer-events-none mt-1 px-1 py-1">
-          <div className="row row--gx row--bottom">
+        <div className="flex p-[20px] md:items-end">
+          <div className="">
             {/* Tagline column */}
-            <div className="col col--12 col--6:md">
-              <p className="text-box-trim text-left:md text-right">
+            <div className="text-[30px] tracking-widest">
+              <p className="">
                 Nexus of <br />
-                Curators and
+                Curators and Artists
               </p>
             </div>
           </div>

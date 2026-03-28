@@ -1,0 +1,178 @@
+'use client';
+
+import Image from 'next/image';
+import Link from 'next/link';
+
+import StickySection from '@/components/StickySection';
+import VideoPreview from '@/components/Videopreview';
+
+// ─── Decorative SVG icons (inline, from original paths) ───────────────────────
+
+function NexusIcon1() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      className="section-2__title-icon-1 icon-shake"
+      viewBox="0 0 56 89"
+      aria-hidden="true"
+    >
+      <path
+        fill="#fff"
+        fillRule="evenodd"
+        d="M30.34.05c-1.7.35-4.25 3.7-4.25 5.6 0 .38-.13.8-.25.95-.35.41-1.23 3.42-1.48 5.07-.13.7-.57 2.4-1.01 3.8-.44 1.39-.82 2.66-.88 2.85-.29 1.26-.6 2.28-.79 2.53a6.16 6.16 0 0 0-.66 2.47c.03.16-.22.63-.54 1.1-.34.48-.69 1.37-.82 2a4.9 4.9 0 0 1-.81 1.93c-.38.51-.54 1.08-.44 1.55.12.54.09.64-.13.32-.25-.32-.41-.25-.79.32-.28.38-.44.82-.37.92.09.12-.07.4-.32.63-.25.22-.47.6-.47.85 0 .51-.22.8-2.11 2.89-.76.82-1.36 1.64-1.36 1.86 0 .23-.12.42-.31.42-.16 0-.76.47-1.32 1.04a13.34 13.34 0 0 1-6.46 3.7c-1.35.35-2.58.83-2.77 1.05-.16.25-.7.54-1.2.67-.78.18-.85.31-.78 1.7.1 1.3.19 1.5.72 1.4.4-.07.41.05.03.35-1.16.88-.44 1.33 2.2 1.39 1.36.03 2.75.06 3.06.1.32.03 1.48.53 2.58 1.13 1.77.92 2.05.99 2.05.51.03-.35.19-.19.47.41.22.5.44.83.44.7.03-.16.5.06 1.04.47a25.15 25.15 0 0 0 2.17 1.37c.63.34 1.64.88 2.2 1.23 1.58.85 7.03 4.72 7.16 5 .06.16.28.45.5.67 2.96 3.13 5.26 8.51 5.7 13.36.1 1.2.06 3.48-.1 5.06-.22 1.81-.22 2.98-.03 3.23.2.2.2.45.03.54-.34.23-.19 2.5.32 4.21.38 1.37 1.13 2 1.51 1.33.19-.25.28-.22.41.07.16.38.35-.95.25-1.78-.03-.4 2.8-2.37 3.43-2.37.66-.03 1.55-1.93 1.26-2.72-.15-.35-.15-.83-.03-1.05.13-.19.16-1.07.03-1.93s-.1-1.74.03-1.96c.16-.22.2-1.24.13-2.25-.16-1.87.22-4.27.7-4.62.12-.1.28-.8.34-1.56.03-.72.35-1.86.66-2.53.35-.63.82-1.64 1.1-2.21.25-.54.63-1.02.79-1.02.19 0 .35-.22.35-.47 0-.29.34-1.05.78-1.71.41-.7.85-1.62.98-2.06.1-.48.31-.92.47-1.01.16-.1.28-.42.28-.73 0-.29.32-.89.73-1.3.38-.44.72-.86.72-.95.26-.92.57-1.58.76-1.58.12 0 .38-.38.57-.83.22-.44.5-.72.66-.63.15.1.44-.25.63-.76.15-.54.47-.95.63-.95.19 0 .34-.22.34-.47s.16-.48.32-.48c.19 0 .31-.19.31-.41 0-.2.73-1.14 1.58-2.06.88-.92 1.57-1.87 1.57-2.12s.13-.48.28-.48c.5 0 2.87-2.53 2.87-3.07 0-1-1.39-1.9-4.82-3.07-3.27-1.14-6.01-2.47-6.39-3.07-.1-.16-.28-.22-.44-.13-.13.1-.4-.06-.63-.31-.22-.26-.57-.48-.79-.48-.6 0-4.69-3.26-6.26-5l-1.36-1.4c-.4-.37-.72-.85-.72-1.07 0-.19-.19-.54-.44-.73-.25-.22-.54-.79-.66-1.26a5.04 5.04 0 0 0-.95-1.75 3.23 3.23 0 0 1-.78-1.67c0-.38-.13-.73-.26-.73-.15 0-.28-.2-.28-.41-.03-.2-.06-1.02-.13-1.8-.03-.8-.22-1.53-.37-1.66-.22-.12-.22-.34.03-.66.31-.35.28-.54-.07-.82-.28-.26-.34-.67-.22-1.4a4.3 4.3 0 0 0-.09-1.9c-.25-.6-.22-1.04.03-1.42.22-.38.25-.76.03-1.1-.19-.39-.19-.93.03-1.6.2-.56.35-1.29.35-1.64 0-.54.22-2.88.38-4.2.03-.2.16-.39.31-.39.41 0 .29-.85-.12-1.01-.22-.07-.7-.07-1.04 0Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function NexusIcon2() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      className="section-2__title-icon-2 icon-shake-reverse"
+      viewBox="0 0 56 89"
+      aria-hidden="true"
+    >
+      <path
+        fill="#fff"
+        fillRule="evenodd"
+        d="M30.34.05c-1.7.35-4.25 3.7-4.25 5.6 0 .38-.13.8-.25.95-.35.41-1.23 3.42-1.48 5.07-.13.7-.57 2.4-1.01 3.8-.44 1.39-.82 2.66-.88 2.85-.29 1.26-.6 2.28-.79 2.53a6.16 6.16 0 0 0-.66 2.47c.03.16-.22.63-.54 1.1-.34.48-.69 1.37-.82 2a4.9 4.9 0 0 1-.81 1.93c-.38.51-.54 1.08-.44 1.55.12.54.09.64-.13.32-.25-.32-.41-.25-.79.32-.28.38-.44.82-.37.92.09.12-.07.4-.32.63-.25.22-.47.6-.47.85 0 .51-.22.8-2.11 2.89-.76.82-1.36 1.64-1.36 1.86 0 .23-.12.42-.31.42-.16 0-.76.47-1.32 1.04a13.34 13.34 0 0 1-6.46 3.7c-1.35.35-2.58.83-2.77 1.05-.16.25-.7.54-1.2.67-.78.18-.85.31-.78 1.7.1 1.3.19 1.5.72 1.4.4-.07.41.05.03.35-1.16.88-.44 1.33 2.2 1.39 1.36.03 2.75.06 3.06.1.32.03 1.48.53 2.58 1.13 1.77.92 2.05.99 2.05.51.03-.35.19-.19.47.41.22.5.44.83.44.7.03-.16.5.06 1.04.47a25.15 25.15 0 0 0 2.17 1.37c.63.34 1.64.88 2.2 1.23 1.58.85 7.03 4.72 7.16 5 .06.16.28.45.5.67 2.96 3.13 5.26 8.51 5.7 13.36.1 1.2.06 3.48-.1 5.06-.22 1.81-.22 2.98-.03 3.23.2.2.2.45.03.54-.34.23-.19 2.5.32 4.21.38 1.37 1.13 2 1.51 1.33.19-.25.28-.22.41.07.16.38.35-.95.25-1.78-.03-.4 2.8-2.37 3.43-2.37.66-.03 1.55-1.93 1.26-2.72-.15-.35-.15-.83-.03-1.05.13-.19.16-1.07.03-1.93s-.1-1.74.03-1.96c.16-.22.2-1.24.13-2.25-.16-1.87.22-4.27.7-4.62.12-.1.28-.8.34-1.56.03-.72.35-1.86.66-2.53.35-.63.82-1.64 1.1-2.21.25-.54.63-1.02.79-1.02.19 0 .35-.22.35-.47 0-.29.34-1.05.78-1.71.41-.7.85-1.62.98-2.06.1-.48.31-.92.47-1.01.16-.1.28-.42.28-.73 0-.29.32-.89.73-1.3.38-.44.72-.86.72-.95.26-.92.57-1.58.76-1.58.12 0 .38-.38.57-.83.22-.44.5-.72.66-.63.15.1.44-.25.63-.76.15-.54.47-.95.63-.95.19 0 .34-.22.34-.47s.16-.48.32-.48c.19 0 .31-.19.31-.41 0-.2.73-1.14 1.58-2.06.88-.92 1.57-1.87 1.57-2.12s.13-.48.28-.48c.5 0 2.87-2.53 2.87-3.07 0-1-1.39-1.9-4.82-3.07-3.27-1.14-6.01-2.47-6.39-3.07-.1-.16-.28-.22-.44-.13-.13.1-.4-.06-.63-.31-.22-.26-.57-.48-.79-.48-.6 0-4.69-3.26-6.26-5l-1.36-1.4c-.4-.37-.72-.85-.72-1.07 0-.19-.19-.54-.44-.73-.25-.22-.54-.79-.66-1.26a5.04 5.04 0 0 0-.95-1.75 3.23 3.23 0 0 1-.78-1.67c0-.38-.13-.73-.26-.73-.15 0-.28-.2-.28-.41-.03-.2-.06-1.02-.13-1.8-.03-.8-.22-1.53-.37-1.66-.22-.12-.22-.34.03-.66.31-.35.28-.54-.07-.82-.28-.26-.34-.67-.22-1.4a4.3 4.3 0 0 0-.09-1.9c-.25-.6-.22-1.04.03-1.42.22-.38.25-.76.03-1.1-.19-.39-.19-.93.03-1.6.2-.56.35-1.29.35-1.64 0-.54.22-2.88.38-4.2.03-.2.16-.39.31-.39.41 0 .29-.85-.12-1.01-.22-.07-.7-.07-1.04 0Z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+// function VideoPreview() {
+//   const videoRef = useRef(null);
+//   const wrapperRef = useRef(null);
+
+//   useEffect(() => {
+//     let ctx: any;
+
+//     async function initGSAP() {
+//       const { gsap } = await import("gsap");
+//       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+
+//       gsap.registerPlugin(ScrollTrigger);
+
+//       ctx = gsap.context(() => {
+//         // Set trạng thái ban đầu: phóng to
+//         gsap.set(wrapperRef.current, { scale: 0.7, transformOrigin: "center center" });
+
+//         // Scroll xuống → zoom out về scale(1)
+//         gsap.to(wrapperRef.current, {
+//           scale: 1,
+//           ease: "none",
+//           scrollTrigger: {
+//             trigger: wrapperRef.current,
+//             start: "top bottom",   // bắt đầu khi top video vào 80% viewport
+//             end: "bottom 50%",  // kết thúc khi bottom video qua 30% viewport
+//             scrub: 1.5,         // scrub mượt, số càng lớn càng lag nhẹ (cinematic)
+//             // markers: true,   // bỏ comment để debug
+//           },
+//         });
+//       }, wrapperRef);
+//     }
+
+//     initGSAP();
+
+//     return () => ctx?.revert();
+//   }, []);
+
+//   return (
+//     <div
+//       ref={wrapperRef}
+//       className="section-2__video-preview-wrapper relative overflow-hidden"
+//     >
+//       <video
+//         ref={videoRef}
+//         crossOrigin="anonymous"
+//         autoPlay
+//         loop
+//         muted
+//         playsInline
+//         className="w-full h-full absolute inset-0"
+//         aria-hidden="true"
+//       >
+//         <source src="/videos/fa_homepage_comp.mp4" type="video/mp4" />
+//       </video>
+//     </div>
+//   );
+// }
+// ─── Main Section component ───────────────────────────────────────────────────
+
+export default function HomeNexus() {
+  return (
+    <div className="ui-green js-get-seen-section">
+      <StickySection>
+        <div className="sticky--sticky sticky--full-height pt-promo-header sticky px-1 pb-1">
+          <div className="section-2 row row--gx row--gy row--stretch">
+            {/* ── Media column ── */}
+            <div className="col col--6:md col--last col--first:md mt-0:md col-12 mt-2.75">
+              <div className="section-2__media pr-1:md">
+                <div className="section-2__media-wrapper">
+                  <div className="mx-auto aspect-1630/1914 w-[500px]">
+                    <VideoPreview />
+                  </div>
+
+                  <Image
+                    src="/images/helix-decoration.svg"
+                    alt=""
+                    width={653}
+                    height={561}
+                    className="section-2__media-decoration img-full"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              {/* Mobile sign-up stub */}
+              <div className="fixed-sign-up-button-stub is-hidden:md-up mt-3">
+                <Link href="/signup" className="btn btn--primary btn--block">
+                  Sign up
+                </Link>
+              </div>
+            </div>
+
+            {/* ── Content column ── */}
+            <div className="section-2__content col-divider__right:md col col--6:md col-12">
+              {/* Title */}
+              <div className="section-2__content-top">
+                <div className="section-2__title">
+                  <h2 className="text-h2 text-box-trim">
+                    <span>Your&nbsp;</span>
+                    <span className="section-2__title-seen-word">
+                      <span>Nexus</span>
+                      <NexusIcon1 />
+                      <NexusIcon2 />
+                    </span>
+                  </h2>
+                </div>
+              </div>
+
+              <hr className="my-1:md mt-4 mb-1" />
+
+              {/* Description */}
+              <div className="section-2__content-bottom">
+                <p className="section-2__description text-box-trim py-1">
+                  Join Nexus of Curators &amp; Artists, built on
+                  <span className="underline-text-piece">
+                    <span className="underline-text-piece__content">
+                      collaboration.
+                    </span>
+                  </span>
+                  <br />
+                  No gatekeeping and competition.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </StickySection>
+    </div>
+  );
+}
