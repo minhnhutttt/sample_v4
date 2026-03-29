@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
+import ScrollableLayout from '@/components/SmoothScroll';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -53,7 +54,9 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body className={`${noto.className} antialiased`}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <ScrollableLayout>{children}</ScrollableLayout>
+        </Providers>
       </body>
     </html>
   );

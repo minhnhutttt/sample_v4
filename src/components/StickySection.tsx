@@ -20,59 +20,49 @@ export default function StickySection({ children }: StickySectionProps) {
     const layer = layerRef.current;
     if (!section || !layer) return;
 
-    // Tìm scroll container thực sự
     const scroller = document.querySelector('.scrollable__area');
     if (!scroller) return;
 
-    // Báo cho ScrollTrigger biết scroll container
-    ScrollTrigger.defaults({ scroller });
+    // Tính top để layer không bị tràn ra ngoài viewport
+    const applyTop = () => {
+      const screenHeight = window.innerHeight;
+      const layerHeight = layer.offsetHeight;
+      const top = screenHeight >= layerHeight ? 0 : screenHeight - layerHeight;
+      layer.style.top = `${top}px`;
 
-    // Tính top cho mobile (< 768px)
-    const applyMobileTop = () => {
-      const isMobile = window.innerWidth < 768;
-      if (isMobile) {
-        const screenHeight = window.innerHeight;
-        const layerHeight = layer.offsetHeight;
-        const top =
-          screenHeight >= layerHeight ? 0 : screenHeight - layerHeight;
-        layer.style.top = `${top}px`;
-      } else {
-        layer.style.top = '';
-      }
+      ScrollTrigger.refresh();
     };
 
-    applyMobileTop();
-    window.addEventListener('resize', applyMobileTop);
+    applyTop();
+    window.addEventListener('resize', applyTop);
 
-    gsap.set(layer, {
-      translateX: '5%',
-      rotation: 5,
-      transformOrigin: '0% 0%',
-    });
+    const ctx = gsap.context(() => {
+      gsap.set(layer, {
+        translateX: '10%',
+        rotation: 10,
+        transformOrigin: '0% 0%',
+      });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        scroller,
-        start: 'top bottom',
-        end: 'top 30%',
-        scrub: 1,
-        onEnter: () => console.log('enter'),
-        onLeave: () => console.log('leave'),
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          scroller,
+          start: 'top bottom',
+          end: 'top top',
+          scrub: 1,
+        },
+      });
 
-    tl.to(layer, {
-      translateX: '0%',
-      rotation: 0,
-      ease: 'power2.out',
-    });
+      tl.to(layer, {
+        translateX: '0%',
+        rotation: 0,
+        ease: 'power2.out',
+      });
+    }, section);
 
     return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      window.removeEventListener('resize', applyMobileTop);
-      ScrollTrigger.defaults({ scroller: window });
+      ctx.revert();
+      window.removeEventListener('resize', applyTop);
     };
   }, []);
 

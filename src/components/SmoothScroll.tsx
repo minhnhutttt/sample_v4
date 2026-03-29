@@ -1,48 +1,28 @@
+// components/ScrollableLayout.tsx
 'use client';
 
-import { type ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ReactLenis } from 'lenis/react';
-import type { LenisRef } from 'lenis/react';
+import { useLenis } from '@/app/hooks/useLenis';
 
-gsap.registerPlugin(ScrollTrigger);
+// components/ScrollableLayout.tsx
 
-interface SmoothScrollGSAPProps {
+export default function ScrollableLayout({
+  children,
+}: {
   children: ReactNode;
-}
+}) {
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
 
-export default function SmoothScroll({ children }: SmoothScrollGSAPProps) {
-  const lenisRef = useRef<LenisRef>(null);
-
-  useEffect(() => {
-    function update(time: number) {
-      lenisRef.current?.lenis?.raf(time * 1000);
-    }
-
-    gsap.ticker.add(update);
-    gsap.ticker.lagSmoothing(0);
-
-    return () => {
-      gsap.ticker.remove(update);
-    };
-  }, []);
+  useLenis(scrollAreaRef);
 
   return (
-    <ReactLenis
-      root
-      ref={lenisRef}
-      options={{
-        lerp: 0.1,
-        duration: 1.2,
-        smoothWheel: true,
-        syncTouch: false,
-        autoRaf: false,
-        anchors: true,
-      }}
-    >
-      {children}
-    </ReactLenis>
+    <div className="scrollable scrollable--root">
+      <div ref={scrollAreaRef} className="scrollable__area">
+        <div>
+          <div className="scrollable__area-inner">{children}</div>
+        </div>
+      </div>
+    </div>
   );
 }

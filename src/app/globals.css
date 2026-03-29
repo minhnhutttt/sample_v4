@@ -468,6 +468,8 @@
   .section-4__card {
     height: 100%;
     perspective: 1000px;
+    transform-style: preserve-3d;
+    will-change: transform;
     width: 100%;
   }
 
@@ -914,8 +916,7 @@
 }
 
 .fixed-sign-up-button-stub {
-  height: var(--sign-up-height);
-  width: var(--sign-up-width);
+  width: var(--md, 15.0685vw) var(--n-md, calc(100% - var(--spacing) * 2));
 }
 
 @layer reset,base,utilities,components-base,components,overrides;

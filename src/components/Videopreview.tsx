@@ -180,8 +180,11 @@ export default function VideoPreview() {
       container.addEventListener('mouseleave', onMouseLeave);
 
       // ── ScrollTrigger ─────────────────────────────────────────────────────
+      const scroller = document.querySelector('.scrollable__area');
+
       scrollTriggerInstance = ScrollTrigger.create({
         trigger: container,
+        scroller: scroller ?? window, // ← thêm dòng này
         start: 'top 70%',
         end: '+=900',
         scrub: 1.5,
