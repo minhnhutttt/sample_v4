@@ -4,9 +4,12 @@ import dynamic from 'next/dynamic';
 
 import HomeText from './HomeText';
 
-const CurvedCarousel = dynamic(() => import('@/components/CurvedCarousel'), {
-  ssr: false,
-});
+const CurvedCarousel = dynamic(
+  () => import('@/components/three/CurvedCarousel'),
+  {
+    ssr: false,
+  },
+);
 
 export default function HomeFv() {
   return (

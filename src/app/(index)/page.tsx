@@ -7,6 +7,7 @@ import HomeFollow from './components/HomeFollow';
 import HomeFv from './components/HomeFv';
 import HomeNexus from './components/HomeNexus';
 import HomeSection05 from './components/HomeSection05';
+import HomeSection07 from './components/HomeSection07';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -30,6 +31,7 @@ const IndexPage = () => {
       <HomeNexus />
       <HomeFollow />
       <HomeSection05 />
+      <HomeSection07 />
       <div className="fixed-sign-up-button fixed-sign-up-button--transition-header">
         <a
           className="not-nuxt-link btn btn--space-between btn--primary btn--full btn--accent btn--large fixed-sign-up-button__btn"

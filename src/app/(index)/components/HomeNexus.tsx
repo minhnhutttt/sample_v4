@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import StickySection from '@/components/StickySection';
-import VideoPreview from '@/components/Videopreview';
+import VideoPreview from '@/components/three/Videopreview';
 
 // ─── Decorative SVG icons (inline, from original paths) ───────────────────────
 
