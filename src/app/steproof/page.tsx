@@ -60,19 +60,17 @@ const Workpage = () => {
           onClick={() => dispatch(openModal({ name: 'contact' }))}
         />
       </div>
-      <div className="">
+      <div className="relative">
         <img src="/assets/images/work.png" alt="" className="w-full" />
-      </div>
-      <div className="border-b border-[#424242]/15 py-[7.5rem]">
-        <h2 className="text-[4rem] leading-none font-bold text-[#9579C8] md:text-[7rem]">
+        <h2 className="absolute bottom-4 left-4 text-[4rem] leading-none font-bold text-[#9579C8] md:text-[7rem]">
           DRIVING EFFICIENCY THROUGH AUTOMATED MOBILITY LOGS.
         </h2>
-        <p className="mt-[2.4rem] text-[2.4rem] font-bold md:text-[3.2rem]">
+      </div>
+      <div className="flex flex-col justify-center pt-[7.5rem] text-center">
+        <p className="text-[2.4rem] font-bold md:text-[3.2rem]">
           出張・移動日当制度の課題を解決
         </p>
-      </div>
-      <div className="flex justify-center gap-[12.8rem] pt-[7.5rem] text-center">
-        <p className="text-[2rem] md:text-[2.4rem]">
+        <p className="mt-[2.4rem] text-[2rem] md:text-[2.4rem]">
           「記録している」と「証明できる」は、まったく違う。
           <br className="max-md:hidden" />
           Steproofは、煩雑な運用を排除しながら、
@@ -80,10 +78,10 @@ const Workpage = () => {
           制度活用に必要な客観的データを確実に残します。
         </p>
       </div>
-      <div className="space-y-[10rem] py-[18rem]">
+      <div className="space-y-[10rem] pt-[18rem]">
         <WorkItem
           id="section-A"
-          head="Assess"
+          head="Analyze"
           subHead="現状を見極める"
           title="現状課題の把握と知識不足の解消"
           text="IDENTIFYING CORE OPERATIONAL CHALLENGES."
@@ -93,7 +91,7 @@ const Workpage = () => {
         </WorkItem>
         <WorkItem
           id="section-B"
-          head="Envision"
+          head="Scheme"
           subHead="解決策を設計する"
           title={
             <>
@@ -118,6 +116,14 @@ const Workpage = () => {
           客観的な移動距離の証明から、距離に応じた規定計算、さらには報告に必要な文章の簡易出力までを自動化。
           従業員は使い慣れたツールで操作を完結でき、管理側の工数も大幅に削減されます。セキュアな環境下でスピーディーな導入を実現し、手間をかけない制度運用をスタートさせます。
         </WorkItem>
+      </div>
+      <div className="flex justify-center py-[8rem]">
+        <Button
+          lg
+          text="Steproofを使ってみる"
+          en="TRY USING Steproof"
+          onClick={() => dispatch(openModal({ name: 'contact' }))}
+        />
       </div>
       <div className="flex justify-center gap-[5.2rem] pb-[18rem] max-md:flex-col max-md:items-center">
         <figure>
