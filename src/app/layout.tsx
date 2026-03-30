@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import 'sonner/dist/styles.css';
@@ -11,6 +13,7 @@ import {
   SITE_URL_WITH_SCHEME,
   TWITTER,
 } from '@/config/constants';
+import { LoadingProvider } from '@/provider/LoadingProvider';
 
 import './globals.css';
 import { Providers } from './providers';
@@ -54,9 +57,13 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body className={`${noto.className} antialiased`}>
-        <Providers>
-          <ScrollableLayout>{children}</ScrollableLayout>
-        </Providers>
+        <Suspense>
+          <Providers>
+            <LoadingProvider>
+              <ScrollableLayout>{children}</ScrollableLayout>
+            </LoadingProvider>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );
