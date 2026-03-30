@@ -918,7 +918,19 @@
 .fixed-sign-up-button-stub {
   width: var(--md, 15.0685vw) var(--n-md, calc(100% - var(--spacing) * 2));
 }
-
+@media (min-width: 568px) and (max-width: 667px) and (max-aspect-ratio: 13/9),
+  (min-width: 668px) and (max-aspect-ratio: 10/11),
+  (min-width: 668px) and (min-height: 416px),
+  (min-width: 980px) {
+  .fixed-sign-up-button--above-footer {
+    position: absolute !important;
+    bottom: 140px;
+  }
+}
+.fixed-sign-up-button--above-footer {
+  position: absolute !important;
+  bottom: 175px;
+}
 @layer reset,base,utilities,components-base,components,overrides;
 @layer base {
   :root {
