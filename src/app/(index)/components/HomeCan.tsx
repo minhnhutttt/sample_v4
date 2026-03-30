@@ -65,19 +65,6 @@ const HomeCan = () => {
                 </td>
               </tr>
               <tr>
-                <td>広告の方向性指示</td>
-                <td>-</td>
-                <td>
-                  <p className="flex justify-center">
-                    <img
-                      src="/assets/images/ic-check.svg"
-                      className="max-md:w-7"
-                      alt=""
-                    />
-                  </p>
-                </td>
-              </tr>
-              <tr>
                 <td>改善内容の報告</td>
                 <td>-</td>
                 <td>
@@ -134,11 +121,13 @@ const HomeCan = () => {
                   </td>
                   <td>
                     <p>
-                      <span className="text-[20px] md:text-[36px]">85,000</span>
+                      <span className="text-[20px] md:text-[36px]">
+                        100,000
+                      </span>
                       <span className="text-[14px] md:text-[24px]">円</span>
                     </p>
                     <p className="text-[16px] font-medium md:text-[20px]">
-                      （税込価格　93,500円）
+                      （税込価格　110,000円）
                     </p>
                   </td>
                   <td>
@@ -160,12 +149,12 @@ const HomeCan = () => {
                   <td>
                     <p>
                       <span className="text-[20px] md:text-[36px]">
-                        1,020,000
+                        1,200,000
                       </span>
                       <span className="text-[14px] md:text-[24px]">円</span>
                     </p>
                     <p className="text-[16px] font-medium md:text-[20px]">
-                      （税込価格 1,122,000円）
+                      （税込価格 1,320,000円）
                     </p>
                   </td>
                   <td>
@@ -178,28 +167,6 @@ const HomeCan = () => {
                     <p className="text-[16px] font-medium md:text-[20px]">
                       （税込価格 396,000円）
                     </p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <p className="text-[20px] font-bold md:text-[32px]">
-                      導入費
-                    </p>
-                  </td>
-                  <td>
-                    <p>
-                      <span className="text-[20px] md:text-[36px]">
-                        200,000
-                      </span>
-                      <span className="text-[14px] md:text-[24px]">円</span>
-                    </p>
-                    <p className="text-[16px] font-medium md:text-[20px]">
-                      （税込価格 220,000円）
-                    </p>
-                  </td>
-                  <td>
-                    <span className="text-[20px] md:text-[36px]">0</span>
-                    <span className="text-[14px] md:text-[24px]">円</span>
                   </td>
                 </tr>
                 <tr>
@@ -250,21 +217,23 @@ const HomeCan = () => {
                 </tr>
                 <tr>
                   <td>
-                    <p className="text-[20px] font-bold md:text-[32px]">
-                      設定の更新
+                    <p className="text-[16px] font-bold md:text-[24px]">
+                      設定できる
+                      <br className="max-md:hidden" />
+                      キャンペーン数
                     </p>
                   </td>
                   <td>
                     <p>
                       <span className="text-[18px] md:text-[28px]">
-                        100回まで / 月
+                        15個まで
                       </span>
                     </p>
                   </td>
                   <td>
                     <p>
                       <span className="text-[18px] md:text-[28px]">
-                        10回まで / 月
+                        3個まで
                       </span>
                     </p>
                   </td>

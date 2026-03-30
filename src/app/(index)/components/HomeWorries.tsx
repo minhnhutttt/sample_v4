@@ -6,7 +6,7 @@ const HomeWorries = () => {
   const ref = useScrollAnimations();
   return (
     <div ref={ref} className="relative px-5 pt-25">
-      <div className="absolute inset-0 bottom-[2.5rem] bg-[url(/assets/images/worries.png)] bg-cover bg-center"></div>
+      <div className="absolute inset-0 bg-[url(/assets/images/worries.png)] bg-cover bg-center"></div>
       <div className="mx-auto w-full max-w-[800px]">
         <div className="fade-up mb-9 flex md:mb-13">
           <p className="font-inter bg-[#7C7C7C] text-[24px] font-bold text-white md:text-[32px]">

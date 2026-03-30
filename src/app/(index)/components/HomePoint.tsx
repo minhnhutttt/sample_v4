@@ -119,7 +119,7 @@ const HomePoint = () => {
                 <span className="-rotate-10">さらに</span>
               </div>
               <p className="text-[24px] leading-snug font-bold md:pr-13 md:text-[36px]">
-                継続は”<span className="u-text-gradient">ボタンを押す</span>
+                継続は”<span className="u-text-gradient">見守る</span>
                 ”だけ！
               </p>
             </div>
