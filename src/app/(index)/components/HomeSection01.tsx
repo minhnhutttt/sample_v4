@@ -11,7 +11,7 @@ const CurvedCarousel = dynamic(
   },
 );
 
-export default function HomeFv() {
+export default function HomeSection01() {
   return (
     <section className="section section--under-next">
       <div className="section__layer section__layer--sticky section__layer--full-height ui-orange ui-background intro intro--show">

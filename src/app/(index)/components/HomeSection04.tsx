@@ -72,7 +72,7 @@ function FlipCard({ card }: { card: Card }) {
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-export default function HomeFollow() {
+export default function HomeSection04() {
   const cardsRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
@@ -150,20 +150,16 @@ export default function HomeFollow() {
               {/* Description */}
               <div className="section-4__content-texts mb-0:md mt-9.5:md mb-4 py-1">
                 <p className="section-4__description text-box-trim">
-                  FOLLOW.ART is the{' '}
+                  FOLLOW.ART is the
+                  <span className="underline-text-piece">
+                    <span className="underline-text-piece__content">first</span>
+                  </span>
+                  and only
                   <span className="underline-text-piece">
                     <span className="underline-text-piece__content">
-                      {' '}
-                      first{' '}
+                      network
                     </span>
-                  </span>{' '}
-                  and only{' '}
-                  <span className="underline-text-piece">
-                    <span className="underline-text-piece__content">
-                      {' '}
-                      network{' '}
-                    </span>
-                  </span>{' '}
+                  </span>
                   made for curators and artists, combining tools for
                   professional presentation, visibility, connection and
                   knowledge sharing.

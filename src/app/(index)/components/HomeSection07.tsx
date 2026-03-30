@@ -1,6 +1,5 @@
 'use client';
 
-
 import Image from 'next/image';
 
 import StickySection from '@/components/StickySection';
@@ -143,37 +142,6 @@ function MobileTitle() {
 }
 // ─── Main Component ───────────────────────────────────────────────────────────
 
-const CARDS = [
-  {
-    id: 1,
-    image: 'https://picsum.photos/seed/1/400/600',
-    title: 'Irene Sánchez Gómez',
-    subtitle: 'Independent Curator · Germany',
-  },
-  {
-    id: 2,
-    image: 'https://picsum.photos/seed/1/400/600',
-    title: 'Farouk Alao',
-    subtitle: 'Multidisciplinary Artist · UK',
-  },
-  {
-    id: 3,
-    image: 'https://picsum.photos/seed/1/400/600',
-    title: 'Matina Charalambi',
-    subtitle: 'Independent Curator · Greece',
-  },
-  {
-    id: 4,
-    image: 'https://picsum.photos/seed/1/400/600',
-    title: 'Alberto Blanco',
-    subtitle: 'Artist · Italy',
-  },
-  {
-    id: 5,
-    image: 'https://picsum.photos/seed/1/400/600',
-  },
-];
-
 export default function HomeSection07() {
   return (
     <div className="ui-green" data-page-header-theme="green">
@@ -220,26 +188,24 @@ export default function HomeSection07() {
             {/* Left column */}
             <div className="section-7__content-side col col--6:md pr-1:md col-12">
               <p className="section-7__description-1 mb-0:md text-box-trim mb-1.75 p-1">
-                A{' '}
+                A
                 <span className="underline-text-piece">
                   <span className="underline-text-piece__content">
-                    {' '}
-                    dynamic directory{' '}
+                    dynamic directory
                   </span>
-                </span>{' '}
+                </span>
                 to find who you need and get found by those who matter.
               </p>
 
               {/* Mobile-only paragraph */}
               <p className="text-box-trim is-hidden:md-up p-1">
                 Think of it as the Yellow Pages for&nbsp;curators and artists.
-                No algorithms, no paywalls, no limits. It&apos;s an{' '}
+                No algorithms, no paywalls, no limits. It&apos;s an
                 <span className="underline-text-piece">
                   <span className="underline-text-piece__content">
-                    {' '}
-                    open space{' '}
+                    open space
                   </span>
-                </span>{' '}
+                </span>
                 for organic, community-driven networking.
               </p>
 
@@ -253,13 +219,12 @@ export default function HomeSection07() {
             <div className="section-7__content-side col col--6:md col-divider__right is-hidden:sm-down col-12">
               <p className="section-7__description-2 text-box-trim p-1">
                 Think of it as the Yellow Pages for curators and artists. No
-                algorithms, no paywalls, no limits. It&apos;s an{' '}
+                algorithms, no paywalls, no limits. It&apos;s an
                 <span className="underline-text-piece">
                   <span className="underline-text-piece__content">
-                    {' '}
-                    open space{' '}
+                    open space
                   </span>
-                </span>{' '}
+                </span>
                 for organic, community-driven networking.
               </p>
 

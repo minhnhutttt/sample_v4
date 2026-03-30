@@ -48,7 +48,7 @@ function NexusIcon2() {
 
 // ─── Main Section component ───────────────────────────────────────────────────
 
-export default function HomeNexus() {
+export default function HomeSection02() {
   return (
     <div className="ui-green js-get-seen-section">
       <StickySection>

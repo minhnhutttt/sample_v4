@@ -1,6 +1,5 @@
 'use client';
 
-
 import Image from 'next/image';
 
 import StickySection from '@/components/StickySection';
@@ -136,109 +135,103 @@ function MobileTitle() {
 export default function HomeSection05() {
   return (
     <div id="nexus-card" className="ui-pink" data-page-header-theme="pink">
-      <div className="section section--under-next">
-        <StickySection>
-          <div className="section-5 pt-promo-header px-1 pb-1">
-            {/* ── Header: wordmark + WebGL canvas ── */}
-            <div className="section-5__header col col-12">
-              <div className="title">
-                <h2 className="sr-only">Nexus card</h2>
-                <div className="title-children-wrapper">
-                  <SVGSquishTitle
-                    paths={PATHS_SECTION_5}
-                    className="section-5__title--desktop"
-                  />
-                  <MobileTitle />
-                  <Image
-                    src="/images/the.svg"
-                    alt="Nexus Card for artists — share your portfolio, bio, exhibitions, and awards with one professional tool."
-                    width={120}
-                    height={40}
-                    className="section-5__title-decoration"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* WebGL canvas — Three.js mounts here */}
-            <div className="landing-5-nexus-webgl section-5__header-webgl pointer-events-none">
-              <div className="landing-5-nexus-webgl__content">
-                <CurvedCards
-                  leftImage="https://picsum.photos/seed/1/400/600"
-                  rightImage="https://picsum.photos/seed/2/400/600"
+      <StickySection>
+        <div className="section-5 pt-promo-header px-1 pb-1">
+          {/* ── Header: wordmark + WebGL canvas ── */}
+          <div className="section-5__header col col-12">
+            <div className="title">
+              <h2 className="sr-only">Nexus card</h2>
+              <div className="title-children-wrapper">
+                <SVGSquishTitle
+                  paths={PATHS_SECTION_5}
+                  className="section-5__title--desktop is-hidden:sm-down svg-fix"
+                />
+                <MobileTitle />
+                <Image
+                  src="/images/the.svg"
+                  alt="Nexus Card for artists — share your portfolio, bio, exhibitions, and awards with one professional tool."
+                  width={120}
+                  height={40}
+                  className="section-5__title-decoration"
                 />
               </div>
             </div>
+          </div>
 
-            <hr className="col col-12 my-1" />
+          {/* WebGL canvas — Three.js mounts here */}
+          <div className="landing-5-nexus-webgl section-5__header-webgl pointer-events-none">
+            <div className="landing-5-nexus-webgl__content">
+              <CurvedCards
+                leftImage="https://picsum.photos/seed/1/400/600"
+                rightImage="https://picsum.photos/seed/2/400/600"
+              />
+            </div>
+          </div>
 
-            {/* ── Content row ── */}
-            <div className="section-5__content row row--gx col col-12 min-[568px]:items-stretch!">
-              {/* Left column */}
-              <div className="section-5__content-side col col--6:md col-12">
-                <p className="section-5__description-1 mb-0:md text-box-trim mb-1.75 p-1">
-                  Your{' '}
-                  <span className="underline-text-piece">
-                    <span className="underline-text-piece__content">
-                      {' '}
-                      Digital Portfolio{' '}
-                    </span>
-                  </span>{' '}
-                  Evolved. A new standard for professional art presentation and
-                  discoverability.
-                </p>
+          <hr className="col col-12 my-1" />
 
-                {/* Mobile-only second paragraph */}
-                <p className="text-box-trim is-hidden:md-up p-1">
-                  Comprehensive, shareable snapshot of your{' '}
-                  <span className="underline-text-piece">
-                    <span className="underline-text-piece__content">
-                      {' '}
-                      creative{' '}
-                    </span>
+          {/* ── Content row ── */}
+          <div className="section-5__content row row--gx col col-12 min-[568px]:items-stretch!">
+            {/* Left column */}
+            <div className="section-5__content-side col col--6:md col-12">
+              <p className="section-5__description-1 mb-0:md text-box-trim mb-1.75 p-1">
+                Your
+                <span className="underline-text-piece">
+                  <span className="underline-text-piece__content">
+                    Digital Portfolio
                   </span>
-                  &nbsp;
-                  <span className="underline-text-piece">
-                    <span className="underline-text-piece__content">
-                      {' '}
-                      Identity.{' '}
-                    </span>
-                  </span>{' '}
-                  No more &ldquo;find me on Insta&rdquo;. Add it to your Wallet
-                  app and share with one click. Let&nbsp;your Nexus Card do the
-                  talking while you focus on creating.
-                </p>
+                </span>
+                Evolved. A new standard for professional art presentation and
+                discoverability.
+              </p>
 
-                {/* Mobile CTA */}
-                <div className="section-5__btn-wrapper is-hidden:md-up mt-7">
-                  <SignUpButton />
-                </div>
+              {/* Mobile-only second paragraph */}
+              <p className="text-box-trim is-hidden:md-up p-1">
+                Comprehensive, shareable snapshot of your
+                <span className="underline-text-piece">
+                  <span className="underline-text-piece__content">
+                    creative
+                  </span>
+                </span>
+                &nbsp;
+                <span className="underline-text-piece">
+                  <span className="underline-text-piece__content">
+                    Identity.
+                  </span>
+                </span>
+                No more &ldquo;find me on Insta&rdquo;. Add it to your Wallet
+                app and share with one click. Let&nbsp;your Nexus Card do the
+                talking while you focus on creating.
+              </p>
+
+              {/* Mobile CTA */}
+              <div className="section-5__btn-wrapper is-hidden:md-up mt-7">
+                <SignUpButton />
               </div>
+            </div>
 
-              {/* Right column — desktop only */}
-              <div className="section-5__content-side col col--6:md col-divider__right is-hidden:sm-down col-12">
-                <p className="section-5__description-2 text-box-trim p-1">
-                  Comprehensive, shareable snapshot of your{' '}
-                  <span className="underline-text-piece">
-                    <span className="underline-text-piece__content">
-                      {' '}
-                      creative Identity.{' '}
-                    </span>
-                  </span>{' '}
-                  No more &ldquo;find me on Insta&rdquo;. Add it to your Wallet
-                  app and share with one click. Let&nbsp;your Nexus Card do the
-                  talking while you focus on creating.
-                </p>
+            {/* Right column — desktop only */}
+            <div className="section-5__content-side col col--6:md col-divider__right is-hidden:sm-down col-12">
+              <p className="section-5__description-2 text-box-trim p-1">
+                Comprehensive, shareable snapshot of your
+                <span className="underline-text-piece">
+                  <span className="underline-text-piece__content">
+                    creative Identity.
+                  </span>
+                </span>
+                No more &ldquo;find me on Insta&rdquo;. Add it to your Wallet
+                app and share with one click. Let&nbsp;your Nexus Card do the
+                talking while you focus on creating.
+              </p>
 
-                {/* Desktop CTA */}
-                <div className="section-5__btn-grid">
-                  <SignUpButton />
-                </div>
+              {/* Desktop CTA */}
+              <div className="section-5__btn-grid">
+                <SignUpButton />
               </div>
             </div>
           </div>
-        </StickySection>
-      </div>
+        </div>
+      </StickySection>
     </div>
   );
 }

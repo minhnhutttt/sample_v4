@@ -156,33 +156,28 @@ function sp(
 
 // ── Per-card state ────────────────────────────────────────────────────────
 interface CardState {
-  // Physics position (spring toward logical target)
   posX: number;
   velX: number;
   posY: number;
   velY: number;
   posZ: number;
   velZ: number;
-  // Rotation springs
   rx: number;
   vrx: number;
   ry: number;
   vry: number;
   rz: number;
   vrz: number;
-  // Warp spring
   wx: number;
   vwx: number;
   wy: number;
   vwy: number;
   tw: number;
   vtw: number;
-  // Unique noise offsets for multi-frequency idle sway
   p0: number;
   p1: number;
   p2: number;
   p3: number;
-  // Track previous velocity for turbulence
   prevVelX: number;
 }
 
@@ -224,17 +219,17 @@ export default function CurvedSlider({
   const rafRef = useRef<number>(0);
   const N = cards.length;
   const CENTER = Math.floor(N / 2);
-  const targetRef = useRef(CENTER);
+  const targetRef = useRef(0);
   const baseOffRef = useRef(0);
   const dragging = useRef(false);
   const dragStartX = useRef(0);
   const dragDelta = useRef(0);
   const dragVel = useRef(0);
-  const [activeIndex, setActiveIndex] = useState(CENTER);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const CW = 3.0,
-    CH = 4.0,
-    SPACING = 3.7,
+  const CW = 7.0,
+    CH = 7.0,
+    SPACING = 8,
     SEGS = 44;
 
   useEffect(() => {
@@ -244,13 +239,12 @@ export default function CurvedSlider({
       H = el.clientHeight;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#6d8299');
 
     const cam = new THREE.PerspectiveCamera(40, W / H, 0.1, 100);
     cam.position.set(0, 0.6, 11.5);
     cam.lookAt(0, -0.1, 0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(W, H);
     el.appendChild(renderer.domElement);
@@ -283,8 +277,6 @@ export default function CurvedSlider({
         map: tex,
         roughness: 0.88,
         metalness: 0,
-        transparent: true,
-        opacity: 1,
       });
       const mesh = new THREE.Mesh(geo, mat);
       const s = makeState(i, slot * SPACING);
@@ -308,43 +300,33 @@ export default function CurvedSlider({
       const dt = Math.min(t - prevT, 0.05);
       prevT = t;
 
-      // ── Base scroll (fast snappy reference) ──────────────────────────
       const logTarget =
         (targetRef.current - centerSlot) * -SPACING +
         (dragging.current ? dragDelta.current : 0);
       baseOffRef.current += (logTarget - baseOffRef.current) * 0.14;
       const baseOff = baseOffRef.current;
 
-      // Global scroll speed (world units/frame) — drives wind intensity
       const scrollSpeed = (baseOff - prevBaseOff) / (dt || 0.016);
       prevBaseOff = baseOff;
-      const windMag = Math.abs(scrollSpeed); // how strong is the wind right now
+      const windMag = Math.abs(scrollSpeed);
 
       meshes.forEach((mesh, i) => {
         const s = states[i];
         const slot = i - centerSlot;
         const absSl = Math.abs(slot);
 
-        // ── Logical target X ──────────────────────────────────────────
         const logX = slot * SPACING + baseOff;
 
-        // ── X spring: outer cards much softer (= more flutter lag) ────
-        // Center: k=320 fast, outer k=28 very floaty
-        // X spring: outer cards floaty but critically damped so no oscillation
         const k_x = slot === 0 ? 320 : Math.max(18, 320 - absSl * 100);
         const d_x =
           slot === 0 ? 2 * Math.sqrt(320) * 1.0 : 2 * Math.sqrt(k_x) * 1.05;
         [s.posX, s.velX] = sp(s.posX, s.velX, logX, k_x, d_x, dt);
         mesh.position.x = s.posX;
 
-        // Wind force = how far this card lags behind its logical pos
         const lag = logX - s.posX;
-        // Acceleration jolt = change in velocity (turbulence burst)
         const accel = (s.velX - s.prevVelX) / (dt || 0.016);
         s.prevVelX = s.velX;
 
-        // ── Idle multi-freq sway (always active, heavier for outer cards) ─
-        // Use 3 overlapping sine waves per axis for organic feel
         const idleAmp = slot === 0 ? 0.0 : 0.025 + absSl * 0.022;
         const idleY =
           idleAmp *
@@ -360,7 +342,6 @@ export default function CurvedSlider({
         const idleRX = idleAmp * 0.35 * Math.sin(t * 0.7 + s.p3);
         const idleRY = idleAmp * 0.4 * Math.cos(t * 0.65 + s.p3 + 2.0);
 
-        // ── Wind-driven rotation springs (critically damped: d = 2*sqrt(k)*1.1) ──
         const tRZ =
           lag * (0.08 + absSl * 0.04) + accel * (0.001 + absSl * 0.0005);
         const k_rz = 36;
@@ -377,13 +358,11 @@ export default function CurvedSlider({
         const d_ry = 2 * Math.sqrt(k_ry) * 1.1;
         [s.ry, s.vry] = sp(s.ry, s.vry, tRY, k_ry, d_ry, dt);
 
-        // ── Y spring ──────────────────────────────────────────────────
         const tY = Math.abs(lag) * (0.07 + absSl * 0.04) + idleY;
         const k_y = 36;
         const d_y = 2 * Math.sqrt(k_y) * 1.1;
         [s.posY, s.velY] = sp(s.posY, s.velY, tY, k_y, d_y, dt);
 
-        // ── Z spring ──────────────────────────────────────────────────
         const slotF = s.posX / SPACING;
         const absDist = Math.abs(slotF);
         const tZ = -Math.min(absDist, 2) * 0.4 - Math.abs(lag) * 0.05;
@@ -393,14 +372,11 @@ export default function CurvedSlider({
         mesh.position.y = s.posY;
         mesh.position.z = s.posZ;
 
-        // ── Profile: smooth lerp between two adjacent profiles by fractional slot ──
-        // Avoid snapping (Math.round) which causes a "kick" every time slotR changes.
         const slotFloor = Math.floor(slotF);
         const slotCeil = slotFloor + 1;
-        const frac = slotF - slotFloor; // 0..1 between floor and ceil
+        const frac = slotF - slotFloor;
         const profA = getProfile(slotFloor);
         const profB = getProfile(slotCeil);
-        // Smooth-step frac so blend accelerates/decelerates naturally
         const t3 = frac * frac * (3 - 2 * frac);
         const prof: WarpProfile = {
           warpX: profA.warpX + (profB.warpX - profA.warpX) * t3,
@@ -412,7 +388,6 @@ export default function CurvedSlider({
           offsetY: profA.offsetY + (profB.offsetY - profA.offsetY) * t3,
         };
 
-        // ── Warp springs (overdamped — no flap after settle) ──────────
         const flapAmt = Math.min(Math.pow(Math.abs(lag), 1.4) * 0.12, 0.55);
         const tWX = prof.warpX + flapAmt;
         const tWY = prof.warpY + flapAmt * 0.75;
@@ -433,22 +408,15 @@ export default function CurvedSlider({
           0.1,
         );
 
-        // ── Final rotation — direct from springs, no extra lerp ───────
         mesh.rotation.x = prof.tiltX + s.rx;
         mesh.rotation.y = prof.tiltY + s.ry;
         mesh.rotation.z = prof.tiltZ + s.rz + idleRZ;
 
-        // ── Scale: slight squish when moving fast ─────────────────────
         const ts =
           (1.0 - Math.min(absDist, 2) * 0.08) *
           (1 + Math.min(windMag, 4) * 0.008);
         mesh.scale.x += (ts - mesh.scale.x) * 0.07;
         mesh.scale.y = mesh.scale.x;
-
-        // ── Opacity ──────────────────────────────────────────────────
-        const to = Math.max(0.25, 1.0 - Math.min(absDist, 2) * 0.32);
-        (mesh.material as THREE.MeshStandardMaterial).opacity +=
-          (to - (mesh.material as THREE.MeshStandardMaterial).opacity) * 0.07;
       });
 
       renderer.render(scene, cam);
@@ -513,17 +481,36 @@ export default function CurvedSlider({
     [SPACING],
   );
 
+  // ── FIX: lưu vel trước khi reset để tránh mất giá trị ─────────────────
   const onPointerUp = useCallback(
     (e: React.PointerEvent) => {
       if (!dragging.current) return;
       dragging.current = false;
+
       const dx = e.clientX - dragStartX.current;
+      const vel = dragVel.current; // lưu lại trước khi reset
+
+      // Reset ngay để animation loop không bị offset thêm
       dragDelta.current = 0;
-      if (dragVel.current < -0.015 || dx < -55) goTo(activeIndex + 1);
-      else if (dragVel.current > 0.015 || dx > 55) goTo(activeIndex - 1);
       dragVel.current = 0;
+
+      if (vel < -0.015 || dx < -55) goTo(activeIndex + 1);
+      else if (vel > 0.015 || dx > 55) goTo(activeIndex - 1);
     },
     [activeIndex, goTo],
+  );
+
+  // ── FIX: kiểm tra hasPointerCapture trước khi xử lý pointerleave ──────
+  // Trên mobile, pointerleave vẫn fire dù đang có pointer capture,
+  // nên phải bỏ qua để không cắt ngang drag giữa chừng.
+  const onPointerLeave = useCallback(
+    (e: React.PointerEvent) => {
+      if (!dragging.current) return;
+      // Nếu element vẫn đang capture pointer → đang drag thật sự → bỏ qua
+      if (mountRef.current?.hasPointerCapture(e.pointerId)) return;
+      onPointerUp(e);
+    },
+    [onPointerUp],
   );
 
   return (
@@ -534,9 +521,9 @@ export default function CurvedSlider({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
+        onPointerLeave={onPointerLeave}
       />
-      <nav className="absolute right-0 bottom-7 left-0 z-10 flex items-center justify-center gap-8">
+      <nav className="absolute right-0 bottom-0 left-0 z-10 flex items-center justify-center gap-8">
         <button
           onClick={() => goTo(activeIndex - 1)}
           disabled={activeIndex === 0}
@@ -559,16 +546,7 @@ export default function CurvedSlider({
           </svg>
           Prev
         </button>
-        <div className="flex items-center gap-[7px]">
-          {cards.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              style={{ transition: 'width 0.4s ease, background 0.3s' }}
-              className={`h-[3px] rounded-full ${i === activeIndex ? 'w-5 bg-white' : 'w-[5px] bg-white/30 hover:bg-white/55'}`}
-            />
-          ))}
-        </div>
+
         <button
           onClick={() => goTo(activeIndex + 1)}
           disabled={activeIndex === N - 1}

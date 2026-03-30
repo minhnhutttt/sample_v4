@@ -3,11 +3,14 @@ import type { Metadata } from 'next';
 import Header from '@/components/header';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
-import HomeFollow from './components/HomeFollow';
-import HomeFv from './components/HomeFv';
-import HomeNexus from './components/HomeNexus';
+import HomeSection01 from './components/HomeSection01';
+import HomeSection02 from './components/HomeSection02';
+import HomeSection03 from './components/HomeSection03';
+import HomeSection04 from './components/HomeSection04';
 import HomeSection05 from './components/HomeSection05';
 import HomeSection07 from './components/HomeSection07';
+import HomeSection09 from './components/HomeSection09';
+import HomeSection10 from './components/HomeSection10';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -27,31 +30,14 @@ const IndexPage = () => {
   return (
     <div>
       <Header />
-      <HomeFv />
-      <HomeNexus />
-      <HomeFollow />
+      <HomeSection01 />
+      <HomeSection02 />
+      <HomeSection04 />
       <HomeSection05 />
       <HomeSection07 />
-      <div className="fixed-sign-up-button fixed-sign-up-button--transition-header">
-        <a
-          className="not-nuxt-link btn btn--space-between btn--primary btn--full btn--accent btn--large fixed-sign-up-button__btn"
-          href="/signup"
-          title=""
-        >
-          <span className="btn__content">
-            <span className="btn__text">
-              <span className="btn__text-text">Join</span>
-            </span>
-            <svg
-              className="btn__icon icon icon-step-next w-4"
-              role="presentation"
-              width="18px"
-              height="18px"
-              viewBox="0 0 18 18"
-            ></svg>
-          </span>
-        </a>
-      </div>
+      <HomeSection09 />
+      <HomeSection03 />
+      <HomeSection10 />
     </div>
   );
 };
