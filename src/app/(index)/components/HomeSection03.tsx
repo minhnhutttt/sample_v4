@@ -49,12 +49,10 @@ function PersonCard({ person }: { person: Person }) {
         className="img-full"
         style={{ position: 'relative', width: 160, height: 160 }}
       >
-        <Image
+        <img
           src={`${person.image}`}
           alt={person.name}
-          fill
-          sizes="(max-width: 640px) 320px, (max-width: 768px) 640px, (max-width: 1024px) 768px, (max-width: 1280px) 1024px, 1536px"
-          style={{ objectFit: 'cover' }}
+          className="h-full w-full object-cover"
         />
       </div>
     </li>
