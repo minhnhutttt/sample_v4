@@ -8,4 +8,40 @@
 @layer components {
 }
 @layer utilities {
+  @keyframes floatA {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+  @keyframes floatB {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes floatC {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  .animate-float-slow {
+    animation: floatA 4.5s ease-in-out infinite;
+  }
+  .animate-float-mid {
+    animation: floatB 3.8s ease-in-out infinite 0.6s;
+  }
+  .animate-float-fast {
+    animation: floatC 5s ease-in-out infinite 1.2s;
+  }
 }
