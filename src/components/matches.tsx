@@ -51,11 +51,11 @@ const Matches = async () => {
                     </span>
                   )}
                 </div>
-                <p className="text-[28px] text-[#FF0000] md:text-[36px]">
+                {/* <p className="text-[28px] text-[#FF0000] md:text-[36px]">
                   {matches.leo_blacks?.match_time
                     ? `（${matches.leo_blacks.match_time}）`
                     : '\u00A0'}
-                </p>
+                </p> */}
                 <div className="flex flex-col items-center justify-center gap-2.5 py-4">
                   <Link
                     href={matches.leo_blacks?.match_url ?? '#'}
@@ -166,11 +166,11 @@ const Matches = async () => {
                     </span>
                   )}
                 </div>
-                <p className="text-[28px] text-[#FF0000] md:text-[36px]">
+                {/* <p className="text-[28px] text-[#FF0000] md:text-[36px]">
                   {matches.leo_niners?.match_time
                     ? `（${matches.leo_niners.match_time}）`
                     : '\u00A0'}
-                </p>
+                </p> */}
                 <div className="flex flex-col items-center justify-center gap-2.5 py-4">
                   <Link
                     href={matches.leo_niners?.match_url ?? '#'}
