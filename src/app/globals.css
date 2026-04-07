@@ -44,4 +44,9 @@
   .animate-float-fast {
     animation: floatC 5s ease-in-out infinite 1.2s;
   }
+
+  .u-text-stroke {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #0067d3;
+  }
 }

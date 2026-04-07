@@ -1,5 +1,7 @@
 'use client';
 
+import Cta from '@/components/cta';
+
 // ─── Main Hero Section ────────────────────────────────────────────────────────
 export default function HomeFv() {
   return (
@@ -67,17 +69,9 @@ export default function HomeFv() {
       <div className="relative mt-8 w-full px-5 py-10 md:py-15">
         <div className="absolute inset-0 bg-[#2F81D6] mix-blend-multiply"></div>
         <div className="mx-auto w-full max-w-[1100px] max-md:flex max-md:justify-center">
-          <button className="group relative flex h-20 w-[300px] items-center justify-center gap-4 rounded-md bg-[linear-gradient(90deg,_#FF493E_0%,_#FFA826_100%)] px-10 py-5 text-center text-[18px] font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl active:scale-95 md:h-[99px] md:w-[354px] md:text-[22px]">
-            <span>掲載を申し込む</span>
-            <span className="absolute right-5 transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
+          <Cta />
         </div>
       </div>
-
-      {/* ── Tailwind animation keyframes via style tag ────────────────────── */}
-      <style jsx>{``}</style>
     </section>
   );
 }
