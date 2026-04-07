@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
-import HomeFv from './components/HomeFv';
-import HomePoint from './components/HomePoint';
-import HomeReasons from './components/HomeReasons';
+import HomeBusinesses from './components/homeBusinesses';
+import HomeFv from './components/homeFv';
+import HomePoint from './components/homePoint';
+import HomeReasons from './components/homeReasons';
 import HomeTrust from './components/homeTrust';
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ const IndexPage = () => {
       <HomePoint />
       <HomeReasons />
       <HomeTrust />
+      <HomeBusinesses />
     </div>
   );
 };

@@ -2,8 +2,8 @@
 
 export default function HomeTrust() {
   return (
-    <section className="w-full bg-[url(/assets/images/trust-bg.png)] bg-cover bg-bottom-right px-6 py-20 md:bg-center md:px-16">
-      <div className="mx-auto flex max-w-[1100px] flex-col items-end gap-16 lg:flex-row">
+    <section className="w-full bg-[url(/assets/images/trust-bg.png)] bg-cover bg-bottom-right px-6 md:bg-center md:px-16 md:pt-20 md:pb-16">
+      <div className="mx-auto flex max-w-[1100px] flex-col items-end gap-16 xl:flex-row">
         <div className="flex flex-1 flex-col pb-5">
           <h2 className="text-[26px] leading-snug font-black tracking-tight whitespace-nowrap text-[#0067D3] md:text-[48px]">
             圧倒的な信頼<span className="text-[#1A4673]">を生む</span>
