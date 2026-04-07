@@ -85,7 +85,7 @@ const Matches = async () => {
                   </Link>
                 </div>
               </div>
-              <div className="flex w-1/2 flex-col">
+              <div className="flex w-1/2 flex-col items-center">
                 <div className="flex-1">
                   <div className="line-clamp-4 text-[14px] font-semibold md:text-[16px]">
                     {matches.leo_blacks?.area || '--'}
@@ -155,7 +155,7 @@ const Matches = async () => {
 
           <div>
             <div className="flex justify-center gap-5">
-              <div className="w-1/2">
+              <div className="flex w-1/2 flex-col items-center">
                 <div>
                   <span className="text-[40px] font-semibold md:text-[55px]">
                     {matches.leo_niners?.match_date || '\u00A0'}
@@ -201,7 +201,7 @@ const Matches = async () => {
                 </div>
               </div>
 
-              <div className="flex w-1/2 flex-col">
+              <div className="flex w-1/2 flex-col items-center">
                 <div className="flex-1">
                   <div className="line-clamp-4 text-[14px] font-semibold md:text-[16px]">
                     {matches.leo_niners?.area || '--'}
