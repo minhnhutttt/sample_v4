@@ -17,7 +17,7 @@ const Matches = async () => {
       : matches.leo_niners?.opponent_logo?.url || '/assets/images/logo2.png';
 
   return (
-    <div className="mx-auto grid w-full max-w-282.5 gap-[24px] lg:grid-cols-2">
+    <div className="mx-auto grid w-full max-w-[500px] gap-[24px] lg:max-w-282.5 lg:grid-cols-2">
       {/* Leo Blacks */}
       <div className="flex flex-col">
         <div className="flex items-center justify-center gap-2 pt-7 text-[16px] font-semibold">
@@ -112,9 +112,13 @@ const Matches = async () => {
                   </div>
                 </div>
                 <div className="">
-                  <div className="flex h-11 w-[214px] overflow-hidden rounded-full border border-black">
-                    <p className="flex w-[52px] items-center justify-center bg-black">
-                      <img src="/assets/images/ic-basketball.svg" alt="" />
+                  <div className="flex h-11 w-[170px] overflow-hidden rounded-full border border-black md:w-[214px]">
+                    <p className="flex w-10 items-center justify-center bg-black md:w-[52px]">
+                      <img
+                        src="/assets/images/ic-basketball.svg"
+                        className="max-md:w-5"
+                        alt=""
+                      />
                     </p>
                     <p className="flex flex-1 items-center justify-center truncate text-[14px] font-semibold md:text-[18px]">
                       {matches.leo_blacks?.notification || '--'}
@@ -224,9 +228,13 @@ const Matches = async () => {
                   </div>
                 </div>
                 <div className="">
-                  <div className="flex h-11 w-[214px] overflow-hidden rounded-full border border-black">
-                    <p className="flex w-[52px] items-center justify-center bg-black">
-                      <img src="/assets/images/ic-basketball.svg" alt="" />
+                  <div className="flex h-11 w-[170px] overflow-hidden rounded-full border border-black md:w-[214px]">
+                    <p className="flex w-10 items-center justify-center bg-black md:w-[52px]">
+                      <img
+                        src="/assets/images/ic-basketball.svg"
+                        className="max-md:w-5"
+                        alt=""
+                      />
                     </p>
                     <p className="flex flex-1 items-center justify-center truncate text-[14px] font-semibold md:text-[18px]">
                       {matches.leo_niners?.notification || '--'}

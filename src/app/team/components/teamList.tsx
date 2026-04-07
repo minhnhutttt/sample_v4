@@ -69,7 +69,7 @@ export default function TeamList({ initialTeam01, initialTeam02 }: Props) {
                   href="/history"
                   className="flex h-[34px] w-[169px] items-center justify-center gap-2 bg-[linear-gradient(94deg,_#FF5E5E_3.04%,_#FF4E4E_113.13%)] text-[14px] text-white"
                 >
-                  <img src="/assets/images/ic-list.svg" alt="" />
+                  <img src="/assets/images/ic-trophy.svg" alt="" />
                   <span>これまでの実績</span>
                 </TransitionLink>
               </div>
@@ -105,7 +105,7 @@ export default function TeamList({ initialTeam01, initialTeam02 }: Props) {
                   href="/history"
                   className="flex h-[34px] w-[169px] items-center justify-center gap-2 bg-[linear-gradient(94deg,_#FF5E5E_3.04%,_#FF4E4E_113.13%)] text-[14px] text-white"
                 >
-                  <img src="/assets/images/ic-list.svg" alt="" />
+                  <img src="/assets/images/ic-trophy.svg" alt="" />
                   <span>これまでの実績</span>
                 </TransitionLink>
               </div>

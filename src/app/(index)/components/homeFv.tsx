@@ -116,7 +116,7 @@ const HomeFv = ({ topics }: { topics: React.ReactNode }) => {
         <video
           src="/assets/videos/fv.mp4"
           loop
-          controls
+          controls={false}
           muted
           autoPlay
           preload="auto"
