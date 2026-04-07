@@ -1,8 +1,7 @@
-import type { CSSProperties } from 'react';
+import { Suspense } from 'react';
 
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
-import { Toaster } from 'sonner';
+import { Bebas_Neue, Noto_Sans_JP, Orbitron } from 'next/font/google';
 import 'sonner/dist/styles.css';
 
 import Footer from '@/components/footer';
@@ -15,6 +14,7 @@ import {
   SITE_URL_WITH_SCHEME,
   TWITTER,
 } from '@/config/constants';
+import { LoadingProvider } from '@/providers/LoadingProvider';
 
 import './globals.css';
 import { Providers } from './providers';
@@ -22,6 +22,17 @@ import { Providers } from './providers';
 const noto = Noto_Sans_JP({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
+});
+
+const bebas_neue = Bebas_Neue({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-bebas-neue',
+});
+const orbitron = Orbitron({
+  weight: ['600'],
+  subsets: ['latin'],
+  variable: '--font-orbitron',
 });
 
 export const metadata: Metadata = {
@@ -55,38 +66,20 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const toastStyle: CSSProperties = {
-    background: '#111827',
-    color: '#ffffff',
-    border: '1px solid #374151',
-    borderRadius: '12px',
-  };
-
   return (
-    <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
-        <Toaster
-          position="top-center"
-          theme="dark"
-          expand
-          toastOptions={{
-            style: toastStyle,
-            classNames: {
-              title: 'font-bold text-[14px]',
-              description: 'text-[14px] text-gray-400',
-              actionButton:
-                'text-[12px] bg-blue-600 text-white px-2 py-1 rounded',
-              cancelButton:
-                'text-[12px] bg-gray-500 text-white px-2 py-1 rounded',
-              closeButton: 'text-[12px] text-gray-400 hover:text-white',
-            },
-          }}
-        />
+    <html lang="ja" className="scroll-smooth">
+      <body
+        className={`${noto.className} ${bebas_neue.variable} ${orbitron.variable} antialiased`}
+      >
+        <Suspense>
+          <Providers>
+            <LoadingProvider>
+              <Header />
+              {children}
+              <Footer />
+            </LoadingProvider>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

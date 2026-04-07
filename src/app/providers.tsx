@@ -2,12 +2,8 @@
 
 import { ReactNode } from 'react';
 
-import { Provider as ReduxProvider } from 'react-redux';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-import { store } from '@/store';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +20,7 @@ type ProvidersProps = {
 export const Providers = ({ children }: ProvidersProps) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReduxProvider store={store}>{children}</ReduxProvider>
+      {children}
       <ReactQueryDevtools />
     </QueryClientProvider>
   );
