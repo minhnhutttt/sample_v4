@@ -21,6 +21,9 @@ const Footer = () => {
         src="/assets/images/logo_ft.png"
         alt="Chillax"
       />
+      <div className="mt-3 text-center text-[18px] font-medium text-white md:text-[24px]">
+        販売代理店
+      </div>
       <ul className="mx-[10%] mb-28 mt-8 md:mt-16">
         {links.map((link, idx) => (
           <li key={idx} className="border-b border-[#FF00CC] last:border-b-0">

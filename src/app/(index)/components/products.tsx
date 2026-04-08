@@ -81,25 +81,11 @@ const Products = () => {
         className="mx-auto w-fit"
       >
         <img
-          src="/assets/images/price_img1.png"
+          src="/assets/images/price_img-4980.png"
           alt="4980円（税込）"
-          width={401}
-          height={168}
+          width={573}
+          height={242}
           className="mx-auto object-cover"
-        />
-        <img
-          src="/assets/images/arrow_down_img.png"
-          alt="arrow"
-          width={114}
-          height={153}
-          className="mx-auto object-cover"
-        />
-        <img
-          src="/assets/images/price_img2.png"
-          alt="3980円（税込）"
-          width={557}
-          height={255}
-          className="object-cover"
         />
       </motion.div>
       <motion.div

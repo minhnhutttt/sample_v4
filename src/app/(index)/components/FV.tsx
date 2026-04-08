@@ -25,13 +25,13 @@ const FV = () => {
           backgroundPosition: 'center',
         }}
       >
-        <span className="animate-floatY animate-delay-0 fixed left-[calc(50vw-920px)] top-[16%] max-w-[430px]">
+        <span className="animate-floatY animate-delay-0 fixed left-[calc(50vw-920px)] top-[28%] max-w-[430px]">
           <img src="/assets/images/view_dec1-1.png" alt="" />
         </span>
         <span className="animate-floatY animate-delay-1 fixed right-[calc(50vw-850px)] top-1/2 max-w-[430px]">
           <img src="/assets/images/view_dec1-2.png" alt="" />
         </span>
-        <span className="animate-floatY animate-delay-2 fixed bottom-[8%] left-[calc(50vw-820px)] max-w-[430px]">
+        <span className="animate-floatY animate-delay-2 fixed bottom-[0%] left-[calc(50vw-820px)] max-w-[430px]">
           <img src="/assets/images/view_dec1-3.png" alt="" />
         </span>
       </div>

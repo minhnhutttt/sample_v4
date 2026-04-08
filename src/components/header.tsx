@@ -14,6 +14,9 @@ const Header = () => {
         className="absolute left-4 top-6 w-1/3 max-w-[585px] md:left-0 md:top-0 md:w-[28%]"
       >
         <img src="/assets/images/logo_hd.png" alt="Chillax" />
+        <div className="text-center text-[14px] font-medium text-white md:text-[28px]">
+          販売代理店
+        </div>
       </Link>
 
       <button
