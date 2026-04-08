@@ -4,12 +4,7 @@ import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
 
-const NAV_LINKS = [
-  { label: '選ばれる理由', href: '#reason' },
-  { label: '掲載業者の基準', href: '#standard' },
-  { label: 'ご利用ステップ', href: '#steps' },
-  { label: 'よくある質問', href: '#faq' },
-];
+import { NAV_LINKS } from '@/config/constants';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

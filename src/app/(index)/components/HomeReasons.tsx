@@ -1,6 +1,7 @@
 'use client';
 
 import Cta from '@/components/cta';
+import useScrollAnimations from '@/hooks/useScrollAnimations';
 
 const REASONS = [
   {
@@ -98,7 +99,7 @@ function ReasonCard({
 
   return (
     <div
-      className={`group flex flex-col items-center ${imageRight ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
+      className={`fade-up group flex flex-col items-center ${imageRight ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}
     >
       {imageBlock}
       <div
@@ -111,11 +112,15 @@ function ReasonCard({
 }
 
 export default function HomeReasons() {
+  const ref = useScrollAnimations();
   return (
-    <section className="w-full bg-[url(/assets/images/r-bg.png)] bg-cover px-6 pt-28">
+    <section
+      ref={ref}
+      className="w-full bg-[url(/assets/images/r-bg.png)] bg-cover px-6 pt-28"
+    >
       <div className="mx-auto max-w-[1100px]">
         {/* Heading */}
-        <h2 className="mb-10 text-center text-[22px] font-black text-[#1A4673] md:mb-30 md:text-[48px]">
+        <h2 className="fade-up mb-10 text-center text-[22px] font-black text-[#1A4673] md:mb-30 md:text-[48px]">
           <span className="text-[#0067D3]">くらしポート</span>
           が選ばれる3つの理由
         </h2>
@@ -128,7 +133,7 @@ export default function HomeReasons() {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center py-16 md:py-30">
+        <div className="fade-up flex justify-center py-16 md:py-30">
           <Cta />
         </div>
       </div>
