@@ -62,7 +62,8 @@ export default function HomeBusinesses() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[#F2F8FF] bg-[url(/assets/images/businesses-bg-02.png)] bg-cover bg-bottom py-20"
+      id="businesses"
+      className="w-full scroll-mt-20 bg-[#F2F8FF] bg-[url(/assets/images/businesses-bg-02.png)] bg-cover bg-bottom py-20"
     >
       <div className="px-5">
         <div className="mx-auto w-full max-w-[1100px]">

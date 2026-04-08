@@ -40,22 +40,24 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
             {NAV_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
                 className="text-base text-white underline-offset-4 transition-opacity duration-150 hover:underline hover:opacity-80"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
 
             {/* CTA */}
-            <Link
-              href="#apply"
+            <a
+              href="https://www.kurashi-port.com/maker-registration"
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-2 flex h-[52px] w-[176px] items-center justify-center rounded-lg bg-[linear-gradient(90deg,_#FF493E_0%,_#FFA826_100%)] px-6 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:brightness-110 active:scale-95"
             >
               掲載を申し込む
-            </Link>
+            </a>
           </nav>
 
           {/* Hamburger button (mobile) */}
@@ -107,7 +109,7 @@ export default function Header() {
       >
         <nav className="flex flex-col gap-1 px-6 py-4">
           {NAV_LINKS.map((link, i) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
@@ -117,7 +119,7 @@ export default function Header() {
               }}
             >
               {link.label}
-            </Link>
+            </a>
           ))}
 
           {/* Mobile CTA */}

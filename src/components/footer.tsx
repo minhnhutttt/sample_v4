@@ -16,12 +16,12 @@ const Footer = () => {
             <ul className="flex items-center gap-8 max-md:flex-wrap max-md:justify-center">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
                     className="flex h-8 items-center text-[14px] text-[#1A4673] md:text-[16px]"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

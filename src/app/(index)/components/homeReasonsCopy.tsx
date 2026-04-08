@@ -116,7 +116,8 @@ export default function HomeReasons() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[url(/assets/images/r-bg.png)] bg-cover px-6 pt-28"
+      id="reasons"
+      className="w-full scroll-mt-20 bg-[url(/assets/images/r-bg.png)] bg-cover px-6 pt-28"
     >
       <div className="mx-auto max-w-[1100px]">
         {/* Heading */}

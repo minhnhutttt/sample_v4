@@ -38,7 +38,11 @@ const STEPS = [
 export default function HomeSteps() {
   const ref = useScrollAnimations();
   return (
-    <section ref={ref} className="relative w-full py-20">
+    <section
+      id="steps"
+      ref={ref}
+      className="relative w-full scroll-mt-20 py-20"
+    >
       <h2 className="fade-up px-5 text-center text-[26px] leading-snug font-black tracking-tight text-[#0067D3] md:text-[48px]">
         4ステップ<span className="text-[#1A4673]">で完了！</span>
         <br />

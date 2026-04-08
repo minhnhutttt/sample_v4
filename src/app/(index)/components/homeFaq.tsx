@@ -101,7 +101,11 @@ export default function HomeFaq() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section ref={ref} className="w-full bg-[#F2F2F2] px-5 py-20">
+    <section
+      id="faq"
+      ref={ref}
+      className="w-full scroll-mt-20 bg-[#F2F2F2] px-5 py-20"
+    >
       <div className="mx-auto w-full max-w-[920px]">
         {/* Heading */}
         <h4 className="fade-up px-5 text-center text-[26px] leading-snug font-black tracking-tight text-[#0067D3] md:text-[48px]">
