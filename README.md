@@ -1,18 +1,12 @@
-# my-app
+# Chillax
 
 ## Preparation
 
-Change title in README.md
+replace dummy images for the newest one
 
-Change name in package.json
 
-import font and set in /src/app/layout.tsx ,/src/app/globals.css
 
-add apple-touch-icon,favicon,og_image
 
-change SEO setting in /src/config/constants.ts
-
-check dependencies and devDependencies in package.json
 
 ## Setup
 
