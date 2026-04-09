@@ -8,10 +8,13 @@ import { NAV_LINKS } from '@/config/constants';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      setVisible(window.scrollY > 8);
+      if (window.scrollY <= 8) setMenuOpen(false);
+    };
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -27,8 +30,8 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 right-0 left-0 z-50 bg-[#022AAE] px-6 transition-shadow duration-300 lg:px-10 ${
-          scrolled ? 'shadow-lg' : ''
+        className={`fixed top-0 right-0 left-0 z-50 bg-[#022AAE] px-6 shadow-lg transition-all duration-300 lg:px-10 ${
+          visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
       >
         <div className="mx-auto flex h-20 max-w-[1100px] items-center justify-between lg:h-[92px]">

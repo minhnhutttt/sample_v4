@@ -19,8 +19,6 @@ export default function HomeCta() {
               質の高い出会いを
             </h5>
             <p className="fade-up mt-6 text-[15px] leading-loose font-medium text-white md:mt-10 md:text-[18px]">
-              【完全返金保証】月間の問い合わせ0件なら、月額料金（3,000円）を全額返金！
-              <br />
               ※高額な初期費用や、理不尽な紹介課金（リード課金）は一切ありません。
             </p>
           </div>

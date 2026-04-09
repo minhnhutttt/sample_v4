@@ -7,7 +7,7 @@ export default function HomeTrust() {
   return (
     <section
       ref={ref}
-      className="w-full bg-[url(/assets/images/trust-bg.png)] bg-cover bg-bottom-right px-6 md:bg-center md:px-16 md:pt-20 md:pb-16"
+      className="w-full bg-[url(/assets/images/trust-bg.png)] bg-cover bg-bottom-right px-6 pt-12 md:bg-center md:px-16 md:pt-20 md:pb-16"
     >
       <div className="mx-auto flex max-w-[1100px] flex-col items-end gap-16 xl:flex-row">
         <div className="flex flex-1 flex-col pb-5">
