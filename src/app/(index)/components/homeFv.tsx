@@ -11,8 +11,8 @@ import useScrollAnimations from '@/hooks/useScrollAnimations';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomeFv() {
-  const animRef = useScrollAnimations(); // ref cho animations
-  const sectionRef = useRef<HTMLElement>(null); // ref riêng cho ScrollTrigger
+  const animRef = useScrollAnimations();
+  const sectionRef = useRef<HTMLElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ export default function HomeFv() {
   }, []);
 
   return (
-    // section riêng cho ScrollTrigger
     <section
       ref={sectionRef}
       className="relative flex w-full flex-col items-center overflow-hidden pt-20 lg:pt-[92px]"
