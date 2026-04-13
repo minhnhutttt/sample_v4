@@ -23,7 +23,7 @@ const WorkItem = ({
 }) => (
   <div id={id} className="flex gap-[2rem] max-md:flex-col">
     <div className="md:flex-1">
-      <p className="mb-[1rem] text-[4rem] leading-none font-bold text-[#242424] underline md:mb-[2rem] md:text-[7rem]">
+      <p className="mb-[1rem] text-[4rem] leading-none font-bold text-[#000846] underline md:mb-[2rem] md:text-[7rem]">
         {head}
       </p>
       <p className="ext-[#242424] text-[2.4rem] font-bold md:text-[3.2rem]">
@@ -31,7 +31,7 @@ const WorkItem = ({
       </p>
     </div>
     <div className="md:flex-1">
-      <p className="mb-[2rem] text-[2.4rem] leading-[1.15] font-bold text-[#9579C8] md:text-[3.2rem]">
+      <p className="mb-[2rem] text-[2.4rem] leading-[1.15] font-bold text-[#16A683] md:text-[3.2rem]">
         {title}
       </p>
       <p className="mb-[4.8rem] text-[1.8rem] leading-[1.15] font-bold md:text-[2rem]">
@@ -62,7 +62,7 @@ const Workpage = () => {
       </div>
       <div className="relative">
         <img src="/assets/images/work.png" alt="" className="w-full" />
-        <h2 className="absolute bottom-4 left-4 text-[4rem] leading-none font-bold text-[#9579C8] md:text-[7rem]">
+        <h2 className="absolute bottom-4 left-4 text-[4rem] leading-none font-bold text-[#16A683] md:text-[7rem]">
           DRIVING EFFICIENCY THROUGH AUTOMATED MOBILITY LOGS.
         </h2>
       </div>

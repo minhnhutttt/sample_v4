@@ -58,7 +58,7 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body
-        className={`${figtree.className} bg-[#FFF6F6] text-[#424242] antialiased`}
+        className={`${figtree.className} bg-[#F2F8FF] text-[#000846] antialiased`}
       >
         <Providers>
           <SmoothScroll>

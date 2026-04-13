@@ -91,11 +91,11 @@ const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
     <button
       onClick={onClick}
       ref={linkRef}
-      className={`group btn relative z-1 inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] text-left text-black ${lg ? 'h-[6rem] w-[22rem]' : 'h-[5.2rem] w-[14.2rem]'} ${isBack ? 'border border-[#85F4E2]' : lg ? 'bg-[#424242]' : 'bg-[#85F4E2]'}`}
+      className={`group btn relative z-1 inline-flex h-[5.2rem] w-[14.2rem] overflow-hidden rounded-[0.6rem] text-left text-black ${lg ? 'h-[6rem] w-[22rem]' : 'h-[5.2rem] w-[14.2rem]'} ${isBack ? 'border border-[#07F]' : lg ? 'bg-[#000846]' : 'bg-[#07F]'}`}
     >
       <div
         ref={bgRef}
-        className="absolute inset-0 z-1 rounded-[0.6rem] bg-[#9579C8]"
+        className="absolute inset-0 z-1 rounded-[0.6rem] bg-[#16A683]"
       />
 
       <div className="relative z-2 flex h-full w-full items-center justify-between gap-x-[1rem] px-[1rem]">
@@ -128,7 +128,7 @@ const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
             <g mask="url(#mask0_17069_696)">
               <path
                 d="M6.90068 7.82969L15.6382 7.82969L15.6382 10.1922L6.90068 10.1922L10.6882 13.9797L9.00068 15.6484L2.36318 9.01094L9.00068 2.37344L10.6882 4.04219L6.90068 7.82969Z"
-                fill="#85F4E2"
+                fill="#07F"
               />
             </g>
           </svg>
@@ -138,12 +138,12 @@ const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
           {/* Top layer */}
           <div ref={textTopRef} className="flex flex-col">
             <p
-              className={`font-bold ${isBack ? 'text-[#85F4E2]' : lg ? 'text-[1.6rem] text-white' : 'text-[1.4rem] text-[#424242]'}`}
+              className={`font-bold ${isBack ? 'text-[#07F]' : lg ? 'text-[1.6rem] text-white' : 'text-[1.4rem] text-white'}`}
             >
               {text}
             </p>
             <p
-              className={`${isBack ? 'text-[#85F4E2]/50' : lg ? 'text-[1.2rem] text-[#FFF6F6]/50' : 'text-[1rem] text-[#424242]/80'}`}
+              className={`${isBack ? 'text-white/50' : lg ? 'text-[1.2rem] text-white/50' : 'text-[1rem] text-white/50'}`}
             >
               {en}
             </p>
@@ -152,12 +152,12 @@ const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
           {/* Bottom layer */}
           <div ref={textBottomRef} className="absolute inset-0 flex flex-col">
             <p
-              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#85F4E2]' : lg ? 'text-[1.6rem] text-white' : 'text-[1.4rem] text-[#424242]'}`}
+              className={`text-[1.4rem] font-bold ${isBack ? 'text-[#07F]' : lg ? 'text-[1.6rem] text-white' : 'text-[1.4rem] text-white'}`}
             >
               {text}
             </p>
             <p
-              className={`${isBack ? 'text-[#85F4E2]/50' : lg ? 'text-[1.2rem] text-[#FFF6F6]/50' : 'text-[1rem] text-[#424242]/80'}`}
+              className={`${isBack ? 'text-white/50' : lg ? 'text-[1.2rem] text-[#F2F8FF]/50' : 'text-[1rem] text-white/50'}`}
             >
               {en}
             </p>
@@ -184,7 +184,7 @@ const Button = ({ text, en, isBack = false, onClick, lg }: Props) => {
             </mask>
             <g mask="url(#mask0_19008_45)">
               <path
-                className={`${lg ? 'fill-white' : 'fill-[#424242]'}`}
+                className={`${lg ? 'fill-white' : 'fill-white'}`}
                 d="M11.0993 10.1703H2.36182V7.80781H11.0993L7.31182 4.02031L8.99932 2.35156L15.6368 8.98906L8.99932 15.6266L7.31182 13.9578L11.0993 10.1703Z"
               />
             </g>

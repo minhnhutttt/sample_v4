@@ -175,7 +175,7 @@ const Header = () => {
   return (
     <>
       <div ref={headerWrapRef} className="fixed top-0 right-0 left-0 z-50">
-        <header className="relative z-10 pt-[2.2rem]">
+        <header className="relative z-10 pt-[1.2rem] md:pt-[2.2rem]">
           {/* Main nav */}
           <div className="sh__inner site-max relative">
             <div className="relative z-10 flex items-center justify-between py-[0.4rem] md:py-[1rem]">
@@ -192,7 +192,7 @@ const Header = () => {
                       className="uline flex flex-col items-center justify-center text-center"
                     >
                       <p className="text-[1.4rem]">製品一覧</p>
-                      <p className="text-[1rem] text-[#424242]/80">PRODUCTS</p>
+                      <p className="text-[1rem] text-[#000846]/30">PRODUCTS</p>
                     </Link>
                   </li>
                   <li>
@@ -201,7 +201,7 @@ const Header = () => {
                       className="uline flex flex-col items-center justify-center text-center"
                     >
                       <p className="text-[1.4rem]">会社概要</p>
-                      <p className="text-[1rem] text-[#424242]/80">COMPANY</p>
+                      <p className="text-[1rem] text-[#000846]/30">COMPANY</p>
                     </Link>
                   </li>
                 </ul>
@@ -221,21 +221,21 @@ const Header = () => {
         {/* Burger button */}
         <button
           onClick={toggleMenu}
-          className="radius-global pointer-events-auto absolute top-[1.5rem] right-[1.2rem] z-50 z-150 flex size-[4rem] items-center justify-center bg-[#85F4E2] md:hidden"
+          className="radius-global pointer-events-auto absolute top-[1.5rem] right-[1.2rem] z-50 z-150 flex size-[4rem] items-center justify-center bg-[#07F] md:hidden"
           aria-label="Toggle menu"
         >
           <div className="relative flex h-[2rem] w-[1.5rem] flex-col items-center justify-center gap-[.4rem]">
             <span
               ref={burgerTopRef}
-              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-[#242424]"
+              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-white"
             />
             <span
               ref={burgerMidRef}
-              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-[#242424]"
+              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-white"
             />
             <span
               ref={burgerBotRef}
-              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-[#242424]"
+              className="block h-[2.5px] w-[1.5rem] origin-center rounded-full bg-white"
             />
           </div>
         </button>
@@ -244,7 +244,7 @@ const Header = () => {
       {/* Full-screen Mobile Menu Overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-[49] flex flex-col bg-[#424242] md:hidden"
+        className="fixed inset-0 z-[49] flex flex-col bg-[#000846] md:hidden"
         style={{
           clipPath: 'circle(0% at calc(100% - 3rem) 3rem)',
           pointerEvents: menuOpen ? 'auto' : 'none',

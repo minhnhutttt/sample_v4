@@ -19,13 +19,13 @@ const ContactStep1 = ({ onNext }: { onNext: () => void }) => (
             </p>
           </div>
           <div className="flex flex-wrap gap-[1.2rem] text-[1.4rem]">
-            <p className="rounded-full border border-[#FFF6F6] px-[1.2rem] py-[0.4rem]">
+            <p className="rounded-full border border-[#F2F8FF] px-[1.2rem] py-[0.4rem]">
               資料請求
             </p>
-            <p className="rounded-full border border-[#FFF6F6] px-[1.2rem] py-[0.4rem]">
+            <p className="rounded-full border border-[#F2F8FF] px-[1.2rem] py-[0.4rem]">
               デモ依頼
             </p>
-            <p className="rounded-full border border-[#FFF6F6] px-[1.2rem] py-[0.4rem]">
+            <p className="rounded-full border border-[#F2F8FF] px-[1.2rem] py-[0.4rem]">
               相談
             </p>
           </div>
@@ -40,7 +40,7 @@ const ContactStep1 = ({ onNext }: { onNext: () => void }) => (
           <div className="flex flex-wrap gap-[1.2rem] text-[1.4rem]">
             <input
               type="text"
-              className="h-[4.4rem] w-full border-b border-l border-[#FFF6F6] p-[0.8rem]"
+              className="h-[4.4rem] w-full border-b border-l border-[#F2F8FF] p-[0.8rem]"
               placeholder="株式会社サンプル"
             />
           </div>
@@ -55,7 +55,7 @@ const ContactStep1 = ({ onNext }: { onNext: () => void }) => (
           <div className="flex flex-wrap gap-[1.2rem] text-[1.4rem]">
             <input
               type="text"
-              className="h-[4.4rem] w-full border-b border-l border-[#FFF6F6] p-[0.8rem]"
+              className="h-[4.4rem] w-full border-b border-l border-[#F2F8FF] p-[0.8rem]"
               placeholder="sample@sample.co.jp"
             />
           </div>
@@ -73,7 +73,7 @@ const ContactStep1 = ({ onNext }: { onNext: () => void }) => (
             <textarea
               name=""
               id=""
-              className="h-[15.6rem] w-full border-b border-l border-[#FFF6F6] p-[0.8rem]"
+              className="h-[15.6rem] w-full border-b border-l border-[#F2F8FF] p-[0.8rem]"
               placeholder="お問い合わせ内容をご記入ください。"
             ></textarea>
           </div>
@@ -104,7 +104,7 @@ const ContactStep2 = ({
             <p className="text-[1.6rem]">種別選択</p>
           </div>
           <div className="flex flex-wrap gap-[1.2rem] text-[1.4rem]">
-            <p className="rounded-full border border-[#FFF6F6] bg-[#FFF6F6] px-[1.2rem] py-[0.4rem] text-[#424242]">
+            <p className="rounded-full border border-[#F2F8FF] bg-[#F2F8FF] px-[1.2rem] py-[0.4rem] text-[#424242]">
               資料請求
             </p>
           </div>

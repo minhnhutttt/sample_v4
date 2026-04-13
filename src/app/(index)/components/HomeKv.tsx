@@ -79,6 +79,7 @@ const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 export default function HomeKv() {
   const dispatch = useAppDispatch();
   const ref = useScrollAnimations();
+  const containerRef = useRef<HTMLDivElement>(null);
   const scrollSectionRef = useRef<HTMLElement>(null);
   const stackRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
   const placeholderRefs = useRef<Map<string, HTMLDivElement>>(new Map());
@@ -247,7 +248,7 @@ export default function HomeKv() {
           rotation: -14,
           scale: 0.65,
           opacity: 0,
-          duration: 0.2, // nhanh hơn khi click
+          duration: 0.2,
           ease: 'power2.in',
           onComplete() {
             cardOrder = [...cardOrder.slice(1), exitEl];
@@ -272,7 +273,7 @@ export default function HomeKv() {
                 scale: s.scale,
                 opacity: s.opacity,
                 zIndex: s.zIndex,
-                duration: 0.25, // nhanh hơn khi click
+                duration: 0.25,
                 ease: 'power3.out',
                 onComplete() {
                   completedCount++;
@@ -293,6 +294,20 @@ export default function HomeKv() {
     rotateToRef.current = rotateTo;
 
     // ── Flying card clones ─────────────────────────────────────────────────────
+    // Wrapper clip overflow để không gây scrollbar ngang
+    const flyWrapper = document.createElement('div');
+    flyWrapper.style.cssText = `
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 10;
+    `;
+    containerRef.current!.appendChild(flyWrapper);
+
     const flyEls: HTMLDivElement[] = CARD_DEFS.map((card) => {
       const el = document.createElement('div');
       el.style.cssText = `
@@ -300,13 +315,12 @@ export default function HomeKv() {
         border-radius: 14px;
         overflow: hidden;
         pointer-events: none;
-        z-index: 10;
       `;
       el.innerHTML = `
         <div style="width:100%;height:100%;display:flex;align-items:flex-end;">
-          <img style="width:100%;height:100%;display:flex;align-items:flex-end;" src=${card.image} alt="" />
+          <img style="width:100%;height:100%;display:flex;align-items:flex-end;" src="${card.image}" alt="" />
         </div>`;
-      document.body.appendChild(el);
+      flyWrapper.appendChild(el);
       gsap.set(el, { opacity: 0, top: 0, left: 0, width: 0, height: 0 });
       return el;
     });
@@ -396,6 +410,7 @@ export default function HomeKv() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('load', buildTrigger);
       flyEls.forEach((el) => el.remove());
+      flyWrapper.remove();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
@@ -408,7 +423,15 @@ export default function HomeKv() {
   };
 
   return (
-    <div ref={ref} className="relative z-10">
+    <div
+      ref={(el) => {
+        containerRef.current = el;
+        (
+          ref as unknown as React.MutableRefObject<HTMLDivElement | null>
+        ).current = el;
+      }}
+      className="relative z-10"
+    >
       {/* ════════════════════════ HERO ════════════════════════ */}
       <section className="carousel-cards relative z-5 overflow-hidden">
         <div className="site-max relative flex flex-col items-end gap-y-[3rem] pt-[12rem] pb-[7.2rem] max-md:items-center md:flex-row">
@@ -445,13 +468,13 @@ export default function HomeKv() {
                   <button
                     key={card.id}
                     onClick={() => rotateToRef.current(i)}
-                    className={`carousel-cards-title relative overflow-hidden text-[2rem] font-bold text-[#9579C8]/25 ${
+                    className={`carousel-cards-title relative overflow-hidden text-[2rem] font-bold text-[#16A683]/25 ${
                       activeIndex === i ? 'is-active' : ''
                     }`}
                   >
                     {card.name}
                     <div className="carousel-cards-title__mask --1 absolute inset-0 z-2 overflow-hidden">
-                      <div className="carousel-cards-title__mask --2 absolute inset-0 text-[#9579C8]">
+                      <div className="carousel-cards-title__mask --2 absolute inset-0 text-[#16A683]">
                         {card.name}
                       </div>
                     </div>
@@ -491,25 +514,25 @@ export default function HomeKv() {
             <path
               className="scroll-icon__part"
               d="M17.6626 53L9.56124 60.8313L1.99997 53"
-              stroke="#9579C8"
+              stroke="#16A683"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 36L9.56124 43.8313L1.99997 36"
-              stroke="#9579C8"
+              stroke="#16A683"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 19.1687L9.56124 27L1.99997 19.1687"
-              stroke="#9579C8"
+              stroke="#16A683"
               strokeWidth="4"
             ></path>
             <path
               className="scroll-icon__part"
               d="M17.6626 1.99999L9.56124 9.8313L1.99997 1.99998"
-              stroke="#9579C8"
+              stroke="#16A683"
               strokeWidth="4"
             ></path>
           </svg>
@@ -525,10 +548,13 @@ export default function HomeKv() {
           id="products"
           className="site-max mx-auto! flex flex-col items-start max-md:max-w-[400px]!"
         >
-          <div className="js-flip-targets flex w-full flex-col items-center justify-center gap-y-[3.5rem]">
-            <div className="relative text-center text-[3.6rem] font-bold md:text-[7rem]">
+          <div className="js-flip-targets flex w-full flex-col items-center justify-center">
+            <div className="relative text-center text-[3.6rem] font-bold text-[#000846] md:text-[7rem]">
               Our Products
             </div>
+            <p className="text-[20px] font-bold text-[#16A683] md:text-[32px]">
+              注目のプロダクト
+            </p>
           </div>
 
           {/* Destination grid */}
