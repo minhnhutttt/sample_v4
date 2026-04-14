@@ -31,7 +31,7 @@ const WorkItem = ({
       </p>
     </div>
     <div className="md:flex-1">
-      <p className="mb-[2rem] text-[2.4rem] leading-[1.15] font-bold text-[#16A683] md:text-[3.2rem]">
+      <p className="mb-[2rem] text-[2.3rem] leading-[1.15] font-bold text-[#16A683] md:text-[3.2rem]">
         {title}
       </p>
       <p className="mb-[4.8rem] text-[1.8rem] leading-[1.15] font-bold md:text-[2rem]">
@@ -67,7 +67,7 @@ const Workpage = () => {
         </h2>
       </div>
       <div className="flex flex-col justify-center pt-[7.5rem] text-center">
-        <p className="text-[2.4rem] font-bold md:text-[3.2rem]">
+        <p className="text-[2.3rem] font-bold md:text-[3.2rem]">
           出張・移動日当制度の課題を解決
         </p>
         <p className="mt-[2.4rem] text-[2rem] md:text-[2.4rem]">
