@@ -82,7 +82,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between">
+          <div className="mx-auto flex max-w-[400px] justify-between gap-5">
             <div>
               <p className="mb-[2.8rem] text-[1.4rem] font-bold text-white">
                 Index
@@ -104,28 +104,6 @@ const Footer = () => {
             </div>
             <div>
               <p className="mb-[2.8rem] text-[1.4rem] font-bold text-white">
-                Let’s social
-              </p>
-              <ul className="space-y-[2rem]">
-                <li>
-                  <Link href="" className="block">
-                    <p className="text-[1.4rem]">Linkedln</p>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="" className="block">
-                    <p className="text-[1.4rem]">Facebook</p>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="" className="block">
-                    <p className="text-[1.4rem]">Instagram</p>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-[2.8rem] text-[1.4rem] font-bold text-white">
                 Case studies
               </p>
               <ul className="space-y-[2rem]">
@@ -137,12 +115,9 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <ul className="flex justify-between py-[14rem] text-[1.05rem] text-[#F2F8FF]/50">
+          <ul className="mx-auto flex max-w-[400px] justify-between gap-5 py-[14rem] text-[1.05rem] text-[#F2F8FF]/50">
             <li>
               <Link href="/">Privacy Policy</Link>
-            </li>
-            <li>
-              <Link href="/">Cookie Policy</Link>
             </li>
             <li>
               <Link href="/">Terms and Conditions</Link>

@@ -81,7 +81,7 @@ const HomeServices = () => {
                 <p className="text-[2rem] font-bold">{service.text}</p>
                 <div className="acc-services-item__content relative mt-[3rem] overflow-hidden md:mt-[6rem]">
                   <div className="relative flex flex-col max-md:gap-y-[2rem] md:flex-row md:items-start md:gap-x-[16.5rem]">
-                    <div className="acc-services-item__media radius-media relative flex flex-1 items-center justify-center bg-white md:order-2 md:mt-0">
+                    <div className="acc-services-item__media radius-media relative flex flex-1 items-center justify-center bg-[#000846] md:order-2 md:mt-0">
                       <DotLottieReact src={service.riv} loop autoplay />
                     </div>
                     <div className="relative flex-1 md:order-1 md:max-w-[65rem]">

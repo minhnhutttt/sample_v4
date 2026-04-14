@@ -62,7 +62,7 @@ const Workpage = () => {
       </div>
       <div className="relative">
         <img src="/assets/images/work.png" alt="" className="w-full" />
-        <h2 className="absolute bottom-4 left-4 text-[4rem] leading-none font-bold text-[#16A683] md:text-[7rem]">
+        <h2 className="absolute bottom-4 left-4 text-[2.1rem] leading-none font-bold text-[#16A683] md:text-[7rem]">
           DRIVING EFFICIENCY THROUGH AUTOMATED MOBILITY LOGS.
         </h2>
       </div>
