@@ -19,7 +19,13 @@ const Header = () => {
     }
   }, [isOpen]);
 
-  return <header>header</header>;
+  return (
+    <header className="absolute top-5 left-8 z-50 md:top-10 md:left-15">
+      <a href="#">
+        <img className="max-md:w-16" src="/assets/images/logo.svg" alt="" />
+      </a>
+    </header>
+  );
 };
 
 export default Header;

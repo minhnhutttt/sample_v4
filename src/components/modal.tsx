@@ -28,12 +28,12 @@ const Modal = ({
   return createPortal(
     <>
       <div
-        className="fixed inset-0 z-[9999] flex items-end justify-center bg-black/40 md:items-center"
+        className="fixed inset-0 z-[9999] flex items-end justify-center bg-black/60 md:items-center"
         onClick={handleBackgroundClick}
       />
       <div className="fixed top-1/2 left-1/2 z-[9999] max-w-[90vw] -translate-x-1/2 -translate-y-1/2">
         <div
-          className="relative overflow-hidden rounded-2xl bg-white"
+          className="relative overflow-hidden rounded-2xl"
           onClick={handleContentClick}
         >
           <button
@@ -43,7 +43,9 @@ const Modal = ({
           >
             ×
           </button>
-          <div className="max-h-[80vh] overflow-auto">{children}</div>
+          <div className="relative z-10 max-h-[80vh] overflow-auto">
+            {children}
+          </div>
         </div>
       </div>
     </>,
