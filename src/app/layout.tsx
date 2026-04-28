@@ -1,9 +1,7 @@
-
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 
 import Footer from '@/components/footer';
-import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -56,7 +54,6 @@ const RootLayout = ({
     <html lang="ja">
       <body className={`${noto.className} antialiased`}>
         <Providers>
-          <Header />
           {children}
           <Footer />
         </Providers>

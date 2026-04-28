@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 type Section = {
   id: number;
   image: string;
-  title: ReactNode;
+  titles: ReactNode[];
   note?: ReactNode;
   align: 'left' | 'right';
 };
@@ -20,52 +20,49 @@ const sections: Section[] = [
   {
     id: 1,
     image: '/assets/images/section-01.png',
-    title: (
+    titles: [
       <>
-        連載の締め切りや単行本の枠に縛られず、あなたの「1話」や「ネーム」を最も輝く形で
-        Drop<span className="text-[16px] md:text-[20px]">(※)</span>
-        （リリース）しましょう
-      </>
-    ),
-    note: <>※作品の単品販売は「DROP」、シリーズの月額販売は「CHANNEL」</>,
+        スマホの中にある、きれいな写真、料理のメモ（PDF）、歌の練習（音声）、短い動画。
+      </>,
+      <>
+        “SNSにのせて終わりにするのはもったいないからKIVOにDrop（ドロップ）してみたんです”
+      </>,
+      <>
+        次の日には1人に買ってもらえた。
+        <br />
+        その次の日には5人に買ってもらえた。
+      </>,
+    ],
+    note: <>※作品の単品販売は「DROP」、シリーズの月額販売「CHANNEL」</>,
     align: 'left',
   },
   {
     id: 2,
     image: '/assets/images/section-02.png',
-    title: (
+    titles: [
       <>
-        KIVOなら、あなたの魂の原稿を魔法のカギ
-        <span className="text-[16px] md:text-[20px]">(※)</span>
-        が海賊版から徹底的に守ります
-      </>
-    ),
-    note: '※アプリ内のスクリーンショットを完全制御',
+        ダウンロード、スクリーンショットできない <br />
+        仕様だから、KIVOに置いたコンテンツが勝手に広がる心配もないので安心して利用できます。
+      </>,
+    ],
+    note: '※アプリ内でスクリーンショット、ダウンロードを完全制御',
     align: 'right',
   },
   {
     id: 3,
     image: '/assets/images/section-03.png',
-    title: (
+    titles: [
       <>
-        ネーム、下書き、完成原稿、どんな状態の作品も、ひとつの場所でストレスなく販売可能
+        なにかを新しく作る必要はありません。 スマホに眠っているもの
         <span className="text-[16px] md:text-[20px]">(※)</span>
-      </>
-    ),
+        を“ついでに”KIVOにも置くだけ。
+      </>,
+      <>
+        何もしなくてもDiscovery（発見）の画面であなたのセンスを見つけてくれる人が必ずいます。
+      </>,
+    ],
     note: '※画像、動画、音声、PDFデータのコンテンツに対応',
     align: 'left',
-  },
-  {
-    id: 4,
-    image: '/assets/images/section-04.png',
-    title: (
-      <>
-        Channel<span className="text-[16px] md:text-[20px]">(※)</span>
-        でファンと話したネームのアイデアさえも、すべてが売れていくDrop（資産）に変わります
-      </>
-    ),
-    note: '※Channelではファンと不定期でメッセージ交流が可能',
-    align: 'right',
   },
 ];
 
@@ -116,16 +113,20 @@ export default function HomeContent() {
           </div>
 
           <div
-            className={`relative z-10 flex h-full px-5 py-[120px] md:px-15 ${
+            className={`relative z-10 flex h-full px-5 py-15 md:px-15 md:py-[120px] ${
               section.align === 'left' ? 'justify-start' : 'justify-end'
             }`}
           >
             <div className="max-w-[580px] text-white">
-              <h2 className="text-[22px] font-bold md:text-[40px]">
-                {section.title}
+              <h2 className="text-[20px] font-bold md:text-[28px]">
+                {section.titles.map((title, index) => (
+                  <span key={index} className="mb-8 block last:mb-0">
+                    {title}
+                  </span>
+                ))}
               </h2>
               {section.note && (
-                <p className="mt-5 text-[16px] opacity-80 md:mt-7 md:text-[20px]">
+                <p className="mt-8 text-[16px] text-white md:mt-12 md:text-[18px]">
                   {section.note}
                 </p>
               )}

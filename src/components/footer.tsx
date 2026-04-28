@@ -2,8 +2,10 @@
 
 const Footer = () => {
   return (
-    <footer>
-      <div>&copy; {new Date().getFullYear()} company.</div>
+    <footer className="bg-[#242424] py-6 text-center md:py-10">
+      <div className="text-[12px] text-white/80 md:text-[14px]">
+        Copyright &copy; {new Date().getFullYear()} KIVO
+      </div>
     </footer>
   );
 };
