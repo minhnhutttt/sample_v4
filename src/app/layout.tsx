@@ -1,92 +1,93 @@
-import type { CSSProperties } from 'react';
+import { ReactNode } from 'react';
 
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
-import { Toaster } from 'sonner';
-import 'sonner/dist/styles.css';
+import {
+  Anton,
+  Caveat,
+  Creepster,
+  Roboto_Condensed,
+  Rock_Salt,
+  Shippori_Mincho,
+} from 'next/font/google';
 
-import Footer from '@/components/footer';
-import Header from '@/components/header';
+import MarqueeTicker from '@/components/MarqueeTicker';
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
+import ScrollToTop from '@/components/layout/scrollToTop';
 import {
   DEFAULT_DESCRIPTION,
-  KEYWORDS,
   OG,
   SITE_NAME,
-  SITE_URL_WITH_SCHEME,
+  SITE_URL,
   TWITTER,
 } from '@/config/constants';
+import { SlideThemeProvider } from '@/providers/slide-theme';
 
-import './globals.css';
-import { Providers } from './providers';
+import './globals.scss';
 
-const noto = Noto_Sans_JP({
-  weight: ['300', '400', '500', '700', '900'],
+const creepster = Creepster({
+  weight: ['400'],
   subsets: ['latin'],
+  variable: '--font-creepster',
+});
+
+const shippori = Shippori_Mincho({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-shippori',
+});
+const caveat = Caveat({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-caveat',
+});
+const rock_salt = Rock_Salt({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-rock-salt',
+});
+const roboto = Roboto_Condensed({
+  weight: ['400', '900'],
+  subsets: ['latin'],
+  variable: '--font-roboto',
+});
+const anton = Anton({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-anton',
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL_WITH_SCHEME || 'http://localhost:3000'),
+  metadataBase: new URL(SITE_URL ?? 'http://localhost:3000'),
+  icons: [
+    { rel: 'icon', url: '/assets/images/favicon.png' },
+    { rel: 'apple-touch-icon', url: '/assets/images/apple-touch-icon.png' },
+  ],
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
-  keywords: KEYWORDS,
   openGraph: {
     ...OG,
-    url: '/',
   },
   twitter: {
     ...TWITTER,
   },
-  alternates: {
-    canonical: '/',
-  },
-  icons: {
-    icon: '/assets/images/favicon.png',
-    shortcut: '/assets/images/favicon.png',
-    apple: '/assets/images/apple-touch-icon.png',
-  },
-  robots: { index: true, follow: true },
 };
 
-const RootLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
-  const toastStyle: CSSProperties = {
-    background: '#111827',
-    color: '#ffffff',
-    border: '1px solid #374151',
-    borderRadius: '12px',
-  };
-
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
-        <Providers>
-          <Header />
+      <body
+        className={`bg-stone-900 ${creepster.variable} ${shippori.variable} ${caveat.variable} ${rock_salt.variable} ${roboto.variable} ${anton.variable}`}
+      >
+        <SlideThemeProvider>
+          <ScrollToTop />
+          <Header ticker={<MarqueeTicker />} />
           {children}
           <Footer />
-        </Providers>
-        <Toaster
-          position="top-center"
-          theme="dark"
-          expand
-          toastOptions={{
-            style: toastStyle,
-            classNames: {
-              title: 'font-bold text-[14px]',
-              description: 'text-[14px] text-gray-400',
-              actionButton:
-                'text-[12px] bg-blue-600 text-white px-2 py-1 rounded',
-              cancelButton:
-                'text-[12px] bg-gray-500 text-white px-2 py-1 rounded',
-              closeButton: 'text-[12px] text-gray-400 hover:text-white',
-            },
-          }}
-        />
+        </SlideThemeProvider>
       </body>
     </html>
   );

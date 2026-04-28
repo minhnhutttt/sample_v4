@@ -1,0 +1,178 @@
+'use client';
+
+import { useLayoutEffect, useRef } from 'react';
+
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Download = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const sectionEl = sectionRef.current;
+    const imageEl = imageRef.current;
+    const logoEl = logoRef.current;
+    const textEl = textRef.current;
+    const buttonsEl = buttonsRef.current;
+
+    if (!sectionEl || !imageEl || !logoEl || !textEl || !buttonsEl) return;
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      mm.add('(min-width: 768px)', () => {
+        gsap.set([imageEl, logoEl, textEl, buttonsEl], {
+          transformOrigin: 'center center',
+          willChange: 'transform, opacity',
+        });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionEl,
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+            invalidateOnRefresh: true,
+          },
+          defaults: { ease: 'power4.out' },
+        });
+
+        tl.fromTo(
+          imageEl,
+          { scale: 2.2, autoAlpha: 0, y: 80 },
+          { scale: 1, autoAlpha: 1, y: 0, duration: 1.2 },
+          0,
+        )
+          .fromTo(
+            logoEl,
+            { scale: 2.1, autoAlpha: 0, y: 60 },
+            { scale: 1, autoAlpha: 1, y: 0, duration: 1.05 },
+            0.05,
+          )
+          .fromTo(
+            textEl,
+            { scale: 1.7, autoAlpha: 0, y: 50 },
+            { scale: 1, autoAlpha: 1, y: 0, duration: 0.95 },
+            0.12,
+          )
+          .fromTo(
+            buttonsEl,
+            { scale: 1.7, autoAlpha: 0, y: 40 },
+            { scale: 1, autoAlpha: 1, y: 0, duration: 0.85 },
+            0.18,
+          );
+
+        return () => {
+          tl.kill();
+          gsap.set([imageEl, logoEl, textEl, buttonsEl], { clearProps: 'all' });
+        };
+      });
+
+      return () => {
+        mm.revert();
+      };
+    }, sectionEl);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
+  return (
+    <section
+      id="download"
+      ref={sectionRef}
+      className="relative w-full overflow-hidden bg-[#242424] text-[#F78629]"
+    >
+      {/* Mobile */}
+      <div className="flex flex-col pt-20 md:hidden">
+        <div className="mx-auto flex w-full max-w-none flex-col items-start gap-[max(20.4px,20.4px+100vw*.0021)] px-5 uppercase">
+          <div className="flex w-full justify-center leading-none">
+            <div className="bg-[#D2D2D2]">
+              <img
+                ref={logoRef}
+                src="/assets/images/kivo-talk.png"
+                alt="KIVO APP"
+                className="select-nonee mx-auto h-[clamp(104px,78px+9.6vw,224px)] w-auto max-w-full object-contain"
+                draggable={false}
+              />
+            </div>
+          </div>
+          <p className="text-[clamp(14px,13.415px+100vw*.0015,16px)] text-[#ffffff]">
+            あなたのコンテンツに、
+            <br className="max-md:hidden" />
+            正しい価値を保証する。
+            <br className="max-md:hidden" />
+            流出しない設計で、あなたの代わりに守り続ける。
+          </p>
+          <div className="flex gap-5">
+            <a href="#">
+              <img src="/assets/images/btn-appstore.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="/assets/images/btn-google.png" alt="" />
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-10 w-full" data-component="image-asset-static">
+          <img className="w-full p-4" src="/assets/images/app-img.png" alt="" />
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div className="hidden min-h-screen grid-cols-2 items-center gap-10 px-10 py-20 md:grid lg:px-20">
+        <div className="flex items-center justify-center">
+          <img
+            ref={imageRef}
+            src="/assets/images/app-img.png"
+            alt=""
+            className="h-auto w-full max-w-[520px] object-contain p-4"
+          />
+        </div>
+
+        <div className="flex flex-col items-start gap-[max(20.4px,20.4px+100vw*.0021)] uppercase">
+          <div className="leading-none">
+            <div className="bg-[#D2D2D2]">
+              <img
+                ref={logoRef}
+                src="/assets/images/kivo-talk.png"
+                alt="KIVO APP"
+                className="h-[clamp(104px,78px+6.4vw,224px)] w-auto max-w-full object-contain select-none"
+                draggable={false}
+              />
+            </div>
+          </div>
+          <p
+            ref={textRef}
+            className="mt-12 max-w-[720px] leading-[1.1] tracking-[-.02em] text-[#ffffff]"
+          >
+            <span className="block text-[clamp(28px,22px+1.25vw,48px)]">
+              あなたのコンテンツに、
+              <br />
+              正しい価値を保証する。
+            </span>
+            <span className="mt-12 block text-[clamp(14px,11px+0.625vw,24px)]">
+              流出しない設計で、あなたの代わりに守り続ける。
+            </span>
+          </p>
+          <div ref={buttonsRef} className="mt-12 flex gap-5">
+            <a href="#">
+              <img src="/assets/images/btn-appstore.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="/assets/images/btn-google.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Download;

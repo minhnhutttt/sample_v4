@@ -9,14 +9,17 @@ const normalizeDomain = (domain: string) => {
     domain
       .trim()
       .toLowerCase()
+      .replace(/^https?:\/\//, '')
       .replace(/^www\./, '')
+      .split('/')[0]
       .split(':')[0] || ''
   );
 };
 
 export const proxy = (req: NextRequest) => {
   const host = req.headers.get('host') || '';
-  const envDomain = process.env.NEXT_PUBLIC_SITE_URL || '';
+  const envDomain =
+    process.env.CUSTOM_DOMAIN || process.env.NEXT_PUBLIC_SITE_URL || '';
   const targetDomain = normalizeDomain(envDomain);
   const requestDomain = normalizeDomain(host);
 
