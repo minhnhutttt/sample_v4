@@ -75,7 +75,7 @@ const HomeKv = () => {
         })}
       </div>
 
-      <div className="absolute inset-0 flex items-end">
+      <div className="absolute inset-0 z-20 flex items-end">
         <div className="@container w-full max-w-[440px] pb-[8cqw] md:max-w-[1280px] md:pb-[4.688cqw]">
           <div className="space-y-[1cqw] px-[4.688cqw] max-md:text-center">
             <p className="inline-block bg-[#242424] px-[0.625cqw] text-[6cqw] font-bold text-[#D2D2D2] max-md:w-full md:text-[3.3cqw]">

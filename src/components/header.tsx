@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <header className="absolute top-5 left-8 z-50 md:top-10 md:left-15">
       <a href="#">
-        <img className="max-md:w-16" src="/assets/images/logo.svg" alt="" />
+        <img className="max-md:w-24" src="/assets/images/logo.svg" alt="" />
       </a>
     </header>
   );
