@@ -22,9 +22,8 @@ const sections: Section[] = [
     image: '/assets/images/section-01.png',
     title: (
       <>
-        連載の締め切りや単行本の枠に縛られず、あなたの「1話」や「ネーム」を最も輝く形で
-        Drop<span className="text-[16px] md:text-[20px]">(※)</span>
-        （リリース）しましょう
+        再生数を稼ぐための「動画の長さ」や「投稿頻度」はもう気にしなくていい。一本の動画に込めた魂をそのままの価値でDrop
+        <span className="text-[16px] md:text-[20px]">(※)</span>しましょう。
       </>
     ),
     note: <>※作品の単品販売は「DROP」、シリーズの月額販売は「CHANNEL」</>,
@@ -35,9 +34,10 @@ const sections: Section[] = [
     image: '/assets/images/section-02.png',
     title: (
       <>
-        KIVOなら、あなたの魂の原稿を魔法のカギ
+        動画は「見られて終わり」の消費物ではありません。 魔法のカギ
         <span className="text-[16px] md:text-[20px]">(※)</span>
-        が海賊版から徹底的に守ります
+        が「タダ見」を許さないから、
+        あなたの映像は、選ばれた人だけが持てる「限定品」へとアップデートされます。
       </>
     ),
     note: '※アプリ内のスクリーンショットを完全制御',
@@ -48,8 +48,9 @@ const sections: Section[] = [
     image: '/assets/images/section-03.png',
     title: (
       <>
-        ネーム、下書き、完成原稿、どんな状態の作品も、ひとつの場所でストレスなく販売可能
-        <span className="text-[16px] md:text-[20px]">(※)</span>
+        4Kの傑作から、スマホで撮った10秒の日常まで。 どんなコンテンツ
+        <span className="text-[16px] md:text-[20px]">(※)</span>も一つの場所で
+        KIVOはあなたの映像作品を資産に変えます。
       </>
     ),
     note: '※画像、動画、音声、PDFデータのコンテンツに対応',
@@ -60,8 +61,8 @@ const sections: Section[] = [
     image: '/assets/images/section-04.png',
     title: (
       <>
-        Channel<span className="text-[16px] md:text-[20px]">(※)</span>
-        でファンと話したネームのアイデアさえも、すべてが売れていくDrop（資産）に変わります
+        「編集会議」そのものをエンターテインメントに。
+        ファンと一緒に悩んだり笑ったりした時間が、そのまま次の「作りたい！」をかなえる力になります。
       </>
     ),
     note: '※Channelではファンと不定期でメッセージ交流が可能',

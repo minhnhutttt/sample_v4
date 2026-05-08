@@ -13,11 +13,11 @@ const HomeStarted = () => {
           さっそくはじめる
         </h3>
         <p className="mt-6 text-center text-[18px] font-medium md:mt-10 md:text-[24px]">
-          KIVOはあなたの才能を「タダで消費」させない。
+          KIVOは、あなたの知識を「消費」させない。
           <br />
-          KIVOはあなたのすべてのプロセスを「一生モノの資産」に変える。
+          あなたの思考のすべてのプロセスを「一生モノの資産」に変える。
           <br />
-          希望を形にする人、KIV(O)er（キーヴァー）の世界へようこそ。
+          希望を形にする人の世界へようこそ。
         </p>
       </div>
       <div className="overflow-hidden">
@@ -63,7 +63,7 @@ const HomeStarted = () => {
           onClick={() => dispatch(openModal({ name: 'join' }))}
           className="relative mx-auto flex h-20 w-[300px] items-center justify-center rounded-[12px] bg-white font-bold text-[#F78629] duration-200 hover:opacity-70 md:h-[136px] md:w-[680px] md:text-[24px]"
         >
-          KIVO投稿者になる
+          はじめる
           <img
             className="absolute right-[20px] md:right-[35px]"
             src="/assets/images/arrow-alt-or.svg"

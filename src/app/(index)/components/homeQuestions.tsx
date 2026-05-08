@@ -23,7 +23,7 @@ const HomeQuestions = () => {
     <div className="bg-[#242424] px-5 py-25 md:py-[184px]">
       <div className="mx-auto flex w-full max-w-[1160px] flex-wrap justify-center gap-7 md:gap-10">
         <QuestionBtn href="/" title="KIVOの投稿者として登録するには？" />
-        <QuestionBtn href="/" title="KIVOで叶う高収益の仕組みとは？" />
+        <QuestionBtn href="/" title="KIVOで高収益の仕組みを知る" />
         <QuestionBtn href="/" title="なぜKIVOが選ばれるのか？" />
       </div>
     </div>
