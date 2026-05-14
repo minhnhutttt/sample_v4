@@ -1,6 +1,5 @@
-
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Anton, Inter } from 'next/font/google';
 
 import Footer from '@/components/footer';
 import Header from '@/components/header';
@@ -14,11 +13,14 @@ import {
 } from '@/config/constants';
 
 import './globals.css';
-import { Providers } from './providers';
 
-const noto = Noto_Sans_JP({
-  weight: ['300', '400', '500', '700', '900'],
+const inter = Inter({
   subsets: ['latin'],
+});
+const anton = Anton({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-anton',
 });
 
 export const metadata: Metadata = {
@@ -54,12 +56,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+      <body className={`${inter.className} ${anton.variable} antialiased`}>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,35 @@
+import type { Metadata } from 'next';
+
+import { OG, SITE_NAME, TWITTER } from '@/config/constants';
+
+import HomeContent from './components/homeContent';
+import HomeKv from './components/homeKv';
+import HomeQuestions from './components/homeQuestions';
+import HomeStarted from './components/homeStarted';
+
+export const metadata: Metadata = {
+  title: SITE_NAME,
+  openGraph: {
+    ...OG,
+    url: '/',
+  },
+  twitter: {
+    ...TWITTER,
+  },
+  alternates: {
+    canonical: '/',
+  },
+};
+
+const VideoGrapherPage = () => {
+  return (
+    <div className="">
+      <HomeKv />
+      <HomeContent />
+      <HomeQuestions />
+      <HomeStarted />
+    </div>
+  );
+};
+
+export default VideoGrapherPage;

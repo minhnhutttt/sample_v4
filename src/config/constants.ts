@@ -1,7 +1,8 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? '';
 export const SITE_URL_WITH_SCHEME = SITE_URL ? `https://${SITE_URL}` : '';
-export const SITE_NAME = 'SITE NAME';
-export const DEFAULT_DESCRIPTION = 'description';
+export const SITE_NAME = 'CREATER KIVO TALK';
+export const DEFAULT_DESCRIPTION =
+  'KIVOはどんな人であっても、あなたを輝かせるステージを提供します。あなたがSNSユーザーでも、KIVOを使えばクリエイター。あなたが漫画・同人作家なら、KIVOの世界では連載作家。あなたがコミュニティ運用者だとしたら、KIVOに立てばカリスマ講師。';
 export const KEYWORDS = [SITE_NAME];
 
 export const OG_IMAGES = [

@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
-import HomeContent from './components/homeContent';
-import HomeKv from './components/homeKv';
-import HomeQuestions from './components/homeQuestions';
-import HomeStarted from './components/homeStarted';
+import Creators from './components/creators';
+import Title from './components/title';
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -23,11 +21,9 @@ export const metadata: Metadata = {
 
 const IndexPage = () => {
   return (
-    <div className="">
-      <HomeKv />
-      <HomeContent />
-      <HomeQuestions />
-      <HomeStarted />
+    <div className="bg-[#FFF8F2]">
+      <Title />
+      <Creators />
     </div>
   );
 };
