@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
+import Fv from './components/Fv';
+import Lightblue from './components/Lightblue';
+import Positive from './components/Positive';
+import Story from './components/Story';
+
 export const metadata: Metadata = {
   title: SITE_NAME,
   openGraph: {
@@ -17,7 +22,14 @@ export const metadata: Metadata = {
 };
 
 const IndexPage = () => {
-  return <div className="">home</div>;
+  return (
+    <>
+      <Fv />
+      <Story />
+      <Positive />
+      <Lightblue />
+    </>
+  );
 };
 
 export default IndexPage;

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Zen_Kaku_Gothic_New } from 'next/font/google';
 import { Toaster } from 'sonner';
 import 'sonner/dist/styles.css';
 
@@ -19,7 +19,7 @@ import {
 import './globals.css';
 import { Providers } from './providers';
 
-const noto = Noto_Sans_JP({
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
 });
@@ -64,7 +64,7 @@ const RootLayout = ({
 
   return (
     <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
+      <body className={`${zenKakuGothicNew.className} antialiased`}>
         <Providers>
           <Header />
           {children}
