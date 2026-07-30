@@ -69,7 +69,10 @@ Centralized in `src/config/constants.ts` (`SITE_NAME`, `DEFAULT_DESCRIPTION`, `O
 
 ### Layout & positioning rules
 
-- **Units**: Use `px` for spacing, sizing, and layout values. Do not use `rem`, `em`, or `%` unless explicitly requested.
+- **Units**:
+  - `font-size`: always use `px`.
+  - `padding`, `margin`, `top`, `bottom`, `left`, `right`, and other spacing/positioning classes: **prefer existing Tailwind utility classes/scale first** (e.g. `p-4`, `mt-2`, `gap-6`). Only fall back to arbitrary `px` values (e.g. `p-[13px]`, `top-[7px]`) when no existing class in the scale matches the required value.
+- **Typography**: Do not extract or apply `letter-spacing` values from Figma — skip this property entirely when converting design to code.
 - **`position: absolute`**: Avoid `absolute` positioning unless it is genuinely the only way to achieve the required layout. Figma designs export almost everything as absolute by default — this is not a valid reason to use it in code. If `absolute` positioning seems necessary, **stop and ask the user for confirmation before applying it**, rather than assuming it's required.
 - **`@container` queries**: `@container` with `cqw`/`cqh` units may be used for select components when explicitly requested. When the user asks for container-query-based sizing on a component, apply it **consistently across the entire component** — not mixed with fixed-unit rules in the same component.
 

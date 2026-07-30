@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import SectionTitle from '@/components/common/section-title';
+
 import FeatureCard from './FeatureCard';
 import FeatureSmallCard from './FeatureSmallCard';
 
@@ -83,50 +85,32 @@ const Feature = () => {
                 />
               </div>
             </div>
-
-            <div className="relative w-full rounded-[24px] pt-[48px] pb-[24px] text-center leading-[1.35] md:rounded-[40px] md:pt-[64px] md:pb-[16px]">
-              <p className="text-[24px] font-black tracking-[0.48px] text-[#434f8e] md:text-[48px] md:tracking-[0.8px]">
-                食べてもらう体験を通して
-              </p>
-              <p className="mt-[8px]">
-                <span className="text-[32px] font-black tracking-[0.32px] text-[#F03D22] md:text-[68px] md:tracking-[0.68px]">
-                  多数のアンケート
-                </span>
-                <span className="text-[24px] font-black tracking-[0.24px] text-[#434f8e] md:text-[48px] md:tracking-[0.48px]">
-                  を取ることで…
-                </span>
-              </p>
-              <div className="absolute bottom-0">
-                <Image
-                  src="/assets/images/feature/deco-left.png"
-                  alt=""
-                  width={192}
-                  height={192}
-                  className="w-[96px]"
-                />
-              </div>
-              <div className="absolute right-0 bottom-0">
-                <Image
-                  src="/assets/images/feature/deco-left.png"
-                  alt=""
-                  width={192}
-                  height={192}
-                  className="w-[96px]"
-                />
-              </div>
+            <div className="w-full pt-[48px] md:pt-[64px]">
+              <SectionTitle>
+                <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
+                  食べてもらう体験を通して
+                </p>
+                <p className="mt-[8px]">
+                  <span className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
+                    多数のアンケート
+                  </span>
+                  <br className="md:hidden" />
+                  <span className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
+                    を取ることで…
+                  </span>
+                </p>
+              </SectionTitle>
             </div>
           </div>
-          <span className="mb-2.5 block h-px w-full bg-[#434F8E]"></span>
-          <span className="block h-0.5 w-full bg-[#434F8E]"></span>
         </div>
 
-        <div className="flex w-full flex-wrap justify-between gap-x-[20px] gap-y-[48px] md:gap-y-[94px]">
+        <div className="flex w-full flex-wrap justify-center gap-x-[100px] gap-y-[48px] md:gap-y-[94px]">
           {cards.map((card) => (
             <FeatureCard key={card.label} {...card} />
           ))}
         </div>
 
-        <div className="mt-[16px] flex w-full flex-col items-center gap-[64px] md:mt-[32px] md:flex-row md:items-start md:justify-between md:gap-[28px]">
+        <div className="mt-[16px] flex w-full flex-col justify-center gap-[64px] max-xl:flex-wrap max-md:items-center md:mt-[44px] md:flex-row md:gap-x-[28px] md:gap-y-10 xl:justify-between">
           {smallCards.map((card) => (
             <FeatureSmallCard key={card.title} {...card} />
           ))}

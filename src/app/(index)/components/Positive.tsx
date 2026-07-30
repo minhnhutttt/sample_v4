@@ -124,25 +124,28 @@ const Positive = () => {
       </div>
       <div className="px-5">
         <div className="mx-auto w-full max-w-[1120px]">
-          <div className="min-h-[304px] rounded-[20px] bg-[url(/assets/images/positive/resolve.png)] px-5 pt-[72px] text-center font-bold text-white [box-shadow:10px_18px_0_0_rgba(11,_95,_158,_0.20)] md:rounded-[40px]">
-            <p className="md:text-[32px]">私たちが提供するのは、</p>
-            <p className="md:text-[32px]">
-              <span className="font-black md:text-[42px]">
+          <div className="rounded-[20px] bg-[url(/assets/images/positive/resolve.png)] px-5 pt-8 text-center font-bold text-white [box-shadow:10px_18px_0_0_rgba(11,_95,_158,_0.20)] max-md:pb-16 md:min-h-[304px] md:rounded-[40px] md:pt-[72px]">
+            <p className="text-[20px] md:text-[32px]">私たちが提供するのは、</p>
+            <p className="text-[20px] md:text-[32px]">
+              <span className="text-[24px] font-black md:text-[42px]">
                 「食べてもらう体験」
               </span>
-              から<span className="font-black md:text-[42px]">「購入」</span>
+              から
+              <span className="text-[24px] font-black md:text-[42px]">
+                「購入」
+              </span>
               への最短ルートです。
             </p>
           </div>
         </div>
-        <div className="relative z-10 -mt-16 flex items-start justify-center">
+        <div className="relative z-10 -mt-12 flex items-start justify-center md:-mt-16">
           <Image
             src="/assets/images/positive/resolve-arrow.png"
             alt=""
             aria-hidden
             width={332}
             height={598}
-            className="w-[161px]"
+            className="w-20 md:w-[161px]"
           />
         </div>
       </div>

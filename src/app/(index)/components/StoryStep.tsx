@@ -43,7 +43,7 @@ const StoryStep = ({
 
   const content = (
     <div className="order-2 flex w-full flex-col items-start gap-[16px] md:w-[420px] md:gap-[28px] lg:group-even:order-1">
-      <div className="relative flex w-full items-center justify-center rounded-full rounded-tl-full rounded-r-full bg-white px-[24px] py-[16px] group-even:rounded-tr-full md:px-[40px] md:py-[20px] md:group-even:rounded-l-full md:group-even:rounded-tl-none md:group-even:rounded-r-none">
+      <div className="relative flex w-full items-center justify-center bg-white px-[24px] py-[16px] group-odd:rounded-tl-full group-odd:rounded-r-full group-even:rounded-l-full group-even:rounded-tr-full md:px-[40px] md:py-[20px]">
         <p className="text-[28px] font-bold tracking-[0.4px] text-[#434f8e] md:text-[40px] md:tracking-[0.8px]">
           {title}
         </p>

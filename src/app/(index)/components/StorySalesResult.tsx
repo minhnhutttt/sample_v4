@@ -65,7 +65,7 @@ const StorySalesResult = () => {
               />
             </div>
 
-            <div className="absolute -top-[16px] left-1/2 z-50 flex w-[220px] -translate-x-1/2 animate-bounce items-center justify-center gap-[10px] rounded-[10px] bg-[#dcf0ff] px-[14px] py-[4px] drop-shadow-[3px_3px_0px_rgba(55,129,184,0.21)] md:top-[-5.714cqh] md:left-[15cqw] md:translate-x-0 md:rounded-[1.429cqw] md:px-[2.143cqw] md:py-[1.714cqh]">
+            <div className="absolute -top-[16px] left-1/2 z-50 flex w-[220px] w-fit -translate-x-1/2 animate-bounce items-center justify-center gap-[10px] rounded-[10px] bg-[#dcf0ff] px-[14px] py-[4px] drop-shadow-[3px_3px_0px_rgba(55,129,184,0.21)] md:top-[-5.714cqh] md:left-[15cqw] md:translate-x-0 md:rounded-[1.429cqw] md:px-[2.143cqw] md:py-[1.714cqh]">
               <p className="text-[15px] leading-[2] font-bold tracking-[0.48px] text-[#434f8e] md:text-[1.607cqw] md:tracking-[0.064cqw]">
                 ほぼ玉ねぎなドレッシング
               </p>
@@ -91,8 +91,8 @@ const StorySalesResult = () => {
             <Image
               src="/assets/images/story/number-670.png"
               alt="670本以上売上"
-              width={230}
-              height={115}
+              width={836}
+              height={326}
               className="md:w-[37.321cqw]"
             />
           </div>
