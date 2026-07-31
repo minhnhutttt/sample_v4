@@ -5,17 +5,19 @@ const gradientText =
 
 const Reaching = () => {
   return (
-    <section className="relative overflow-hidden rounded-t-[80px] bg-[#434f8e] pt-34 pb-20">
+    <section className="relative overflow-hidden rounded-t-[40px] bg-[url(/assets/images/reaching/bg.png)] bg-cover pt-24 pb-40 md:rounded-t-[80px] md:pt-34 md:pb-20">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-70 mix-blend-overlay"
+        className="pointer-events-none absolute inset-x-0 bottom-20 mix-blend-overlay md:bottom-70"
       >
         <div className="animate-marquee flex w-max">
-          <span className="skew-x-[-8deg] px-10 text-[240px] leading-none font-black whitespace-nowrap text-white opacity-10">
-            Reaching Everyone.　Reaching Everyone.
+          <span className="skew-x-[-8deg] px-10 text-[120px] leading-none font-black whitespace-nowrap text-white opacity-10 md:text-[240px]">
+            Reaching Everyone. Reaching Everyone. Reaching Everyone. Reaching
+            Everyone.
           </span>
-          <span className="skew-x-[-8deg] px-10 text-[240px] leading-none font-black whitespace-nowrap text-white opacity-10">
-            Reaching Everyone.　Reaching Everyone.
+          <span className="skew-x-[-8deg] px-10 text-[120px] leading-none font-black whitespace-nowrap text-white opacity-10 md:text-[240px]">
+            Reaching Everyone. Reaching Everyone. Reaching Everyone. Reaching
+            Everyone.
           </span>
         </div>
       </div>
@@ -55,7 +57,7 @@ const Reaching = () => {
             </p>
           </div>
           <Image
-            src="/assets/images/reaching/photo-collage.webp"
+            src="/assets/images/reaching/photo-collage.png"
             alt="試食BARアサクサの店舗外観、来店客の様子、フードバイヤーズハブのWEBサイト画面、店内の商品陳列"
             width={680}
             height={734}

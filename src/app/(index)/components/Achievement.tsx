@@ -146,6 +146,26 @@ const Achievement = () => {
           background: 'linear-gradient(135deg, #1cabe1 0%, #1e94cd 100%)',
         }}
       >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 overflow-hidden mix-blend-overlay"
+        >
+          <div className="animate-marquee-vertical flex h-max flex-col [writing-mode:sideways-lr]">
+            <span className="text-[100px] leading-none font-black whitespace-nowrap text-white opacity-10 md:text-[220px]">
+              Media Featured. Media Featured. Media Featured. Media Featured.
+            </span>
+          </div>
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 overflow-hidden mix-blend-overlay"
+        >
+          <div className="animate-marquee-vertical flex h-max flex-col items-center [writing-mode:vertical-rl]">
+            <span className="text-[100px] leading-none font-black whitespace-nowrap text-white opacity-10 md:text-[220px]">
+              Media Featured. Media Featured. Media Featured. Media Featured.
+            </span>
+          </div>
+        </div>
         <div className="relative mx-auto max-w-[1120px]">
           <div className="relative flex flex-col items-center text-center">
             <div className="relative px-40">
