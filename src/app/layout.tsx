@@ -1,12 +1,6 @@
-import type { CSSProperties } from 'react';
-
 import type { Metadata } from 'next';
-import { Zen_Kaku_Gothic_New } from 'next/font/google';
-import { Toaster } from 'sonner';
-import 'sonner/dist/styles.css';
+import { Allura, Zen_Kaku_Gothic_New } from 'next/font/google';
 
-import Footer from '@/components/footer';
-import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -22,6 +16,12 @@ import { Providers } from './providers';
 const zenKakuGothicNew = Zen_Kaku_Gothic_New({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
+});
+
+const allura = Allura({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-allura',
 });
 
 export const metadata: Metadata = {
@@ -55,38 +55,12 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const toastStyle: CSSProperties = {
-    background: '#111827',
-    color: '#ffffff',
-    border: '1px solid #374151',
-    borderRadius: '12px',
-  };
-
   return (
     <html lang="ja">
-      <body className={`${zenKakuGothicNew.className} antialiased`}>
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
-        <Toaster
-          position="top-center"
-          theme="dark"
-          expand
-          toastOptions={{
-            style: toastStyle,
-            classNames: {
-              title: 'font-bold text-[14px]',
-              description: 'text-[14px] text-gray-400',
-              actionButton:
-                'text-[12px] bg-blue-600 text-white px-2 py-1 rounded',
-              cancelButton:
-                'text-[12px] bg-gray-500 text-white px-2 py-1 rounded',
-              closeButton: 'text-[12px] text-gray-400 hover:text-white',
-            },
-          }}
-        />
+      <body
+        className={`${zenKakuGothicNew.className} ${allura.variable} antialiased`}
+      >
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

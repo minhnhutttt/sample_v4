@@ -65,7 +65,7 @@ const smallCards = [
 
 const Feature = () => {
   return (
-    <section className="relative bg-[#eef1fb] px-5">
+    <section className="relative px-5">
       <div className="relative mx-auto flex max-w-[1120px] flex-col items-center gap-[48px] pt-[80px] pb-[64px] md:gap-[85px] md:pt-[110px] md:pb-[100px]">
         <div className="w-full">
           <div className="flex w-full flex-col items-center">

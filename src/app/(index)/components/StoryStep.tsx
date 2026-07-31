@@ -1,9 +1,6 @@
-import { Allura } from 'next/font/google';
 import Image from 'next/image';
 
 import StoryStepRing from './StoryStepRing';
-
-const allura = Allura({ weight: '400', subsets: ['latin'] });
 
 type StoryStepProps = {
   number: string;
@@ -48,7 +45,7 @@ const StoryStep = ({
           {title}
         </p>
         <span
-          className={`absolute bottom-[calc(100%-16px)] left-1/2 -translate-x-1/2 text-[60px] leading-none text-white md:bottom-[calc(100%-24px)] md:text-[40px] md:text-[80px] ${allura.className}`}
+          className="font-allura absolute bottom-[calc(100%-16px)] left-1/2 -translate-x-1/2 text-[60px] leading-none text-white md:bottom-[calc(100%-24px)] md:text-[40px] md:text-[80px]"
           aria-hidden
         >
           {number}

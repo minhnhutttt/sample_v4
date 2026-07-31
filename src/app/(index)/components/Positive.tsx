@@ -13,8 +13,8 @@ const Bold = ({ children }: { children: ReactNode }) => (
 const Positive = () => {
   return (
     <section className="relative">
-      <div className="relative overflow-hidden bg-white bg-[url(/assets/images/positive/bg-pattern.png)] bg-cover">
-        <div className="relative mx-auto mt-9 flex max-w-[1120px] flex-col items-center gap-[60px] px-[20px] py-[64px] md:gap-[74px] md:pt-[85px] md:pb-[80px]">
+      <div className="relative overflow-hidden bg-white bg-[url(/assets/images/positive/bg-pattern.png)] bg-cover bg-fixed">
+        <div className="relative mx-auto mt-9 flex max-w-[1120px] flex-col items-center gap-[60px] px-[20px] pt-[64px] pb-[140px] md:gap-[74px] md:pt-[85px] md:pb-[160px]">
           <h2 className="relative flex flex-col items-center text-center leading-[1.2] italic">
             <Image
               src="/assets/images/positive/sparkle.svg"
@@ -122,16 +122,16 @@ const Positive = () => {
           </div>
         </div>
       </div>
-      <div className="px-5">
+      <div className="relative -mt-20 px-5">
         <div className="mx-auto w-full max-w-[1120px]">
           <div className="rounded-[20px] bg-[url(/assets/images/positive/resolve.png)] px-5 pt-8 text-center font-bold text-white [box-shadow:10px_18px_0_0_rgba(11,_95,_158,_0.20)] max-md:pb-16 md:min-h-[304px] md:rounded-[40px] md:pt-[72px]">
             <p className="text-[20px] md:text-[32px]">私たちが提供するのは、</p>
             <p className="text-[20px] md:text-[32px]">
-              <span className="text-[24px] font-black md:text-[42px]">
+              <span className="text-[22px] font-black md:text-[42px]">
                 「食べてもらう体験」
               </span>
               から
-              <span className="text-[24px] font-black md:text-[42px]">
+              <span className="text-[22px] font-black md:text-[42px]">
                 「購入」
               </span>
               への最短ルートです。
