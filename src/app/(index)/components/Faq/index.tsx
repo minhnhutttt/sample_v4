@@ -1,3 +1,5 @@
+import FadeIn from '@/components/common/fade-in';
+
 import FaqItem from './FaqItem';
 
 const faqs = [
@@ -36,17 +38,18 @@ const Faq = () => {
   return (
     <section className="px-5 pt-26 pb-34 md:pt-45">
       <div className="mx-auto max-w-[711px]">
-        <p className="text-center text-[44px] leading-[1.46] font-black text-[#434f8e]">
+        <FadeIn
+          as="p"
+          className="text-center text-[44px] leading-[1.46] font-black text-[#434f8e]"
+        >
           よくある質問
-        </p>
+        </FadeIn>
 
         <div className="mt-14 flex flex-col">
           {faqs.map((faq) => (
-            <FaqItem
-              key={faq.question}
-              question={faq.question}
-              answer={faq.answer}
-            />
+            <FadeIn key={faq.question}>
+              <FaqItem question={faq.question} answer={faq.answer} />
+            </FadeIn>
           ))}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import FadeIn from '@/components/common/fade-in';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
 
 import Achievement from './components/Achievement';
@@ -33,7 +34,9 @@ export const metadata: Metadata = {
 const IndexPage = () => {
   return (
     <>
-      <Fv />
+      <FadeIn>
+        <Fv />
+      </FadeIn>
       <Story />
       <Positive />
       <div className="-mt-14 overflow-hidden rounded-t-[40px] bg-[url(/assets/images/lightblue/lightblue.jpg)] bg-cover bg-fixed bg-top md:rounded-t-[80px]">
@@ -47,7 +50,9 @@ const IndexPage = () => {
         <Steps />
         <Voice />
         <Faq />
-        <Reaching />
+        <FadeIn>
+          <Reaching />
+        </FadeIn>
       </div>
       <StickyOfferButton />
     </>

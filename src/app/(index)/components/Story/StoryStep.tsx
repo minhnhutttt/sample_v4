@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 import StoryStepRing from './StoryStepRing';
 
 type StoryStepProps = {
@@ -58,10 +60,10 @@ const StoryStep = ({
   );
 
   return (
-    <div className="group flex w-full items-center justify-center gap-[60px] max-lg:flex-wrap max-md:flex-col md:max-w-[940px] md:gap-[24px] md:gap-[80px] lg:justify-between">
+    <FadeIn className="group flex w-full items-center justify-center gap-[60px] max-lg:flex-wrap max-md:flex-col md:max-w-[940px] md:gap-[24px] md:gap-[80px] lg:justify-between">
       {photo}
       {content}
-    </div>
+    </FadeIn>
   );
 };
 

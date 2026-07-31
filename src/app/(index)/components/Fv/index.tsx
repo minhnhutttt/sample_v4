@@ -97,7 +97,7 @@ const Fv = () => {
 
         <FvButton
           badge="無料"
-          className="fixed bottom-5 left-1/2 z-50 max-md:-translate-x-1/2 md:absolute md:bottom-[5.556cqh] md:left-[6.25cqw]"
+          className="fixed bottom-5 left-1/2 z-50 max-md:hidden max-md:-translate-x-1/2 md:absolute md:bottom-[5.556cqh] md:left-[6.25cqw]"
         >
           出展お問い合わせ
         </FvButton>

@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 import StoryRoutes from './StoryRoutes';
 import StorySalesResult from './StorySalesResult';
 import StoryStep from './StoryStep';
@@ -48,7 +50,7 @@ const Story = () => {
       className="relative mt-[100px] overflow-x-clip rounded-[40px] bg-[url('/assets/images/story/bg-street.png')] bg-cover bg-fixed px-[20px] md:rounded-[80px]"
     >
       <div className="relative mx-auto flex max-w-[1120px] flex-col items-center gap-[44px] py-[64px] md:gap-[128px] md:pt-[124px] md:pb-[150px]">
-        <h2 className="flex flex-col items-center text-center">
+        <FadeIn as="h2" className="flex flex-col items-center text-center">
           <span className="flex items-center gap-[16px] md:gap-[12px]">
             <Image
               src="/assets/images/story/sparkle.svg"
@@ -86,7 +88,7 @@ const Story = () => {
               className="h-auto w-[64px] -scale-y-100 -rotate-90 md:w-24 lg:w-[158px]"
             />
           </span>
-        </h2>
+        </FadeIn>
 
         <div className="flex w-full flex-col items-center gap-[68px] md:gap-[76px]">
           {steps.map((step) => (
@@ -94,9 +96,13 @@ const Story = () => {
           ))}
         </div>
 
-        <StoryRoutes />
+        <FadeIn className="w-full">
+          <StoryRoutes />
+        </FadeIn>
 
-        <StorySalesResult />
+        <FadeIn className="w-full">
+          <StorySalesResult />
+        </FadeIn>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
 import SectionTitle from '@/components/common/section-title';
 
 import FeatureCard from './FeatureCard';
@@ -67,7 +68,7 @@ const Feature = () => {
   return (
     <section className="relative px-5">
       <div className="relative mx-auto flex max-w-[1120px] flex-col items-center gap-[48px] pt-[80px] pb-[64px] md:gap-[85px] md:pt-[110px] md:pb-[100px]">
-        <div className="w-full">
+        <FadeIn className="w-full">
           <div className="flex w-full flex-col items-center">
             <div className="relative z-10 mb-[-20px] flex items-center justify-center gap-[10px] rounded-full bg-[#434f8e] px-[24px] py-[10px] md:mb-[-32px] md:px-[40px] md:py-[20px]">
               <p className="text-[16px] font-bold tracking-[0.48px] text-white md:text-[28px] md:tracking-[0.84px]">
@@ -102,17 +103,21 @@ const Feature = () => {
               </SectionTitle>
             </div>
           </div>
-        </div>
+        </FadeIn>
 
         <div className="flex w-full flex-wrap justify-center gap-x-[100px] gap-y-[48px] md:gap-y-[94px]">
           {cards.map((card) => (
-            <FeatureCard key={card.label} {...card} />
+            <FadeIn key={card.label}>
+              <FeatureCard {...card} />
+            </FadeIn>
           ))}
         </div>
 
         <div className="mt-[16px] flex w-full flex-col justify-center gap-[64px] max-xl:flex-wrap max-md:items-center md:mt-[44px] md:flex-row md:gap-x-[28px] md:gap-y-10 xl:justify-between">
           {smallCards.map((card) => (
-            <FeatureSmallCard key={card.title} {...card} />
+            <FadeIn key={card.title}>
+              <FeatureSmallCard {...card} />
+            </FadeIn>
           ))}
         </div>
       </div>

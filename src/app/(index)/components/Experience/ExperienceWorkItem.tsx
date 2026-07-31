@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 type ExperienceWorkItemProps = {
   number: string;
   badge: string;
@@ -18,7 +20,7 @@ const ExperienceWorkItem = ({
   imageAlt,
 }: ExperienceWorkItemProps) => {
   return (
-    <div className="group relative flex w-full flex-col items-center gap-8 max-md:pr-5 md:flex-row md:justify-between md:gap-10 md:even:flex-row-reverse">
+    <FadeIn className="group relative flex w-full flex-col items-center gap-8 max-md:pr-5 md:flex-row md:justify-between md:gap-10 md:even:flex-row-reverse">
       <div className="relative flex flex-col items-start gap-3 rounded-[28px] bg-white/70 bg-contain bg-no-repeat px-5 pt-10 pb-6 text-left group-odd:bg-top-right group-even:bg-top-left md:w-[78%] md:max-w-[870px] md:gap-5 md:pt-12 md:pb-10 md:pl-16 md:group-odd:bg-[url(/assets/images/experience/ichimatsu-box-right.png)] md:group-odd:pr-[200px] md:group-even:bg-[url(/assets/images/experience/ichimatsu-box-left.png)] md:group-even:pl-[200px] lg:group-odd:pr-[250px] lg:group-even:pl-[250px]">
         <span className="font-allura absolute -top-7 text-[52px] leading-none text-[#434f8e] md:-top-9 md:text-[72px]">
           {number}
@@ -49,7 +51,7 @@ const ExperienceWorkItem = ({
           className="relative w-full max-w-[175px] rounded-full md:max-w-[420px]"
         />
       </div>
-    </div>
+    </FadeIn>
   );
 };
 

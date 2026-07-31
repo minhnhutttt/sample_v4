@@ -14,7 +14,7 @@ const FeatureSmallCard = ({
   description,
 }: FeatureSmallCardProps) => {
   return (
-    <div className="relative flex w-[354px] flex-col items-center overflow-hidden pt-[100px] md:pt-[140px]">
+    <div className="relative flex h-full w-[354px] flex-col items-center overflow-hidden pt-[100px] md:pt-[140px]">
       <div className="absolute top-0 z-10 size-[220px] shrink-0 overflow-hidden rounded-full md:size-[280px]">
         <div className="relative size-full overflow-hidden rounded-full">
           <Image src={image} alt={imageAlt} fill className="object-cover" />

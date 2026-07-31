@@ -1,3 +1,4 @@
+import FadeIn from '@/components/common/fade-in';
 import SectionTitle from '@/components/common/section-title';
 
 import VoiceCard from './VoiceCard';
@@ -49,36 +50,38 @@ const Voice = () => {
   return (
     <section className="px-5 pt-36 md:pt-48">
       <div className="mx-auto max-w-[1120px]">
-        <SectionTitle>
-          <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
-            浅草だからこその
-          </p>
-          <p className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
-            様々な出会い
-          </p>
-        </SectionTitle>
+        <FadeIn>
+          <SectionTitle>
+            <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
+              浅草だからこその
+            </p>
+            <p className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
+              様々な出会い
+            </p>
+          </SectionTitle>
 
-        <div className="mx-auto mt-10 max-w-[711px] text-center text-[18px] leading-[1.8] font-medium text-[#1c213b] md:mt-16 md:text-[20px]">
-          <p>
-            バイヤーをはじめ、イベント担当者、飲食のプロ、そして出展者同士など。
-          </p>
-          <p>様々な業界の人が日常的に訪れる浅草だからこそ、</p>
-          <p>販路開拓のチャンスはバイヤーとの商談だけにとどまりません。</p>
-          <p className="mt-10">
-            実際に出展した企業様からは、「こんなところから声がかかるなんて！」
-          </p>
-          <p>
-            という
-            <span className="relative">
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#FFC2C1] md:h-[10px]"
-              />
-              <span className="relative">嬉しい出会いのご報告</span>
-            </span>
-            が次々と届いています。
-          </p>
-        </div>
+          <div className="mx-auto mt-10 max-w-[711px] text-center text-[18px] leading-[1.8] font-medium text-[#1c213b] md:mt-16 md:text-[20px]">
+            <p>
+              バイヤーをはじめ、イベント担当者、飲食のプロ、そして出展者同士など。
+            </p>
+            <p>様々な業界の人が日常的に訪れる浅草だからこそ、</p>
+            <p>販路開拓のチャンスはバイヤーとの商談だけにとどまりません。</p>
+            <p className="mt-10">
+              実際に出展した企業様からは、「こんなところから声がかかるなんて！」
+            </p>
+            <p>
+              という
+              <span className="relative">
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#FFC2C1] md:h-[10px]"
+                />
+                <span className="relative">嬉しい出会いのご報告</span>
+              </span>
+              が次々と届いています。
+            </p>
+          </div>
+        </FadeIn>
 
         <div className="mt-24 flex flex-col gap-10">
           {voices.map((voice) => (

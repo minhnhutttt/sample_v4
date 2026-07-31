@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 import PositiveTestimonial from './PositiveTestimonial';
 
 const Bold = ({ children }: { children: ReactNode }) => (
@@ -15,7 +17,10 @@ const Positive = () => {
     <section className="relative">
       <div className="relative overflow-hidden bg-white bg-[url(/assets/images/positive/bg-pattern.png)] bg-cover bg-fixed">
         <div className="relative mx-auto mt-9 flex max-w-[1120px] flex-col items-center gap-[60px] px-[20px] pt-[64px] pb-[140px] md:gap-[74px] md:pt-[85px] md:pb-[160px]">
-          <h2 className="relative flex flex-col items-center text-center leading-[1.2] italic">
+          <FadeIn
+            as="h2"
+            className="relative flex flex-col items-center text-center leading-[1.2] italic"
+          >
             <Image
               src="/assets/images/positive/sparkle.svg"
               alt=""
@@ -55,7 +60,7 @@ const Positive = () => {
                 が伝わった
               </span>
             </span>
-          </h2>
+          </FadeIn>
 
           <div className="flex w-full flex-col items-center gap-[24px] md:gap-[36px]">
             <PositiveTestimonial
@@ -123,7 +128,7 @@ const Positive = () => {
         </div>
       </div>
       <div className="relative -mt-20 px-5">
-        <div className="mx-auto w-full max-w-[1120px]">
+        <FadeIn className="mx-auto w-full max-w-[1120px]">
           <div className="rounded-[20px] bg-[url(/assets/images/positive/resolve.png)] px-5 pt-8 text-center font-bold text-white [box-shadow:10px_18px_0_0_rgba(11,_95,_158,_0.20)] max-md:pb-16 md:min-h-[304px] md:rounded-[40px] md:pt-[72px]">
             <p className="text-[20px] md:text-[32px]">私たちが提供するのは、</p>
             <p className="text-[20px] md:text-[32px]">
@@ -137,7 +142,7 @@ const Positive = () => {
               への最短ルートです。
             </p>
           </div>
-        </div>
+        </FadeIn>
         <div className="relative z-10 -mt-12 flex items-start justify-center md:-mt-16">
           <Image
             src="/assets/images/positive/resolve-arrow.png"

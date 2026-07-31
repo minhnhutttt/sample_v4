@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 import AchievementCard from './AchievementCard';
 
 const gradientTextStyle = {
@@ -64,7 +66,7 @@ const Achievement = () => {
       />
       <section className="px-5 pt-20 pb-20 md:pt-24 md:pb-35">
         <div className="relative mx-auto max-w-[1120px] pt-30">
-          <div className="relative mx-auto flex max-w-[770px] flex-col items-center pb-22 text-center md:pb-40">
+          <FadeIn className="relative mx-auto flex max-w-[770px] flex-col items-center pb-22 text-center md:pb-40">
             <div className="absolute -top-18 -left-3 -rotate-10 md:-top-24 md:-left-36">
               <div className="relative flex animate-bounce items-center justify-center rounded-full bg-white px-5 py-3 md:px-10 md:py-5">
                 <p className="text-[18px] leading-[1.58] font-bold whitespace-nowrap text-[#434f8e] md:text-[28px]">
@@ -99,9 +101,9 @@ const Achievement = () => {
               height={154}
               className="absolute right-0 bottom-0 max-md:w-[100px] md:right-[-90px] md:bottom-[30px]"
             />
-          </div>
+          </FadeIn>
 
-          <div className="flex max-md:mb-14">
+          <FadeIn className="flex max-md:mb-14">
             <div className="md:w-110 md:shrink-0">
               <p className="text-[24px] leading-[1.56] font-black text-white max-md:text-center md:text-[36px]">
                 自治体・官民連携との
@@ -112,20 +114,21 @@ const Achievement = () => {
                 単なる民間のサービスにとどまらず、地方創生や販路開拓の有効な手段として、多くの公的機関・自治体様と連携し、テストマーケティングや即売会を実施しています。
               </p>
             </div>
-          </div>
+          </FadeIn>
           <div>
             <div className="ml-auto flex flex-1 flex-col gap-8 md:w-[560px] md:gap-10">
               {achievementCards.map((card) => (
-                <AchievementCard
-                  key={card.title}
-                  title={card.title}
-                  description={card.description}
-                />
+                <FadeIn key={card.title}>
+                  <AchievementCard
+                    title={card.title}
+                    description={card.description}
+                  />
+                </FadeIn>
               ))}
             </div>
           </div>
 
-          <div className="mt-20 flex flex-wrap items-center justify-center gap-4 md:mt-36">
+          <FadeIn className="mt-20 flex flex-wrap items-center justify-center gap-4 md:mt-36">
             {municipalLogos.map((logo) => (
               <Image
                 key={logo.alt}
@@ -136,7 +139,7 @@ const Achievement = () => {
                 className="rounded-2xl max-md:w-[150px]"
               />
             ))}
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -167,7 +170,7 @@ const Achievement = () => {
           </div>
         </div>
         <div className="relative mx-auto max-w-[1120px]">
-          <div className="relative flex flex-col items-center text-center">
+          <FadeIn className="relative flex flex-col items-center text-center">
             <div className="relative px-40">
               <Image
                 src="/assets/images/achievement/sparkle-media-left.svg"
@@ -216,7 +219,7 @@ const Achievement = () => {
                 チャンスも広がります。
               </p>
             </div>
-          </div>
+          </FadeIn>
 
           <div className="mt-15 flex items-end justify-center gap-8 md:mt-18">
             <div className="mb-6 h-0.5 flex-1 bg-white/60" />
@@ -231,7 +234,7 @@ const Achievement = () => {
             <div className="mb-6 h-0.5 flex-1 bg-white/60" />
           </div>
 
-          <div className="mt-10 flex justify-between gap-7 max-md:flex-col md:gap-30">
+          <FadeIn className="mt-10 flex justify-between gap-7 max-md:flex-col md:gap-30">
             <div className="flex flex-col gap-8 md:gap-6">
               {mediaOutletsLeft.map((outlet) => (
                 <p
@@ -252,7 +255,7 @@ const Achievement = () => {
                 </p>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           <p className="mt-10 text-[16px] leading-[1.8] font-bold text-white md:mt-16 md:text-[20px]">
             その他、Webメディアや

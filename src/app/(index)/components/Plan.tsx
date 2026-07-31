@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
 import SectionTitle from '@/components/common/section-title';
 
 type PlanStatus = {
@@ -96,46 +97,48 @@ const Plan = () => {
   return (
     <section className="mb-20 px-5 pt-32 md:mb-30 md:pt-47">
       <div className="mx-auto max-w-[1120px]">
-        <SectionTitle>
-          <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
-            シンプルな
-            <span className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
-              出展プラン
-            </span>
-          </p>
-        </SectionTitle>
-
-        <div className="mt-8 text-center text-[24px] font-medium text-[#1c213b] md:mt-18">
-          <p>
-            店頭PRを兼ねて大々的にユーザーにアピールする
-            <span className="relative">
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#ffc2cb] md:h-[10px]"
-              />
-              <span className="relative font-bold text-[#F03D22]">
-                「スタンダード」
+        <FadeIn>
+          <SectionTitle>
+            <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
+              シンプルな
+              <span className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
+                出展プラン
               </span>
-            </span>
-            と、
-          </p>
-          <p>
-            アピール以外は同等の機能を持つ
-            <span className="relative">
-              <span
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#b8e1ff] md:h-[10px]"
-              />
-              <span className="relative font-bold text-[#434F8E]">
-                「エコノミー」
-              </span>
-            </span>
-            の２種類。
-          </p>
-          <p>※その他、柔軟な対応も可能です。ぜひご相談ください。</p>
-        </div>
+            </p>
+          </SectionTitle>
 
-        <div className="mt-28 overflow-x-auto max-lg:-mr-5">
+          <div className="mt-8 text-center text-[24px] font-medium text-[#1c213b] md:mt-18">
+            <p>
+              店頭PRを兼ねて大々的にユーザーにアピールする
+              <span className="relative">
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#ffc2cb] md:h-[10px]"
+                />
+                <span className="relative font-bold text-[#F03D22]">
+                  「スタンダード」
+                </span>
+              </span>
+              と、
+            </p>
+            <p>
+              アピール以外は同等の機能を持つ
+              <span className="relative">
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#b8e1ff] md:h-[10px]"
+                />
+                <span className="relative font-bold text-[#434F8E]">
+                  「エコノミー」
+                </span>
+              </span>
+              の２種類。
+            </p>
+            <p>※その他、柔軟な対応も可能です。ぜひご相談ください。</p>
+          </div>
+        </FadeIn>
+
+        <FadeIn className="mt-28 overflow-x-auto max-lg:-mr-5">
           <div className="mx-auto w-[658px] max-lg:mr-5 md:w-[1016px]">
             <div className="flex gap-5 md:gap-8">
               <div className="w-[180px] shrink-0 md:w-88" />
@@ -218,7 +221,7 @@ const Plan = () => {
               ))}
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

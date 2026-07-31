@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 type VoiceCardProps = {
   avatar: string;
   avatarAlt: string;
@@ -60,10 +62,10 @@ const VoiceCard = ({
   );
 
   return (
-    <div className="group flex w-full justify-center gap-5 even:flex-row-reverse md:gap-10">
+    <FadeIn className="group flex w-full justify-center gap-5 even:flex-row-reverse md:gap-10">
       {photo}
       {card}
-    </div>
+    </FadeIn>
   );
 };
 

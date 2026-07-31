@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
 import SectionTitle from '@/components/common/section-title';
 
 const steps = [
@@ -22,18 +23,20 @@ const Steps = () => {
   return (
     <section className="px-5 pt-20 md:pt-34">
       <div className="mx-auto max-w-[1120px]">
-        <SectionTitle>
-          <p className="text-[32px] font-black text-[#f03d22] md:text-[68px]">
-            かんたん４ステップ！
-          </p>
-          <p className="mt-2 text-[24px] font-black text-[#434f8e] md:text-[48px]">
-            来週からスタートも可能
-          </p>
-        </SectionTitle>
+        <FadeIn>
+          <SectionTitle>
+            <p className="text-[32px] font-black text-[#f03d22] md:text-[68px]">
+              かんたん４ステップ！
+            </p>
+            <p className="mt-2 text-[24px] font-black text-[#434f8e] md:text-[48px]">
+              来週からスタートも可能
+            </p>
+          </SectionTitle>
+        </FadeIn>
 
         <div className="mx-auto mt-16 max-w-[790px]">
           {steps.map((step, index) => (
-            <div
+            <FadeIn
               key={step.number}
               className={
                 index < steps.length - 1
@@ -49,7 +52,7 @@ const Steps = () => {
                   width={52}
                   height={52}
                 />
-                <div className="absolute top-[-30px] left-[-40px] -rotate-10">
+                <div className="absolute top-[-22px] left-[-40px] -rotate-10">
                   <div className="rounded-full bg-[#434f8e] px-8 py-1">
                     <p className="font-[family-name:var(--font-allura)] text-[32px] leading-none whitespace-nowrap text-white">
                       Step{step.number}
@@ -60,7 +63,7 @@ const Steps = () => {
               <p className="text-[26px] font-bold text-[#1c213b] max-md:text-center md:text-[36px]">
                 {step.label}
               </p>
-            </div>
+            </FadeIn>
           ))}
         </div>
 

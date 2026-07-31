@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 type PositiveTestimonialProps = {
   avatar: string;
   avatarAlt: string;
@@ -44,10 +46,10 @@ const PositiveTestimonial = ({
   );
 
   return (
-    <div className="group flex w-full flex-row gap-[24px] even:flex-col-reverse even:flex-row-reverse md:max-w-[940px] md:items-center md:justify-between md:gap-[60px]">
+    <FadeIn className="group flex w-full flex-row gap-[24px] even:flex-col-reverse even:flex-row-reverse md:max-w-[940px] md:items-center md:justify-between md:gap-[60px]">
       {photo}
       {card}
-    </div>
+    </FadeIn>
   );
 };
 

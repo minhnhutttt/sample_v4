@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
+
 import ExperienceWorkItem from './ExperienceWorkItem';
 
 const workItems = [
@@ -47,7 +49,7 @@ const Experience = () => {
     <section className="rounded-b-[40px] px-5 md:rounded-b-[80px]">
       <div className="mx-auto flex max-w-[1120px] flex-col gap-16 pt-16 pb-10 md:gap-24 md:pt-24">
         <div className="flex flex-col gap-8 md:gap-10">
-          <div className="flex flex-col gap-1 text-center italic md:text-left">
+          <FadeIn className="flex flex-col gap-1 text-center italic md:text-left">
             <p className="text-[28px] leading-tight font-black md:text-[64px]">
               <span className="text-[#f03d22]">“食べてもらえる体験”</span>
               <span className="text-[22px] text-[#434f8e] md:text-[40px]">
@@ -60,9 +62,9 @@ const Experience = () => {
 
             <span className="mt-2 mb-1.5 block h-px w-full bg-[#434F8E] md:mt-5 md:mb-2"></span>
             <span className="block h-0.5 w-full bg-[#434F8E]"></span>
-          </div>
+          </FadeIn>
 
-          <div className="flex flex-col gap-10 max-md:items-center md:-mt-16 md:flex-row md:justify-between lg:-mt-24">
+          <FadeIn className="flex flex-col gap-10 max-md:items-center md:-mt-16 md:flex-row md:justify-between lg:-mt-24">
             <div className="flex flex-col gap-5 md:items-start md:gap-7 md:pt-20 lg:pt-32">
               <div className="flex items-center gap-9 max-md:w-full">
                 <Image
@@ -128,7 +130,7 @@ const Experience = () => {
                 稼働します！
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
       <div className="relative -mx-5 overflow-hidden rounded-b-[80px] px-5 pt-40 md:pt-55 md:pb-40">
@@ -141,7 +143,7 @@ const Experience = () => {
           }}
         />
         <div className="relative mx-auto flex max-w-[1120px] flex-col items-center">
-          <div className="flex flex-col items-center">
+          <FadeIn className="flex flex-col items-center">
             <div className="flex items-center gap-6">
               <Image
                 src="/assets/images/fv/logo-mark.svg"
@@ -169,10 +171,10 @@ const Experience = () => {
               height={46}
               className="w-[200px] md:w-[570px]"
             />
-          </div>
+          </FadeIn>
 
           <div className="mt-28 flex w-full flex-col gap-32 md:mt-18">
-            {workItems.map((item, index) => (
+            {workItems.map((item) => (
               <ExperienceWorkItem key={item.number} {...item} />
             ))}
           </div>

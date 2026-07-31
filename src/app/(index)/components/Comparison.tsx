@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import FadeIn from '@/components/common/fade-in';
 import SectionTitle from '@/components/common/section-title';
 
 const headerColumns = [
@@ -13,31 +14,33 @@ const Comparison = () => {
   return (
     <section className="overflow-hidden px-5 pt-34">
       <div className="mx-auto max-w-[1120px]">
-        <SectionTitle>
-          <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
-            予算や手間の検討は
-            <span className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
-              不要
-            </span>
-            です
-          </p>
-        </SectionTitle>
+        <FadeIn>
+          <SectionTitle>
+            <p className="text-[24px] font-black text-[#434f8e] md:text-[48px]">
+              予算や手間の検討は
+              <span className="text-[32px] font-black text-[#F03D22] md:text-[68px]">
+                不要
+              </span>
+              です
+            </p>
+          </SectionTitle>
 
-        <p className="pt-12 text-center text-[18px] font-medium text-[#1C213B] md:pt-16 md:text-[24px]">
-          展示会での「PR」と、リサーチ会社の「データ収集」。 <br />
-          両方のいいとこ取り。なのに
-          <span className="relative">
-            <span
-              aria-hidden
-              className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#ffc2c1] md:h-[10px]"
-            />
-            <span className="relative text-[24px] font-bold md:text-[32px]">
-              月額1.1万円（税込）～
+          <p className="pt-12 text-center text-[18px] font-medium text-[#1C213B] md:pt-16 md:text-[24px]">
+            展示会での「PR」と、リサーチ会社の「データ収集」。 <br />
+            両方のいいとこ取り。なのに
+            <span className="relative">
+              <span
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#ffc2c1] md:h-[10px]"
+              />
+              <span className="relative text-[24px] font-bold md:text-[32px]">
+                月額1.1万円（税込）～
+              </span>
             </span>
-          </span>
-          。
-        </p>
-        <div className="mt-28 overflow-x-auto max-md:-mr-5">
+            。
+          </p>
+        </FadeIn>
+        <FadeIn className="mt-28 overflow-x-auto max-md:-mr-5">
           <div className="min-w-[688px]">
             <div className="flex flex-col gap-4">
               <div className="flex gap-2">
@@ -144,7 +147,7 @@ const Comparison = () => {
               </div>
             </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
