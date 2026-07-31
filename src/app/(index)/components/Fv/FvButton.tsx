@@ -23,7 +23,7 @@ const FvButton = ({
   const content = (
     <>
       {badge && (
-        <span className="shrink-0 rounded-full bg-[#ffc2cb] text-[16px] leading-[1.67] font-bold tracking-[0.056cqw] text-[#801201] max-md:h-[32px] max-md:w-[65px] md:px-[1.875cqw] md:py-[0.556cqh] md:text-[1.875cqw]">
+        <span className="flex shrink-0 items-center justify-center rounded-full bg-[#ffc2cb] text-center text-[16px] leading-[1.67] font-bold tracking-[0.056cqw] text-[#801201] max-md:h-[32px] max-md:w-[65px] md:px-[1.875cqw] md:py-[0.556cqh] md:text-[1.875cqw]">
           {badge}
         </span>
       )}

@@ -26,7 +26,6 @@ const FeatureSmallCard = ({
             <Image
               src="/assets/images/feature/bullet-icon-white.svg"
               alt=""
-              aria-hidde
               width={33}
               height={32}
               className="absolute -top-[10px] -left-[32px]"

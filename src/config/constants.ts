@@ -1,3 +1,5 @@
+export const CONTACT_URL = 'https://shishoku-bar.com/#contact';
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? '';
 export const SITE_URL_WITH_SCHEME = SITE_URL ? `https://${SITE_URL}` : '';
 export const SITE_NAME = 'SITE NAME';

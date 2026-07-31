@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import { CONTACT_URL } from '@/config/constants';
+
 import FvButton from './FvButton';
 
 const Fv = () => {
@@ -97,6 +99,7 @@ const Fv = () => {
 
         <FvButton
           badge="無料"
+          href={CONTACT_URL}
           className="fixed bottom-5 left-1/2 z-50 max-md:hidden max-md:-translate-x-1/2 md:absolute md:bottom-[5.556cqh] md:left-[6.25cqw]"
         >
           出展お問い合わせ
