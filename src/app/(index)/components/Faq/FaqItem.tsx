@@ -27,7 +27,7 @@ const FaqItem = ({ question, answer }: FaqItemProps) => {
             {question}
           </p>
         </div>
-        <div className="flex shrink-0 items-center pt-1">
+        <div className="flex shrink-0 items-center pt-3 md:pt-1">
           <Image
             src="/assets/images/faq/chevron.svg"
             alt=""

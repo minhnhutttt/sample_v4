@@ -1,12 +1,12 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   //output: 'export',
   //trailingSlash: true,
-  /* images: {
+  images: {
     unoptimized: true,
-  }, */
+  },
 };
 
 export default nextConfig;

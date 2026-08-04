@@ -53,7 +53,7 @@ const mediaOutletsRight = [
 
 const Achievement = () => {
   return (
-    <div className="relative overflow-hidden rounded-[40px] bg-[#434f8e] md:rounded-[80px]">
+    <div className="relative overflow-clip rounded-[40px] bg-[#434f8e] md:rounded-[80px]">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.13] mix-blend-soft-light"
@@ -103,8 +103,8 @@ const Achievement = () => {
             />
           </FadeIn>
 
-          <FadeIn className="flex max-md:mb-14">
-            <div className="md:w-110 md:shrink-0">
+          <div className="flex items-start max-md:flex-col md:gap-10">
+            <FadeIn className="max-md:mb-14 md:sticky md:top-20 md:w-110 md:shrink-0">
               <p className="text-[24px] leading-[1.56] font-black text-white max-md:text-center md:text-[36px]">
                 自治体・官民連携との
                 <br />
@@ -113,10 +113,8 @@ const Achievement = () => {
               <p className="mt-7 text-[16px] leading-[1.8] font-medium text-white md:mt-10 md:text-[20px]">
                 単なる民間のサービスにとどまらず、地方創生や販路開拓の有効な手段として、多くの公的機関・自治体様と連携し、テストマーケティングや即売会を実施しています。
               </p>
-            </div>
-          </FadeIn>
-          <div>
-            <div className="ml-auto flex flex-1 flex-col gap-8 md:w-[560px] md:gap-10">
+            </FadeIn>
+            <div className="ml-auto flex w-full flex-col gap-8 md:mt-80 md:w-[560px] md:shrink-0 md:gap-10">
               {achievementCards.map((card) => (
                 <FadeIn key={card.title}>
                   <AchievementCard

@@ -12,7 +12,7 @@ const steps = [
     label: (
       <>
         出展（試食・データ回収）
-        <br className="max-md:hidden" />
+        <br />
         スタート！
       </>
     ),
@@ -67,7 +67,7 @@ const Steps = () => {
           ))}
         </div>
 
-        <p className="mx-auto mt-10 max-w-[790px] text-[20px] leading-[1.8] font-medium text-black md:px-10">
+        <p className="mx-auto mt-10 max-w-[790px] text-[18px] leading-[1.8] font-medium text-black md:px-10 md:text-[20px]">
           ※賞味期限の管理や、面倒な試食提供（小分け・加熱など）はすべて当店舗スタッフが代行します。
         </p>
       </div>

@@ -26,21 +26,29 @@ const Comparison = () => {
           </SectionTitle>
 
           <p className="pt-12 text-center text-[18px] font-medium text-[#1C213B] md:pt-16 md:text-[24px]">
-            展示会での「PR」と、リサーチ会社の「データ収集」。 <br />
-            両方のいいとこ取り。なのに
+            展示会での「PR」と、
+            <br className="md:hidden" />
+            リサーチ会社の「データ収集」。 <br />
+            両方のいいとこ取り。
+            <br className="md:hidden" />
+            なのに
             <span className="relative">
               <span
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 h-[8px] rounded-full bg-[#ffc2c1] md:h-[10px]"
               />
               <span className="relative text-[24px] font-bold md:text-[32px]">
-                月額1.1万円（税込）～
+                月額1.1万円
+                <span className="text-[18px] font-bold md:text-[24px]">
+                  （税込）
+                </span>
+                ～
               </span>
             </span>
             。
           </p>
         </FadeIn>
-        <FadeIn className="mt-28 overflow-x-auto max-md:-mr-5">
+        <FadeIn className="mt-28 overflow-x-auto max-md:-mr-5 max-md:pr-5">
           <div className="min-w-[688px]">
             <div className="flex flex-col gap-4">
               <div className="flex gap-2">
@@ -75,7 +83,7 @@ const Comparison = () => {
                 </div>
                 <div className="flex flex-1 items-center justify-center bg-white p-2">
                   <p className="font-bold text-[#434f8e]">
-                    <span className="text-[16px ]md:text-[24px]">
+                    <span className="text-[16px] md:text-[24px]">
                       月額1.1万円
                     </span>
                     <br className="md:hidden" />

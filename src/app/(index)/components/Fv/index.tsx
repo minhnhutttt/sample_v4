@@ -7,8 +7,8 @@ import FvButton from './FvButton';
 const Fv = () => {
   return (
     <section className="relative overflow-x-clip bg-[url(/assets/images/fv/bg.png)] bg-cover">
-      <div className="@container-[size] relative mx-auto aspect-375/667 w-full max-w-[480px] md:aspect-1280/720 md:max-w-[1280px]">
-        <div className="absolute top-[4cqw] left-[3.5cqw] flex h-[28px] items-center gap-[2.188cqw] gap-[30px] md:top-[5cqh] md:left-[6.25cqw] md:h-[5cqh]">
+      <div className="@container-[size] relative mx-auto h-[667px] w-full max-w-[480px] md:aspect-1280/720 md:max-w-[1280px]">
+        <div className="absolute top-[4cqw] left-0 flex h-[28px] items-center gap-[2.188cqw] gap-[30px] max-md:right-0 max-md:justify-center md:top-[5cqh] md:left-[6.25cqw] md:h-[5cqh]">
           <Image
             src="/assets/images/fv/logo-mark.svg"
             alt="試食BAR アサクサ"
@@ -39,7 +39,7 @@ const Fv = () => {
           width={786}
           height={668}
           priority
-          className="absolute top-[365px] right-[-44px] w-[393px] max-w-none md:hidden"
+          className="absolute top-[98cqw] right-[-44px] w-[393px] max-w-none md:hidden"
         />
 
         <div className="absolute top-[74px] left-[16px] flex -rotate-5 items-center justify-center gap-[0.781cqw] rounded-full bg-[#434f8e] px-[20px] py-[2px] opacity-85 md:top-[18cqh] md:left-[6.094cqw] md:px-[2.5cqw] md:py-[0.556cqh]">
@@ -78,10 +78,10 @@ const Fv = () => {
           aria-hidden
           width={561}
           height={289}
-          className="absolute top-[100px] left-[10px] w-[305px] md:top-[23.5cqh] md:left-[5.469cqw] md:w-[43.828cqw]"
+          className="absolute top-[100px] left-[10px] w-[90cqw] md:top-[23.5cqh] md:left-[5.469cqw] md:w-[43.828cqw]"
         />
 
-        <div className="absolute top-[270px] left-[20px] flex flex-col text-[16px] leading-[1.8] font-medium tracking-[0.063cqw] text-[#1c213b] md:top-[68cqh] md:left-[6.25cqw] md:w-[43cqw] md:text-[1.563cqw]">
+        <div className="absolute top-[76cqw] left-[20px] flex flex-col text-[16px] leading-[1.8] font-medium tracking-[0.063cqw] text-[#1c213b] md:top-[68cqh] md:left-[6.25cqw] md:w-[43cqw] md:text-[1.563cqw]">
           <p className="font-medium">
             今すぐ、浅草に「御社のマーケティング拠点」が持てる。
             <br className="max-md:hidden" />

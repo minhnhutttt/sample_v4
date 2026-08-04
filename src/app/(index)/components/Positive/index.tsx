@@ -135,7 +135,7 @@ const Positive = () => {
               <span className="text-[22px] font-black md:text-[42px]">
                 「食べてもらう体験」
               </span>
-              から
+              から <br className="md:hidden" />
               <span className="text-[22px] font-black md:text-[42px]">
                 「購入」
               </span>

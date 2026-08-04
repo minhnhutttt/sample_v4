@@ -62,12 +62,24 @@ const Voice = () => {
 
           <div className="mx-auto mt-10 max-w-[711px] text-center text-[18px] leading-[1.8] font-medium text-[#1c213b] md:mt-16 md:text-[20px]">
             <p>
-              バイヤーをはじめ、イベント担当者、飲食のプロ、そして出展者同士など。
+              バイヤーをはじめ、イベント担当者、
+              <br className="md:hidden" />
+              飲食のプロ、そして出展者同士など。
             </p>
-            <p>様々な業界の人が日常的に訪れる浅草だからこそ、</p>
-            <p>販路開拓のチャンスはバイヤーとの商談だけにとどまりません。</p>
+            <p>
+              様々な業界の人が日常的に訪れる
+              <br className="md:hidden" />
+              浅草だからこそ、
+            </p>
+            <p>
+              販路開拓のチャンスはバイヤーとの
+              <br className="md:hidden" />
+              商談だけにとどまりません。
+            </p>
             <p className="mt-10">
-              実際に出展した企業様からは、「こんなところから声がかかるなんて！」
+              実際に出展した企業様からは、
+              <br className="md:hidden" />
+              「こんなところから声がかかるなんて！」
             </p>
             <p>
               という
@@ -78,7 +90,8 @@ const Voice = () => {
                 />
                 <span className="relative">嬉しい出会いのご報告</span>
               </span>
-              が次々と届いています。
+              が<br className="md:hidden" />
+              次々と届いています。
             </p>
           </div>
         </FadeIn>

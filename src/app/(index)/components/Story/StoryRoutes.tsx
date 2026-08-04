@@ -31,7 +31,7 @@ const bullets: Bullet[] = [
 ];
 
 const BulletLabel = ({ lines }: { lines: [string, string] }) => (
-  <p className="relative z-10 text-center text-[24px] font-bold tracking-[0.48px] text-white md:text-[28px] md:tracking-[0.84px]">
+  <p className="relative z-10 text-center text-[22px] font-bold tracking-[0.48px] text-white md:text-[28px] md:tracking-[0.84px]">
     <span className="block leading-[1.58]">{lines[0]}</span>
     <span className="block leading-[1.58]">{lines[1]}</span>
   </p>
@@ -67,15 +67,15 @@ const StoryRoutes = () => {
       <div className="relative flex w-full justify-center max-xl:max-w-[1000px] max-xl:flex-wrap max-xl:gap-5 max-md:flex-col max-md:items-center max-md:gap-6 xl:justify-between">
         {bullets.map((bullet) => (
           <div key={bullet.id} className={`relative ${bullet.className ?? ''}`}>
-            <div className="relative size-[346px] rounded-full bg-white/15"></div>
+            <div className="relative size-[280px] rounded-full bg-white/15 md:size-[346px]"></div>
             <div
-              className="absolute top-0 left-0 size-[346px] rounded-full border border-[#FFF] [box-shadow:10px_10px_0_0_rgba(0,_68,_119,_0.30)]"
+              className="absolute top-0 left-0 size-[280px] rounded-full border border-[#FFF] [box-shadow:10px_10px_0_0_rgba(0,_68,_119,_0.30)] md:size-[346px]"
               style={{
                 left: bullet.ringOffset.x,
                 top: bullet.ringOffset.y,
               }}
             ></div>
-            <div className="absolute inset-0 flex size-[346px] items-center justify-center">
+            <div className="absolute inset-0 flex size-[280px] items-center justify-center md:size-[346px]">
               <BulletLabel lines={bullet.lines} />
             </div>
           </div>

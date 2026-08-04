@@ -107,9 +107,12 @@ const Plan = () => {
             </p>
           </SectionTitle>
 
-          <div className="mt-8 text-center text-[24px] font-medium text-[#1c213b] md:mt-18">
+          <div className="mt-8 text-center text-[20px] font-medium text-[#1c213b] md:mt-18 md:text-[24px]">
             <p>
-              店頭PRを兼ねて大々的にユーザーにアピールする
+              店頭PRを兼ねて大々的に
+              <br className="md:hidden" />
+              ユーザーにアピールする
+              <br className="md:hidden" />
               <span className="relative">
                 <span
                   aria-hidden
@@ -120,9 +123,12 @@ const Plan = () => {
                 </span>
               </span>
               と、
+              <br className="md:hidden" />
             </p>
             <p>
-              アピール以外は同等の機能を持つ
+              アピール以外は同等の機能を
+              <br className="md:hidden" />
+              持つ
               <span className="relative">
                 <span
                   aria-hidden
@@ -133,8 +139,13 @@ const Plan = () => {
                 </span>
               </span>
               の２種類。
+              <br className="md:hidden" />
             </p>
-            <p>※その他、柔軟な対応も可能です。ぜひご相談ください。</p>
+            <p>
+              ※その他、柔軟な対応も可能です。
+              <br className="md:hidden" />
+              ぜひご相談ください。
+            </p>
           </div>
         </FadeIn>
 
@@ -155,8 +166,8 @@ const Plan = () => {
                     <span className="text-[16px] font-bold md:text-[20px]">
                       月額
                     </span>
-                    <span className="text-[22px] font-black md:text-[32px]">
-                      １.1
+                    <span className="px-1.5 text-[22px] font-black md:px-2 md:text-[32px]">
+                      1.1
                     </span>
                     <span className="text-[16px] font-bold md:text-[20px]">
                       万円
@@ -182,8 +193,8 @@ const Plan = () => {
                     <span className="text-[16px] font-bold md:text-[20px]">
                       月額
                     </span>
-                    <span className="text-[22px] font-black md:text-[32px]">
-                      ６
+                    <span className="px-1.5 text-[22px] font-black md:px-2 md:text-[32px]">
+                      6
                     </span>
                     <span className="text-[16px] font-bold md:text-[20px]">
                       万円
