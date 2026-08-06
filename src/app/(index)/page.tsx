@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import FadeIn from '@/components/common/fade-in';
-import { OG, SITE_NAME, TWITTER } from '@/config/constants';
+import { OG, TWITTER } from '@/config/constants';
 
 import Achievement from './components/Achievement';
 import Comparison from './components/Comparison';
@@ -18,7 +18,6 @@ import Story from './components/Story';
 import Voice from './components/Voice';
 
 export const metadata: Metadata = {
-  title: SITE_NAME,
   openGraph: {
     ...OG,
     url: '/',

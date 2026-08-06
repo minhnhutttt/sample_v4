@@ -69,7 +69,7 @@ const StoryRoutes = () => {
           <div key={bullet.id} className={`relative ${bullet.className ?? ''}`}>
             <div className="relative size-[280px] rounded-full bg-white/15 md:size-[346px]"></div>
             <div
-              className="absolute top-0 left-0 size-[280px] rounded-full border border-[#FFF] [box-shadow:10px_10px_0_0_rgba(0,_68,_119,_0.30)] md:size-[346px]"
+              className="absolute top-0 left-0 size-[280px] rounded-full border border-[#FFF] md:size-[346px]"
               style={{
                 left: bullet.ringOffset.x,
                 top: bullet.ringOffset.y,

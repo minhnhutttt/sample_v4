@@ -17,7 +17,7 @@ const FeatureSmallCard = ({
     <div className="relative flex h-full w-[354px] flex-col items-center overflow-hidden pt-[100px] md:pt-[140px]">
       <div className="absolute top-0 z-10 size-[220px] shrink-0 overflow-hidden rounded-full md:size-[280px]">
         <div className="relative size-full overflow-hidden rounded-full">
-          <Image src={image} alt={imageAlt} fill className="object-cover" />
+          <Image src={image} alt={imageAlt} width={560} height={560} />
         </div>
       </div>
       <div className="flex-1 overflow-hidden rounded-[16px] bg-[url(/assets/images/feature/ichimatsu.png)] pt-32 md:rounded-[28px] md:pt-40">

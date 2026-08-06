@@ -47,7 +47,7 @@ const Story = () => {
   return (
     <section
       id="story"
-      className="relative mt-[100px] overflow-x-clip rounded-[40px] bg-[url('/assets/images/story/bg-street.png')] bg-cover bg-fixed px-[20px] md:rounded-[80px]"
+      className="relative -mt-20 overflow-x-clip rounded-[40px] bg-[url('/assets/images/story/bg-street.png')] bg-cover bg-fixed px-[20px] md:rounded-[80px]"
     >
       <div className="relative mx-auto flex max-w-[1120px] flex-col items-center gap-[44px] py-[64px] md:gap-[128px] md:pt-[124px] md:pb-[150px]">
         <FadeIn as="h2" className="flex flex-col items-center text-center">

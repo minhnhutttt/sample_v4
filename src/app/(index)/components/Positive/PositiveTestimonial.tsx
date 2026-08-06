@@ -18,7 +18,7 @@ const PositiveTestimonial = ({
   attribution,
 }: PositiveTestimonialProps) => {
   const photo = (
-    <div className="relative size-[72px] shrink-0 overflow-hidden rounded-full border border-[#016cbb] bg-[#e6f4ff] shadow-[8px_8px_0px_0px_rgba(1,108,187,0.15)] md:size-[200px] lg:size-[280px]">
+    <div className="relative size-[72px] shrink-0 overflow-hidden rounded-full md:size-[200px] lg:size-[280px]">
       <Image src={avatar} alt={avatarAlt} fill className="object-cover" />
     </div>
   );

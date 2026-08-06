@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/assets/images/favicon.png',
-    shortcut: '/assets/images/favicon.png',
+    icon: ['/assets/images/favicon.ico', '/assets/images/icon.png'],
+    shortcut: '/assets/images/favicon.ico',
     apple: '/assets/images/apple-touch-icon.png',
   },
   robots: { index: true, follow: true },

@@ -6,7 +6,7 @@ import FvButton from './FvButton';
 
 const Fv = () => {
   return (
-    <section className="relative overflow-x-clip bg-[url(/assets/images/fv/bg.png)] bg-cover">
+    <section className="relative overflow-x-clip bg-[url(/assets/images/fv/bg.png)] bg-cover pb-[180px]">
       <div className="@container-[size] relative mx-auto h-[667px] w-full max-w-[480px] md:aspect-1280/720 md:max-w-[1280px]">
         <div className="absolute top-[4cqw] left-0 flex h-[28px] items-center gap-[2.188cqw] gap-[30px] max-md:right-0 max-md:justify-center md:top-[5cqh] md:left-[6.25cqw] md:h-[5cqh]">
           <Image
