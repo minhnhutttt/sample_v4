@@ -1,5 +1,9 @@
 @import 'tailwindcss';
 
+@theme inline {
+  --font-inter: var(--inter);
+}
+
 @layer base {
   button {
     cursor: pointer;
@@ -8,4 +12,16 @@
 @layer components {
 }
 @layer utilities {
+  .u-text-gadient {
+    background: linear-gradient(
+      92deg,
+      #f7293a 0%,
+      #f77529 25%,
+      #f78629 60%,
+      #f75d29 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
