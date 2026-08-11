@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import { Inter, Noto_Sans_JP } from 'next/font/google';
+import { Anton, Inter, Noto_Sans_JP } from 'next/font/google';
 
-import Footer from '@/components/footer';
-import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -24,6 +22,12 @@ const inter = Inter({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
   variable: '--inter',
+});
+
+const anton = Anton({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--anton',
 });
 
 export const metadata: Metadata = {
@@ -60,13 +64,9 @@ const RootLayout = ({
   return (
     <html lang="ja">
       <body
-        className={`${noto.className} ${inter.variable} bg-[#FFF8ED] antialiased`}
+        className={`${noto.className} ${inter.variable} ${anton.variable} bg-[#FFF8ED] antialiased`}
       >
-        <Providers>
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

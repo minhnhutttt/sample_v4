@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import Parallax from '@/components/parallax';
+import SectionHeading from '@/components/section-heading';
 
 const About = () => {
   return (
@@ -14,13 +15,13 @@ const About = () => {
           src="/assets/images/about-bg.webp"
           fill
           alt=""
-          className="w-full object-cover object-center"
+          className="w-full object-cover object-top"
         />
       </Parallax>
-      <div className="relative w-full max-w-[1160px]">
-        <h2 className="u-text-gadient text-[55px] leading-[1.15] font-bold md:text-[100px] lg:text-[130px]">
-          私達について
-        </h2>
+      <div className="relative mx-auto w-full max-w-[1160px]">
+        <SectionHeading>
+          <p>私達について</p>
+        </SectionHeading>
         <div className="mt-14 ml-auto w-full max-w-[580px] md:mt-26">
           <p className="text-[24px] font-bold tracking-wide text-[#F78629] md:text-[36px]">
             私たち文庫社は、数え切れないほどの物語を読者の皆さんに届けてきました。
