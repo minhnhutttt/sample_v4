@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Anton, Inter, Noto_Sans_JP } from 'next/font/google';
 
+import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
   KEYWORDS,
@@ -66,7 +67,10 @@ const RootLayout = ({
       <body
         className={`${noto.className} ${inter.variable} ${anton.variable} bg-[#FFF8ED] antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

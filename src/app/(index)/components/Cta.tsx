@@ -1,13 +1,18 @@
 import Image from 'next/image';
 
 import Parallax from '@/components/parallax';
-
-const DOWNLOAD_URL = 'https://www.kivo.talk/download';
-const CHANNEL_URL = '#';
+import {
+  CHANNEL_URL,
+  DOWNLOAD_SECTION_ID,
+  DOWNLOAD_URL,
+} from '@/config/constants';
 
 const Cta = () => {
   return (
-    <div className="relative overflow-hidden bg-[#242424]">
+    <div
+      id={DOWNLOAD_SECTION_ID}
+      className="relative overflow-hidden bg-[#242424]"
+    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[600px] overflow-hidden md:h-[1034px]">
         <Parallax
           speed={0.5}

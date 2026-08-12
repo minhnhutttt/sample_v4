@@ -1,3 +1,8 @@
+export const DOWNLOAD_URL = 'https://www.kivo.talk/download';
+export const CHANNEL_URL = '#';
+/** Section download ở cuối trang, dùng để ẩn CTA nổi trên SP. */
+export const DOWNLOAD_SECTION_ID = 'download';
+
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? '';
 export const SITE_URL_WITH_SCHEME = SITE_URL ? `https://${SITE_URL}` : '';
 export const SITE_NAME = 'SITE NAME';
