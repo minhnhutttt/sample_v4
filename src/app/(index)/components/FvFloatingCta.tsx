@@ -41,7 +41,7 @@ const FvFloatingCta = () => {
         href={DOWNLOAD_URL}
         className="flex flex-col items-center justify-center gap-1 rounded-md bg-[#242424] px-[18px] py-2 drop-shadow-[0_6px_6px_rgba(0,0,0,0.25)]"
       >
-        <span className="text-[11px] leading-[1.72] font-bold tracking-[0.66px] text-white">
+        <span className="text-[11px] leading-[1.72] font-bold text-white">
           アプリをダウンロード
         </span>
         <Image
@@ -57,7 +57,7 @@ const FvFloatingCta = () => {
         href={CHANNEL_URL}
         className="flex flex-col items-center justify-center gap-1 rounded-md bg-[#F78629] px-[18px] py-2 drop-shadow-[0_6px_6px_rgba(213,106,18,0.4)]"
       >
-        <span className="text-[11px] leading-[1.72] font-bold tracking-[0.66px] text-white">
+        <span className="text-[11px] leading-[1.72] font-bold text-white">
           文庫社のチャンネルを見る
         </span>
         <Image
