@@ -29,10 +29,10 @@ const IndexPage = () => {
   return (
     <div>
       <Fv />
+      <Feature />
       <About />
       <div className="[box-shadow:0_-10px_34px_0_rgba(129,48,0,0.10)]">
         <Reason />
-        <Feature />
         <Participate />
         <Registration />
         <FAQ />

@@ -26,7 +26,7 @@ const Reason = () => {
           <p>KIVO TALKを</p>
           <p>選んだ理由</p>
         </SectionHeading>
-        <div className="mt-14 w-full divide-y divide-[#9C9C9C] md:mt-30">
+        <div className="mt-14 w-full text-justify md:mt-30">
           {REASONS.map((reason) => (
             <div
               key={reason.title}

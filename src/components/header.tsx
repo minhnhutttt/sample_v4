@@ -62,7 +62,8 @@ const Header = () => {
       </Link>
       <div className="font-inter flex tracking-wider max-lg:flex-col max-md:hidden lg:items-center lg:gap-10">
         <p className="leading-loose font-medium text-white md:text-[18px]">
-          文庫社 公認パートナー
+          <span className="text-[#AEAEAE]">KIVO TALK公認パートナー :</span>{' '}
+          文庫社
         </p>
         <button
           type="button"
@@ -114,8 +115,6 @@ const Header = () => {
 
       {isOpen && (
         <>
-          {/* Lớp mờ nằm dưới header (z-50) và trên CTA nổi (z-40), chạm vào để đóng.
-              Chỉ render sau khi người dùng bấm nên luôn ở phía client. */}
           {createPortal(
             <div
               onClick={() => setIsOpen(false)}
@@ -136,7 +135,8 @@ const Header = () => {
               className="absolute top-[-9px] right-[23px] h-[23px] w-[26.25px]"
             />
             <p className="text-[16px] leading-[2] font-medium tracking-[0.64px] text-white">
-              文庫社 公認パートナー
+              <span className="text-[#AEAEAE]">KIVO TALK公認パートナー :</span>{' '}
+              文庫社
             </p>
             <div className="flex items-center gap-2">
               <p className="text-[16px] leading-[2] font-medium tracking-[0.64px] whitespace-nowrap text-white">
