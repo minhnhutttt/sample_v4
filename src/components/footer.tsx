@@ -26,7 +26,7 @@ const Footer = () => (
             className="flex items-center gap-[3px] transition-opacity hover:opacity-70"
           >
             <Image
-              src="/assets/svg/arrow-line.svg"
+              src="/assets/images/arrow-line.svg"
               alt=""
               width={16}
               height={6}

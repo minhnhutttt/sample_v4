@@ -1,10 +1,51 @@
 import Image from 'next/image';
 
-import { PRICE_PLANS } from '@/data/lp';
-import type { PlanRowTone } from '@/types/lp';
+import FadeIn from '@/components/ui/fade-in';
+import SectionTitle from '@/components/ui/section-title';
 
-import FadeIn from '../ui/fade-in';
-import SectionTitle from '../ui/section-title';
+type PlanRowTone = 'lime' | 'green' | 'cyan' | 'cyan-dark';
+
+type PlanRow = {
+  label: string;
+  price: string;
+  tone: PlanRowTone;
+};
+
+type PricePlan = {
+  name: string;
+  stripes: string;
+  rows: PlanRow[];
+};
+
+const PRICE_PLANS: PricePlan[] = [
+  {
+    name: 'パーソナル ピラティス',
+    stripes: '/assets/images/plan-stripes-1.svg',
+    rows: [
+      { label: '通い放題', price: '43,780', tone: 'lime' },
+      { label: '月4回', price: '29,920', tone: 'green' },
+      { label: '月2回', price: '15,400', tone: 'cyan' },
+    ],
+  },
+  {
+    name: 'セミパーソナルトレーニング',
+    stripes: '/assets/images/plan-stripes-2.svg',
+    rows: [
+      { label: '通い放題', price: '18,700', tone: 'lime' },
+      { label: '月4回', price: '13,200', tone: 'green' },
+      { label: '月2回', price: '7,000', tone: 'cyan-dark' },
+    ],
+  },
+  {
+    name: 'パーソナルトレーニング',
+    stripes: '/assets/images/plan-stripes-2.svg',
+    rows: [
+      { label: '通い放題', price: '33,000', tone: 'lime' },
+      { label: '月4回', price: '22,200', tone: 'green' },
+      { label: '月2回', price: '11,600', tone: 'cyan-dark' },
+    ],
+  },
+];
 
 const TONE_CLASS: Record<PlanRowTone, string> = {
   lime: 'bg-[#e0ec73]',
@@ -23,7 +64,7 @@ const Pricing = () => (
           入会金10,000円 (税別)
         </p>
         <Image
-          src="/assets/svg/arrow-right-alt.svg"
+          src="/assets/images/arrow-right-alt.svg"
           alt=""
           width={24}
           height={24}

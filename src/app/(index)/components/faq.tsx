@@ -4,9 +4,40 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import { FAQ_ITEMS } from '@/data/lp';
+import PlainTitle from '@/components/ui/plain-title';
 
-import PlainTitle from '../ui/plain-title';
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    question: '体験当日に必要なものはなんですか？',
+    answer:
+      'トレーニングで汗をかいてもOKな動きやすいウェア、水分補給の飲料、汗拭き用のタオル、室内用のトレーニングシューズ（無料レンタルあり）をお持ちください。',
+  },
+  {
+    question: '運動初心者でも大丈夫ですか？',
+    answer:
+      'もちろん大歓迎です！ALONAのお客さまの約8割が初心者からのスタートです。お客さまのレベルや当日の体調に合わせた負荷でパーソナル指導を行います。',
+  },
+  {
+    question: 'ピラティスとトレーニングを同じ日に両方受けることはできますか？',
+    answer:
+      '申し訳ございません。質の高いレッスン効果を実感いただくため、原則として同日に両方のセッションを連続で受講いただくことは承っておりません。',
+  },
+  {
+    question: 'キャンセルや日時変更の規定はどうなっていますか？',
+    answer:
+      '前日の午前10時までのご連絡は無料です。当日の急なキャンセルも、公式LINEよりご連絡いただければキャンセル料なしで調整可能です。',
+  },
+  {
+    question: '男性も通うことができますか？年齢制限はありますか？',
+    answer:
+      '男性のお客様も大歓迎です！20代から60代以上まで、男女問わずそれぞれの目標に向けて幅広く通っていただいております。',
+  },
+];
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);

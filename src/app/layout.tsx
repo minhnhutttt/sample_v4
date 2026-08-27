@@ -1,5 +1,3 @@
-import type { CSSProperties } from 'react';
-
 import type { Metadata } from 'next';
 import { Ledger, Noto_Sans_JP } from 'next/font/google';
 
@@ -60,24 +58,15 @@ const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) => {
-  const toastStyle: CSSProperties = {
-    background: '#111827',
-    color: '#ffffff',
-    border: '1px solid #374151',
-    borderRadius: '12px',
-  };
-
-  return (
-    <html lang="ja" className={`${noto.variable} ${ledger.variable}`}>
-      <body className="font-jp antialiased">
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
-      </body>
-    </html>
-  );
-};
+}>) => (
+  <html lang="ja" className={`${noto.variable} ${ledger.variable}`}>
+    <body className="font-jp antialiased">
+      <Providers>
+        <Header />
+        {children}
+      </Providers>
+    </body>
+  </html>
+);
 
 export default RootLayout;

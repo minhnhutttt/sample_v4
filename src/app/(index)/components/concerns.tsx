@@ -1,9 +1,14 @@
 import Image from 'next/image';
 
-import { CONCERNS } from '@/data/lp';
+import FadeIn from '@/components/ui/fade-in';
+import SectionTitle from '@/components/ui/section-title';
 
-import FadeIn from '../ui/fade-in';
-import SectionTitle from '../ui/section-title';
+const CONCERNS: string[] = [
+  'パーソナルジムは高すぎて結局3ヶ月も続かなかった…',
+  'ピラティスも筋トレもやりたいけど、別々に通うと費用も時間も2倍に…',
+  '肩こり・腰痛、体力の衰え…運動初心者だからついていけるか不安',
+  '30分のセッションだと、着替えたらすぐ終わる気がする…',
+];
 
 const Concerns = () => (
   <section
@@ -93,14 +98,14 @@ const Concerns = () => (
           </p>
 
           <Image
-            src="/assets/svg/concerns-deco-left.svg"
+            src="/assets/images/concerns-deco-left.svg"
             alt=""
             width={63}
             height={131}
             className="absolute top-[55px] left-[5px] w-[63px]"
           />
           <Image
-            src="/assets/svg/concerns-deco-right.svg"
+            src="/assets/images/concerns-deco-right.svg"
             alt=""
             width={58}
             height={118}

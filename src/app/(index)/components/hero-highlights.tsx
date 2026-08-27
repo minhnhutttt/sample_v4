@@ -1,6 +1,5 @@
-import { DAILY_PRICE_CARDS } from '@/data/lp';
-
-import LowestPriceBadge from '../ui/lowest-price-badge';
+import { DAILY_PRICE_CARDS } from '@/components/header';
+import LowestPriceBadge from '@/components/ui/lowest-price-badge';
 
 const HeroHighlights = () => (
   <div className="relative -mt-[40px] pb-[66px] lg:hidden">

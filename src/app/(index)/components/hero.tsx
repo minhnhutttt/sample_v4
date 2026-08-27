@@ -1,25 +1,7 @@
-import type { CSSProperties } from 'react';
-
 import Image from 'next/image';
-
-const MASK_URL = 'url("/assets/svg/hero-mask.svg")';
-
-/** Shared mask setup for the stacked hero layers (Figma node 1:180). */
-const maskLayer = (position: string): CSSProperties => ({
-  maskImage: MASK_URL,
-  maskSize: '617.098px 697.502px',
-  maskPosition: position,
-  maskRepeat: 'no-repeat',
-  maskMode: 'alpha',
-  WebkitMaskImage: MASK_URL,
-  WebkitMaskSize: '617.098px 697.502px',
-  WebkitMaskPosition: position,
-  WebkitMaskRepeat: 'no-repeat',
-});
 
 const Hero = () => (
   <section id="top" className="relative h-[640px] overflow-hidden bg-white">
-    <div className="absolute h-[640px] w-[375px]" />
     <div className="absolute inset-0">
       <Image
         src="/assets/images/hero-wall.png"

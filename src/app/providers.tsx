@@ -21,11 +21,9 @@ type ProvidersProps = {
   children: ReactNode;
 };
 
-export const Providers = ({ children }: ProvidersProps) => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ReduxProvider store={store}>{children}</ReduxProvider>
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  );
-};
+export const Providers = ({ children }: ProvidersProps) => (
+  <QueryClientProvider client={queryClient}>
+    <ReduxProvider store={store}>{children}</ReduxProvider>
+    <ReactQueryDevtools />
+  </QueryClientProvider>
+);

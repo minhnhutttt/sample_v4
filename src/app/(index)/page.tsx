@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
 
 import Footer from '@/components/footer';
-import Access from '@/components/sections/access';
-import Concerns from '@/components/sections/concerns';
-import Faq from '@/components/sections/faq';
-import Hero from '@/components/sections/hero';
-import HeroHighlights from '@/components/sections/hero-highlights';
-import LineCta from '@/components/sections/line-cta';
-import Menu from '@/components/sections/menu';
-import Payment from '@/components/sections/payment';
-import Pricing from '@/components/sections/pricing';
-import TrialFlow from '@/components/sections/trial-flow';
-import WhyAlona from '@/components/sections/why-alona';
 import StickyCta from '@/components/sticky-cta';
 import { OG, SITE_NAME, TWITTER } from '@/config/constants';
+
+import Access from './components/access';
+import Concerns from './components/concerns';
+import Faq from './components/faq';
+import Hero from './components/hero';
+import HeroHighlights from './components/hero-highlights';
+import LineCta from './components/line-cta';
+import Menu from './components/menu';
+import Payment from './components/payment';
+import Pricing from './components/pricing';
+import TrialFlow from './components/trial-flow';
+import WhyAlona from './components/why-alona';
 
 export const metadata: Metadata = {
   title: SITE_NAME,

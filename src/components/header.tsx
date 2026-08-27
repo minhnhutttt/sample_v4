@@ -2,25 +2,67 @@
 
 import Image from 'next/image';
 
-import { DAILY_PRICE_CARDS, NAV_ITEMS } from '@/data/lp';
 import { useActiveSection } from '@/hooks/use-active-section';
+import type { SectionId } from '@/types/lp';
 
 import LowestPriceBadge from './ui/lowest-price-badge';
 import ReservationCta from './ui/reservation-cta';
+
+type NavItem = {
+  id: SectionId;
+  label: string;
+};
+
+/** Also drives the SP rail in the hero highlights section. */
+export type DailyPriceCard = {
+  name: string;
+  /** SP layout stacks the plan name over two lines (Figma node 1:917). */
+  nameLines: [string, string];
+  amount: string;
+};
+
+const NAV_ITEMS: NavItem[] = [
+  { id: 'concerns', label: 'こんなお悩みありませんか？' },
+  { id: 'why', label: 'ALONAが選ばれる理由' },
+  { id: 'pricing', label: '料金プラン' },
+  { id: 'payment', label: 'お支払い方法' },
+  { id: 'menu', label: 'メニュー紹介' },
+  { id: 'flow', label: '初回体験トレーニングの流れ' },
+  { id: 'faq', label: 'よくある質問' },
+  { id: 'access', label: 'アクセス' },
+];
+
+export const DAILY_PRICE_CARDS: DailyPriceCard[] = [
+  {
+    name: 'パーソナル ピラティス',
+    nameLines: ['パーソナル', 'ピラティス'],
+    amount: '2,189',
+  },
+  {
+    name: 'セミパーソナルトレーニング',
+    nameLines: ['セミパーソナル', 'トレーニング'],
+    amount: '935',
+  },
+  {
+    name: 'パーソナルトレーニング',
+    nameLines: ['パーソナル', 'トレーニング'],
+    amount: '1,650',
+  },
+];
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 const Logo = () => (
   <span className="relative block h-[32px] w-[136px] overflow-hidden">
     <Image
-      src="/assets/svg/logo-alona-mark.svg"
+      src="/assets/images/logo-alona-mark.svg"
       alt="ALONA"
       width={136}
       height={18}
       className="absolute top-0 left-0 h-[17.534px] w-[136px]"
     />
     <Image
-      src="/assets/svg/logo-alona-sub.svg"
+      src="/assets/images/logo-alona-sub.svg"
       alt=""
       width={114}
       height={6}

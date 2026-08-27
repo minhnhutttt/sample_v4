@@ -1,6 +1,5 @@
+import PlainTitle from '@/components/ui/plain-title';
 import { SHOP } from '@/config/constants';
-
-import PlainTitle from '../ui/plain-title';
 
 const Access = () => (
   <section
@@ -35,7 +34,7 @@ const Access = () => (
 
     <div className="flex w-[335px] flex-col items-center pt-[20px]">
       <PlainTitle en="ACCESS" jp="お問い合わせ" />
-      <span className="mt-[0px] block h-px w-[310px] bg-[#a1a1a1]" />
+      <span className="block h-px w-[310px] bg-[#a1a1a1]" />
     </div>
   </section>
 );

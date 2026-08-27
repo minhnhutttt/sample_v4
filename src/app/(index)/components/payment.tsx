@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import FadeIn from '../ui/fade-in';
-import SectionTitle from '../ui/section-title';
+import FadeIn from '@/components/ui/fade-in';
+import SectionTitle from '@/components/ui/section-title';
 
 const Payment = () => (
   <section data-section="payment" className="bg-white pt-[103px]">

@@ -14,7 +14,7 @@ const LowestPriceBadge = ({ className = '' }: LowestPriceBadgeProps) => (
       className="absolute top-0 left-0 z-10 h-[61px] w-[52px] object-cover object-bottom"
     />
     <Image
-      src="/assets/svg/badge-tag.svg"
+      src="/assets/images/badge-tag.svg"
       alt=""
       width={190}
       height={37}

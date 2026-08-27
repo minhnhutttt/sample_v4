@@ -15,7 +15,7 @@ const LineCta = () => (
       className="bg-brand-line relative block h-[54px] w-[230px] overflow-hidden rounded-[5px] transition-transform hover:scale-[1.02]"
     >
       <Image
-        src="/assets/svg/icon-line.svg"
+        src="/assets/images/icon-line.svg"
         alt=""
         width={29}
         height={27}
