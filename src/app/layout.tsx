@@ -1,11 +1,8 @@
 import type { CSSProperties } from 'react';
 
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
-import { Toaster } from 'sonner';
-import 'sonner/dist/styles.css';
+import { Ledger, Noto_Sans_JP } from 'next/font/google';
 
-import Footer from '@/components/footer';
 import Header from '@/components/header';
 import {
   DEFAULT_DESCRIPTION,
@@ -22,6 +19,15 @@ import { Providers } from './providers';
 const noto = Noto_Sans_JP({
   weight: ['300', '400', '500', '700', '900'],
   subsets: ['latin'],
+  variable: '--font-noto-sans-jp',
+  display: 'swap',
+});
+
+const ledger = Ledger({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-ledger',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -63,30 +69,12 @@ const RootLayout = ({
   };
 
   return (
-    <html lang="ja">
-      <body className={`${noto.className} antialiased`}>
+    <html lang="ja" className={`${noto.variable} ${ledger.variable}`}>
+      <body className="font-jp antialiased">
         <Providers>
           <Header />
           {children}
-          <Footer />
         </Providers>
-        <Toaster
-          position="top-center"
-          theme="dark"
-          expand
-          toastOptions={{
-            style: toastStyle,
-            classNames: {
-              title: 'font-bold text-[14px]',
-              description: 'text-[14px] text-gray-400',
-              actionButton:
-                'text-[12px] bg-blue-600 text-white px-2 py-1 rounded',
-              cancelButton:
-                'text-[12px] bg-gray-500 text-white px-2 py-1 rounded',
-              closeButton: 'text-[12px] text-gray-400 hover:text-white',
-            },
-          }}
-        />
       </body>
     </html>
   );
