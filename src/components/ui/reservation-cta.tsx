@@ -2,11 +2,16 @@ import { EXTERNAL_LINKS } from '@/config/constants';
 
 type ReservationCtaProps = {
   className?: string;
+  /** The PC chrome sits on the dark wall (Figma 65:76); SP sits on white. */
+  captionClassName?: string;
 };
 
-const ReservationCta = ({ className = '' }: ReservationCtaProps) => (
+const ReservationCta = ({
+  className = '',
+  captionClassName = 'text-[#272727]',
+}: ReservationCtaProps) => (
   <div className={['w-[335px]', className].filter(Boolean).join(' ')}>
-    <p className="text-center text-[12px] font-semibold text-[#272727]">
+    <p className={`text-center text-[12px] font-semibold ${captionClassName}`}>
       ＼当日入会で入会金無料！トータル60分の初回体験が0円／
     </p>
     <a

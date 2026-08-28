@@ -19,7 +19,7 @@ const HeaderNav = ({ items }: HeaderNavProps) => {
   const activeId = useActiveSection(sectionIds);
 
   return (
-    <nav className="pointer-events-auto absolute top-[86px] left-[20px] max-w-[280px]">
+    <nav className="pointer-events-auto absolute top-[89px] left-[20px] max-w-[280px]">
       <ul>
         {items.map((item) => (
           <li key={item.id}>
@@ -28,8 +28,8 @@ const HeaderNav = ({ items }: HeaderNavProps) => {
               aria-current={activeId === item.id ? 'true' : undefined}
               className={`block text-[15px] leading-[2.88] transition-colors ${
                 activeId === item.id
-                  ? 'font-bold text-[#0b6f62]'
-                  : 'font-semibold text-black hover:text-[#0b6f62]'
+                  ? 'font-bold text-white'
+                  : 'font-semibold text-white/85 hover:text-white'
               }`}
             >
               {item.label}

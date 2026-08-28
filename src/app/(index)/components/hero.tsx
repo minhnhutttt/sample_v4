@@ -1,18 +1,37 @@
 import Image from 'next/image';
 
+import HeroSlider from './hero-slider';
+
+const HERO_SOURCES = [
+  '/assets/images/hero-wall.webp',
+  '/assets/images/hero-wall-02.webp',
+  '/assets/images/hero-wall-03.webp',
+];
+
+/**
+ * White wedge that closes the hero: tallest on the right, tapering to nothing
+ * on the left, so the photograph hands off to the white section below on a
+ * slant. Flip to 'polygon(0 0, 100% 100%, 0 100%)' to slope the other way.
+ */
+const WEDGE_CLIP = 'polygon(100% 0, 100% 100%, 0 100%)';
+
 const Hero = () => (
   <section
     id="top"
-    className="relative min-h-[640px] overflow-hidden bg-white pt-[55px] pb-[40px] pl-[16px]"
+    className="relative min-h-[640px] overflow-hidden bg-white pt-[64px] pl-[15px]"
   >
-    <div className="absolute inset-0">
-      <Image
-        src="/assets/images/hero-wall.png"
-        alt="ピラティスマシンでレッスンを受ける女性"
-        fill
-        priority
-        className="h-full w-full"
+    <HeroSlider
+      className="absolute inset-0"
+      label="ピラティスマシンでレッスンを受ける女性"
+      sources={HERO_SOURCES}
+    />
+    <div className="absolute inset-x-0 bottom-0 h-[80px]">
+      <div
+        aria-hidden
+        style={{ clipPath: WEDGE_CLIP }}
+        className="h-[48px] bg-white"
       />
+      <div className="h-8 bg-white"></div>
     </div>
 
     <Image
@@ -20,10 +39,10 @@ const Hero = () => (
       alt="ALONA"
       width={116}
       height={36}
-      className="absolute top-[13px] left-[16px] h-[36px] w-[116px] object-contain"
+      className="absolute top-[12px] left-[15px] h-[36px] w-[116px] object-contain"
     />
 
-    <div className="relative flex w-[365px] flex-col gap-[12px]">
+    <div className="relative flex w-[367px] flex-col gap-[12px]">
       <p className="text-[18px] leading-[1.75] font-semibold tracking-[0.72px] text-[#070707]">
         パーソナル ピラティス
         <br />
