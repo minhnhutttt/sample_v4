@@ -15,6 +15,8 @@ export type MangaItem = {
   title: string;
   author: string;
   cover: string;
+  /** ページの表示幅（高さ PAGE_HEIGHT のときの px）。原稿のアスペクト比に準じる */
+  pageWidth: number;
   pages: string[];
 };
 
@@ -31,6 +33,8 @@ type SplideInstance = {
     };
   };
 };
+
+const PAGE_HEIGHT = 560;
 
 const CONTROL_BUTTON_CLASS =
   'flex size-10 shrink-0 items-center justify-center rounded-full border border-white/70 bg-white/15 shadow-[0_4px_9px_rgba(0,0,0,0.25)] backdrop-blur-[5px] transition-opacity disabled:pointer-events-none disabled:opacity-40 md:size-[46px]';
@@ -128,10 +132,14 @@ const MangaReaderModal = ({ item, onClose }: MangaReaderModalProps) => {
       <div className="flex min-h-full items-center justify-center p-5 md:p-8">
         <div
           ref={contentRef}
-          className="flex w-full max-w-[397px] flex-col items-center gap-4"
+          className="flex w-full flex-col items-center gap-4"
+          style={{ maxWidth: `${item.pageWidth}px` }}
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="relative aspect-[397/560] w-full overflow-hidden rounded-[10px] bg-black/20 drop-shadow-[0_6px_8px_rgba(0,0,0,0.2)]">
+          <div
+            className="relative w-full overflow-hidden rounded-[10px] bg-black/20 drop-shadow-[0_6px_8px_rgba(0,0,0,0.2)]"
+            style={{ aspectRatio: `${item.pageWidth} / ${PAGE_HEIGHT}` }}
+          >
             <Splide
               hasTrack={false}
               aria-label={item.title}
@@ -158,7 +166,7 @@ const MangaReaderModal = ({ item, onClose }: MangaReaderModalProps) => {
                           src={page}
                           alt={`${item.title} ${pageIndex + 1}ページ目`}
                           fill
-                          sizes="(max-width: 767px) 90vw, 397px"
+                          sizes={`(max-width: 767px) 90vw, ${item.pageWidth}px`}
                           priority={pageIndex === 0}
                           className="object-cover"
                         />
@@ -168,17 +176,19 @@ const MangaReaderModal = ({ item, onClose }: MangaReaderModalProps) => {
                             className="absolute inset-0 flex items-center justify-center bg-black/50 px-5 backdrop-blur-[5px]"
                           >
                             <div className="flex w-full max-w-[308px] flex-col items-center gap-4">
-                              <p className="font-inter text-center text-[16px] leading-[2] font-medium tracking-[0.04em] text-white [text-shadow:0_0_8px_rgba(0,0,0,0.35)] md:text-[18px]">
-                                続きはKIVO TALKでチェック！
-                              </p>
                               <a
                                 href={DOWNLOAD_URL}
                                 className="flex w-full items-center justify-center rounded-xl bg-[#F78629] px-4 py-4 drop-shadow-[0_6px_6px_rgba(213,106,18,0.4)] transition-opacity hover:opacity-90 md:px-8 md:py-6"
                               >
                                 <span className="text-[16px] leading-[1.8] font-bold tracking-[0.04em] whitespace-nowrap text-white md:text-[20px]">
-                                  この作家の招待を受ける
+                                  KIVO TALKアプリで見る
                                 </span>
                               </a>
+                              <p className="text-center text-[16px] leading-[2] font-medium tracking-[0.04em] text-white [text-shadow:0_0_8px_rgba(0,0,0,0.35)]">
+                                ※アプリのインストールを完了すると
+                                <br />
+                                詳細コンテンツが見られます
+                              </p>
                             </div>
                           </div>
                         )}

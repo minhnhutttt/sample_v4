@@ -7,38 +7,59 @@ import { type MangaItem } from './MangaReaderModal';
 
 const PLACEHOLDER_COVER = '/assets/images/manga/placeholder.webp';
 
-const buildPages = (prefix: string) =>
+const buildPages = (prefix: string, length: number) =>
   Array.from(
-    { length: 10 },
+    { length },
     (_, index) =>
       `/assets/images/manga/${prefix}-${String(index + 1).padStart(2, '0')}.webp`,
   );
 
-const INU_001_PAGES = buildPages('inu001');
-const INU_002_PAGES = buildPages('inu002');
-
-const ITEMS = [
+// ページの高さは全作品で揃え、幅はそれぞれの原稿のアスペクト比に準じる
+const WORKS = [
   {
     id: 'inu-001',
     title: '犬っこのいる日常 1',
     author: 'アキト・春夏',
-    cover: INU_001_PAGES[0],
-    pages: INU_001_PAGES,
+    pageWidth: 397,
+    pages: buildPages('inu001', 10),
   },
   {
-    id: 'inu-002',
-    title: '犬っこのいる日常 2',
-    author: 'アキト・春夏',
-    cover: INU_002_PAGES[0],
-    pages: INU_002_PAGES,
+    id: 'chikyu-koryaku',
+    title: '地球攻略まであと◯日',
+    author: '久世みずき',
+    pageWidth: 388,
+    pages: buildPages('chikyu_koryaku', 5),
   },
-  ...Array.from({ length: 6 }, (_, index) => ({
-    id: `placeholder-${index + 1}`,
-    title: '漫画名が入ります',
-    author: '作家名が入ります',
-    cover: PLACEHOLDER_COVER,
-    pages: index % 2 === 0 ? INU_001_PAGES : INU_002_PAGES,
-  })),
+  {
+    id: 'shishia',
+    title: 'スィスィア θυσια',
+    author: 'さぎやまれん',
+    pageWidth: 397,
+    pages: buildPages('shishia', 10),
+  },
+  {
+    id: 'shi-kuma',
+    title: '感覚しーちゃんと理論派熊さん',
+    author: '春夏アキト',
+    pageWidth: 395,
+    pages: buildPages('shi-kuma', 10),
+  },
+];
+
+const ITEMS = [
+  ...WORKS.map((work) => ({ ...work, cover: work.pages[0] })),
+  ...Array.from({ length: 4 }, (_, index) => {
+    const { pageWidth, pages } = WORKS[index % WORKS.length];
+
+    return {
+      id: `placeholder-${index + 1}`,
+      title: '漫画名が入ります',
+      author: '作家名が入ります',
+      cover: PLACEHOLDER_COVER,
+      pageWidth,
+      pages,
+    };
+  }),
 ] satisfies MangaItem[];
 
 const Feature = () => {
