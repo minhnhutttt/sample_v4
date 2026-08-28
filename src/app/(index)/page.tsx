@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 const IndexPage = () => (
   <>
-    <main className="relative z-10 mx-auto w-full max-w-[var(--lp-column-width)] overflow-hidden bg-white pb-[95px] lg:pb-0">
+    <main className="relative z-10 mx-auto w-full max-w-[var(--lp-column-width)] overflow-hidden bg-white pb-[var(--lp-sticky-cta-height)] lg:pb-0">
       <Hero />
       <HeroHighlights />
       <Concerns />

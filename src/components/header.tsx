@@ -48,14 +48,14 @@ const Logo = () => (
       alt="ALONA"
       width={136}
       height={18}
-      className="absolute top-0 left-0 h-[17.534px] w-[136px]"
+      className="absolute top-0 left-0 h-[18px] w-[136px]"
     />
     <Image
       src="/assets/images/logo-alona-sub.svg"
       alt=""
       width={114}
       height={6}
-      className="absolute top-[83.85%] right-[8.45%] bottom-0 left-[8.08%] w-auto"
+      className="absolute top-[84%] right-[8%] bottom-0 left-[8%] w-auto"
     />
   </span>
 );
@@ -90,21 +90,21 @@ const Header = () => (
           {DAILY_PRICE_CARDS.map((card) => (
             <li
               key={card.name}
-              className="lp-rail-card relative h-[109px] w-[199px]"
+              className="lp-rail-card flex min-h-[109px] w-[199px] flex-col items-center px-[6px] pt-[15px] pb-[6px]"
             >
-              <p className="text-ink absolute top-[15px] left-[3.03px] w-[192.361px] text-center text-[14px] leading-[1.4] font-bold tracking-[-1.26px]">
+              <p className="text-ink w-full text-center text-[14px] leading-[1.4] font-bold tracking-[-1.26px]">
                 {card.name}
               </p>
-              <p className="absolute top-[31px] left-[12px] w-[175px] text-center font-bold tracking-[0.8px] whitespace-nowrap">
-                <span className="text-[30px] leading-[1.45] text-black">
+              <p className="w-full text-center font-bold tracking-[0.8px]">
+                <span className="text-[30px] leading-none text-black">
                   {card.amount}
                 </span>
                 <span className="text-ink-soft text-[14px] leading-[1.8] tracking-[1.68px]">
                   円/1日あたり
                 </span>
               </p>
-              <span className="absolute top-[66px] left-[13px] block h-[4px] w-[176px] rounded-full bg-[#72cf2f]" />
-              <p className="absolute top-[75px] left-[70.84px] w-[117.136px] text-center text-[13px] leading-[1.8] tracking-[1.04px] text-[#606060]">
+              <span className="mt-[-6px] block h-[4px] w-[176px] shrink-0 rounded-full bg-[#72cf2f]" />
+              <p className="mt-[5px] w-full text-right text-[13px] leading-[1.8] tracking-[1.04px] text-[#606060]">
                 ※20回通った場合
               </p>
             </li>

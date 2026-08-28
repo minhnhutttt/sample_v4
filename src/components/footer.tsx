@@ -8,17 +8,17 @@ const FOOTER_LINKS = [
 ];
 
 const Footer = () => (
-  <footer className="bg-footer relative h-[272px] w-full pt-[33px]">
+  <footer className="bg-footer relative flex min-h-[272px] w-full flex-col items-center pt-[33px] pb-[11px]">
     <div className="mx-auto flex w-[274px] flex-col items-center gap-[21px]">
       <Image
         src="/assets/images/logo-alona.png"
         alt="ALONA"
         width={174}
         height={54}
-        className="h-[54.301px] w-[173.854px] object-contain brightness-0 invert"
+        className="h-[54px] w-[174px] object-contain brightness-0 invert"
       />
 
-      <nav className="flex w-full items-center gap-[28px]">
+      <nav className="flex w-full flex-wrap items-center gap-x-[28px] gap-y-[8px]">
         {FOOTER_LINKS.map((link) => (
           <a
             key={link.label}
@@ -30,9 +30,9 @@ const Footer = () => (
               alt=""
               width={16}
               height={6}
-              className="h-[5.891px] w-[16.4px] shrink-0"
+              className="h-[6px] w-[16px] shrink-0"
             />
-            <span className="text-[12px] leading-[1.4] font-medium tracking-[0.48px] whitespace-nowrap text-white">
+            <span className="text-[12px] leading-[1.4] font-medium tracking-[0.48px] text-white">
               {link.label}
             </span>
           </a>
@@ -40,7 +40,7 @@ const Footer = () => (
       </nav>
     </div>
 
-    <p className="absolute inset-x-0 bottom-[11px] text-center text-[12px] leading-[1.25] tracking-[0.48px] text-white">
+    <p className="mt-auto pt-[20px] text-center text-[12px] leading-[1.25] tracking-[0.48px] text-white">
       &copy; {new Date().getFullYear()} ALONA
     </p>
   </footer>

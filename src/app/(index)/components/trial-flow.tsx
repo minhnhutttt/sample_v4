@@ -41,7 +41,7 @@ const FlowArrow = () => (
       alt=""
       width={47}
       height={20}
-      className="absolute top-0 right-[6.7%] bottom-1/4 left-[6.7%] h-[20.25px] w-[46.765px]"
+      className="absolute top-0 right-[7%] bottom-1/4 left-[7%] h-[20px] w-[47px]"
     />
   </div>
 );

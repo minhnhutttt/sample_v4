@@ -22,6 +22,8 @@
 
   /* Fixed chrome geometry (Figma PC frame 1280x900) */
   --lp-column-width: 375px;
+  /* SP CTA bar height; <IndexPage /> reserves the same amount of padding. */
+  --lp-sticky-cta-height: 95px;
 }
 
 @layer base {
@@ -64,8 +66,8 @@
 
   /* Daily-price rail card, SP variant — Figma node 1:912 */
   .lp-rail-card-sp {
-    border: 1.387px solid #41d5ca;
-    border-radius: 11.092px;
+    border: 1px solid #41d5ca;
+    border-radius: 11px;
     background-image: linear-gradient(
       to bottom,
       #fffddc 10.55%,

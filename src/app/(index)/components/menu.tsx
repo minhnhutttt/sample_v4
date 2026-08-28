@@ -7,7 +7,6 @@ import SectionTitle from '@/components/ui/section-title';
 type MenuItem = {
   tag: string;
   tagClassName: string;
-  tagWidth: number;
   title: string;
   subtitle: string;
   body: string;
@@ -18,7 +17,6 @@ const MENU_ITEMS: MenuItem[] = [
   {
     tag: '整える',
     tagClassName: 'bg-[#af3131]',
-    tagWidth: 66,
     title: 'パーソナルピラティス',
     subtitle: '50分/個別',
     body: '骨格から体型を整えるための専用マシンセッション。インナーマッスルを強化し、理想の姿勢・美しいシルエットラインをつくります。',
@@ -27,7 +25,6 @@ const MENU_ITEMS: MenuItem[] = [
   {
     tag: '楽しく続ける',
     tagClassName: 'bg-[#1d888f]',
-    tagWidth: 105,
     title: 'セミパーソナルトレーニング',
     subtitle: '少人数制',
     body: '最大4名の少人数グループレッスン。丁寧なフォーム指導を受けつつ、同じ目標を持つメンバーと一緒だから、モチベーションが持続します。',
@@ -36,7 +33,6 @@ const MENU_ITEMS: MenuItem[] = [
   {
     tag: '鍛える',
     tagClassName: 'bg-[#2e77ca]',
-    tagWidth: 63,
     title: 'パーソナルトレーニング',
     subtitle: '50分/個別',
     body: '完全マンツーマンのウェイト＆自体重トレーニング。基礎代謝をアップさせ、健康的に太りにくい美しい身体づくりを加速させます。',
@@ -81,8 +77,7 @@ const Menu = () => (
           </p>
 
           <span
-            style={{ width: `${item.tagWidth}px` }}
-            className={`absolute top-[11px] left-[11px] flex h-[26px] items-center justify-center text-[16px] leading-[1.4] font-bold text-white ${item.tagClassName}`}
+            className={`absolute top-[11px] left-[11px] flex min-h-[26px] items-center justify-center px-[8px] text-[16px] leading-[1.4] font-bold text-white ${item.tagClassName}`}
           >
             {item.tag}
           </span>

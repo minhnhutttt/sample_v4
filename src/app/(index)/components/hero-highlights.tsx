@@ -9,9 +9,9 @@ const HeroHighlights = () => (
       {DAILY_PRICE_CARDS.map((card) => (
         <li
           key={card.name}
-          className="lp-rail-card-sp relative h-[93px] w-[110px] shrink-0"
+          className="lp-rail-card-sp flex min-h-[93px] w-[110px] shrink-0 flex-col px-[6px] pt-[6px] pb-[6px]"
         >
-          <p className="text-ink absolute top-[6px] left-[6px] w-[103px] text-[9px] leading-[1.2] font-bold tracking-[-0.81px]">
+          <p className="text-ink text-[9px] leading-[1.2] font-bold tracking-[-0.81px]">
             {card.nameLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -19,8 +19,8 @@ const HeroHighlights = () => (
             ))}
           </p>
 
-          <p className="absolute top-[27px] left-[8px] w-[101px] font-bold">
-            <span className="text-[20.798px] leading-[1.45] tracking-[-0.208px] text-black">
+          <p className="font-bold">
+            <span className="text-[21px] leading-[1.45] tracking-[-0.208px] text-black">
               {card.amount}
             </span>
             <span className="text-ink-soft text-[8px] leading-[1.8] tracking-[0.555px]">
@@ -29,20 +29,21 @@ const HeroHighlights = () => (
             </span>
           </p>
 
-          <span className="absolute top-[53px] left-[6px] block h-[2.8px] w-[98px] rounded-full bg-[#72cf2f]" />
+          {/* Pulled up to sit under the amount's line box, as in Figma. */}
+          <span className="mt-[-6px] block h-[3px] w-full shrink-0 rounded-full bg-[#72cf2f]" />
 
-          <p className="text-ink-soft absolute top-[56px] left-[6px] w-[96px] text-right text-[8px] leading-[1.8] font-bold">
+          <p className="text-ink-soft text-right text-[8px] leading-[1.8] font-bold">
             （1日あたり）
           </p>
 
-          <p className="absolute top-[67px] left-[64.5px] w-[119px] -translate-x-1/2 text-center text-[9.013px] leading-[1.8] tracking-[0.721px] text-[#606060]">
+          <p className="text-center text-[9px] leading-[1.8] tracking-[0.721px] text-[#606060]">
             ※20回通った場合
           </p>
         </li>
       ))}
     </ul>
 
-    <p className="mt-[31px] pr-[13px] pl-[24px] text-[18px] leading-[1.52] font-semibold tracking-[1.08px] text-[#013c48]">
+    <p className="mt-[31px] px-4 text-[18px] leading-[1.52] font-semibold tracking-[1.08px] text-[#013c48]">
       1回50分のマンツーマン。ピラティス、マシーンを使ったパーソナルトレーニングが定額で通い放題。
     </p>
   </div>

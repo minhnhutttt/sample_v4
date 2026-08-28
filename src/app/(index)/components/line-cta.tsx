@@ -12,16 +12,16 @@ const LineCta = () => (
 
     <a
       href={EXTERNAL_LINKS.line}
-      className="bg-brand-line relative block h-[54px] w-[230px] overflow-hidden rounded-[5px] transition-transform hover:scale-[1.02]"
+      className="bg-brand-line flex min-h-[54px] w-[230px] items-center gap-[13px] rounded-[5px] pr-[14px] pl-[14px] transition-transform hover:scale-[1.02]"
     >
       <Image
         src="/assets/images/icon-line.svg"
         alt=""
         width={29}
         height={27}
-        className="absolute top-[13.37px] left-[14px] h-[27.266px] w-[28.615px]"
+        className="h-[27px] w-[29px] shrink-0"
       />
-      <span className="absolute top-[13px] left-[55.19px] text-[18.862px] leading-[1.5] font-bold whitespace-nowrap text-white">
+      <span className="text-[19px] leading-[1.5] font-bold text-white">
         LINEで相談する
       </span>
     </a>

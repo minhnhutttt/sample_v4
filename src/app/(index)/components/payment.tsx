@@ -20,7 +20,7 @@ const Payment = () => (
             alt="VISA / Mastercard / JCB / American Express / Diners Club / Discover"
             width={236}
             height={107}
-            className="h-[107.125px] w-[236px] object-contain"
+            className="h-[107px] w-[236px] object-contain"
           />
         </div>
 
@@ -33,7 +33,7 @@ const Payment = () => (
       </div>
 
       <div className="mt-[12px] ml-[20px] flex w-[237px] flex-col gap-[4px] rounded-[8px] border border-[#d4d4d4] bg-[#f0f0f0] px-[16px] py-[8px] text-[#414141]">
-        <p className="text-[9.6px] font-semibold">ご注意事項</p>
+        <p className="text-[10px] font-semibold">ご注意事項</p>
         <p className="text-[14px]">
           ※ 現金・QR決済・電子マネーは対応しておりません。
         </p>

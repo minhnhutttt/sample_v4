@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 const NotFoundPage = () => (
-  <div className="mx-auto flex h-[40vh] max-w-[800px] flex-col items-center justify-center">
+  <div className="mx-auto flex min-h-[40vh] max-w-[800px] flex-col items-center justify-center py-[24px]">
     <h1 className="text-center text-[64px] font-black">404</h1>
     <div className="mt-4">
       <Link

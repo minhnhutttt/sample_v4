@@ -97,7 +97,7 @@ const Pricing = () => (
                   alt=""
                   width={992}
                   height={682}
-                  className="absolute top-[-110px] left-[-25.58px] h-[682px] w-[992.466px] max-w-none"
+                  className="absolute top-[-110px] left-[-26px] h-[682px] w-[992px] max-w-none"
                 />
 
                 {plan.rows.map((row, rowIndex) => (
@@ -110,7 +110,7 @@ const Pricing = () => (
                     }`}
                   >
                     <span
-                      className={`border-ink text-ink flex w-[106px] items-center justify-center rounded-[8px] border py-[4px] text-[16px] leading-[2] font-medium tracking-[0.64px] whitespace-nowrap ${TONE_CLASS[row.tone]}`}
+                      className={`border-ink text-ink flex min-w-[106px] items-center justify-center rounded-[8px] border px-[8px] py-[4px] text-center text-[16px] leading-[2] font-medium tracking-[0.64px] ${TONE_CLASS[row.tone]}`}
                     >
                       {row.label}
                     </span>
@@ -140,13 +140,13 @@ const Pricing = () => (
         ))}
 
         <FadeIn>
-          <div className="lp-hybrid-card flex h-[620px] w-[330px] flex-col gap-[16px] overflow-hidden rounded-[16px] border-2 border-[#2a8791] p-[20px]">
+          <div className="lp-hybrid-card flex min-h-[620px] w-[330px] flex-col gap-[16px] overflow-hidden rounded-[16px] border-2 border-[#2a8791] p-[20px]">
             <div className="relative flex justify-center gap-[10px] border-b border-[#eee] pb-[12px]">
               <div className="flex flex-col text-center text-white">
                 <p className="text-[16px] leading-[2] font-medium tracking-[0.64px]">
                   トレーニング会員様向け
                 </p>
-                <p className="text-[24px] leading-[1.45] font-extrabold tracking-[-0.24px] whitespace-nowrap">
+                <p className="text-[24px] leading-[1.45] font-extrabold tracking-[-0.24px]">
                   ピラティス特別優待
                 </p>
               </div>
@@ -160,7 +160,7 @@ const Pricing = () => (
             </div>
 
             <div className="relative flex flex-col gap-[25px]">
-              <p className="h-[196px] w-[290px] tracking-[0.64px] text-white">
+              <p className="min-h-[196px] w-[290px] tracking-[0.64px] text-white">
                 <span className="text-[16px] leading-[2]">
                   トレーニング会員様なら、ピラティスを1回あたり
                 </span>

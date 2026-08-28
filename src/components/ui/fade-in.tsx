@@ -15,9 +15,10 @@ type FadeInProps = {
   delay?: number;
 };
 
-const DURATION_MS = 700;
-const REDUCED_DURATION_MS = 200;
+const DURATION_MS = 1000;
 const OFFSET_PX = 24;
+/** Holds the element faint a beat longer than ease-out, so it drifts in. */
+const EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
 const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 
 const subscribeMotion = (onChange: () => void) => {
@@ -70,16 +71,15 @@ const FadeIn = ({ children, className, delay = 0 }: FadeInProps) => {
 
   const isHidden = !isRevealed;
 
-  // Reduced motion still reveals on scroll — it just drops the travel and
-  // fades faster, so the page never animates more than the visitor asked for.
-  const duration = prefersReducedMotion ? REDUCED_DURATION_MS : DURATION_MS;
+  // Reduced motion gets the same gentle fade — what it drops is the travel and
+  // the stagger, which are the parts that actually move the page around.
   const stagger = prefersReducedMotion ? 0 : delay;
 
   const style: CSSProperties = {
     opacity: isHidden ? 0 : 1,
     transform:
       isHidden && !prefersReducedMotion ? `translateY(${OFFSET_PX}px)` : 'none',
-    transition: `opacity ${duration}ms ease-out ${stagger}ms, transform ${duration}ms ease-out ${stagger}ms`,
+    transition: `opacity ${DURATION_MS}ms ${EASING} ${stagger}ms, transform ${DURATION_MS}ms ${EASING} ${stagger}ms`,
     willChange: isHidden ? 'opacity, transform' : undefined,
   };
 

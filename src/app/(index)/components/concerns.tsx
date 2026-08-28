@@ -13,17 +13,17 @@ const CONCERNS: string[] = [
 const Concerns = () => (
   <section
     data-section="concerns"
-    className="-mt-5 flex flex-col items-center gap-[25px] bg-white"
+    className="relative -mt-5 flex flex-col items-center gap-[25px] bg-white"
   >
-    <div className="relative h-[154px] w-[349px]">
+    <div className="flex min-h-[154px] w-[349px] flex-col items-center">
       <Image
         src="/assets/images/logo-alona.png"
         alt="ALONA"
         width={187}
         height={58}
-        className="absolute top-0 left-[79.12px] h-[58.332px] w-[186.76px] object-contain"
+        className="h-[58px] w-[187px] object-contain"
       />
-      <p className="absolute inset-x-0 top-[75px] text-center leading-[1.67] font-extrabold tracking-[0.46px] text-black">
+      <p className="mt-[17px] w-full text-center leading-[1.67] font-extrabold tracking-[0.46px] text-black">
         <span className="text-[23px]">2026</span>
         <span className="text-[18px]">年</span>
         <span className="text-[23px]">10</span>
@@ -58,7 +58,7 @@ const Concerns = () => (
                 alt=""
                 width={29}
                 height={28}
-                className="h-[28px] w-[29.424px] shrink-0 object-contain"
+                className="h-[28px] w-[29px] shrink-0 object-contain"
               />
               <p
                 className={`flex-1 text-[16px] text-black ${
