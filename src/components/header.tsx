@@ -1,25 +1,8 @@
-'use client';
-
 import Image from 'next/image';
 
-import { useActiveSection } from '@/hooks/use-active-section';
-import type { SectionId } from '@/types/lp';
-
+import HeaderNav, { type NavItem } from './header-nav';
 import LowestPriceBadge from './ui/lowest-price-badge';
 import ReservationCta from './ui/reservation-cta';
-
-type NavItem = {
-  id: SectionId;
-  label: string;
-};
-
-/** Also drives the SP rail in the hero highlights section. */
-export type DailyPriceCard = {
-  name: string;
-  /** SP layout stacks the plan name over two lines (Figma node 1:917). */
-  nameLines: [string, string];
-  amount: string;
-};
 
 const NAV_ITEMS: NavItem[] = [
   { id: 'concerns', label: 'こんなお悩みありませんか？' },
@@ -32,6 +15,14 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'access', label: 'アクセス' },
 ];
 
+export type DailyPriceCard = {
+  name: string;
+  /** SP layout stacks the plan name over two lines (Figma node 1:917). */
+  nameLines: [string, string];
+  amount: string;
+};
+
+/** Rendered as the PC rail below, and as the SP rail in <HeroHighlights />. */
 export const DAILY_PRICE_CARDS: DailyPriceCard[] = [
   {
     name: 'パーソナル ピラティス',
@@ -49,8 +40,6 @@ export const DAILY_PRICE_CARDS: DailyPriceCard[] = [
     amount: '1,650',
   },
 ];
-
-const SECTION_IDS = NAV_ITEMS.map((item) => item.id);
 
 const Logo = () => (
   <span className="relative block h-[32px] w-[136px] overflow-hidden">
@@ -71,87 +60,65 @@ const Logo = () => (
   </span>
 );
 
-const Header = () => {
-  const activeId = useActiveSection(SECTION_IDS);
+const Header = () => (
+  <>
+    <div className="lp-sky pointer-events-none fixed inset-0 -z-10">
+      <Image
+        src="/assets/images/texture-bokeh.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+    </div>
 
-  return (
-    <>
-      <div className="lp-sky pointer-events-none fixed inset-0 -z-10">
-        <Image
-          src="/assets/images/texture-bokeh.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+    <header className="pointer-events-none fixed inset-0 z-30 hidden lg:block">
+      <a
+        href="#top"
+        className="pointer-events-auto absolute top-[20px] left-[20px]"
+      >
+        <Logo />
+      </a>
+
+      <HeaderNav items={NAV_ITEMS} />
+
+      <div className="pointer-events-auto absolute top-[20px] right-[21px] w-[199px]">
+        <LowestPriceBadge className="absolute top-[0px] left-[-22px]" />
+
+        <ul className="flex flex-col gap-[10px] pt-[10px]">
+          {DAILY_PRICE_CARDS.map((card) => (
+            <li
+              key={card.name}
+              className="lp-rail-card relative h-[109px] w-[199px]"
+            >
+              <p className="text-ink absolute top-[15px] left-[3.03px] w-[192.361px] text-center text-[14px] leading-[1.4] font-bold tracking-[-1.26px]">
+                {card.name}
+              </p>
+              <p className="absolute top-[31px] left-[12px] w-[175px] text-center font-bold tracking-[0.8px] whitespace-nowrap">
+                <span className="text-[30px] leading-[1.45] text-black">
+                  {card.amount}
+                </span>
+                <span className="text-ink-soft text-[14px] leading-[1.8] tracking-[1.68px]">
+                  円/1日あたり
+                </span>
+              </p>
+              <span className="absolute top-[66px] left-[13px] block h-[4px] w-[176px] rounded-full bg-[#72cf2f]" />
+              <p className="absolute top-[75px] left-[70.84px] w-[117.136px] text-center text-[13px] leading-[1.8] tracking-[1.04px] text-[#606060]">
+                ※20回通った場合
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <header className="pointer-events-none fixed inset-0 z-30 hidden lg:block">
-        <a
-          href="#top"
-          className="pointer-events-auto absolute top-[20px] left-[20px]"
-        >
-          <Logo />
-        </a>
+      <p className="pointer-events-auto absolute right-[37px] bottom-[141px] w-[301px] text-[16px] leading-[1.42] font-semibold tracking-[0.96px] text-[#013c48]">
+        1回50分のマンツーマン。ピラティス、マシーンを使ったパーソナルトレーニングが定額で通い放題。
+      </p>
 
-        <nav className="pointer-events-auto absolute top-[86px] left-[20px]">
-          <ul>
-            {NAV_ITEMS.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  aria-current={activeId === item.id ? 'true' : undefined}
-                  className={`block text-[15px] leading-[2.88] whitespace-nowrap transition-colors ${
-                    activeId === item.id
-                      ? 'font-bold text-[#0b6f62]'
-                      : 'font-semibold text-black hover:text-[#0b6f62]'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="pointer-events-auto absolute top-[20px] right-[21px] w-[199px]">
-          <LowestPriceBadge className="absolute top-[0px] left-[-22px]" />
-
-          <ul className="flex flex-col gap-[10px] pt-[10px]">
-            {DAILY_PRICE_CARDS.map((card) => (
-              <li
-                key={card.name}
-                className="lp-rail-card relative h-[109px] w-[199px]"
-              >
-                <p className="text-ink absolute top-[15px] left-[3.03px] w-[192.361px] text-center text-[14px] leading-[1.4] font-bold tracking-[-1.26px]">
-                  {card.name}
-                </p>
-                <p className="absolute top-[31px] left-[12px] w-[175px] text-center font-bold tracking-[0.8px] whitespace-nowrap">
-                  <span className="text-[30px] leading-[1.45] text-black">
-                    {card.amount}
-                  </span>
-                  <span className="text-ink-soft text-[14px] leading-[1.8] tracking-[1.68px]">
-                    円/1日あたり
-                  </span>
-                </p>
-                <span className="absolute top-[66px] left-[13px] block h-[4px] w-[176px] rounded-full bg-[#72cf2f]" />
-                <p className="absolute top-[75px] left-[70.84px] w-[117.136px] text-center text-[13px] leading-[1.8] tracking-[1.04px] text-[#606060]">
-                  ※20回通った場合
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <p className="pointer-events-auto absolute right-[37px] bottom-[141px] w-[301px] text-[16px] leading-[1.42] font-semibold tracking-[0.96px] text-[#013c48]">
-          1回50分のマンツーマン。ピラティス、マシーンを使ったパーソナルトレーニングが定額で通い放題。
-        </p>
-
-        <ReservationCta className="pointer-events-auto absolute right-[18px] bottom-[29px]" />
-      </header>
-    </>
-  );
-};
+      <ReservationCta className="pointer-events-auto absolute right-[18px] bottom-[29px]" />
+    </header>
+  </>
+);
 
 export default Header;

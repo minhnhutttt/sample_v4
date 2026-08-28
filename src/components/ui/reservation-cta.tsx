@@ -4,10 +4,6 @@ type ReservationCtaProps = {
   className?: string;
 };
 
-/**
- * Figma node 1:935 "Group 14" — the 335px lead-in copy + CTA button pair.
- * The PC rail pins it bottom-right; SP pins it to the 追従ボタン bar.
- */
 const ReservationCta = ({ className = '' }: ReservationCtaProps) => (
   <div className={['w-[335px]', className].join(' ')}>
     <p className="text-center text-[12px] font-semibold text-[#272727]">

@@ -3,7 +3,6 @@ type PlainTitleProps = {
   jp: string;
 };
 
-/** Figma nodes 1:445 / 1:493 / 1:502 — eyebrow + heading, no gradient band. */
 const PlainTitle = ({ en, jp }: PlainTitleProps) => (
   <div className="flex flex-col items-center">
     <p className="text-muted text-[15px] leading-[1.87] font-bold tracking-[0.6px]">

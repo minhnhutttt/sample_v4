@@ -32,6 +32,12 @@
   button {
     cursor: pointer;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
 }
 
 @layer components {
@@ -70,32 +76,5 @@
   /* Hybrid plan card — Figma node 1:322 */
   .lp-hybrid-card {
     background-image: linear-gradient(168.15deg, #22ceed 8.66%, #3697a8 76.52%);
-  }
-}
-
-@layer utilities {
-  .lp-reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.7s ease-out,
-      transform 0.7s ease-out;
-  }
-
-  .lp-reveal[data-visible='true'] {
-    opacity: 1;
-    transform: none;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-
-    .lp-reveal {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
   }
 }
