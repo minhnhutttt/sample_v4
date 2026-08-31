@@ -5,8 +5,6 @@ import SectionHeading from '@/components/section-heading';
 import FeatureContents from './FeatureContents';
 import { type MangaItem } from './MangaReaderModal';
 
-const PLACEHOLDER_COVER = '/assets/images/manga/placeholder.webp';
-
 const buildPages = (prefix: string, length: number) =>
   Array.from(
     { length },
@@ -48,18 +46,6 @@ const WORKS = [
 
 const ITEMS = [
   ...WORKS.map((work) => ({ ...work, cover: work.pages[0] })),
-  ...Array.from({ length: 4 }, (_, index) => {
-    const { pageWidth, pages } = WORKS[index % WORKS.length];
-
-    return {
-      id: `placeholder-${index + 1}`,
-      title: '漫画名が入ります',
-      author: '作家名が入ります',
-      cover: PLACEHOLDER_COVER,
-      pageWidth,
-      pages,
-    };
-  }),
 ] satisfies MangaItem[];
 
 const Feature = () => {

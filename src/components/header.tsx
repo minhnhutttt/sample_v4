@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const KIVO_ID = 'bunko_agency_01';
+const KIVO_ID = 'god';
 const PARTNER_INFO_ID = 'partner-info';
 
 const Header = () => {
@@ -63,7 +63,7 @@ const Header = () => {
       <div className="font-inter flex tracking-wider max-lg:flex-col max-md:hidden lg:items-center lg:gap-10">
         <p className="leading-loose font-medium text-white md:text-[18px]">
           <span className="text-[#AEAEAE]">KIVO TALK公認パートナー :</span>{' '}
-          文庫社
+          株式会社crossTEN
         </p>
         <button
           type="button"
@@ -134,9 +134,9 @@ const Header = () => {
               alt=""
               className="absolute top-[-9px] right-[23px] h-[23px] w-[26.25px]"
             />
-            <p className="text-[16px] leading-[2] font-medium tracking-[0.64px] text-white">
+            <p className="text-[14px] leading-[2] font-medium tracking-[0.64px] text-white">
               <span className="text-[#AEAEAE]">KIVO TALK公認パートナー :</span>{' '}
-              文庫社
+              株式会社crossTEN
             </p>
             <div className="flex items-center gap-2">
               <p className="text-[16px] leading-[2] font-medium tracking-[0.64px] whitespace-nowrap text-white">

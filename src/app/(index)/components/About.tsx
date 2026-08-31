@@ -24,7 +24,7 @@ const About = () => {
         </SectionHeading>
         <div className="mt-14 ml-auto w-full max-w-[580px] md:mt-26">
           <p className="text-[24px] font-bold tracking-wide text-[#F78629] md:text-[36px]">
-            私たち文庫社は、数え切れないほどの物語を読者の皆さんに届けてきました。
+            私たちは、数え切れないほどの物語を読者の皆さんに届けてきました。
           </p>
           <p className="mt-9 text-[16px] leading-[1.8] font-medium md:mt-13 md:text-[20px]">
             でも、ページ数でカットしたエピソードや、日の目を見なかったネームも、実はたくさんあります。
