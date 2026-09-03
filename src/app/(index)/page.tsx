@@ -13,6 +13,7 @@ import LineCta from './components/line-cta';
 import Menu from './components/menu';
 import Payment from './components/payment';
 import Pricing from './components/pricing';
+import PromoModal from './components/promo-modal';
 import TrialFlow from './components/trial-flow';
 import WhyAlona from './components/why-alona';
 
@@ -37,9 +38,9 @@ const IndexPage = () => (
       <HeroHighlights />
       <Concerns />
       <WhyAlona />
+      <Menu />
       <Pricing />
       <Payment />
-      <Menu />
       <TrialFlow />
       <Faq />
       <Access />
@@ -48,6 +49,7 @@ const IndexPage = () => (
     </main>
 
     <StickyCta />
+    <PromoModal />
   </>
 );
 

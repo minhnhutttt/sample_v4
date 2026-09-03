@@ -1,7 +1,4 @@
-<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="229.004" height="37" viewBox="0 0 229.004 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Vector">
-<path d="M209.143 18.6875L228.285 36.6973H36.2222V0H229.004L209.143 18.6875Z" fill="#FFE853"/>
-<path d="M0 0H125V37H0V0Z" fill="#FFE853"/>
-<path d="M0 0H125V37H0V0Z" fill="#FFE853"/>
-</g>
+<svg width="255" height="50" viewBox="0 0 255.173 49.6904" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M228.499 25.097L254.206 49.2839H48.6458V0H255.173L228.499 25.097Z" fill="#FFE853" />
+  <path d="M0 0H167.873V49.6904H0V0Z" fill="#FFE853" />
 </svg>

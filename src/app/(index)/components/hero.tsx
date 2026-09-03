@@ -18,7 +18,7 @@ const WEDGE_CLIP = 'polygon(100% 0, 100% 100%, 0 100%)';
 const Hero = () => (
   <section
     id="top"
-    className="relative min-h-[640px] overflow-hidden bg-white pt-[64px] pl-[15px]"
+    className="relative min-h-[547px] overflow-hidden bg-white pt-[64px] pl-[15px]"
   >
     <HeroSlider
       className="absolute inset-0"
@@ -43,14 +43,7 @@ const Hero = () => (
     />
 
     <div className="relative flex w-[367px] flex-col gap-[12px]">
-      <p className="text-[18px] leading-[1.75] font-semibold tracking-[0.72px] text-[#070707]">
-        パーソナル ピラティス
-        <br />
-        セミパーソナルトレーニング
-        <br />
-        パーソナルトレーニング
-      </p>
-      <h1 className="font-black tracking-[0.84px] text-white [text-shadow:0_3px_3px_#64d8df]">
+      <h1 className="font-black tracking-[0.84px] text-[#353535]">
         <span className="text-[32px] leading-[1.3]">続けられる価格</span>
         <span className="text-[25px] leading-[1.3]">だから、</span>
         <br />

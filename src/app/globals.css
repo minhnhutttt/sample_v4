@@ -14,7 +14,7 @@
   --color-brand-line: #48b34b;
 
   --color-rail-surface: #ddfbfb;
-  --color-plan-surface: #f1fce4;
+  --color-plan-surface: #f1fdff;
   --color-plan-border: #3bb5b9;
   --color-flow-surface: #e9fffb;
   --color-flow-border: #34796b;
@@ -46,7 +46,7 @@
 @layer components {
   /* Section band title — Figma "Frame 55" gradient */
   .lp-title-band {
-    background-image: linear-gradient(105.72deg, #60a99e 2.63%, #247c68 90.51%);
+    background-image: linear-gradient(105.72deg, #2e8f99 2.63%, #1f5d64 90.51%);
   }
 
   /* Fixed viewport background — Figma "Frame 44" (node 65:18) */
@@ -58,8 +58,22 @@
     );
   }
 
-  /* Hybrid plan card — Figma node 1:322 */
+  /* Hybrid plan card — Figma node 205:6333 */
   .lp-hybrid-card {
-    background-image: linear-gradient(168.15deg, #22ceed 8.66%, #3697a8 76.52%);
+    background-image: linear-gradient(
+      170.92deg,
+      #ad9f00 12.337%,
+      #bbb552 49.263%,
+      #cacba3 85.89%
+    );
+  }
+
+  /* Hybrid plan card combo price box — Figma node 205:6343 */
+  .lp-hybrid-card-combo {
+    background-image: linear-gradient(
+      180.05deg,
+      rgba(255, 255, 255, 0.35) 30.225%,
+      rgba(201, 199, 125, 0.7) 84.677%
+    );
   }
 }

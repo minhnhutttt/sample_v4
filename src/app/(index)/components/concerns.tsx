@@ -52,7 +52,7 @@ const Concerns = () => (
     </ul>
 
     <FadeIn className="mx-auto w-[345px]">
-      <div className="relative flex flex-col items-center justify-center gap-[3px] overflow-hidden rounded-[16px] border-[3px] border-[#43c6b1] bg-[#fefff1] px-[20px] py-[20px]">
+      <div className="relative flex flex-col items-center justify-center gap-[3px] overflow-hidden rounded-[16px] border-[3px] border-[#43b4c6] bg-[#f1feff] px-[20px] py-[20px]">
         <p className="w-[305px] text-center leading-[1.45] font-bold tracking-[-0.24px] text-[#252525]">
           <span className="text-[24px]">その悩み、</span>
           <br />
@@ -62,7 +62,7 @@ const Concerns = () => (
           <span className="text-[23px]">できます！</span>
         </p>
 
-        <span className="block h-[2px] w-[284px] rounded-full bg-[#72cf2f]" />
+        <span className="block h-px w-[284px] rounded-full bg-[#787878]" />
 
         <p className="text-ink w-[309px] text-center text-[16px] leading-[1.7] tracking-[0.32px]">
           整える「ピラティス」と
@@ -73,21 +73,6 @@ const Concerns = () => (
           <br />
           スマートな価格でご提供します。
         </p>
-
-        <Image
-          src="/assets/images/concerns-deco-left.svg"
-          alt=""
-          width={63}
-          height={131}
-          className="absolute top-[55px] left-[5px] w-[63px]"
-        />
-        <Image
-          src="/assets/images/concerns-deco-right.svg"
-          alt=""
-          width={58}
-          height={118}
-          className="absolute top-[93px] right-[0px] w-[58px]"
-        />
       </div>
     </FadeIn>
   </section>

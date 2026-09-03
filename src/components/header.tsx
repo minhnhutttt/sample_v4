@@ -77,22 +77,21 @@ const Header = () => (
           {DAILY_PRICE_CARDS.map((card) => (
             <li
               key={card.name}
-              className="bg-rail-surface relative h-[109px] w-full rounded-[10px]"
+              className="relative h-[109px] w-full rounded-[10px] bg-[#ffe853]"
             >
               <p className="text-ink absolute inset-x-0 top-[11px] text-center text-[14px] leading-[1.4] font-bold tracking-[-1.26px]">
                 {card.name}
               </p>
-              <p className="absolute inset-x-0 top-[30px] text-center font-bold tracking-[0.8px]">
-                <span className="text-[30px] leading-[1.45] text-black">
+              <p className="absolute inset-x-0 top-[30px] text-center font-bold tracking-[0.8px] text-[#333]">
+                <span className="text-[30px] leading-[1.45]">
                   {card.amount}
                 </span>
-                <span className="text-ink-soft text-[14px] leading-[1.8] tracking-[1.68px]">
+                <span className="text-[14px] leading-[1.8] tracking-[1.68px]">
                   円/1日あたり
                 </span>
               </p>
-              {/* Rule sits under the amount's line box, ahead of the note. */}
-              <span className="absolute top-[74px] left-[16px] block h-px w-[214px] bg-[#547982]" />
-              <p className="absolute top-[74px] right-[21px] text-[13px] leading-[1.8] tracking-[1.04px] text-[#606060]">
+              <span className="absolute top-[74px] left-[16px] block h-px w-[214px] bg-[#666666]" />
+              <p className="absolute inset-x-0 top-[74px] px-3 text-right text-[13px] leading-[1.8] tracking-[1.04px] text-[#333]">
                 ※20回通った場合
               </p>
             </li>
@@ -100,13 +99,17 @@ const Header = () => (
         </ul>
       </div>
 
-      <p className="pointer-events-auto absolute right-[37px] bottom-[141px] w-[301px] text-[16px] leading-[1.42] font-semibold tracking-[0.96px] text-white">
-        1回50分のマンツーマン。ピラティス、マシーンを使ったパーソナルトレーニングが定額で通い放題。
-      </p>
-
       <ReservationCta
         className="pointer-events-auto absolute right-[18px] bottom-[29px]"
-        captionClassName="text-white"
+        captionClassName="text-[18px] tracking-[0.18px] text-white"
+        caption={
+          <>
+            当日入会で、入会金無料！
+            <br />
+            トータル60分の初回体験が0円
+          </>
+        }
+        withSparkle
       />
     </header>
   </>

@@ -1,14 +1,35 @@
 import Image from 'next/image';
 
-import { DAILY_PRICE_CARDS } from '@/components/header';
 import LowestPriceBadge from '@/components/ui/lowest-price-badge';
 
+type PriceRailCard = {
+  name: string;
+  amount: string;
+};
+
+/** Figma 205:6547 — SP daily-rate rail (the PC chrome carries its own copy). */
+const PRICE_RAIL: PriceRailCard[] = [
+  { name: 'パーソナル ピラティス', amount: '2,190' },
+  { name: 'セミパーソナルトレーニング', amount: '930' },
+  { name: 'パーソナルトレーニング', amount: '1,650' },
+];
+
 /**
- * SP counterpart of the PC chrome — Figma nodes 65:639 / 65:605 / 65:598.
- * The opening announcement now leads this block instead of <Concerns />.
+ * SP counterpart of the PC chrome (Figma node 205:6528 "Frame 59"):
+ * the catch copy that closes the hero, the opening logo + OPEN date,
+ * the 地域で価格最安！ badge and the yellow daily-rate rail.
+ * <Concerns /> follows as its own section.
  */
 const HeroHighlights = () => (
-  <div className="relative -mt-[15px] flex flex-col items-center pb-[25px]">
+  <div className="relative flex flex-col items-center pb-[25px]">
+    <p className="mb-[15px] text-[18px] leading-[1.75] font-semibold tracking-[0.72px] whitespace-nowrap text-[#3d3d3d]">
+      パーソナルマシンピラティス
+      <br />
+      セミパーソナルトレーニング
+      <br />
+      パーソナルトレーニング
+    </p>
+
     <div className="flex w-[349px] flex-col items-center">
       <Image
         src="/assets/images/logo-alona.png"
@@ -32,40 +53,34 @@ const HeroHighlights = () => (
     </div>
 
     {/* The PC chrome already carries the price rail, so SP owns it alone. */}
-    <div className="mt-[24px] flex flex-col items-center pb-[54px] lg:hidden">
+    <div className="mt-[25px] flex flex-col items-center gap-[16px] lg:hidden">
       <LowestPriceBadge variant="sp" />
 
-      <ul className="mt-[12px] flex w-[338px] flex-col gap-[16px]">
-        {DAILY_PRICE_CARDS.map((card) => (
+      <ul className="flex flex-col gap-[9px]">
+        {PRICE_RAIL.map((card) => (
           <li
             key={card.name}
-            className="bg-rail-surface rounded-[12px] px-[20px] py-[11px]"
+            className="relative flex h-[146px] w-[326px] flex-col items-center rounded-[13px] bg-[#ffe853] pt-[13px]"
           >
-            <p className="text-ink text-center text-[20px] leading-[1.4] font-bold tracking-[-2.2px]">
+            <p className="text-ink text-[19px] leading-[1.4] font-bold tracking-[-0.09em] whitespace-nowrap">
               {card.name}
             </p>
 
-            <p className="mt-[2px] text-center font-bold tracking-[0.8px]">
-              <span className="text-[42px] leading-[1.45] tracking-[-0.42px] text-black">
-                {card.amount}
-              </span>
-              <span className="text-ink-soft text-[19px] leading-[1.8] tracking-[2.28px]">
+            <p className="mt-[3px] font-bold text-[#333]">
+              <span className="text-[40px] leading-[1.45]">{card.amount}</span>
+              <span className="text-[19px] leading-[1.8] tracking-[0.12em]">
                 円/1日あたり
               </span>
             </p>
 
-            <span className="mt-[2px] block h-px w-full bg-[#547982]" />
+            <span className="mt-[3px] block h-px w-[288px] bg-[#666]" />
 
-            <p className="mt-[2px] text-right text-[18px] leading-[1.8] tracking-[1.44px] text-[#606060]">
+            <p className="mt-[3px] w-[288px] text-right text-[17px] leading-[1.8] font-normal tracking-[0.08em] text-[#333]">
               ※20回通った場合
             </p>
           </li>
         ))}
       </ul>
-
-      <p className="mt-[20px] w-[338px] text-[18px] leading-[1.52] font-semibold tracking-[1.08px] text-[#013c48]">
-        1回50分のマンツーマン。ピラティス、マシーンを使ったパーソナルトレーニングが定額で通い放題。
-      </p>
     </div>
   </div>
 );

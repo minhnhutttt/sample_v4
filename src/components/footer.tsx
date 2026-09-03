@@ -40,7 +40,7 @@ const Footer = () => (
       </nav>
     </div>
 
-    <p className="mt-auto pt-[20px] text-center text-[12px] leading-[1.25] tracking-[0.48px] text-white">
+    <p className="mt-auto w-[250px] pt-[20px] text-center text-[11px] leading-[1.4] font-medium tracking-[0.44px] text-white">
       &copy; {new Date().getFullYear()} ALONA
     </p>
   </footer>

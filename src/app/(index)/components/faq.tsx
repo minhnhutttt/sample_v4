@@ -46,7 +46,7 @@ const Faq = () => {
     <section
       id="faq"
       data-section="faq"
-      className="bg-faq-surface relative flex scroll-mt-[24px] flex-col gap-[24px] overflow-hidden px-[20px] pt-[10px] pb-[48px]"
+      className="bg-faq-surface relative flex scroll-mt-[24px] flex-col gap-[24px] overflow-hidden px-[20px] pt-[20px] pb-[48px]"
     >
       <Image
         src="/assets/images/texture-bokeh-faq.png"

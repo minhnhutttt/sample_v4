@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import FadeIn from '@/components/ui/fade-in';
 import SectionTitle from '@/components/ui/section-title';
+import TrialFlowCta from '@/components/ui/trial-flow-cta';
 
 type FlowStep = {
   step: string;
@@ -53,11 +54,14 @@ const TrialFlow = () => (
       <span className="text-[16px] leading-[2] font-medium tracking-[0.64px]">
         当日トータル
       </span>
-      <span className="text-[25px] leading-[1.8] font-bold tracking-[1px]">
+      <span className="text-[32px] leading-[1.8] font-bold tracking-[0.64px] text-[#1e93a8]">
         60
       </span>
+      <span className="text-[18px] leading-[1.8] font-bold tracking-[0.72px]">
+        分
+      </span>
       <span className="text-[20px] leading-[1.8] font-bold tracking-[0.8px]">
-        分！
+        ！
       </span>
       <span className="text-[12px]">　／</span>
     </p>
@@ -92,6 +96,32 @@ const TrialFlow = () => (
         </Fragment>
       ))}
     </div>
+
+    <div className="relative mx-auto mt-[32px] h-[161px] w-[335px]">
+      <Image
+        src="/assets/images/trial-flow-cta-photo.png"
+        alt="トレーナーと顧客の笑顔"
+        width={438}
+        height={323}
+        className="absolute top-0 left-0 z-10 w-[219px]"
+      />
+      <div className="absolute top-[-26px] left-[140px] h-[121px] w-[195px] rotate-[9.81deg]">
+        <Image
+          src="/assets/images/trial-flow-speech-bubble.svg"
+          alt=""
+          width={195}
+          height={121}
+          className="absolute inset-0 h-full w-full"
+        />
+      </div>
+      <p className="text-ink absolute top-[-4px] left-[178px] w-[139px] text-left text-[15px] leading-[1.3] font-bold tracking-[0.6px]">
+        一緒に楽しく
+        <br />
+        トレーニング習慣をつけましょう！
+      </p>
+    </div>
+
+    <TrialFlowCta className="mx-auto mt-[24px]" />
   </section>
 );
 
