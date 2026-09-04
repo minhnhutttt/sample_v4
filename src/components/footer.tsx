@@ -1,12 +1,5 @@
 import Image from 'next/image';
 
-import { EXTERNAL_LINKS } from '@/config/constants';
-
-const FOOTER_LINKS = [
-  { label: 'プライバシーポリシー', href: EXTERNAL_LINKS.privacyPolicy },
-  { label: '利用規約', href: EXTERNAL_LINKS.termsOfService },
-];
-
 const Footer = () => (
   <footer className="bg-footer relative flex min-h-[272px] w-full flex-col items-center pt-[33px] pb-[11px]">
     <div className="mx-auto flex w-[274px] flex-col items-center gap-[21px]">
@@ -17,27 +10,6 @@ const Footer = () => (
         height={54}
         className="h-[54px] w-[174px] object-contain brightness-0 invert"
       />
-
-      <nav className="flex w-full flex-wrap items-center gap-x-[28px] gap-y-[8px]">
-        {FOOTER_LINKS.map((link) => (
-          <a
-            key={link.label}
-            href={link.href}
-            className="flex items-center gap-[3px] transition-opacity hover:opacity-70"
-          >
-            <Image
-              src="/assets/images/arrow-line.svg"
-              alt=""
-              width={16}
-              height={6}
-              className="h-[6px] w-[16px] shrink-0"
-            />
-            <span className="text-[12px] leading-[1.4] font-medium tracking-[0.48px] text-white">
-              {link.label}
-            </span>
-          </a>
-        ))}
-      </nav>
     </div>
 
     <p className="mt-auto w-[250px] pt-[20px] text-center text-[11px] leading-[1.4] font-medium tracking-[0.44px] text-white">

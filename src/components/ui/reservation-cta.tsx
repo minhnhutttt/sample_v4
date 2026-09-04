@@ -4,11 +4,8 @@ import { EXTERNAL_LINKS } from '@/config/constants';
 
 type ReservationCtaProps = {
   className?: string;
-  /** The PC chrome sits on the dark wall (Figma 65:76); SP sits on white. */
   captionClassName?: string;
-  /** Overrides the default single-line ＼…／ caption. */
   caption?: ReactNode;
-  /** Flanking accent lines used by the PC hero (Figma node 205:6024). */
   withSparkle?: boolean;
 };
 

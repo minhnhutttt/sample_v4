@@ -2,66 +2,41 @@ import Image from 'next/image';
 
 type LowestPriceBadgeProps = {
   className?: string;
-  variant?: 'pc' | 'sp';
 };
 
-const LowestPriceBadge = ({
-  className = '',
-  variant = 'pc',
-}: LowestPriceBadgeProps) => {
-  const isSp = variant === 'sp';
-
+const LowestPriceBadge = ({ className = '' }: LowestPriceBadgeProps) => {
   return (
     <div
-      className={[
-        'relative flex items-end',
-        isSp ? 'min-h-[82px] w-[296px]' : 'min-h-[61px] w-[220px]',
-        className,
-      ]
+      className={['relative flex items-end', className]
         .filter(Boolean)
         .join(' ')}
     >
-      <Image
-        src="/assets/images/trainer-badge.png"
-        alt=""
-        width={isSp ? 70 : 52}
-        height={isSp ? 82 : 61}
-        className={`absolute bottom-0 z-10 object-cover object-bottom ${
-          isSp ? 'left-0 h-[82px] w-[70px]' : 'left-0 h-[61px] w-[52px]'
-        }`}
-      />
-
-      <div
-        className={`relative flex shrink-0 items-center ${
-          isSp
-            ? 'ml-[40px] min-h-[50px] w-[255px]'
-            : 'ml-[30px] min-h-[37px] w-[190px]'
-        }`}
-      >
-        <Image
-          src={
-            isSp
-              ? '/assets/images/badge-tag-wide.svg'
-              : '/assets/images/badge-tag.svg'
-          }
-          alt=""
-          width={isSp ? 255 : 190}
-          height={isSp ? 50 : 37}
-          className="absolute inset-0 h-full w-full"
-        />
-        <p
-          className={`relative leading-[1.8] font-bold ${
-            isSp
-              ? 'text-ink-soft pl-[32px] tracking-[0.04em]'
-              : 'pl-[24px] tracking-[0.72px]'
-          }`}
-        >
-          <span className={isSp ? 'text-[24px]' : 'text-[18px]'}>地域</span>
-          <span className={isSp ? 'text-[20px]' : 'text-[15px]'}>で</span>
-          <span className={isSp ? 'text-[24px]' : 'text-[18px]'}>
-            価格最安！
-          </span>
-        </p>
+      <div className="relative">
+        <span className="pointer-events-none absolute top-[-24px] left-[-6px] block h-[106px] w-[74px] overflow-hidden">
+          <Image
+            src="/assets/images/modal-promo-trainer.png"
+            alt=""
+            width={222}
+            height={166}
+            className="absolute top-[-36px] left-[-122px] z-10 max-w-none"
+          />
+        </span>
+        <div className="relative ml-4.5">
+          <Image
+            src="/assets/images/badge-tag-wide.svg"
+            alt=""
+            width={234}
+            height={65}
+            className="block h-[65px] w-[234px]"
+          />
+          <p className="absolute inset-0 flex flex-col items-center justify-center text-center leading-[1.22] font-bold tracking-[0.8px] text-black">
+            <span>
+              <span className="text-[18px]">池尻大橋・中目黒</span>
+              <span className="text-[14px]">で</span>
+            </span>
+            <span className="text-[20px]">価格最安</span>
+          </p>
+        </div>
       </div>
     </div>
   );

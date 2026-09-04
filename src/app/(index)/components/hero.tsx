@@ -1,5 +1,8 @@
 import Image from 'next/image';
 
+import { NAV_ITEMS } from '@/components/header-nav';
+import MobileNav from '@/components/mobile-nav';
+
 import HeroSlider from './hero-slider';
 
 const HERO_SOURCES = [
@@ -41,6 +44,8 @@ const Hero = () => (
       height={36}
       className="absolute top-[12px] left-[15px] h-[36px] w-[116px] object-contain"
     />
+
+    <MobileNav items={NAV_ITEMS} />
 
     <div className="relative flex w-[367px] flex-col gap-[12px]">
       <h1 className="font-black tracking-[0.84px] text-[#353535]">

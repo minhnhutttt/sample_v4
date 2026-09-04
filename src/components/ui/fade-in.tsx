@@ -11,13 +11,11 @@ import {
 type FadeInProps = {
   children: ReactNode;
   className?: string;
-  /** Stagger delay in milliseconds. */
   delay?: number;
 };
 
 const DURATION_MS = 1000;
 const OFFSET_PX = 24;
-/** Holds the element faint a beat longer than ease-out, so it drifts in. */
 const EASING = 'cubic-bezier(0.4, 0, 0.2, 1)';
 const MOTION_QUERY = '(prefers-reduced-motion: reduce)';
 
@@ -31,17 +29,8 @@ const subscribeMotion = (onChange: () => void) => {
 
 const getMotionSnapshot = () => window.matchMedia(MOTION_QUERY).matches;
 
-/** The server cannot know the preference; assume animation is welcome. */
 const getServerMotionSnapshot = () => false;
 
-/**
- * Reveals its children once they scroll into view.
- *
- * The animated properties are inline styles rather than a class in
- * globals.css: inline styles ship with the markup, so the effect cannot be
- * broken by a stale stylesheet, a cascade-layer conflict, or a Tailwind
- * utility landing on the same element.
- */
 const FadeIn = ({ children, className, delay = 0 }: FadeInProps) => {
   const [element, setElement] = useState<HTMLDivElement | null>(null);
   const [isRevealed, setIsRevealed] = useState(false);
@@ -71,8 +60,6 @@ const FadeIn = ({ children, className, delay = 0 }: FadeInProps) => {
 
   const isHidden = !isRevealed;
 
-  // Reduced motion gets the same gentle fade — what it drops is the travel and
-  // the stagger, which are the parts that actually move the page around.
   const stagger = prefersReducedMotion ? 0 : delay;
 
   const style: CSSProperties = {

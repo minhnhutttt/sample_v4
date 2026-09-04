@@ -6,10 +6,6 @@ import Image from 'next/image';
 
 import { EXTERNAL_LINKS } from '@/config/constants';
 
-/**
- * Figma node 162:1097 — promo modal shown on every visit
- * ("Webサイト開いてすぐ、こちらのモーダル画面が開きます").
- */
 const PromoModal = () => {
   const [open, setOpen] = useState(true);
 

@@ -12,6 +12,7 @@ const LineCta = () => (
 
     <a
       href={EXTERNAL_LINKS.line}
+      target="_blank"
       className="bg-brand-line flex min-h-[54px] w-[230px] items-center gap-[13px] rounded-[5px] pr-[14px] pl-[14px] transition-transform hover:scale-[1.02]"
     >
       <Image

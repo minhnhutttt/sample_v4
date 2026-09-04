@@ -1,33 +1,20 @@
 import Image from 'next/image';
 
-import HeaderNav, { type NavItem } from './header-nav';
+import HeaderNav, { NAV_ITEMS } from './header-nav';
 import LowestPriceBadge from './ui/lowest-price-badge';
 import ReservationCta from './ui/reservation-cta';
-
-const NAV_ITEMS: NavItem[] = [
-  { id: 'concerns', label: 'こんなお悩みありませんか？' },
-  { id: 'why', label: 'ALONAが選ばれる理由' },
-  { id: 'pricing', label: '料金プラン' },
-  { id: 'payment', label: 'お支払い方法' },
-  { id: 'menu', label: 'メニュー紹介' },
-  { id: 'flow', label: '初回体験トレーニングの流れ' },
-  { id: 'faq', label: 'よくある質問' },
-  { id: 'access', label: 'アクセス' },
-];
 
 export type DailyPriceCard = {
   name: string;
   amount: string;
 };
 
-/** Rendered as the PC rail below, and as the SP rail in <HeroHighlights />. */
 export const DAILY_PRICE_CARDS: DailyPriceCard[] = [
   { name: 'パーソナル ピラティス', amount: '2,189' },
   { name: 'セミパーソナルトレーニング', amount: '935' },
   { name: 'パーソナルトレーニング', amount: '1,650' },
 ];
 
-/** The chrome sits on the dark teal wall, so the logo runs in its white cut. */
 const Logo = () => (
   <span className="relative block h-[32px] w-[136px] overflow-hidden">
     <Image
@@ -73,7 +60,7 @@ const Header = () => (
       <div className="pointer-events-auto absolute top-[21px] right-[22px] flex w-[244px] flex-col items-center gap-[12px]">
         <LowestPriceBadge />
 
-        <ul className="flex w-full flex-col gap-[7px]">
+        <ul className="relative z-10 flex w-full flex-col gap-[7px]">
           {DAILY_PRICE_CARDS.map((card) => (
             <li
               key={card.name}

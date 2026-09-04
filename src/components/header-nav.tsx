@@ -10,6 +10,17 @@ export type NavItem = {
   label: string;
 };
 
+export const NAV_ITEMS: NavItem[] = [
+  { id: 'concerns', label: 'こんなお悩みありませんか？' },
+  { id: 'why', label: 'ALONAが選ばれる理由' },
+  { id: 'pricing', label: '料金プラン' },
+  { id: 'payment', label: 'お支払い方法' },
+  { id: 'menu', label: 'メニュー紹介' },
+  { id: 'flow', label: '初回体験トレーニングの流れ' },
+  { id: 'faq', label: 'よくある質問' },
+  { id: 'access', label: 'アクセス' },
+];
+
 type HeaderNavProps = {
   items: NavItem[];
 };

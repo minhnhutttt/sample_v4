@@ -37,20 +37,14 @@ export const TWITTER = {
   images: OG_IMAGES,
 };
 
-/**
- * TODO: 実 URL が確定したら差し替える。
- * Figma にリンク先の指定がないため、暫定で '#' を設定している。
- */
 export const EXTERNAL_LINKS = {
   reservation: '#',
-  line: '#',
-  privacyPolicy: '#',
-  termsOfService: '#',
+  line: 'https://qr-official.line.me/gs/M_810xswls_GW.png?oat_content=qr',
 } as const;
 
 export const SHOP = {
   postalCode: '〒153-0042',
-  address: '東京都目黒区青葉台3-10-11 青葉台フラッツ2階',
+  address: '東京都目黒区青葉台3-10-11 青葉台フラッツ2階 201号',
   /** Google Maps embed (marker on the shop address). */
   mapEmbedSrc:
     'https://maps.google.com/maps?q=' +

@@ -5,7 +5,6 @@ import SectionTitle from '@/components/ui/section-title';
 
 type WhyBlock = {
   title: string[];
-  /** Highlight chip under the title — Figma "50min-value-accent" (node 205:6153). */
   badge?: string;
   body: string;
   image: { src: string; alt: string };
@@ -68,7 +67,7 @@ const WhyAlona = () => (
         </div>
 
         {block.badge && (
-          <p className="w-full rounded-[16px] border border-[#2e8f99] bg-[#f3f8f8] px-[12px] py-[10px] text-[16px] font-bold text-[#1f5d64]">
+          <p className="w-full rounded-[16px] border border-[#2e8f99] bg-[#f3f8f8] px-[12px] py-[10px] text-center text-[16px] font-bold text-[#1f5d64]">
             {block.badge}
           </p>
         )}

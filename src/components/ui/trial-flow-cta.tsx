@@ -4,12 +4,6 @@ type TrialFlowCtaProps = {
   className?: string;
 };
 
-/**
- * Reservation CTA used only in the 初回体験トレーニングの流れ section
- * (Figma node 205:6426). It diverges from the shared <ReservationCta />:
- * the caption is set in the brand orange (#ff4613) and the button label
- * emphasises 「無料」 / 「で」 at larger sizes than the trailing text.
- */
 const TrialFlowCta = ({ className = '' }: TrialFlowCtaProps) => (
   <div className={['w-[335px]', className].filter(Boolean).join(' ')}>
     <p className="text-center text-[12px] font-semibold text-[#ff4613]">

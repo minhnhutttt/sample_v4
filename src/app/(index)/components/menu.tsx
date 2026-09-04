@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import Image from 'next/image';
 
 import FadeIn from '@/components/ui/fade-in';
@@ -9,7 +11,7 @@ type MenuItem = {
   tagClassName: string;
   title: string;
   subtitle: string;
-  lead: string | null;
+  lead: ReactNode | null;
   body: string;
   image: string | null;
 };
@@ -20,7 +22,13 @@ const MENU_ITEMS: MenuItem[] = [
     tagClassName: 'bg-[#51c4ce]',
     title: 'パーソナルマシンピラティス',
     subtitle: '50分/個別',
-    lead: '専用マシンで骨格から整え、美しいシルエットへ',
+    lead: (
+      <>
+        専用マシンで骨格から整え、
+        <br />
+        美しいシルエットへ
+      </>
+    ),
     body: '骨格から体型を整えるための専用マシンセッション。インナーマッスルを強化し、理想の姿勢・美しいシルエットラインをつくります。',
     image: '/assets/images/menu-pilates.jpg',
   },
@@ -38,7 +46,13 @@ const MENU_ITEMS: MenuItem[] = [
     tagClassName: 'bg-[#0b656a]',
     title: 'パーソナルトレーニング',
     subtitle: '50分/個別',
-    lead: '完全マンツーマンで基礎代謝を高め、太りにくい身体へ',
+    lead: (
+      <>
+        完全マンツーマンで基礎代謝を高め、
+        <br />
+        太りにくい身体へ
+      </>
+    ),
     body: '完全マンツーマンのウェイト＆自体重トレーニング。基礎代謝をアップさせ、健康的に太りにくい美しい身体づくりを加速させます。',
     image: '/assets/images/menu-personal.jpg',
   },
@@ -77,7 +91,7 @@ const Menu = () => (
           </div>
 
           {item.lead && (
-            <p className="rounded-[16px] border border-[#2e8f99] bg-[#f3f8f8] px-[12px] py-[10px] text-[14px] leading-[1.4] font-bold text-[#1f5d64]">
+            <p className="rounded-[16px] border border-[#2e8f99] bg-[#f3f8f8] px-[12px] py-[10px] text-center text-[14px] leading-[1.4] font-bold text-[#1f5d64]">
               {item.lead}
             </p>
           )}
